@@ -18,12 +18,8 @@
       "Bash(claude plugin install clay@clay-plugins)",
       "Read(./out/**)",
       "Edit(./out/**)",
-      "Edit(./team-profile.md)",
-      "Write(./team-profile.md)",
       "Bash(python3 -m pip install uv)",
       "Bash(python3 -m pip install -r requirements.txt)",
-      "Edit(./team-context.md)",
-      "Write(./team-context.md)",
       "Bash(python -m pip install uv)",
       "Bash(python -m pip install -r requirements.txt)",
       "Bash(mkdir out)",
@@ -35,7 +31,10 @@
     ],
     "deny": [
       "Read(./.env)",
-      "Read(./.env.*)"
+      "Read(./.env.*)",
+      "Bash(cat .env*)",
+      "Bash(type .env*)",
+      "Bash(printenv*)"
     ]
   }
 }

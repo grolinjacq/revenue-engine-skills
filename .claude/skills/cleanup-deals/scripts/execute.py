@@ -295,6 +295,16 @@ def main(argv=None):
     parser.add_argument("--delete-from-csv", metavar="PATH",
                         help="delete only rows marked 'yes' in this CSV's delete column")
     args = parser.parse_args(argv)
+    # Revenue Engine Hackathon guard: refuse shared or unknown portals and non-terminal runs.
+    import pathlib as _pl, re as _re
+    _ev = _pl.Path(__file__).resolve().parents[4] / "event.md"
+    _m = _re.search(r"hubspot_portal_shared:\s*(\S+)", _ev.read_text(encoding="utf-8")) if _ev.exists() else None
+    if not _m or _m.group(1).strip().lower() != "no":
+        print("Refused: event.md does not say hubspot_portal_shared: no. This script only runs on a portal that is yours alone.")
+        sys.exit(1)
+    if not sys.stdin.isatty():
+        print("Refused: run this yourself in your own terminal, not through Claude, so you are the one who confirms.")
+        sys.exit(1)
     df.authenticate()
 
     print("=" * 60)

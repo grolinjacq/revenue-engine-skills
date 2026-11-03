@@ -33,7 +33,7 @@ Ask all at once, each with a default so the team can answer "defaults":
    - Lists and enrichment: Clay (default) | other tool (name it, we'll use its CSV export) | none
    - Outreach: Lemlist (default) | other tool (name it) | none
 5. Language for outreach copy: English, Spanish, French...? (default: English)
-6. How careful should I be? A: ask before every write. B: ask before batches, credit spend and anything sent to people. (default: B)
+6. How careful should I be? A: ask before every write and every credit spend. B: ask before CRM writes, credit spend over the cap, and anything sent to people. (default: B)
 7. Credit cap for Clay today? (default: 200 credits)
 
 Write `team-profile.md` in the workspace root:

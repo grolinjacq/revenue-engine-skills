@@ -31,13 +31,13 @@ Any step can be filled by another tool, as long as its artefact matches:
 
 ### Normalising a CSV from anywhere
 
-0. If the file is outside the workspace, copy it to `out/import-<name>.csv` first and work on the copy.
-1. Read the header. Map each column to the contract by meaning (split a full name at the first space; a `linkedin.com/company` URL is not a domain, so leave `company_domain` empty and derive it later; take `country` from the end of a location; "Email Address" to `email`, "First" to `first_name`, "Company" to `company_name`, "Website" to `company_domain` after stripping `https://` and `www.`). Show the mapping in one table and ask once if a column is ambiguous.
-2. Derive `company_domain` from the email domain when missing, except free-mail domains.
-3. Rows with no email and no LinkedIn: keep them out, count them, and write them to `out/leads-dropped.csv` with the reason.
-4. Write `out/leads.csv` in the contract format, and report rows in, rows out, rows dropped. Leave columns with no source empty; offer Clay enrichment for them if `lists: clay`.
+1. If the file is outside the workspace, copy it to `out/import-<name>.csv` first and work on the copy.
+2. Read the header. Map each column to the contract by meaning (split a full name at the first space; a `linkedin.com/company` URL is not a domain, so leave `company_domain` empty and derive it later; take `country` from the end of a location; "Email Address" to `email`, "First" to `first_name`, "Company" to `company_name`, "Website" to `company_domain` after stripping `https://` and `www.`). Show the mapping in one table and ask once if a column is ambiguous.
+3. Derive `company_domain` from the email domain when missing, except free-mail domains.
+4. Rows with no email and no LinkedIn: keep them out, count them, and write them to `out/leads-dropped.csv` with the reason.
+5. Write `out/leads.csv` in the contract format, and report rows in, rows out, rows dropped. Leave columns with no source empty; offer Clay enrichment for them if `lists: clay`.
    Rows with LinkedIn but no email: keep them; the campaign uses LinkedIn steps only for them, and offer an email finder (Clay if `lists: clay`) before building.
-5. If `out/icp.md` doesn't exist, write a short one from the CSV (top industries, sizes, titles, countries) and the user's words, marked `source: csv`, before any copy step.
+6. If `out/icp.md` doesn't exist, write a short one from the CSV (top industries, sizes, titles, countries) and the user's words, marked `source: csv`, before any copy step.
 
 ## Routing
 
@@ -66,7 +66,7 @@ Any step can be filled by another tool, as long as its artefact matches:
 For the AI-agent bonus, the list-and-draft part of the loop runs headless. Agent mode never touches Lemlist or writes to the CRM: it ends with files a human reviews.
 
 1. Run the same steps once interactively first, so the team has seen every gate. `out/icp.md` must exist (step 1). Without HubSpot tools in `--allowedTools`, the agent skips step 3 and marks rows `unchecked`.
-2. The canonical command (also in `USAGE.md`), from the workspace folder:
+2. The canonical command, from the workspace folder:
 
 ```
 claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap, counting today's spend in out/run-log.md. Do not call Lemlist and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"

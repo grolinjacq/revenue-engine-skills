@@ -27,7 +27,7 @@ Never edit `CLAUDE.md`'s working rules, `.claude/settings.json` or `event.md` fr
 For each phrase from question 6, find the skill it should start (use `SKILLS.md`), and append the phrase in quotes to that skill's `description:` line in `.claude/skills/<skill>/SKILL.md`. Rules:
 
 - Only edit the `description:` of this pack's own skills (`hackathon-setup`, `make-it-ours`, `revenue-engine`, `hubspot-crm`, `hubspot-account-brief`, `hubspot-pipeline-review`, `hubspot-log-activity`, `hubspot-lead-triage`, `clay-build-list`, `lemlist-campaign`, `close-the-loop`). For a phrase that belongs to a vendored Lemlist or hubspot-admin skill, or to a Clay plugin skill (it lives outside this folder), add it to `revenue-engine`'s description with the skill it should lead to.
-- Append inside the existing text; never delete trigger phrases. If the line contains `: ` or quotes, keep the whole description wrapped in double quotes and use single quotes inside it. After editing, check the frontmatter still parses (for example `python3 -c "import yaml,sys; yaml.safe_load(open(sys.argv[1]).read().split('---')[1])" <file>`).
+- Append inside the existing text; never delete trigger phrases. If the line contains `: ` or quotes, keep the whole description wrapped in double quotes and use single quotes inside it. After editing, re-read the frontmatter and check it still has `name:` and one `description:` line, with matching quotes.
 - Keep each description under 1,000 characters.
 - If one phrase fits two skills, add it to `revenue-engine` instead: it routes.
 - Show the list of changes (skill, phrase added) before writing, and apply on a go.

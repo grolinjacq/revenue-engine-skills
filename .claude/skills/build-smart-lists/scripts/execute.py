@@ -329,6 +329,9 @@ _shared = _re.search(r"hubspot_portal_shared:\s*(\S+)", _ev.read_text(encoding="
 if not _shared or _shared.group(1).strip().lower() != "no":
     print("Refused: event.md does not say hubspot_portal_shared: no. This script only runs on a portal that is yours alone.")
     _sys.exit(1)
+if not _sys.stdin.isatty():
+    print("Refused: run this yourself in your own terminal, not through Claude, so you are the one who confirms.")
+    _sys.exit(1)
 if input("This changes records in your HubSpot portal. Type RUN to continue: ").strip() != "RUN":
     print("Cancelled. Nothing changed.")
     _sys.exit(1)

@@ -8,7 +8,7 @@ One folder that gives Claude Code every skill for the day, set up for your team.
 - **Only have the event's API credits?** Claim them into a Console account at platform.claude.com, then in Claude Code run `/login` and choose the Anthropic Console option. Every Claude reply then spends those credits, and HubSpot uses setup's path B (setup handles it).
 - **Log in with your Claude account, not an API key**, if you can. With an API key, the HubSpot and Clay connectors from your Claude settings don't load (setup will tell you what to do instead).
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.
-- **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup.
+- **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup. On Windows, unzip it to a plain folder such as `C:\revenue-engine`, not Desktop or Documents (often synced to OneDrive), and open a new PowerShell window after installing Claude Code.
 
 ## Do this before the event
 
@@ -28,7 +28,7 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
 
 | When | What you click |
 |---|---|
-| Lemlist sign-in | No account yet? Sign up at lemlist.com with the event code from the setup email (free for 1 week). Then `/mcp`, choose `lemlist`, Authenticate, approve in the browser |
+| Lemlist sign-in | No account yet? Sign up at lemlist.com with the event code from the setup email (free for 1 week). Then `/mcp`, choose `lemlist`, Authenticate, approve in the browser. To send anything (even to teammates), connect a sending mailbox in lemlist's settings; a paused campaign is a fine finish without one |
 | HubSpot sign-in | https://claude.ai/settings/connectors, add HubSpot, sign in to the event demo portal, then restart Claude Code |
 | Clay sign-in | No account yet? Create your workspace with the event's Clay link (in `event.md`, setup gives it to you): only those get the event credits. Already have a Clay workspace? It won't get them: create a new one through the event link. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
 | After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |

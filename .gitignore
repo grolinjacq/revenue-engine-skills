@@ -5,3 +5,6 @@ data/
 reports/
 team-profile.md
 team-context.md
+__pycache__/
+*.pyc
+!.env.example
