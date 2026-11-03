@@ -1,0 +1,27 @@
+# Revenue Engine Hackathon workspace
+
+This folder is a ready-made Claude Code workspace for the Revenue Engine Hackathon (Madrid). It connects a CRM (HubSpot, the source of truth), a list tool (Clay) and an outreach tool (Lemlist) through Claude. Teams with other tools plug them in through CSV files (see `revenue-engine`, "Step contracts").
+
+@team-profile.md
+@team-context.md
+
+## At the start of every session
+
+- If `team-profile.md` does not exist or says `setup: incomplete`, tell the user in one line that setup takes about 5 minutes, and run the `hackathon-setup` skill before anything else. If the user's first message was a request, do it right after setup.
+- If it says `complete` or `degraded`, greet the team by name in one line and offer the three most useful next steps for where they are and what their stack allows (see `SKILLS.md`). If `team-context.md` doesn't exist yet, one of the three is "make it ours" (10 minutes, better copy and routing).
+- Requests often arrive as one dictated sentence. Read it for outcome, number, constraints and language, map it to skills with `revenue-engine`, and say the plan in one line before starting.
+
+## Working rules for the whole hackathon
+
+- Follow `team-profile.md`: tools and stack, `write_mode`, `crm_mode`, `clay_credit_cap`.
+- Prospect-facing text (sequences, LinkedIn messages, call scripts) is written in `copy_language`, whatever language the user types in and whatever a copy skill says about "the user's language". The one exception: an answer to a prospect's reply goes in the language the prospect wrote in.
+- Outreach goes through Lemlist when `outreach: lemlist`. Clay's `campaigns` skill is not used for outreach in this workspace. With another outreach tool, produce copy plus an import CSV instead.
+- Nothing is sent to a real person without the user typing an explicit go for that send, in the current step: no campaign start, no email, no LinkedIn message. A go given earlier ("just go when ready") does not count.
+- Spending Clay credits: say the count and cost first; with `write_mode` A, or above `clay_credit_cap`, or when the balance is short, wait for a go.
+- CRM writes: none when `crm_mode: read-only`. Over 10 records, show the plan first and write in batches of 10 (the HubSpot connector's limit). Lifecycle stages only move forward in the loop.
+- HubSpot admin skills (`hubspot-audit`, `create-icp-tiers`, `build-lead-scoring`, `build-smart-lists`, `merge-duplicate-companies`, `fix-lifecycle-stages`, `cleanup-deals`): their read and audit stages are fine anywhere. Their write stages run only when the user asked for that skill by name or purpose, `crm_mode` is `full`, and `event.md` does not say `hubspot_portal_shared: yes`. Never answer a script's confirmation prompt (such as `CREATE TASKS`) for the user: show it and let them type it.
+- Skills for a tool that isn't in the team's stack (`crm`, `lists`, `outreach` in `team-profile.md`) don't call that tool: say so and offer the CSV route.
+- Before a step reads an `out/` file, check it is newer than the files it was built from (for example `leads-new.csv` older than `leads.csv` is stale) and say so if not. Before overwriting a file the user may have edited by hand (`icp.md`, `team-context.md`), ask.
+- Write every artefact to `out/` and append one line per step to `out/run-log.md`. That log is the team's demo script.
+- When a step needs the user's hands (a browser sign-in, a click in a tool's UI), say exactly what to click and where, open the URL if you can (print it if you can't), then check it worked yourself.
+- If a tool stops answering (expired sign-in, 401), say which one, give its re-auth step from `hackathon-setup` step 3, and resume once it's back. If it is not in the team's stack, offer the CSV route. Never invent data to fill the gap.

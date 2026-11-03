@@ -1,0 +1,37 @@
+{
+  "extraKnownMarketplaces": {
+    "clay-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "clay-run/agent-plugins"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "clay@clay-plugins": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(clay whoami)",
+      "Bash(claude mcp list)",
+      "Bash(claude plugin marketplace add clay-run/agent-plugins)",
+      "Bash(claude plugin install clay@clay-plugins)",
+      "Read(./out/**)",
+      "Edit(./out/**)",
+      "Edit(./team-profile.md)",
+      "Write(./team-profile.md)",
+      "Bash(python3 -m pip install uv)",
+      "Bash(python3 -m pip install -r requirements.txt)",
+      "Edit(./team-context.md)",
+      "Write(./team-context.md)",
+      "Bash(python -m pip install uv)",
+      "Bash(python -m pip install -r requirements.txt)",
+      "Bash(mkdir out)",
+      "Bash(claude auth status)",
+      "Read(./event.md)"
+    ],
+    "ask": [
+      "mcp__lemlist"
+    ]
+  }
+}
