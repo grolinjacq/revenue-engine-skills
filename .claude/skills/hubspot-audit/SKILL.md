@@ -26,7 +26,7 @@ The shared dimensions run under every scope, so a marketing audit and a sales au
 
 ## Setup
 
-1. **Get the API token.** Check `.env` for `HUBSPOT_ACCESS_TOKEN`. If it is not set, ask the user for a read-scoped HubSpot access token and store it in `.env`:
+1. **Get the API token.** Check `.env` for `HUBSPOT_ACCESS_TOKEN`. If it is not set, ask the user to create a read-scoped HubSpot service key (or use an existing private app token) and paste it into `.env` themselves, never in the chat. If they paste it in the chat, don't repeat or store it, and tell them to rotate it. The `.env` line:
    ```
    HUBSPOT_ACCESS_TOKEN=pat-na1-xxxxxxxx
    ```

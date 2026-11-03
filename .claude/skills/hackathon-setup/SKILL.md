@@ -9,15 +9,15 @@ Goal: the team goes from unzipped folder to a working stack in about 5 minutes, 
 
 Read `event.md` first: it holds the organisers' facts (demo portal, client ID for path B, Lemlist code, who to ask). If a value still shows `<...>`, it wasn't filled in: ask the user or the organisers instead of guessing.
 
-Re-runnable and resumable: if `team-profile.md` exists, read it, skip what is done, and only fix what is red. Write the profile as soon as the questions are answered (every tool `pending`), and update it after each sign-in, so a restart never loses progress or asks the questions again. Several steps need a Claude Code restart; before each one, say: "After the restart, type `set me up` and I'll pick up where we stopped."
+Re-runnable and resumable: if `team-profile.md` exists, read it, skip what is done, and only fix what is red. Write the profile as soon as the questions are answered (every tool `pending`), and update it after each sign-in, so a restart never loses progress or asks the questions again. Several steps need a Claude Code restart; before each one, say: "After the restart, type `set me up` and I'll pick up where we stopped." Restart means: terminal, `/exit` then `claude`; Desktop app, quit it fully (Cmd+Q on Mac, Quit from the tray on Windows), not just close the window. If a skill or connector that a restart should have loaded is still missing, say that the app was probably not fully quit.
 
 ## 0. Preflight (silent, before any question)
 
 Check these yourself and note the results; only mention a problem.
 
-1. Claude login. Ask the user to run `/status` (or run `claude auth status` yourself) to see how Claude Code is signed in. If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B.
+1. Claude login. Ask the user to run `/status` (or run `claude auth status` yourself) to see how Claude Code is signed in. If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B. Users with only the event's API credits: they claim them into a Console account at platform.claude.com, run `/login` and choose the Anthropic Console option; tell them every Claude reply spends those credits, set `login: api-key`, and use HubSpot path B (or CSV if `hubspot_mcp_client_id` is still a placeholder: ask the organisers in the room).
 2. OS and shell. Note Windows native (PowerShell), WSL, macOS or Linux. On Windows use `python` and PowerShell syntax; in WSL or headless Linux, browsers may not open, so print every sign-in URL for the user to open.
-3. Network. If GitHub is unreachable (`claude plugin marketplace add` fails), Clay goes through the connector path in step 3, not the plugin.
+3. Network. If GitHub is unreachable (`claude plugin marketplace add` fails), Clay goes through the connector path in step 3, not the plugin: skip the plugin commands in step 2.
 4. Surface. In the Desktop app, slash commands like `/mcp` and `/plugin` may live in the app's settings instead; if one does nothing, say where to find it in the app.
 
 ## 1. Preferences and stack (one message, 7 short questions)
@@ -54,7 +54,7 @@ outreach: <lemlist | other: <name> | none>
 login: <claude.ai | api-key>
 os: <windows | wsl | macos | linux>
 tools:
-  hubspot: <pending | connected (<portal>) | not available (<reason>)>
+  hubspot: <pending | connected (<portal>, path A or B) | not available (<reason>)>
   lemlist: <pending | connected (<team>) | not available (<reason>)>
   clay: <pending | connected (<workspace>, plugin|connector) | not available (<reason>)>
   hubspot_service_key: <not set | set>

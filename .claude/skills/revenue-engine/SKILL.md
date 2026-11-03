@@ -25,22 +25,29 @@ Any step can be filled by another tool, as long as its artefact matches:
 
 - `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through that CRM's connector if one is on (read-only), or from a CSV export of closed-won deals, or from the user's words.
 - `out/leads.csv`: header `email,first_name,last_name,job_title,company_name,company_domain,linkedin_url,country,employees,industry,personalization`. Optional trailing columns `fit_score,fit_reason,fit_source` (from `clay-build-list` scoring) travel with the rows, and so does any other enrichment column (for example `segment`, `latest_news`, `current_challenges`, `customer_list`): later steps use them as copy variables. From Apollo, Lusha, Sales Navigator or any CSV: normalise it (below).
-- `out/leads-new.csv`: `out/leads.csv` plus `hubspot_status` and `hubspot_owner`. Without HubSpot: dedupe against a CSV export of the team's CRM with `crm-duplicate-detector`, or skip and say so.
+- `out/leads-new.csv`: `out/leads.csv` plus `hubspot_status` and `hubspot_owner`. Without HubSpot: ask for a CSV export of the team's CRM contacts and accounts (for example from Salesforce), match on email, then company domain, and fill the same two columns (`new`, `known_contact`, `known_company`; owner from the export). No export: skip, say so, and mark every row `unchecked`.
 - `out/campaign.md`: campaign name, id or tool, lead count, sequence and copy. With another outreach tool: the sequence plus `out/outreach-import.csv` in that tool's import format.
 - `out/sync-log.md`: what changed in the CRM. Without HubSpot: `out/crm-import.csv` for the team to import.
 
 ### Normalising a CSV from anywhere
 
-1. Read the header. Map each column to the contract by meaning ("Email Address" to `email`, "First" to `first_name`, "Company" to `company_name`, "Website" to `company_domain` after stripping `https://` and `www.`). Show the mapping in one table and ask once if a column is ambiguous.
+0. If the file is outside the workspace, copy it to `out/import-<name>.csv` first and work on the copy.
+1. Read the header. Map each column to the contract by meaning (split a full name at the first space; a `linkedin.com/company` URL is not a domain, so leave `company_domain` empty and derive it later; take `country` from the end of a location; "Email Address" to `email`, "First" to `first_name`, "Company" to `company_name`, "Website" to `company_domain` after stripping `https://` and `www.`). Show the mapping in one table and ask once if a column is ambiguous.
 2. Derive `company_domain` from the email domain when missing, except free-mail domains.
 3. Rows with no email and no LinkedIn: keep them out, count them, and write them to `out/leads-dropped.csv` with the reason.
-4. Write `out/leads.csv` in the contract format, and report rows in, rows out, rows dropped.
+4. Write `out/leads.csv` in the contract format, and report rows in, rows out, rows dropped. Leave columns with no source empty; offer Clay enrichment for them if `lists: clay`.
+   Rows with LinkedIn but no email: keep them; the campaign uses LinkedIn steps only for them, and offer an email finder (Clay if `lists: clay`) before building.
+5. If `out/icp.md` doesn't exist, write a short one from the CSV (top industries, sizes, titles, countries) and the user's words, marked `source: csv`, before any copy step.
 
 ## Routing
 
+- "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. No new actions.
 - No ICP yet, or "start from the CRM": step 1.
 - The user brings their own ICP or target companies: write `out/icp.md`, then step 2.
 - The user brings a CSV of leads: normalise it, then step 3.
+- Copy or angles only ("write me a sequence", "find an angle"): write it to `out/sequence-<name>.md` or `out/angles.md`, don't create a campaign, and offer step 4.
+- Counts: "30 leads" means 30 people, so 15 companies at 2 people each unless the user says otherwise. "30 companies" means companies at the default people per company. Say which in the plan line.
+- "Push to lemlist" or "build a campaign" includes step 3 (dedupe, read-only) unless the user says to skip it.
 - Copy, angles, personas or sequence strategy: the Lemlist skills (`campaign-angle-finder`, `copywriting-*`, `linkedin-sequence`, `outbound-campaign-architect`; listed in `SKILLS.md`), in `copy_language`, then step 4.
 - Outreach goes through Lemlist when the team has it; Clay's `campaigns` skill is not used for outreach here.
 - "Did anyone reply?", "update the CRM": step 5.
@@ -58,11 +65,11 @@ Any step can be filled by another tool, as long as its artefact matches:
 
 For the AI-agent bonus, the list-and-draft part of the loop runs headless. Agent mode never touches Lemlist or writes to the CRM: it ends with files a human reviews.
 
-1. Run the same steps once interactively first, so the team has seen every gate.
+1. Run the same steps once interactively first, so the team has seen every gate. `out/icp.md` must exist (step 1). Without HubSpot tools in `--allowedTools`, the agent skips step 3 and marks rows `unchecked`.
 2. The canonical command (also in `USAGE.md`), from the workspace folder:
 
 ```
-claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/campaign.md. Stay within clay_credit_cap. Do not call Lemlist and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
+claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap. Do not call Lemlist and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
 ```
 
 3. Clay through the connector instead of the CLI, or HubSpot reads for the dedupe: add those tools to `--allowedTools` by the names `/mcp` shows (read tools only, never create or update tools).

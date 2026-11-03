@@ -5,8 +5,10 @@ One folder that gives Claude Code every skill for the day, set up for your team.
 ## Before you start
 
 - **A paid Claude account**: Pro, Max, Team or Enterprise, or an Anthropic Console (API) account. The free Claude plan can't run Claude Code; pair up with a teammate who has one, or ask the organisers.
+- **Only have the event's API credits?** Claim them into a Console account at platform.claude.com, then in Claude Code run `/login` and choose the Anthropic Console option. Every Claude reply then spends those credits, and HubSpot uses setup's path B (setup handles it).
 - **Log in with your Claude account, not an API key**, if you can. With an API key, the HubSpot and Clay connectors from your Claude settings don't load (setup will tell you what to do instead).
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.
+- **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup.
 
 ## Do this before the event
 
@@ -17,7 +19,7 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
 1. Install Claude Code, or skip this and use the Claude Desktop app (Code tab, no terminal needed).
    - macOS or Linux, in Terminal: `curl -fsSL https://claude.ai/install.sh | bash`
    - Windows, in PowerShell: `irm https://claude.ai/install.ps1 | iex`
-2. Get the folder: on GitHub, click the green **Code** button, then **Download ZIP**, and unzip it (or `git clone https://github.com/grolinjacq/revenue-engine-skills`). Then open a terminal in it (Windows: open the folder, then type `powershell` in the address bar) and run `claude`. In the Desktop app, open the folder instead.
+2. Get the folder: on GitHub, click the green **Code** button, then **Download ZIP**, and unzip it (or `git clone https://github.com/grolinjacq/revenue-engine-skills`). Then open a terminal in it (Windows: open the folder, then type `powershell` in the address bar) and run `claude`. In the Desktop app, open the folder instead. Open the folder that contains `CLAUDE.md`: a GitHub ZIP often unzips as `revenue-engine-skills-main` inside another `revenue-engine-skills-main`, so go one level down. If Claude doesn't mention setup when you say hello, you're in the wrong folder.
 3. Trust the folder, and approve the Lemlist server and the Clay plugin when asked.
 4. Type `set me up`. Claude checks your machine, asks 7 quick questions (including your stack), installs what's needed, and walks you through the sign-ins.
 5. Optional, 10 minutes: type `make it ours`. Claude learns your company, product and voice, so one spoken sentence is enough from then on.
@@ -28,8 +30,8 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
 |---|---|
 | Lemlist sign-in | No account yet? Sign up at lemlist.com with the event code from the setup email (free for 1 week). Then `/mcp`, choose `lemlist`, Authenticate, approve in the browser |
 | HubSpot sign-in | https://claude.ai/settings/connectors, add HubSpot, sign in to the event demo portal, then restart Claude Code |
-| Clay sign-in | No account yet? Create your workspace with the event's Clay link (in `event.md`, setup gives it to you): only those get the event credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
-| After a restart | Type `set me up` again: Claude picks up where it stopped |
+| Clay sign-in | No account yet? Create your workspace with the event's Clay link (in `event.md`, setup gives it to you): only those get the event credits. Already have a Clay workspace? It won't get them: create a new one through the event link. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
+| After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |
 | Optional: HubSpot service key | Only for the HubSpot admin skills. Create one in HubSpot, paste it into `.env` yourself (never in the chat) |
 
 Everything else (installing the Clay plugin and CLI, Python tools, checking each connection, saving your preferences) Claude does itself.
