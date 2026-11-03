@@ -27,7 +27,22 @@
       "Read(./event.md)"
     ],
     "ask": [
-      "mcp__lemlist"
+      "mcp__lemlist",
+      "mcp__claude_ai_HubSpot__manage_crm_objects",
+      "mcp__claude_ai_HubSpot__manage_segment",
+      "mcp__claude_ai_HubSpot__manage_campaign_objects",
+      "mcp__claude_ai_HubSpot__manage_custom_properties",
+      "mcp__claude_ai_HubSpot__manage_custom_pipelines",
+      "mcp__hubspot__manage_crm_objects",
+      "mcp__hubspot__manage_segment",
+      "mcp__hubspot__manage_campaign_objects",
+      "mcp__hubspot__manage_custom_properties",
+      "mcp__hubspot__manage_custom_pipelines",
+      "mcp__HubSpot__manage_crm_objects",
+      "mcp__HubSpot__manage_segment",
+      "mcp__HubSpot__manage_campaign_objects",
+      "mcp__HubSpot__manage_custom_properties",
+      "mcp__HubSpot__manage_custom_pipelines"
     ],
     "deny": [
       "Read(./.env)",
