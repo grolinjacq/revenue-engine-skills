@@ -9,7 +9,7 @@ Connection and write rules: see `hubspot-crm` (Job C). Every write here is shown
 
 ## Steps
 
-1. Identify the record: contact, company or deal. Search as in `hubspot-account-brief` step 1. Never create a duplicate contact or company to log against.
+1. In a shared portal (see CLAUDE.md), only this team's tagged records. Identify the record: contact, company or deal. Search as in `hubspot-account-brief` step 1. Never create a duplicate contact or company to log against.
 2. Turn what the user said into changes. One message can produce several:
    - Note: a short summary in the user's words, plus decisions and next steps as bullets. Associate it to the contact, the company and any open deal it concerns.
    - Task: title, due date (convert "next Tuesday" to a date and state it), owner (the user unless named), associated to the same records.

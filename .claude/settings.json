@@ -32,6 +32,10 @@
     ],
     "ask": [
       "mcp__lemlist"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)"
     ]
   }
 }

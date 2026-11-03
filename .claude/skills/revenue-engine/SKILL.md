@@ -56,7 +56,7 @@ Any step can be filled by another tool, as long as its artefact matches:
 ## Rules for the whole loop
 
 1. Check connections first, for the tools in the team's stack only: list the HubSpot and Lemlist tools, run `clay whoami` (or list the Clay connector's tools). If one is missing, say which, offer `hackathon-setup` for that tool, or the CSV route for that step. Never fake a step with invented data.
-2. Nothing leaves the building without a yes. Campaigns are created paused. No campaign start, email or LinkedIn message without the user's explicit go in the current step; no CRM write over 10 records without a go.
+2. Nothing leaves the building without a yes. Campaigns are created paused. No campaign start, email or LinkedIn message without the user's explicit go in the current step; no CRM write without a go (over 10 records, show the plan and batch by 10).
 3. Respect `crm_mode`. With `read-only`, steps 1 and 3 read, step 5 writes a CSV instead of the CRM.
 4. Keep a run log. Append one line per step to `out/run-log.md`: time, step, tool used, counts in and out, anything skipped. Judges see this.
 5. Stop at a step boundary if a count looks wrong (for example 0 leads, or more than 500), and show the user before continuing.
@@ -69,7 +69,7 @@ For the AI-agent bonus, the list-and-draft part of the loop runs headless. Agent
 2. The canonical command (also in `USAGE.md`), from the workspace folder:
 
 ```
-claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap. Do not call Lemlist and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
+claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap, counting today's spend in out/run-log.md. Do not call Lemlist and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
 ```
 
 3. Clay through the connector instead of the CLI, or HubSpot reads for the dedupe: add those tools to `--allowedTools` by the names `/mcp` shows (read tools only, never create or update tools).

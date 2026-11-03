@@ -60,7 +60,7 @@ notes: <one or two lines on anything surprising>
 - Set lifecycle stage forward only (subscriber to lead to MQL to SQL), never backwards.
 - Create a deal only when the user says so, or when a reply is tagged interested and the user approved deal creation for this run.
 - Before any write, read `crm_mode` in `team-profile.md`: if `read-only`, write nothing and offer a CSV of the planned changes instead.
-- Over 10 records: show the plan, wait for a go, write in batches of 10 (the HubSpot connector's limit).
+- Every write needs a go. Over 10 records: show the plan first and write in batches of 10 (the HubSpot connector's limit).
 - Never create a company from a free-mail domain (gmail.com, outlook.com, yahoo.com, hotmail.com, icloud.com).
 - The "forward only" lifecycle rule is for the loop's write-backs. `fix-lifecycle-stages` deliberately corrects stages and may move one back; run it only on an explicit request, after its before stage, and never with `crm_mode: read-only`.
 

@@ -225,7 +225,7 @@ Re-run the audit: `uv run scripts/after.py`. Both missing-stage counts (contacts
 
 ## Rollback
 
-- The execute script's CSV audit trail records every record it changed with the original stage value. To undo, batch-update those IDs back to their previous stage (remember: moving backward requires the same clear-then-set pattern).
+- The execute script's audit CSV records counts per stage, not record IDs, so there is no automatic undo: export the affected contacts and companies (id and lifecycle stage) before running it. To undo, batch-update those IDs back to their previous stage (remember: moving backward requires the same clear-then-set pattern).
 - Turn off the prevention workflows to stop automatic stage assignment.
 
 ## Key Technical Learnings

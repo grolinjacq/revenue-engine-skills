@@ -321,6 +321,18 @@ LISTS = [
 
 # ── Main ─────────────────────────────────────────────────────────
 
+# Revenue Engine Hackathon guard: this script changes HubSpot records. The user must type the
+# confirmation themselves (Claude never answers it), and it refuses shared or unknown portals.
+import sys as _sys, pathlib as _pl, re as _re
+_ev = _pl.Path(__file__).resolve().parents[4] / "event.md"
+_shared = _re.search(r"hubspot_portal_shared:\s*(\S+)", _ev.read_text(encoding="utf-8")) if _ev.exists() else None
+if not _shared or _shared.group(1).strip().lower() != "no":
+    print("Refused: event.md does not say hubspot_portal_shared: no. This script only runs on a portal that is yours alone.")
+    _sys.exit(1)
+if input("This changes records in your HubSpot portal. Type RUN to continue: ").strip() != "RUN":
+    print("Cancelled. Nothing changed.")
+    _sys.exit(1)
+
 print("=" * 60)
 print("EXECUTE: Build Smart Lists")
 print("=" * 60)

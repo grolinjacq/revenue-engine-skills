@@ -1,2 +1,7 @@
 .env
 out/
+.env.*
+data/
+reports/
+team-profile.md
+team-context.md

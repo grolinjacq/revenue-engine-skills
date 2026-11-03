@@ -34,7 +34,7 @@ Each block matches a sprint. Teams with their own use case swap step 1 for their
 2. HubSpot sprint. "Write our ICP from closed-won deals." Read `out/icp.md` and correct it by hand if it is off. This file drives everything after it.
 3. Clay sprint. "Build the list from the ICP, 20 companies, 2 people each." Look at the first 10 companies when Claude shows them; say no early if they are wrong. Then "dedupe against HubSpot".
 4. Lemlist sprint. "Find angles", pick one (or keep all three and say "A/B test the subject lines"), say "one sequence per segment" if your list has segments, "write a 2-email plus LinkedIn sequence", then "create the campaign, paused". Check the two rendered sample emails and the sending settings Claude lists.
-5. Loop sprint. Reply to one of your own sequence emails from a teammate's inbox, or tag a lead interested in Lemlist, then "close the loop". Show the note and lifecycle change in HubSpot.
+5. Loop sprint. Start a seed campaign with only teammates' addresses, reply to it from a teammate's inbox, or tag a lead interested in Lemlist, then "close the loop". Show the note and lifecycle change in HubSpot.
 6. Demo prep. Open `out/run-log.md`: it is your demo script, one line per step with counts.
 
 ## Going for the bonus (an AI agent)
