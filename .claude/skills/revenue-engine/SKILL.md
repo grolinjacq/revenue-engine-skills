@@ -73,7 +73,7 @@ For the AI-agent bonus, the list-and-draft part of the loop runs headless. Agent
 2. The canonical command, from the workspace folder:
 
 ```
-claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap, counting today's spend in out/run-log.md. Do not call Lemlist or any other outreach or CRM connector, and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md, skip that action and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
+claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap, counting today's spend in out/run-log.md. Do not call Lemlist or any other outreach connector; use CRM read tools only, never write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md, skip that action and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
 ```
 
 3. Clay through the connector instead of the CLI, or HubSpot reads for the dedupe: add those tools to `--allowedTools` by the names `/mcp` shows (read tools only, never create or update tools).

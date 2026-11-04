@@ -106,7 +106,7 @@ crm_source: <hubspot | other: <name, e.g. Salesforce> | none>   # where the team
 crm_mode: <full | read-only>   # hubspot-demo starts as full
 lists: <clay | other: <name> | none>
 outreach: <lemlist | other: <name> | none>
-outreach_linkedin: <only when the team moved LinkedIn to another tool: other: <name>>
+outreach_linkedin: <omit this line unless the team moved LinkedIn to another tool; only `other: <name>` counts>
 login: <claude.ai | api-key>
 os: <windows | wsl | macos | linux>
 tools:
