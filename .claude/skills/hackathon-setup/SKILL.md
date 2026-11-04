@@ -96,10 +96,11 @@ Only for tools in the team's stack. Verify each before moving on.
 - Optional service key for the admin skills: the user creates one in HubSpot (Settings, Integrations, Service keys) and pastes it into `.env` themselves (copy `.env.example`). If they paste a key into the chat instead, do not repeat it or store it, and tell them to rotate it in HubSpot and put the new one in `.env`.
 
 **Clay**.
-- No Clay account yet: send the user to `clay_signup_url` from `event.md` (the event's sign-up link, never a plain clay.com sign-up: only workspaces created there get the event credits). Then continue below.
+- No Clay account yet: send the user to `clay_signup_url` from `event.md` (the event's sign-up link, never a plain clay.com sign-up: the credits arrive automatically there). Then continue below.
+- Already on Clay: keep that workspace; no new one is needed. Send the user to `clay_credits_form` from `event.md` to submit the workspace ID (the number after `/workspaces/` in the app.clay.com address bar); the organisers forward it to the Clay community, which loads the credits. Then continue below.
 - Plugin path: run Clay's `setup` skill, which installs the `clay` CLI and runs `clay login` (browser; print the URL if it can't open). Verify with `clay whoami`.
 - Connector path (plugin failed, or Windows/WSL CLI trouble): the user adds the Clay connector at https://claude.ai/settings/connectors and restarts. Verify by listing Clay's tools. Needs `login: claude.ai`.
-- Check the credit balance (Clay's `credits-quotas-plans` skill or the workspace tool) and note it against `clay_credit_cap`. The event credits (`clay_credits` in `event.md`) should already be there. If they're missing, tell the user to flag it to the organisers (`help` in `event.md`), with their workspace name, and carry on.
+- Check the credit balance (Clay's `credits-quotas-plans` skill or the workspace tool) and note it against `clay_credit_cap`. Event credits (`clay_credits` in `event.md`) may still be on their way for an existing workspace whose ID was just submitted; until then, work within the balance shown. If they're missing for a workspace created through the link, or long after the form, tell the user to flag it to the organisers (`help` in `event.md`), with their workspace name, and carry on.
 
 If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on.
 
