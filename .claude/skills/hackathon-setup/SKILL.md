@@ -35,9 +35,11 @@ Ask all at once, each with a default so the team can answer "defaults" after giv
 1. Your company's website? (for example `acme.com`) I'll read it and propose your target and your outreach, so you don't have to type them. Agency or consultant working for a client: the client's site. No site yet: describe what you sell and to whom in two lines.
 2. Team name? (default: the company name from the website, or the user's first name)
 3. Your stack, one per line, or "event accounts":
-   - CRM: HubSpot event demo portal (default) | your own HubSpot | other CRM (name it) | none
-   - Lists and enrichment: Clay (default) | other tool (name it, we'll use its CSV export) | none
-   - Outreach: Lemlist (default) | other tool (name it) | none
+   - CRM: HubSpot event demo portal (default) | your own HubSpot | your own CRM, name it (Pipedrive, Salesforce, Odoo...) | none
+   - Lists and enrichment: Clay (default) | other tool (name it, we'll use its CSV export; Clay can slot in alongside) | none
+   - Outreach: Lemlist (default) | your own tool, name it (HeyReach, Instantly...) | none
+
+   Already have a CRM or outreach tool? Name it and I'll use it. HubSpot, Clay and Lemlist are the tested path today; with another tool I read it and prepare everything, and you do the final import or launch click in your tool.
 4. How careful should I be? A: ask before every write and every credit spend. B: ask before CRM writes, credit spend over the cap, and anything sent to people. (default: B) A free answer such as "no need to be careful" is B: say so in one line, and that B never changes which tools are used, the go before anything is sent, or the go before CRM writes.
 5. Credit cap for Clay today? (default: 200 credits)
 
@@ -101,9 +103,9 @@ target_source: <website | website, edited | retarget: <what changed> | user | cr
 copy_language: <language>
 write_mode: <A | B>
 clay_credit_cap: <number>
-crm: <hubspot-demo | hubspot-own | none>
+crm: <hubspot-demo | hubspot-own | other: <name, e.g. Pipedrive> | none>
 crm_source: <hubspot | other: <name, e.g. Salesforce> | none>   # where the team's own data lives
-crm_mode: <full | read-only>   # hubspot-demo starts as full
+crm_mode: <full | read-only>   # hubspot-demo starts as full; always read-only with crm: other
 lists: <clay | other: <name> | none>
 outreach: <lemlist | other: <name> | none>
 outreach_linkedin: <omit this line unless the team moved LinkedIn to another tool; only `other: <name>` counts>
@@ -114,6 +116,8 @@ tools:
   lemlist: <pending | connected (<team>, server <name>) | not available (<reason>)>
   clay: <pending | connected (<workspace>, plugin|connector) | not available (<reason>)>
   hubspot_service_key: <not set | set>
+  other:   # one line per tool declared as `other: <name>`; omit the block when there is none
+    <name> (<crm | outreach | outreach_linkedin | lists>): <pending | connected (<account>, server <server name>, <URL or command>) | csv (<reason, e.g. no connector>)>
 updated: <date time>
 ```
 
@@ -125,13 +129,14 @@ When the team confirmed a target, also write:
 
 The confirmed `out/icp.md` is step 1 of the loop: don't re-derive it from HubSpot. The event's new free portals have no deals; only with `crm: hubspot-own` and 10 or more closed-won deals, offer once to run `hubspot-crm` Job A as a second opinion, and ask before replacing the confirmed target.
 
-### Other stacks: what to tell the team (the loop works with any of them)
+### Your own tools: what to tell the team (the loop works with any of them)
 
-The loop runs on files in `out/` (see `revenue-engine`, "Step contracts"), so any step can be filled by another tool or a CSV:
+The loop runs on files in `out/` (see `revenue-engine`, "Step contracts"), so any step can be filled by the team's own tool or a CSV. HubSpot, Clay and Lemlist are the tested path; every other tool follows "Tested and untested tools" in `CLAUDE.md`. Say it in one line when a team names one: "I'll use <name>: I read it and prepare everything, and you do the final import or launch click in <name>."
 
-- **Other CRM (Salesforce, Pipedrive, Attio...)**: recommend the event's HubSpot demo portal as today's CRM (`crm: hubspot-demo`, `crm_source: other: <name>`), so judges see the full loop, and still connect it in step 3. Their own data: read it for the ICP through their CRM's Claude connector (read-only) or a CSV export kept in `out/`. If `event.md` says `hubspot_portal_shared: yes`, never import their customer or prospect records into the demo portal: other teams can see it. Never run `hubspot-*` skills against another CRM.
-- **Other list tool (Apollo, Lusha, Sales Navigator...)**: export a CSV; `revenue-engine` normalises it into `out/leads.csv`.
-- **Other outreach tool (HeyReach, Gmail, Instantly...)**: `lemlist-campaign` writes the sequence and a ready-to-import CSV instead of creating a campaign. Mention that the Lemlist team hands out a one-week multi-channel code at the event.
+- **Their own CRM (Pipedrive, Salesforce, Attio, Odoo...)**: `crm: other: <name>`, `crm_source: other: <name>`, `crm_mode: read-only`. Claude reads it for the ICP and the dedupe through its connector (verified in step 3) or a CSV export kept in `out/`, and writes CRM changes to `out/crm-import.csv` for them to import. Offer once, as an option: to show a live write-back to the judges, also set up the event's HubSpot portal as today's CRM (`crm: hubspot-demo`, `crm_source: other: <name>`, their own CRM still read through its connector or export). If `event.md` says `hubspot_portal_shared: yes` (or a `<...>` placeholder), never import their customer or prospect records into that portal: other teams can see it. Never run `hubspot-*` skills against another CRM.
+- **Other list tool (Apollo, Lusha, Sales Navigator...)**: export a CSV; `revenue-engine` normalises it into `out/leads.csv`. Clay can still enrich and score it alongside.
+- **Their own outreach tool (HeyReach, Instantly, Smartlead...)**: `outreach: other: <name>` (or, to move only LinkedIn, keep `outreach: lemlist` and add `outreach_linkedin: other: <name>`). `lemlist-campaign` writes the sequence and a ready-to-import lead file, reads the tool (campaigns, replies, unsubscribes) through its verified connector to dedupe and close the loop, and never creates or launches the campaign there: the team imports the file and clicks launch. Mention that the Lemlist team hands out a one-week multi-channel code at the event, for teams who want the tested path.
+- Log each declared tool in `out/run-log.md` ("stack: outreach other: HeyReach, declared at setup"), so a later session doesn't ask again.
 
 ## 2. Installs (do these yourself)
 
@@ -165,14 +170,20 @@ Only for tools in the team's stack. Verify each before moving on.
 - Connector path (plugin failed, or Windows/WSL CLI trouble): the user adds the Clay connector at https://claude.ai/settings/connectors and restarts. Verify by listing Clay's tools. Needs `login: claude.ai`.
 - Check the credit balance (Clay's `credits-quotas-plans` skill or the workspace tool) and note it against `clay_credit_cap`. Event credits (`clay_credits` in `event.md`) may still be on their way for an existing workspace whose ID was just submitted; until then, work within the balance shown. If they're missing for a workspace created through the link, or long after the form, tell the user to flag it to the organisers (`help` in `event.md`), with their workspace name, and carry on.
 
+**Your own CRM or outreach tool** (each tool declared as `other: <name>`).
+- Find it: run `claude mcp list` (or look in `/mcp`) for a server or claude.ai connector named after the tool. Show the user the entry, with its URL (or command), and ask: "Is this your <name> account?" A name match alone is not enough: the URL should be on the vendor's own domain (for example `heyreach.io` for HeyReach). Two candidates, or a URL on another domain: ask which one, and use none until the user picks.
+- Not there: if the vendor has a claude.ai connector, the user can add it at https://claude.ai/settings/connectors and restart. Otherwise, or if they'd rather not, record `csv (no connector)`: Claude works from its exports. Never install a community or third-party MCP server for it.
+- Verify with one read call (list campaigns, pipelines or the current user) and say the account in one line ("Pipedrive, company Acme, read-only"). Record it under `tools: other` as `connected (<account>, server <server name>, <URL or command>)`. Make no write call to verify, and none afterwards: see "Tested and untested tools" in `CLAUDE.md`.
+- Claude Code asks permission before each call to these tools (`.claude/settings.json`); the user can allow the read calls for the session. HeyReach's write calls are blocked there outright; for other tools the rule in `CLAUDE.md` holds.
+
 If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on. A tool that is `pending` or `not available` stays that way until its verify passes: never mark it connected because another connector does a similar job (see Tool identity in `CLAUDE.md`).
 
 ## 4. Finish
 
 1. Set `setup`:
-   - `complete`: every tool in the team's stack is connected.
+   - `complete`: every tool in the team's stack is connected (a declared tool recorded as `csv (no connector)` counts: its CSV route is the plan).
    - `degraded`: at least one step of the loop works but a tool is missing or replaced by CSV. This is a finished setup, not a pending one; do not re-run setup on the next session start.
    - `incomplete`: only while setup is still in progress (for example waiting on a restart). If the user wants to start working before finishing, set `degraded` and list what's missing, so the next session doesn't force setup. Say in the same message which loop steps stop until each missing tool is connected (for example, with Lemlist pending: no campaign is created anywhere; copy and `out/outreach-import.csv` only if they ask for the CSV route). Never leave `target` or `copy_language` as `pending` outside `incomplete`: settle them first (`derive from CRM` and English if the team gave nothing).
-2. Show a status table: tool, status, account, and which loop steps run as normal, by CSV, or not at all.
+2. Show a status table: tool, status, account, and which loop steps run as normal, read-only with an import file (untested tools), by CSV, or not at all.
 3. List any manual to-dos left, then point to `SKILLS.md` and suggest the first prompt for their use case and stack. If the team's HubSpot portal is new and empty, one of the suggestions is `hubspot-onboarding` ("onboard me to HubSpot").
 4. Then show the `workshop` menu (its section 0) as the way to see the workspace work on sample data first, unless setup waits on a restart (show it after) or the user's first message was a real request: then do that request instead (CLAUDE.md) and mention the demos in one line at the end. A first message like "what can you do?" is answered by the menu itself.
