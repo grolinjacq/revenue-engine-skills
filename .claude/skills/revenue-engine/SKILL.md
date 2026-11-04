@@ -41,7 +41,8 @@ Any step can be filled by another tool, as long as its artefact matches:
 
 ## Routing
 
-- "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. No new actions.
+- "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. Leave out lines starting `workshop |` and the `out/workshop/` and `out/rehearsal/` folders. No new actions.
+- A workshop, a rehearsal, or a request to try a use case on sample data: `workshop`.
 - `out/icp.md` exists with `source: website` or `source: team description` (from setup): step 1 is done, go to step 2.
 - No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
 - "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.

@@ -1,0 +1,5 @@
+invoice,customer,contact_name,contact_email,language,amount_eur,due_date,days_overdue,notes
+F-2026-0412,TransLeón,Raúl Pérez,raul.perez@transleon.example,es,1800,2026-10-28,7,
+F-2026-0388,Volta Iberia,Elena Mora,elena.mora@voltaiberia.example,es,3200,2026-10-05,30,Promised payment on 20 Oct
+F-2026-0351,Cargo Lisboa,João Silva,joao.silva@cargolisboa.example,pt,750,2026-09-15,50,
+F-2026-0420,RetailMax,Hugo Blanco,hugo.blanco@retailmax.example,es,1200,2026-11-01,3,Disputed: says 2 seats were cancelled
