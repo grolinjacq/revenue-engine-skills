@@ -111,4 +111,4 @@ If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on.
    - `degraded`: at least one step of the loop works but a tool is missing or replaced by CSV. This is a finished setup, not a pending one; do not re-run setup on the next session start.
    - `incomplete`: only while setup is still in progress (for example waiting on a restart). If the user wants to start working before finishing, set `degraded` and list what's missing, so the next session doesn't force setup.
 2. Show a status table: tool, status, account, and which loop steps run as normal, by CSV, or not at all.
-3. List any manual to-dos left, then point to `SKILLS.md` and suggest the first prompt for their use case and stack.
+3. List any manual to-dos left, then point to `SKILLS.md` and suggest the first prompt for their use case and stack. If the team's HubSpot portal is new and empty, one of the suggestions is `hubspot-onboarding` ("onboard me to HubSpot").

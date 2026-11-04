@@ -16,15 +16,15 @@ You don't need to name a skill: say what you want and Claude picks one. To force
 | `hubspot-crm` | The hub: ICP from closed-won deals, dedupe a lead list, the write rules | this pack |
 | `hubspot-account-brief` | One-page brief on a whole company (account), saved to `out/` | this pack |
 | `hubspot-lead-triage` | Score new leads against the ICP, set the stage, assign, create tasks | this pack |
-| `hubspot` | Quick lookups, stats, a task, a field or deal change, a new deal | HubSpot official |
-| `hubspot-contact-lookup` | One person's record: deals, last contact, notes, tasks | HubSpot official |
-| `hubspot-call-prep` | Brief before a call or meeting: talking points, email and calendar context, company news | HubSpot official |
-| `hubspot-pipeline-pulse` | Pipeline snapshot, stalled deals, suggested tasks, forecast | HubSpot official |
-| `hubspot-log-call` | Log a call: note, deal fields, lead status, follow-up task | HubSpot official |
-| `hubspot-daily-brief` | Today's tasks, meetings, cold contacts and stalling deals | HubSpot official |
-| `hubspot-follow-up` | Draft a follow-up email and open it in HubSpot to send | HubSpot official |
-| `hubspot-import-contacts` | Import contacts from a CSV or a pasted list | HubSpot official |
-| `hubspot-onboarding` | Getting started in a new or empty portal | HubSpot official |
+| `hubspot` | Quick lookups, stats, a task, a field or deal change, a new deal | HubSpot official (adapted) |
+| `hubspot-contact-lookup` | One person's record: deals, last contact, notes, tasks | HubSpot official (adapted) |
+| `hubspot-call-prep` | Brief before a call or meeting: talking points, email and calendar context, company news | HubSpot official (adapted) |
+| `hubspot-pipeline-pulse` | Pipeline snapshot, stalled deals, suggested tasks, forecast | HubSpot official (adapted) |
+| `hubspot-log-call` | Log a call: note, deal fields, lead status, follow-up task | HubSpot official (adapted) |
+| `hubspot-daily-brief` | Today's tasks, meetings, cold contacts and stalling deals | HubSpot official (adapted) |
+| `hubspot-follow-up` | Draft a follow-up email and open it in HubSpot to send | HubSpot official (adapted) |
+| `hubspot-import-contacts` | Import contacts from a CSV or a pasted list | HubSpot official (adapted) |
+| `hubspot-onboarding` | Getting started in a new or empty portal | HubSpot official (adapted) |
 | `connect-hubspot-mcp` | Detailed HubSpot connection guide | hubspot-admin-skills |
 | `hubspot-audit`, `hubspot-sales-audit` | Read-only portal audit with prioritised fixes | hubspot-admin-skills |
 | `create-icp-tiers` | ICP tier property on every company | hubspot-admin-skills |

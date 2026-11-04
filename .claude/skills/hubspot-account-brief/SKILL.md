@@ -9,7 +9,7 @@ Connection and write rules: see `hubspot-crm`. This skill only reads. It covers 
 
 ## Steps
 
-1. Find the record. Search companies by domain first, then by name. For a person, search contacts by email, then by name plus company. If more than one match, show the top 3 and ask.
+1. Find the company. Search companies by domain first, then by name. If more than one match, show the top 3 and ask. If the user named a person, use their company here, or hand off to `hubspot-contact-lookup` or `hubspot-call-prep`.
 2. Pull, for the company:
    - Firmographics: industry, employees, country, lifecycle stage, owner.
    - Contacts associated: name, title, lifecycle stage, last activity date. Cap at 15, most recently active first.

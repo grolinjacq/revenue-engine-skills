@@ -15,6 +15,8 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 | Set up or check everything is connected | `hackathon-setup` | "set me up", "check my connections" |
 | Brief me on a company | `hubspot-account-brief` | "brief me on acme.com" |
 | Prep a call with someone | `hubspot-call-prep` | "prep my call with Marta at Acme" |
+| Look someone up | `hubspot-contact-lookup` | "pull up Marta Ruiz" |
+| Get started in an empty HubSpot | `hubspot-onboarding` | "onboard me to HubSpot" |
 | See how the pipeline looks | `hubspot-pipeline-pulse` | "how's my pipeline, with a forecast for this quarter" |
 | Log a call | `hubspot-log-call` | "just got off the phone with Marta at Acme, demo next week" |
 | A quick HubSpot change | `hubspot` | "create a deal for Acme, 20k", "move Globex to contract sent" |
