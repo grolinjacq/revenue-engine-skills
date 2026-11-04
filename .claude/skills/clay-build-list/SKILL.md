@@ -32,7 +32,7 @@ saved_functions: []      # names of the team's own Clay functions to prefer, e.g
 
 ## Steps
 
-1. Read `out/icp.md`. If it is missing, ask for industries, size band, countries and titles, and write the file in the `hubspot-crm` format first. With `titles_local`, add titles in the market's language (for Spain or Mexico: "Director Financiero", "Dueño", "Propietario").
+1. Read `out/icp.md`. If it is missing and `team-profile.md` has a `website`, propose the ICP from the site and let the team confirm or retarget it (`hackathon-setup` steps 1b and 1c); otherwise ask for the team's website, or for industries, size band, countries and titles. Write the file in the `hubspot-crm` format first. With `titles_local`, add titles in the market's language (for Spain or Mexico: "Director Financiero", "Dueño", "Propietario").
 2. Companies. Search with industries, employee band and countries. Exclude every domain in `exclude_domains`. Aim for `companies`. Show the user the first 10 and ask if the list looks right before going further.
 3. People. For each company, search contacts by the ICP titles. Keep at most `people_per_company`, the most senior match first.
 4. Enrich. Add the `data_points`. If a name in `saved_functions` does this job, run it with `routines` instead. Each data point costs credits: check the balance, then say records x data points and the estimated credits. Wait for a go when `write_mode` is A, the estimate is above `clay_credit_cap`, or the balance is short; when short, offer the cheaper plan (email only, or fewer companies) and run only what the user picks.

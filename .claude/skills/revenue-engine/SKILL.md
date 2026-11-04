@@ -23,7 +23,7 @@ Every step writes its artefact into `out/`. If an artefact already exists, say w
 
 Any step can be filled by another tool, as long as its artefact matches:
 
-- `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through that CRM's connector if one is on (read-only), or from a CSV export of closed-won deals, or from the user's words.
+- `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through that CRM's connector if one is on (read-only), or from a CSV export of closed-won deals, or from the team's website confirmed by the team (`hackathon-setup` steps 1b and 1c, `source: website`), or from the user's words.
 - `out/leads.csv`: header `email,first_name,last_name,job_title,company_name,company_domain,linkedin_url,country,employees,industry,personalization`. Optional trailing columns `fit_score,fit_reason,fit_source` (from `clay-build-list` scoring) travel with the rows, and so does any other enrichment column (for example `segment`, `latest_news`, `current_challenges`, `customer_list`): later steps use them as copy variables. From Apollo, Lusha, Sales Navigator or any CSV: normalise it (below).
 - `out/leads-new.csv`: `out/leads.csv` plus `hubspot_status` and `hubspot_owner`. Without HubSpot: ask for a CSV export of the team's CRM contacts and accounts (for example from Salesforce), match on email, then company domain, and fill the same two columns (`new`, `known_contact`, `known_company`; owner from the export). No export: skip, say so, and mark every row `unchecked`.
 - `out/campaign.md`: campaign name, id or tool, lead count, sequence and copy. With another outreach tool: the sequence plus `out/outreach-import.csv` in that tool's import format.
@@ -44,6 +44,7 @@ Any step can be filled by another tool, as long as its artefact matches:
 - "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. No new actions.
 - No ICP yet, or "start from the CRM": step 1.
 - The user brings their own ICP or target companies: write `out/icp.md`, then step 2.
+- "Read our website and propose our ICP", or a new target ("we want to go after Germany now", "try mid-market"): `hackathon-setup` steps 1b to 1d only (read the site, propose, confirm, write `out/icp.md` and `target` in `team-profile.md`), then step 2. A domain that isn't the team's own ("brief me on acme.com") is a prospect: `hubspot-account-brief`.
 - The user brings a CSV of leads: normalise it, then step 3.
 - Copy or angles only ("write me a sequence", "find an angle"): write it to `out/sequence-<name>.md` or `out/angles.md`, don't create a campaign, and offer step 4.
 - Counts: "30 leads" means 30 people, so 15 companies at 2 people each unless the user says otherwise. "30 companies" means companies at the default people per company. Say which in the plan line.

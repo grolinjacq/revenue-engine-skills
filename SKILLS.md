@@ -5,7 +5,7 @@ You don't need to name a skill: say what you want and Claude picks one. To force
 ## Start here
 | Skill | What it does |
 |---|---|
-| `hackathon-setup` | Your preferences, the installs, the sign-ins, checking every connection. Runs on first launch. |
+| `hackathon-setup` | Reads your website and proposes your target and outreach for you to confirm or change, then your stack, the installs, the sign-ins, checking every connection. Runs on first launch. |
 | `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in CSVs from other tools. |
 | `event.md` | Not a skill: the organisers' facts (demo portal, client ID, codes) that setup reads. |
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |

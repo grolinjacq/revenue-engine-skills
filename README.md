@@ -21,7 +21,7 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
    - Windows, in PowerShell: `irm https://claude.ai/install.ps1 | iex`
 2. Get the folder: on GitHub, click the green **Code** button, then **Download ZIP**, and unzip it (or `git clone https://github.com/grolinjacq/revenue-engine-skills`). Then open a terminal in it (Windows: open the folder, then type `powershell` in the address bar) and run `claude`. In the Desktop app, open the folder instead. Open the folder that contains `CLAUDE.md`: a GitHub ZIP often unzips as `revenue-engine-skills-main` inside another `revenue-engine-skills-main`, so go one level down. If Claude doesn't mention setup when you say hello, you're in the wrong folder.
 3. Trust the folder, and approve the Lemlist server and the Clay plugin when asked.
-4. Type `set me up`. Claude checks your machine, asks 7 quick questions (including your stack), installs what's needed, and walks you through the sign-ins.
+4. Type `set me up`. Claude checks your machine and asks for your company's website plus 4 quick questions (including your stack). It reads your site and proposes who to target and how to reach them: confirm it, edit it, or name a different target (a new country, a new segment). Then it installs what's needed and walks you through the sign-ins.
 5. Optional, 10 minutes: type `make it ours`. Claude learns your company, product and voice, so one spoken sentence is enough from then on.
 
 ## What only you can do (Claude will tell you when)
