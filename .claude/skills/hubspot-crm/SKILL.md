@@ -1,6 +1,6 @@
 ---
 name: hubspot-crm
-description: Derive the ICP from HubSpot closed-won deals, check a lead list against existing HubSpot contacts and companies before outreach, and hold the write rules every HubSpot skill follows. Use on "who are our best customers", "write our ICP from HubSpot", "dedupe these leads against HubSpot", "is this company already in HubSpot", or as steps 1 and 3 of revenue-engine. For a brief on one account use hubspot-account-brief; to log a note, task or deal change use hubspot-log-activity.
+description: Derive the ICP from HubSpot closed-won deals, check a lead list against existing HubSpot contacts and companies before outreach, and hold the write rules every HubSpot skill follows. Use on "who are our best customers", "write our ICP from HubSpot", "dedupe these leads against HubSpot", "is this company already in HubSpot", or as steps 1 and 3 of revenue-engine. For a brief on one account use hubspot-account-brief; to log a call use hubspot-log-call; for a quick task, field or deal change use hubspot.
 ---
 
 # HubSpot CRM
@@ -15,16 +15,23 @@ This skill is the hub: ICP, dedupe, and the write rules every other HubSpot skil
 
 | Need | Skill |
 |---|---|
-| Brief on an account or contact before a call | `hubspot-account-brief` |
-| Pipeline health and forecast | `hubspot-pipeline-review` |
-| Log a call, note, task, deal change | `hubspot-log-activity` |
+| Brief on a whole account (company) | `hubspot-account-brief` |
+| Prep a call or meeting with one person | `hubspot-call-prep` (official) |
+| Quick look at one person's record | `hubspot-contact-lookup` (official) |
+| Quick lookups, stats, a task, a field or deal change, a new deal | `hubspot` (official) |
+| Pipeline health, suggested tasks and forecast | `hubspot-pipeline-pulse` (official) |
+| Log a call or meeting (note, deal fields, lead status, follow-up task) | `hubspot-log-call` (official) |
+| Today's tasks, meetings and at-risk deals | `hubspot-daily-brief` (official) |
+| Draft a follow-up email to open in HubSpot | `hubspot-follow-up` (official) |
+| Import contacts from a CSV or a pasted list | `hubspot-import-contacts` (official) |
+| Getting started in an empty portal | `hubspot-onboarding` (official) |
 | Score, route and assign new leads | `hubspot-lead-triage` |
 | Full portal audit (read-only) | `hubspot-audit`, `hubspot-sales-audit` |
 | Persistent ICP tiers and lead scoring in HubSpot | `create-icp-tiers`, `build-lead-scoring` |
 | Segment lists | `build-smart-lists` |
 | Data quality | `merge-duplicate-companies`, `fix-lifecycle-stages`, `cleanup-deals` |
 
-The last four rows come from hubspot-admin-skills (MIT, Tom Granot) and run Python scripts with a service key in `.env` (`HUBSPOT_ACCESS_TOKEN`). They are built for scale: always run their dry run or "before" stage first on hackathon day.
+Rows marked official come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), vendored and adapted: each has a box at the top with this workspace's rules, and the rules below apply to them too. The last four rows come from hubspot-admin-skills (MIT, Tom Granot) and run Python scripts with a service key in `.env` (`HUBSPOT_ACCESS_TOKEN`). They are built for scale: always run their dry run or "before" stage first on hackathon day.
 
 ## Job A: derive the ICP (step 1 of `revenue-engine`)
 

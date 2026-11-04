@@ -13,9 +13,16 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 | You want to... | Skill | Type something like |
 |---|---|---|
 | Set up or check everything is connected | `hackathon-setup` | "set me up", "check my connections" |
-| Brief me before a call | `hubspot-account-brief` | "brief me on acme.com" |
-| See how the pipeline looks | `hubspot-pipeline-review` | "pipeline review for this quarter" |
-| Log a call or move a deal | `hubspot-log-activity` | "log my call with Marta at Acme, demo next week" |
+| Brief me on a company | `hubspot-account-brief` | "brief me on acme.com" |
+| Prep a call with someone | `hubspot-call-prep` | "prep my call with Marta at Acme" |
+| Look someone up | `hubspot-contact-lookup` | "pull up Marta Ruiz" |
+| Get started in an empty HubSpot | `hubspot-onboarding` | "onboard me to HubSpot" |
+| See how the pipeline looks | `hubspot-pipeline-pulse` | "how's my pipeline, with a forecast for this quarter" |
+| Log a call | `hubspot-log-call` | "just got off the phone with Marta at Acme, demo next week" |
+| A quick HubSpot change | `hubspot` | "create a deal for Acme, 20k", "move Globex to contract sent" |
+| Plan my day | `hubspot-daily-brief` | "daily brief" |
+| Draft a follow-up | `hubspot-follow-up` | "draft a follow-up to Marta" |
+| Import contacts | `hubspot-import-contacts` | "import this CSV into HubSpot" |
 | Work the new leads | `hubspot-lead-triage` | "triage leads from the last 2 weeks" |
 | Know who to target | `hubspot-crm` | "look at our closed-won deals in HubSpot and write our ICP" |
 | Use your own ICP instead | `revenue-engine` | "our ICP is Spanish SaaS, 50-500 people, Heads of Sales. Save it and build the list" |

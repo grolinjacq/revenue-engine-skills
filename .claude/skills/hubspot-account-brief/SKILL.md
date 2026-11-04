@@ -1,15 +1,15 @@
 ---
 name: hubspot-account-brief
-description: One-page brief on a company or contact from HubSpot before a call or outreach - who they are, people we know there, open and past deals, last touches, and what to say next. Use on "brief me on", "prep my call with", "what do we know about", "account summary", "who do we know at".
+description: One-page brief on a whole company (account) from HubSpot - firmographics, everyone we know there, open and past deals, last touches, gaps, and what to do next - saved to out/. Read-only. Use on "brief me on <company or domain>", "account summary", "who do we know at <company>", "what do we know about <company>". For one person or a meeting use hubspot-call-prep ("prep my call with Marta"); for a quick record on one person use hubspot-contact-lookup.
 ---
 
 # HubSpot account brief
 
-Connection and write rules: see `hubspot-crm`. This skill only reads.
+Connection and write rules: see `hubspot-crm`. This skill only reads. It covers a whole account; for a call or meeting with one person, HubSpot's official `hubspot-call-prep` (talking points, email and calendar context, company news) is the better fit.
 
 ## Steps
 
-1. Find the record. Search companies by domain first, then by name. For a person, search contacts by email, then by name plus company. If more than one match, show the top 3 and ask.
+1. Find the company. Search companies by domain first, then by name. If more than one match, show the top 3 and ask. If the user named a person, use their company here, or hand off to `hubspot-contact-lookup` or `hubspot-call-prep`.
 2. Pull, for the company:
    - Firmographics: industry, employees, country, lifecycle stage, owner.
    - Contacts associated: name, title, lifecycle stage, last activity date. Cap at 15, most recently active first.

@@ -51,6 +51,7 @@ Any step can be filled by another tool, as long as its artefact matches:
 - Copy, angles, personas or sequence strategy: the Lemlist skills (`campaign-angle-finder`, `copywriting-*`, `linkedin-sequence`, `outbound-campaign-architect`; listed in `SKILLS.md`), in `copy_language`, then step 4.
 - Outreach goes through Lemlist when the team has it; Clay's `campaigns` skill is not used for outreach here.
 - "Did anyone reply?", "update the CRM": step 5.
+- Day-to-day HubSpot work outside the loop goes to the official HubSpot skills (listed in `SKILLS.md`): a call or meeting to prep, `hubspot-call-prep`; one person's record, `hubspot-contact-lookup`; pipeline and forecast, `hubspot-pipeline-pulse`; logging a call, `hubspot-log-call`; the day's priorities, `hubspot-daily-brief`; a follow-up email to one contact, `hubspot-follow-up`; importing contacts into HubSpot, `hubspot-import-contacts`; a quick lookup or single change, `hubspot`. A whole account brief stays `hubspot-account-brief`.
 - One spoken sentence that names a goal ("find 20 CFOs at Spanish fintechs and get a campaign ready"): restate it as the steps you will run, in one line, and start. Ask only what blocks the first step.
 
 ## Rules for the whole loop
