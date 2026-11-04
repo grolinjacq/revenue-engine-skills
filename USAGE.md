@@ -4,6 +4,10 @@ Full list of skills: `SKILLS.md`.
 
 You do not need to name skills. Say what you want and Claude picks the skill from its description. The prompts below are known to route well. To force a skill, start with its name, for example `/clay-build-list`.
 
+## Try a use case first
+
+Type `workshop`. Claude asks which of the 4 use cases you came for (outbound engine, research and qualification agents, inbound routing, new market), runs it on safe sample data through your live tools, explains each step, answers your questions, then moves to your own data. Nothing is sent; everything it creates is tagged [DEMO] and listed for cleanup.
+
 ## Just say it
 
 After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow works well): "find twenty CFOs at Spanish fintechs that raised this year, draft a Spanish campaign, don't launch". Claude says the plan in one line, then runs it.

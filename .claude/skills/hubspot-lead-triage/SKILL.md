@@ -9,7 +9,7 @@ Connection and write rules: see `hubspot-crm` (Job C).
 
 ## Steps
 
-1. Pick the set. In a shared portal, only records the CLAUDE.md shared-portal rule allows. Default: contacts created in the last 14 days ("this week" means 7) with lifecycle stage subscriber or lead and no owner. Alternatives the user may name: a list or segment, contacts touched by a Lemlist campaign (notes starting `[lemlist]`), or a CSV.
+1. Pick the set. In a shared portal, only records the CLAUDE.md shared-portal rule allows. Skip contacts whose first name or name starts with `[DEMO]` (workshop records), unless the `workshop` skill is running. Default: contacts created in the last 14 days ("this week" means 7) with lifecycle stage subscriber or lead and no owner. Alternatives the user may name: a list or segment, contacts touched by a Lemlist campaign (notes starting `[lemlist]`), or a CSV.
 2. Get the ICP. Read `out/icp.md`. If it is missing, run `hubspot-crm` Job A or ask the user for it.
 3. Score each lead on fit, 0 to 3, one point each: company industry in the ICP, company size in the band, title matches an ICP title. Add an intent flag if the lead replied, booked, filled a form or clicked recently.
 4. Decide, per lead:
