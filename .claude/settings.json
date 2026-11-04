@@ -74,7 +74,19 @@
       "mcp__claude_ai_Gmail",
       "mcp__claude_ai_Salesforce",
       "mcp__claude_ai_Attio",
-      "mcp__claude_ai_Pipedrive"
+      "mcp__claude_ai_Pipedrive",
+      "mcp__HeyReach",
+      "mcp__Gmail",
+      "mcp__Unipile-message",
+      "mcp__claude_ai_Unipile",
+      "mcp__Instantly",
+      "mcp__Smartlead",
+      "mcp__Apollo_io",
+      "mcp__Dex",
+      "mcp__claude_ai_Dex",
+      "mcp__Salesforce",
+      "mcp__Attio",
+      "mcp__Pipedrive"
     ],
     "deny": [
       "Read(./.env)",
