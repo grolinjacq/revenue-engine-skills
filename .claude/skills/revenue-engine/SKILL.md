@@ -42,7 +42,7 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 ## Routing
 
 - "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. Leave out lines starting `workshop |` and the `out/workshop/` and `out/rehearsal/` folders. No new actions.
-- A workshop, a rehearsal, or a request to try a use case on sample data: `workshop`.
+- A workshop, a demo, a rehearsal, a request to try something on sample data, "what can you do?" or "where do I start?" when no task is in progress: `workshop` (it shows its menu).
 - `out/icp.md` exists with `source: website` or `source: team description` (from setup): step 1 is done, go to step 2.
 - No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
 - "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.

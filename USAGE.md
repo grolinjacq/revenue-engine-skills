@@ -6,7 +6,7 @@ You do not need to name skills. Say what you want and Claude picks the skill fro
 
 ## Try a use case first
 
-Type `workshop`. Claude asks which of the 4 use cases you came for (outbound engine, research and qualification agents, inbound routing, new market), runs it on safe sample data through your live tools, explains each step, answers your questions, then moves to your own data. Nothing is sent; everything it creates is tagged [DEMO] and listed for cleanup.
+At the end of setup, Claude offers 4 guided demos in plain words (meetings from cold outreach, AI research and qualification, inbound routing, a new market). Pick one by number or in your own words, or ask "what can you do?" any time to see them again. Claude runs it on safe sample data through your live tools, explains each step, answers your questions, then moves to your own data. Nothing is sent; everything it creates is tagged [DEMO] and listed for cleanup.
 
 ## Just say it
 
