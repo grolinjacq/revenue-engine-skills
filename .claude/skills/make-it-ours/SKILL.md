@@ -5,20 +5,24 @@ description: Tune this workspace's skills to the team's own company, product, cu
 
 # Make it ours
 
-Goal: after 10 minutes, the team can say one sentence out loud ("find twenty CFOs at Spanish fintechs who just raised and get a campaign ready in Spanish") and Claude runs the right chain with their context, no skill names needed.
+Goal: after 5 to 10 minutes, the team can say one sentence out loud ("find twenty CFOs at Spanish fintechs who just raised and get a campaign ready in Spanish") and Claude runs the right chain with their context, no skill names needed.
 
 ## 1. Interview (one message, answer by voice or text)
 
-1. Company and product in two lines. What do you sell, to whom, at what price point?
-2. Your best 3 customers (names or types) and why they bought.
-3. Words your buyers use for the problem, and words you never use.
+Start from what is already known. Read `team-context.md` (setup writes a draft from the team's website), `out/icp.md` and `team-profile.md`. No draft and a `website` on file: read the site first (`hackathon-setup` step 1b only: the target confirmation and `out/icp.md` stay with setup). No website on file: ask for it as the first question, read it, then continue.
+
+Show what the site gave you as short lines to confirm ("From your site: you sell X to Y; customers A, B, C; proof: 40% faster onboarding. Right?"), then ask only what a website can't answer:
+
+1. Company and product in two lines, and price point. Skip if the site gave it: confirm instead.
+2. Your best 3 customers (names or types) and why they bought. Keep the names the site shows; ask only the why.
+3. Words your buyers use for the problem, and words you never use. Propose the "use" list from the site; ask for the "never use" list.
 4. Tone: formal or casual, "tú" or "usted", emoji yes or no, sign-off name.
-5. Proof points you can cite (numbers, logos, case studies).
+5. Proof points you can cite (numbers, logos, case studies). Skip if the site gave them: confirm instead, and ask for any that aren't public.
 6. Phrases you'll actually say when you want each thing, for example "get me a list", "draft outreach", "who replied". Say them the way you'd dictate them.
 
 ## 2. Write `team-context.md` (workspace root)
 
-Sections: Company, Product and offer, ICP and personas (link `out/icp.md` if it exists), Buyer vocabulary (use / avoid), Voice and tone, Proof points, Our phrases. Keep it under 80 lines. Then make sure `CLAUDE.md` imports it: add the line `@team-context.md` under `@team-profile.md` if it isn't there. From the next session it loads automatically; for the rest of this session, read it now and use it.
+Sections: Company, Product and offer, ICP and personas (link `out/icp.md` if it exists), Buyer vocabulary (use / avoid), Voice and tone, Proof points, Our phrases. Keep it under 80 lines. If it holds setup's website draft, complete that file: keep what the team confirmed, add the rest, and drop the `draft` source line. Any other existing `team-context.md`: show the changes and ask before overwriting. Then make sure `CLAUDE.md` imports it: add the line `@team-context.md` under `@team-profile.md` if it isn't there. From the next session it loads automatically; for the rest of this session, read it now and use it.
 
 Never edit `CLAUDE.md`'s working rules, `.claude/settings.json` or `event.md` from this skill: tuning changes context and triggers, not the safety rules.
 

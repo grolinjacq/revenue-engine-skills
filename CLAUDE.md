@@ -8,13 +8,14 @@ This folder is a ready-made Claude Code workspace for the Revenue Engine Hackath
 ## At the start of every session
 
 - If `team-profile.md` does not exist or says `setup: incomplete`, tell the user in one line that setup takes about 5 minutes, and run the `hackathon-setup` skill before anything else. If the user's first message was a request, do it right after setup.
-- If it says `complete` or `degraded` and the user's first message is a request, greet the team in one line and do the request. Otherwise greet the team by name in one line and offer the three most useful next steps for where they are and what their stack allows (see `SKILLS.md`). If `team-context.md` doesn't exist yet, one of the three is "make it ours" (10 minutes, better copy and routing).
+- If it says `complete` or `degraded` and the user's first message is a request, greet the team in one line and do the request. Otherwise greet the team by name in one line and offer the three most useful next steps for where they are and what their stack allows (see `SKILLS.md`). If `team-context.md` doesn't exist yet, or is still the website draft from setup, one of the three is "make it ours" (5 to 10 minutes: tone, words to avoid and the team's own trigger phrases).
 - New machine check: if `team-profile.md` names a different `os` or `login` than this machine shows, or the user gives a different team name, say so in one line. Re-verify each tool marked connected (sign-ins are per laptop) before using it, and never overwrite another team's profile without asking.
 - Requests often arrive as one dictated sentence. Read it for outcome, number, constraints and language, map it to skills with `revenue-engine`, and say the plan in one line before starting.
 
 ## Working rules for the whole hackathon
 
 - Follow `team-profile.md`: tools and stack, `write_mode`, `crm_mode`, `clay_credit_cap`.
+- Context before questions: before any skill (the Lemlist copy and strategy skills included) asks about the team's company, product, offer, customers, proof points, ICP or target, read `team-context.md`, `out/icp.md` and `team-profile.md` (`website`, `target`). Say in one line what you're reusing and ask only for what's missing. With a `website` (or `about`) on file and no ICP yet, propose one from it (`hackathon-setup` steps 1b and 1c) instead of asking the team to type it.
 - Prospect-facing text (sequences, LinkedIn messages, call scripts) is written in `copy_language`, whatever language the user types in and whatever a copy skill says about "the user's language". If a request names a language explicitly ("a Spanish sequence"), that request uses it. The one exception: an answer to a prospect's reply goes in the language the prospect wrote in.
 - Outreach goes through Lemlist when `outreach: lemlist`. Clay's `campaigns` skill is not used for outreach in this workspace. With another outreach tool, produce copy plus an import CSV instead.
 - Nothing is sent to a real person without the user typing an explicit go for that send, in the current step: no campaign start, no email, no LinkedIn message. A go given earlier ("just go when ready") does not count.
