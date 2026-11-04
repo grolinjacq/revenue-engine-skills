@@ -122,7 +122,7 @@ After the user opens the email in HubSpot, check whether deal fields should be u
 
 **Next step / task**: If the email implies a clear next action (e.g. "I'll send the proposal Thursday", "Let me know by EOW"), update or create accordingly:
 - Update `hs_next_step` on the deal via `manage_crm_objects` deals, updateRequest
-- Create a follow-up task: `manage_crm_objects` tasks, createRequest — hs_task_subject: "Follow up with [firstName] if no reply", hs_task_type: EMAIL, hs_task_status: NOT_STARTED, hs_timestamp: [due date], associations: contact + deal
+- Create a follow-up task: `manage_crm_objects` tasks, createRequest — hs_task_subject: "Follow up with [firstName] if no reply" (*workspace:* starting with `[<team>]` in a shared portal), hs_task_type: EMAIL, hs_task_status: NOT_STARTED, hs_timestamp: [due date], associations: contact + deal
 
 **Deal stage**: If the email signals a stage change (e.g. sending a proposal → qualifiedtobuy, contract sent → contractsent), ask before updating:
 > "This looks like it moves the deal to [stage] — want me to update that too?"

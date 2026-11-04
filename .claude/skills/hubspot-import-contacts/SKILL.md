@@ -33,7 +33,7 @@ Use this priority order:
 2. **Check connected services** — *(workspace)* only when the user asks for a connected app as the source; don't probe connectors silently.
 3. **Ask** if the source isn't clear.
 
-**Ask as plain text — no widget.** Build the question based on what connectors are available:
+**Ask as plain text — no widget.** *(workspace: offer the connected-service options only when the user named that app as the source.)*
 
 If connected services are detected, list them under a heading, then offer the manual options:
 ```
@@ -113,7 +113,7 @@ Before showing the widget, flag:
 
 ### Contact selection
 
-*(workspace)* No widget here: show the same table as text (first 20 rows, then the counts: new, existing, no email, flagged) and ask which to import. "import all new" or a list of names is the go. Existing contacts are left out unless the user names them, and in a shared portal only this team's own records may be updated. Do not proceed to Phase 3 until a confirmed selection is received. With `crm_mode: read-only`, write the plan to `out/crm-import-plan.csv` and stop: there is nothing to confirm.
+*(workspace)* No widget here: show the same table as text (first 20 rows, then the counts: new, existing, no email, flagged) and ask which to import. "import all new" or a list of names is the go. Existing contacts are left out unless the user names them, and in a shared portal only this team's own records may be updated. Do not proceed to Phase 3 until a confirmed selection is received. With `crm_mode: read-only`, write the plan to `out/crm-import.csv` (the file `revenue-engine` and `close-the-loop` use) and stop: there is nothing to confirm.
 
 ---
 

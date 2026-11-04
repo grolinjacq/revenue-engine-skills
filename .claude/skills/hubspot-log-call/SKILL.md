@@ -88,7 +88,7 @@ Task: "[Follow up with First — next step text]" due [date] · type: CALL · pr
 Log it?
 ```
 
-Omit lines that don't apply. If no deal exists, omit the Deal section. Always include the task line.
+Omit lines that don't apply. If no deal exists, omit the Deal section. Always include the task line. *(workspace)* If the record isn't this team's in a shared portal, write nothing to it: save the debrief to `out/call-<name>-<date>.md`, log it, and offer a task on one of the team's own records instead.
 
 ---
 

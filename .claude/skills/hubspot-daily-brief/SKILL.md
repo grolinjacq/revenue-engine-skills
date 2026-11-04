@@ -174,7 +174,7 @@ Link each contact and deal name to their HubSpot record: `[Name](https://[uiDoma
 
 When the user replies "add all" or names specific tasks:
 
-For each selected task, call `manage_crm_objects` createRequest, objectType: tasks — hs_task_subject, hs_task_body, hs_timestamp, hs_task_status: NOT_STARTED, hubspot_owner_id. *(workspace)* "add all" or naming tasks is the go for those tasks only; write in batches of 10, and in a shared portal start `hs_task_body` with `[<team>]`.
+For each selected task, call `manage_crm_objects` createRequest, objectType: tasks — hs_task_subject, hs_task_body, hs_timestamp, hs_task_status: NOT_STARTED, hubspot_owner_id. *(workspace)* "add all" or naming tasks is the go for those tasks only; write in batches of 10, and in a shared portal start `hs_task_subject` and `hs_task_body` with `[<team>]`.
 
 **Completing tasks**: if the user asks to mark a task complete, name the task and, on a go, call `manage_crm_objects` update, hs_task_status: COMPLETED. Confirm: "Marked complete."
 

@@ -46,7 +46,7 @@ description: >
 
 **A.** Batch-call `get_crm_objects` contacts for each deal's associated contactId → firstname, lastname, email. Store `contact` (display name) and `contactEmail` per deal.
 
-**B.** For deals where `hs_lastmodifieddate` is 21+ days ago or `hs_next_step` is empty, silently check available connectors:
+**B.** For deals where `lastModified` (Phase 3 rule) is 21+ days ago or `hs_next_step` is empty, silently check available connectors:
 - **Calendar**: upcoming meetings with associated contact email
 - **Email**: recent unread threads from associated contact email
 
@@ -125,7 +125,7 @@ Link each deal and contact name to their HubSpot record using `portalId` and `ui
 ## Phase 6 — Add suggested tasks to HubSpot
 
 When the user replies "add all" or names specific tasks, for each selected task call `manage_crm_objects` createRequest, objectType: tasks:
-- `hs_task_subject`: task subject
+- `hs_task_subject`: task subject *(workspace: starting with `[<team>]` in a shared portal)*
 - `hs_task_type`: CALL or EMAIL (infer — "Reply" → EMAIL, others → CALL)
 - `hs_task_status`: NOT_STARTED
 - `hs_task_priority`: HIGH if deal closing ≤ 14d, else MEDIUM
@@ -141,7 +141,7 @@ When the user replies "add all" or names specific tasks, for each selected task 
 
 ## Phase 7 — Forecast, file and hand-offs *(workspace)*
 
-1. Totals by stage: deal count and amount per stage. Prefer an aggregate query (`query_crm_data` or similar) over paging, so portals with more than 50 open deals are covered; if you only have the first 50, say "based on the first 50 deals".
+1. Totals by stage: deal count and amount per stage, with the same owner or team filter as Phase 1A. Prefer an aggregate query (`query_crm_data` or similar) over paging, so portals with more than 50 open deals are covered; if you only have the first 50, say "based on the first 50 deals".
 2. Forecast: sum open amount weighted by each stage's probability (`get_properties` on `dealstage` gives it), for the current quarter unless the user named a period. If the pipeline has no probabilities, give unweighted totals for the late stages and say so.
 3. Write `out/pipeline-<date>.md`: the totals table, the needs-attention list (deal, owner, amount, stage, flag), the forecast line, the suggested tasks and the 3 actions that would move the most money.
 4. Hand-offs: to route many flagged deals to their owners at once, `cleanup-deals` (its rules in `CLAUDE.md`); to act on one deal, `hubspot-log-call` or `hubspot`.
