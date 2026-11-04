@@ -42,7 +42,9 @@ Any step can be filled by another tool, as long as its artefact matches:
 ## Routing
 
 - "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. No new actions.
-- No ICP yet, or "start from the CRM": step 1.
+- `out/icp.md` exists with `source: website` or `source: team description` (from setup): step 1 is done, go to step 2.
+- No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
+- "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.
 - The user brings their own ICP or target companies: write `out/icp.md`, then step 2.
 - "Read our website and propose our ICP", or a new target ("we want to go after Germany now", "try mid-market"): `hackathon-setup` steps 1b to 1d only (read the site, propose, confirm, write `out/icp.md` and `target` in `team-profile.md`), then step 2. A domain that isn't the team's own ("brief me on acme.com") is a prospect: `hubspot-account-brief`.
 - The user brings a CSV of leads: normalise it, then step 3.

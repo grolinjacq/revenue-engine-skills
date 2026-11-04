@@ -9,7 +9,7 @@ Goal: after 5 to 10 minutes, the team can say one sentence out loud ("find twent
 
 ## 1. Interview (one message, answer by voice or text)
 
-Start from what is already known. Read `team-context.md` (setup writes a draft from the team's website), `out/icp.md` and `team-profile.md`. No draft and a `website` on file: read the site first (`hackathon-setup` step 1b). No website on file: ask for it as the first question, read it, then continue.
+Start from what is already known. Read `team-context.md` (setup writes a draft from the team's website), `out/icp.md` and `team-profile.md`. No draft and a `website` on file: read the site first (`hackathon-setup` step 1b only: the target confirmation and `out/icp.md` stay with setup). No website on file: ask for it as the first question, read it, then continue.
 
 Show what the site gave you as short lines to confirm ("From your site: you sell X to Y; customers A, B, C; proof: 40% faster onboarding. Right?"), then ask only what a website can't answer:
 
