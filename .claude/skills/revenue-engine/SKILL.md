@@ -21,7 +21,7 @@ Every step writes its artefact into `out/`. If an artefact already exists, say w
 
 ## Step contracts (how other tools plug in)
 
-Any step can be filled by another tool, as long as its artefact matches:
+Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as long as its artefact matches (never by a connector the team didn't declare: Tool identity in `CLAUDE.md`):
 
 - `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through that CRM's connector if one is on (read-only), or from a CSV export of closed-won deals, or from the team's website confirmed by the team (`hackathon-setup` steps 1b and 1c, `source: website`), or from the user's words.
 - `out/leads.csv`: header `email,first_name,last_name,job_title,company_name,company_domain,linkedin_url,country,employees,industry,personalization`. Optional trailing columns `fit_score,fit_reason,fit_source` (from `clay-build-list` scoring) travel with the rows, and so does any other enrichment column (for example `segment`, `latest_news`, `current_challenges`, `customer_list`): later steps use them as copy variables. From Apollo, Lusha, Sales Navigator or any CSV: normalise it (below).
@@ -59,7 +59,7 @@ Any step can be filled by another tool, as long as its artefact matches:
 
 ## Rules for the whole loop
 
-1. Check connections first, for the tools in the team's stack only, by server name (Tool identity in `CLAUDE.md`): the tools of a server named HubSpot, the `lemlist` server's tools, `clay whoami` (or a connector named Clay). A connector that does the same job under another name (HeyReach for outreach, Salesforce or Dex for the CRM, Apollo for lists) does not count. If one is missing or `pending`, say "Connect <tool> first", offer `hackathon-setup` for that tool, or the CSV route for that step, and stop that step there. Never fake a step with invented data or another connector.
+1. Check connections first, for the tools in the team's stack only, by endpoint (Tool identity in `CLAUDE.md`): the HubSpot endpoint's tools, the `lemlist` server's tools, `clay whoami` (or the claude.ai connector called exactly Clay). A connector that does the same job under another name (HeyReach for outreach, Salesforce or Dex for the CRM, Apollo for lists) does not count. If one is missing or `pending`, say "Connect <tool> first", offer `hackathon-setup` for that tool, or the CSV route for that step, and stop that step there. Never fake a step with invented data or another connector.
 2. Nothing leaves the building without a yes. Campaigns are created paused. No campaign start, email or LinkedIn message without the user's explicit go in the current step; no CRM write without a go (over 10 records, show the plan and batch by 10).
 3. Respect `crm_mode`. With `read-only`, steps 1 and 3 read, step 5 writes a CSV instead of the CRM.
 4. Keep a run log. Append one line per step to `out/run-log.md`: time, step, tool used, counts in and out, anything skipped. Judges see this.
@@ -73,7 +73,7 @@ For the AI-agent bonus, the list-and-draft part of the loop runs headless. Agent
 2. The canonical command, from the workspace folder:
 
 ```
-claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap, counting today's spend in out/run-log.md. Do not call Lemlist and do not write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
+claude -p "Agent mode: run revenue-engine steps 2 and 3 from out/icp.md, then write the sequence for step 4 to out/sequence-agent.md. Stay within clay_credit_cap, counting today's spend in out/run-log.md. Do not call Lemlist or any other outreach connector; use CRM read tools only, never write to the CRM. Wherever a go would be needed, write what you would do to out/agent-report.md, skip that action and continue." --allowedTools "Read" "Write(./out/**)" "Edit(./out/**)" "Bash(clay *)"
 ```
 
 3. Clay through the connector instead of the CLI, or HubSpot reads for the dedupe: add those tools to `--allowedTools` by the names `/mcp` shows (read tools only, never create or update tools).

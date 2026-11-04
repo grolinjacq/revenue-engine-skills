@@ -17,7 +17,7 @@ Re-entry for a new target: when `setup` is already `complete` or `degraded` and 
 
 Check these yourself and note the results; only mention a problem.
 
-0. Folder. Check that `CLAUDE.md` and `.mcp.json` are in the current working folder (`ls CLAUDE.md .mcp.json`; PowerShell: `Test-Path CLAUDE.md, .mcp.json`), not by comparing path strings. If they are not (a parent folder (for example Claude cloned the repo into a subfolder of the current session), stop here, before any question: give the folder check message from `CLAUDE.md` and ask the user to start a new session on the workspace folder and type `set me up` there. Don't ask the setup questions or write `team-profile.md` from the wrong folder.
+0. Folder. Run the folder check from `CLAUDE.md`: the folder the session started in must hold `CLAUDE.md` and `.mcp.json`; a `cd` doesn't count. If it doesn't (for example, Claude cloned the repo into a subfolder of the current session), stop here, before any question: give the folder check message from `CLAUDE.md` and ask the user to start a new session on the workspace folder and type `set me up` there. Don't ask the setup questions or write `team-profile.md` from the wrong folder.
 1. Claude login. Ask the user to run `/status` (or run `claude auth status` yourself) to see how Claude Code is signed in. If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B. Users with only the event's API credits: they claim them into a Console account at platform.claude.com, run `/login` and choose the Anthropic Console option; tell them every Claude reply spends those credits, set `login: api-key`, and use HubSpot path B (or CSV if `hubspot_mcp_client_id` is still a placeholder: ask the organisers in the room).
 2. OS and shell. Note Windows native (PowerShell), WSL, macOS or Linux. On Windows use `python` and PowerShell syntax; in WSL or headless Linux, browsers may not open, so print every sign-in URL for the user to open.
 3. Network. If GitHub is unreachable (`claude plugin marketplace add` fails), Clay goes through the connector path in step 3, not the plugin: skip the plugin commands in step 2.
@@ -106,6 +106,7 @@ crm_source: <hubspot | other: <name, e.g. Salesforce> | none>   # where the team
 crm_mode: <full | read-only>   # hubspot-demo starts as full
 lists: <clay | other: <name> | none>
 outreach: <lemlist | other: <name> | none>
+outreach_linkedin: <omit this line unless the team moved LinkedIn to another tool; only `other: <name>` counts>
 login: <claude.ai | api-key>
 os: <windows | wsl | macos | linux>
 tools:
@@ -144,7 +145,7 @@ Only for tools in the team's stack. Verify each before moving on.
 
 **Lemlist** (already in `.mcp.json`).
 - User action: `/mcp`, choose `lemlist`, Authenticate, approve in the browser, pick the team.
-- Verify: call a tool from the `lemlist` server (`mcp__lemlist__*`, or a claude.ai connector named Lemlist) that lists campaigns or the team, and check the answer comes from Lemlist. Record the team name and the server: `connected (<team>, server lemlist)`. A connected outreach connector with another name (HeyReach, Instantly, Smartlead...) is not Lemlist: never verify with it or mark Lemlist connected from it.
+- Verify: call a tool from the `lemlist` server (`mcp__lemlist__*`, or the claude.ai connector called exactly Lemlist) that lists campaigns or the team, and check with `claude mcp list` that its URL is `https://app.lemlist.com/mcp` (or that it is the claude.ai connector called exactly Lemlist). Record the team name and the server: `connected (<team>, server lemlist)`. A connected outreach connector with another name (HeyReach, Instantly, Smartlead...) is not Lemlist: never verify with it or mark Lemlist connected from it.
 - Server missing from the tool list: the session is on the wrong folder (step 0), the server was not approved (restart and approve it), or it waits for Authenticate in `/mcp`. Keep `lemlist: pending` and say which.
 - No account yet: suggest the Lemlist trial with `lemlist_trial_code` from `event.md`, or set `outreach: none` and carry on.
 

@@ -7,7 +7,7 @@ description: Derive the ICP from HubSpot closed-won deals, check a lead list aga
 
 HubSpot is the source of truth in this stack. Clay and Lemlist feed it; nothing should overwrite it blindly.
 
-Connection: HubSpot's remote MCP server, through the HubSpot connector in the Claude app or a registered MCP connector (see `hackathon-setup`, and `connect-hubspot-mcp` for the details). Call `get_user_details` first to confirm the portal and what is writable. List the tools before the first call; pick by what they do, among the tools of a server named HubSpot only. Another CRM connected in the user's Claude account (Salesforce, Attio, Pipedrive, Dex, Airtable, Notion...) is never used for a HubSpot step or a CRM write; if no HubSpot server is connected, stop at "Connect HubSpot first" (`hackathon-setup` step 3) or take the CSV route.
+Connection: HubSpot's remote MCP server, through the HubSpot connector in the Claude app or a registered MCP connector (see `hackathon-setup`, and `connect-hubspot-mcp` for the details). Call `get_user_details` first to confirm the portal and what is writable. List the tools before the first call; pick by what they do, among the tools of the HubSpot endpoint only (`mcp.hubspot.com`, or the claude.ai connector called exactly HubSpot). Another CRM connected in the user's Claude account (Salesforce, Attio, Pipedrive, Dex, Airtable, Notion...) is never used for a HubSpot step or a CRM write; if no HubSpot server is connected, stop at "Connect HubSpot first" (`hackathon-setup` step 3) or take the CSV route.
 
 ## The HubSpot skill set
 
