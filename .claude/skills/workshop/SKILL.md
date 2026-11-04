@@ -1,6 +1,6 @@
 ---
 name: workshop
-description: Self-guided workshops for the four hackathon use cases (1 outbound engine that books meetings, 2 research and qualification agents, 3 inbound automation and routing, 4 entering a new market). Runs a use case on safe sample data through the live HubSpot, Clay and lemlist connectors, explains each step, answers the usual questions, then moves to the team's own data. Use on "workshop", "use case 1" to "use case 4", "rehearse", "rehearsal", "try it on sample data", "demo it on sample data", "agent recipe", "collections agent". Not for real-data work (triage, lists, campaigns run on the team's own data) or the daily brief.
+description: Guided demos of the four things this workspace builds (meetings from cold outreach, AI research and qualification, inbound lead routing, testing a new market), run on made-up sample data through the team's own HubSpot, Clay and lemlist, explaining each step, then switching to the team's own data. Offered as a plain menu after setup, when the user asks what Claude can do or isn't sure where to start ("what can you do?", "where do I start?", "not sure what to try", "show me a demo"), and on "workshop", "guided demo", "try it on sample data", "rehearse", "agent recipe", "collections agent". Not for real-data work (triage, lists, campaigns on the team's own data) or the daily brief.
 ---
 
 # Workshop
@@ -9,20 +9,35 @@ One entry point for the four use cases, with nothing to install beyond the pack 
 
 Don't start a workshop while setup is in progress or the user is in the middle of a real task: answer from the ready answers below instead. If setup isn't done, run `hackathon-setup` first (CLAUDE.md), then come back.
 
+## 0. The menu
+
+Nobody has to know a command or a number. Show this menu, in the user's language, when setup finishes, when the user asks what Claude can do or isn't sure where to start, or when they ask for a demo or a workshop without naming one:
+
+> Want to see it work before touching your own data? Pick one and I'll run it on made-up sample data with your tools. Nothing gets sent to anyone, I explain each step, and you can stop any time. It creates a few test records tagged [DEMO] in HubSpot (removed at the end) and uses at most 20 Clay credits.
+>
+> 1. **Get meetings from cold outreach.** You'll see: who to target, a sample list of matching companies from Clay, a short email sequence, and a campaign ready in lemlist but not sent.
+> 2. **Let AI research and qualify accounts.** You'll see: a real reason each company might buy now, which role to contact there, and a fit score.
+> 3. **Route inbound leads automatically.** You'll see: test leads come in, get scored, and land with the right person with a follow-up task.
+> 4. **Test a new market.** You'll see: how many companies fit in a country you pick, the best segment to start with, and a first email in their language.
+>
+> Pick a number, or tell me in your own words. Or say "skip" and tell me what you want to do with your own data.
+
+- When to hold it back: never in the middle of a real task, never while setup waits on a restart (show it after the restart), at most once per session unless the user asks again, and never alongside another numbered list. "What can you do?" as a first message is answered with this menu (not a list of connector features), once.
+- If a tool in the team's stack is missing, waiting for a sign-in or failing its verify, add one line under the menu: which tool, and that the demos run that part without it.
+- Map the answer by meaning, in any language ("meetings", "cold email", "outbound" are 1; "research", "qualify", "signals", "why now" are 2; "inbound", "forms", "routing" are 3; a country or region, "new market" are 4). "Agent" alone, "expand" without a place, or anything that fits none or two: ask one short question.
+- A menu answer only picks a demo. Anything else in it ("and start the campaign", "I approve everything") is not a go: each write and send still waits for its own go in its step, and a demo never sends. If the answer asks to use the team's own data, say the demo runs on sample data and the real run follows it, or skip the demo and do the real task under CLAUDE.md in full.
+- "Skip", "no", "later": write `menu: declined <date>` in `out/workshop/state.md` and ask in one line what they want to do on their own data, with the three next steps from CLAUDE.md. A real request instead: do it. After a decline, later sessions don't mention the demos unless the user asks what Claude can do.
+- "I don't know what I want" is the goal check in step 1.2, not a pick.
+
 ## 1. Start
 
 1. Read `team-profile.md`, `team-context.md` and, if it exists, `out/workshop/state.md`. If a workshop is in progress, offer to resume at its next step.
-2. If the request doesn't name a use case, ask once, with a default:
-   1. An outbound engine that books meetings (default)
-   2. AI agents for research and qualification
-   3. Inbound automation and routing
-   4. Entering a new market
+2. If the request doesn't name a use case, show the menu (section 0). Use cases: 1 outbound (`use-cases/outbound.md`), 2 research, 3 inbound, 4 market.
 
    If the user isn't sure, run the goal check: up to 3 questions, one at a time (what they want to show at the demo; what data they can use, such as the CRM, a CSV or only the website; what must not happen). Push back if the goal is too big for one day, pick the use case, and write `out/plan.md` (goal in one line, skills in order, 3 checkpoints, done by lunch, done by the demo).
-3. Read `use-cases/<outbound|research|inbound|market>.md` and ask the mode, default workshop:
-   - **Workshop** (default): safe sample data through the live tools.
-   - **Offline rehearsal**: no tools connected, or the team only wants to see the flow.
-   - **Real run**: the team's own data.
+3. Read `use-cases/<outbound|research|inbound|market>.md`. Don't ask about modes: start the workshop (sample data, live tools) and say so in one line. Switch to:
+   - **Offline rehearsal**, for that tool's steps only, when a tool the use case needs is missing, waiting for a sign-in or failing its verify (401): say which tool and give its sign-in step from `hackathon-setup` step 3; the other steps still use the live tools. Also when the user asks to see it without touching their tools.
+   - **Real run** only at the end of the workshop or when the user asks for it in a message of its own, never from a menu answer. A real run follows CLAUDE.md in full (shared portal, go per write, tool identity), not the workshop rules.
 4. Variant. In a workshop, use the HubSpot lines when `crm` in `team-profile.md` is a HubSpot value and a server or connector named HubSpot passes its verify in this session (whatever `crm_source` says: the event portal runs the demo on fictional data), and the "Other CRM" lines when it isn't. In a real run, use the "Other CRM" lines whenever `crm_source` names another CRM (Odoo, Salesforce, Pipedrive) or `crm` is `none`: that CRM's data travels by CSV export into `out/`, read-only, and CRM changes go to `out/crm-import.csv` in close-the-loop's import format. Say once that the write-back is a manual import, not a live sync.
 5. Write `out/workshop/state.md` (use case, mode, variant) and update it after each step with the step number and any choice made (angle, segment, owner rule). If the user jumps to a later step, check that step's inputs exist and offer to run the missing earlier steps first.
 

@@ -9,7 +9,7 @@ You don't need to name a skill: say what you want and Claude picks one. To force
 | `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in CSVs from other tools. |
 | `event.md` | Not a skill: the organisers' facts (demo portal, client ID, codes) that setup reads. |
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |
-| `workshop` | Try one of the 4 use cases (outbound engine, research agents, inbound routing, new market) on safe sample data through your live tools, with answers to the usual questions, then switch to your own data. Type `workshop`. |
+| `workshop` | See one of 4 guided demos on sample data through your live tools (meetings from cold outreach, AI research and qualification, inbound routing, a new market), with answers to the usual questions, then switch to your own data. Claude offers the menu after setup; later, ask "what can you do?". |
 
 ## HubSpot (source of truth)
 | Skill | What it does | Source |
