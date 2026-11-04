@@ -5,11 +5,13 @@ description: Create a multi-channel Lemlist campaign (email plus LinkedIn), add 
 
 # Lemlist: launch the campaign
 
-Connection: the `lemlist` MCP server (`https://app.lemlist.com/mcp`). Run `/mcp`, pick lemlist, Authenticate, and choose the team. List its tools before the first call.
+Connection: the `lemlist` MCP server (`https://app.lemlist.com/mcp`, tools `mcp__lemlist__*`), or a claude.ai connector named Lemlist. Run `/mcp`, pick lemlist, Authenticate, and choose the team. List its tools before the first call.
+
+Identity check, before step 4 (see Tool identity in `CLAUDE.md`): the campaign tools must come from a server named Lemlist. Call its team or campaign list and say "Building in Lemlist, team <team>" before creating anything. If no Lemlist server is in the tool list, or it waits for a sign-in, stop after step 3 and say "Connect Lemlist first" with the sign-in step from `hackathon-setup` step 3; offer the CSV route as the only alternative. Never create the campaign or add leads in another outreach connector (HeyReach, Instantly, Smartlead, Gmail, a LinkedIn messaging tool) because it is connected, even if its tools are named `create_campaign` or `add_leads_to_list`. Write `tool: lemlist` and the server name in `out/campaign.md`.
 
 Copy and strategy come from the Lemlist skills installed alongside this one (listed in `SKILLS.md`). This skill does the plumbing; it does not compete with them. All copy is in `copy_language` from `team-profile.md`.
 
-Other outreach tool (`outreach` is not `lemlist`): do steps 1 to 3, then write the sequence to `out/campaign.md` and the leads with their variables to `out/outreach-import.csv` (columns `email,first_name,last_name,company_name` first, then the variables; most tools, Instantly included, map these on import), and tell the team how to import it. Skip steps 4 to 7.
+Other outreach tool (`outreach` is not `lemlist`): do steps 1 to 3, then write the sequence to `out/campaign.md` and the leads with their variables to `out/outreach-import.csv` (columns `email,first_name,last_name,company_name` first, then the variables; most tools, Instantly included, map these on import), and tell the team how to import it. Skip steps 4 to 7, even if that tool's connector is connected in this session: this workspace builds campaigns only in Lemlist. If the user's own message asks to build it directly in their tool, say this is outside the workspace's tested path, apply the same gates (created paused or draft, `out/suppress.csv`, a go naming the lead count to start), and write the tool's name in `out/campaign.md`.
 
 Expired sign-in (a 401 or auth error): stop, tell the user to run `/mcp`, choose lemlist, Authenticate, then retry the same step. Save any leads given in chat to `out/` first so nothing is lost.
 

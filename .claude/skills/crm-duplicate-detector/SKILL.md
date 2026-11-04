@@ -72,6 +72,8 @@ limit: up to 1000 (paginate if needed)
 ```
 
 ### Source C — Salesforce MCP
+*(workspace)* Only when `crm_source` in `team-profile.md` names Salesforce and the user asks for it, read-only. Never use another CRM connector because it happens to be connected (Tool identity in `CLAUDE.md`).
+
 Query contacts:
 ```sql
 SELECT Id, Email, FirstName, LastName, Phone, Account.Name, Title,

@@ -66,7 +66,15 @@
       "mcp__HubSpot__manage_aeo_prompts",
       "mcp__HubSpot__manage_aeo_recommendations",
       "mcp__HubSpot__manage_onboarding",
-      "mcp__HubSpot__import-claude-design-from-url"
+      "mcp__HubSpot__import-claude-design-from-url",
+      "mcp__claude_ai_HeyReach",
+      "mcp__claude_ai_Instantly",
+      "mcp__claude_ai_Smartlead",
+      "mcp__claude_ai_Apollo_io",
+      "mcp__claude_ai_Gmail",
+      "mcp__claude_ai_Salesforce",
+      "mcp__claude_ai_Attio",
+      "mcp__claude_ai_Pipedrive"
     ],
     "deny": [
       "Read(./.env)",
