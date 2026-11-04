@@ -14,10 +14,17 @@ You don't need to name a skill: say what you want and Claude picks one. To force
 | Skill | What it does | Source |
 |---|---|---|
 | `hubspot-crm` | The hub: ICP from closed-won deals, dedupe a lead list, the write rules | this pack |
-| `hubspot-account-brief` | One-page brief on a company or contact before a call | this pack |
-| `hubspot-pipeline-review` | Deal totals by stage, stale and past-due deals, forecast | this pack |
-| `hubspot-log-activity` | Log a call or meeting, create a task, move a deal | this pack |
+| `hubspot-account-brief` | One-page brief on a whole company (account), saved to `out/` | this pack |
 | `hubspot-lead-triage` | Score new leads against the ICP, set the stage, assign, create tasks | this pack |
+| `hubspot` | Quick lookups, stats, a task, a field or deal change, a new deal | HubSpot official |
+| `hubspot-contact-lookup` | One person's record: deals, last contact, notes, tasks | HubSpot official |
+| `hubspot-call-prep` | Brief before a call or meeting: talking points, email and calendar context, company news | HubSpot official |
+| `hubspot-pipeline-pulse` | Pipeline snapshot, stalled deals, suggested tasks, forecast | HubSpot official |
+| `hubspot-log-call` | Log a call: note, deal fields, lead status, follow-up task | HubSpot official |
+| `hubspot-daily-brief` | Today's tasks, meetings, cold contacts and stalling deals | HubSpot official |
+| `hubspot-follow-up` | Draft a follow-up email and open it in HubSpot to send | HubSpot official |
+| `hubspot-import-contacts` | Import contacts from a CSV or a pasted list | HubSpot official |
+| `hubspot-onboarding` | Getting started in a new or empty portal | HubSpot official |
 | `connect-hubspot-mcp` | Detailed HubSpot connection guide | hubspot-admin-skills |
 | `hubspot-audit`, `hubspot-sales-audit` | Read-only portal audit with prioritised fixes | hubspot-admin-skills |
 | `create-icp-tiers` | ICP tier property on every company | hubspot-admin-skills |
@@ -27,7 +34,7 @@ You don't need to name a skill: say what you want and Claude picks one. To force
 | `fix-lifecycle-stages` | Backfill and fix lifecycle stages | hubspot-admin-skills |
 | `cleanup-deals` | Flag stale deals and send each owner a review task | hubspot-admin-skills |
 
-The hubspot-admin-skills ones need a HubSpot service key in `.env` (see `.env.example`).
+The HubSpot official skills come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), bundled here with this workspace's safety rules added: every write is shown first and waits for your go. The hubspot-admin-skills ones need a HubSpot service key in `.env` (see `.env.example`).
 
 ## Clay (lists and enrichment)
 | Skill | What it does | Source |
