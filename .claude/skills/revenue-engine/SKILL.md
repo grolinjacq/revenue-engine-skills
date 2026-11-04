@@ -59,7 +59,7 @@ Any step can be filled by another tool, as long as its artefact matches:
 
 ## Rules for the whole loop
 
-1. Check connections first, for the tools in the team's stack only: list the HubSpot and Lemlist tools, run `clay whoami` (or list the Clay connector's tools). If one is missing, say which, offer `hackathon-setup` for that tool, or the CSV route for that step. Never fake a step with invented data.
+1. Check connections first, for the tools in the team's stack only, by server name (Tool identity in `CLAUDE.md`): the tools of a server named HubSpot, the `lemlist` server's tools, `clay whoami` (or a connector named Clay). A connector that does the same job under another name (HeyReach for outreach, Salesforce or Dex for the CRM, Apollo for lists) does not count. If one is missing or `pending`, say "Connect <tool> first", offer `hackathon-setup` for that tool, or the CSV route for that step, and stop that step there. Never fake a step with invented data or another connector.
 2. Nothing leaves the building without a yes. Campaigns are created paused. No campaign start, email or LinkedIn message without the user's explicit go in the current step; no CRM write without a go (over 10 records, show the plan and batch by 10).
 3. Respect `crm_mode`. With `read-only`, steps 1 and 3 read, step 5 writes a CSV instead of the CRM.
 4. Keep a run log. Append one line per step to `out/run-log.md`: time, step, tool used, counts in and out, anything skipped. Judges see this.

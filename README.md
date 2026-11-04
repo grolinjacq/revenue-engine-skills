@@ -1,5 +1,7 @@
 # Revenue Engine Hackathon: Claude Code workspace
 
+> Claude: if `CLAUDE.md` and `.mcp.json` are not in your current working folder (you cloned or opened this folder from its parent), stop, read `CLAUDE.md` ("Folder check") and do nothing else until the user starts a session on this folder.
+
 One folder that gives Claude Code every skill for the day, set up for your team. HubSpot (source of truth), Clay (lists and enrichment) and Lemlist (multi-channel outreach), connected through Claude. Using other tools? They plug in too (see "Your own stack").
 
 ## Before you start
@@ -19,8 +21,8 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
 1. Install Claude Code, or skip this and use the Claude Desktop app (Code tab, no terminal needed).
    - macOS or Linux, in Terminal: `curl -fsSL https://claude.ai/install.sh | bash`
    - Windows, in PowerShell: `irm https://claude.ai/install.ps1 | iex`
-2. Get the folder: on GitHub, click the green **Code** button, then **Download ZIP**, and unzip it (or `git clone https://github.com/grolinjacq/revenue-engine-skills`). Then open a terminal in it (Windows: open the folder, then type `powershell` in the address bar) and run `claude`. In the Desktop app, open the folder instead. Open the folder that contains `CLAUDE.md`: a GitHub ZIP often unzips as `revenue-engine-skills-main` inside another `revenue-engine-skills-main`, so go one level down. If Claude doesn't mention setup when you say hello, you're in the wrong folder.
-3. Trust the folder, and approve the Lemlist server and the Clay plugin when asked.
+2. Get the folder: on GitHub, click the green **Code** button, then **Download ZIP**, and unzip it (or `git clone https://github.com/grolinjacq/revenue-engine-skills`). Then open a terminal in it (Windows: open the folder, then type `powershell` in the address bar) and run `claude`. In the Desktop app, open the folder instead. Open the folder that contains `CLAUDE.md`: a GitHub ZIP often unzips as `revenue-engine-skills-main` inside another `revenue-engine-skills-main`, so go one level down. If Claude doesn't mention setup when you say hello, you're in the wrong folder. Asked Claude to clone it for you? Start a new session on the cloned folder: carrying on in the session that cloned it (opened on the parent folder) leaves the Lemlist server, the permission gates and the Clay plugin unloaded, and setup will stop and ask you to reopen.
+3. Trust the folder, and approve the Lemlist server and the Clay plugin when asked. If your own Claude account has outbound plugins or connectors (HeyReach, Instantly, a personal list-building plugin), consider turning them off for the day: Claude won't use them for the loop, but they add noise.
 4. Type `set me up`. Claude checks your machine and asks for your company's website plus 4 quick questions (including your stack). It reads your site and proposes who to target and how to reach them: confirm it, edit it, or name a different target (a new country, a new segment). Then it installs what's needed and walks you through the sign-ins.
 5. Optional, 10 minutes: type `make it ours`. Claude learns your company, product and voice, so one spoken sentence is enough from then on.
 

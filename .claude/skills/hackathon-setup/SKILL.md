@@ -17,6 +17,7 @@ Re-entry for a new target: when `setup` is already `complete` or `degraded` and 
 
 Check these yourself and note the results; only mention a problem.
 
+0. Folder. Check that `CLAUDE.md` and `.mcp.json` are in the current working folder (`ls CLAUDE.md .mcp.json`; PowerShell: `Test-Path CLAUDE.md, .mcp.json`), not by comparing path strings. If they are not (a parent folder (for example Claude cloned the repo into a subfolder of the current session), stop here, before any question: give the folder check message from `CLAUDE.md` and ask the user to start a new session on the workspace folder and type `set me up` there. Don't ask the setup questions or write `team-profile.md` from the wrong folder.
 1. Claude login. Ask the user to run `/status` (or run `claude auth status` yourself) to see how Claude Code is signed in. If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B. Users with only the event's API credits: they claim them into a Console account at platform.claude.com, run `/login` and choose the Anthropic Console option; tell them every Claude reply spends those credits, set `login: api-key`, and use HubSpot path B (or CSV if `hubspot_mcp_client_id` is still a placeholder: ask the organisers in the room).
 2. OS and shell. Note Windows native (PowerShell), WSL, macOS or Linux. On Windows use `python` and PowerShell syntax; in WSL or headless Linux, browsers may not open, so print every sign-in URL for the user to open.
 3. Network. If GitHub is unreachable (`claude plugin marketplace add` fails), Clay goes through the connector path in step 3, not the plugin: skip the plugin commands in step 2.
@@ -37,7 +38,7 @@ Ask all at once, each with a default so the team can answer "defaults" after giv
    - CRM: HubSpot event demo portal (default) | your own HubSpot | other CRM (name it) | none
    - Lists and enrichment: Clay (default) | other tool (name it, we'll use its CSV export) | none
    - Outreach: Lemlist (default) | other tool (name it) | none
-4. How careful should I be? A: ask before every write and every credit spend. B: ask before CRM writes, credit spend over the cap, and anything sent to people. (default: B)
+4. How careful should I be? A: ask before every write and every credit spend. B: ask before CRM writes, credit spend over the cap, and anything sent to people. (default: B) A free answer such as "no need to be careful" is B: say so in one line, and that B never changes which tools are used, the go before anything is sent, or the go before CRM writes.
 5. Credit cap for Clay today? (default: 200 credits)
 
 Create `out/` if it is missing. Write `team-profile.md` at once (below), with `target: pending` and `copy_language: pending`, the domain in `website` and, if the team gave a description instead (or as well), its words verbatim in `about`, so a restart never asks these again.
@@ -109,7 +110,7 @@ login: <claude.ai | api-key>
 os: <windows | wsl | macos | linux>
 tools:
   hubspot: <pending | connected (<portal>, path A or B) | not available (<reason>)>
-  lemlist: <pending | connected (<team>) | not available (<reason>)>
+  lemlist: <pending | connected (<team>, server <name>) | not available (<reason>)>
   clay: <pending | connected (<workspace>, plugin|connector) | not available (<reason>)>
   hubspot_service_key: <not set | set>
 updated: <date time>
@@ -143,7 +144,8 @@ Only for tools in the team's stack. Verify each before moving on.
 
 **Lemlist** (already in `.mcp.json`).
 - User action: `/mcp`, choose `lemlist`, Authenticate, approve in the browser, pick the team.
-- Verify: call a Lemlist tool that lists campaigns or the team. Record the team name.
+- Verify: call a tool from the `lemlist` server (`mcp__lemlist__*`, or a claude.ai connector named Lemlist) that lists campaigns or the team, and check the answer comes from Lemlist. Record the team name and the server: `connected (<team>, server lemlist)`. A connected outreach connector with another name (HeyReach, Instantly, Smartlead...) is not Lemlist: never verify with it or mark Lemlist connected from it.
+- Server missing from the tool list: the session is on the wrong folder (step 0), the server was not approved (restart and approve it), or it waits for Authenticate in `/mcp`. Keep `lemlist: pending` and say which.
 - No account yet: suggest the Lemlist trial with `lemlist_trial_code` from `event.md`, or set `outreach: none` and carry on.
 
 **HubSpot** (not in `.mcp.json`: HubSpot's server can't be added from its URL alone).
@@ -162,13 +164,13 @@ Only for tools in the team's stack. Verify each before moving on.
 - Connector path (plugin failed, or Windows/WSL CLI trouble): the user adds the Clay connector at https://claude.ai/settings/connectors and restarts. Verify by listing Clay's tools. Needs `login: claude.ai`.
 - Check the credit balance (Clay's `credits-quotas-plans` skill or the workspace tool) and note it against `clay_credit_cap`. Event credits (`clay_credits` in `event.md`) may still be on their way for an existing workspace whose ID was just submitted; until then, work within the balance shown. If they're missing for a workspace created through the link, or long after the form, tell the user to flag it to the organisers (`help` in `event.md`), with their workspace name, and carry on.
 
-If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on.
+If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on. A tool that is `pending` or `not available` stays that way until its verify passes: never mark it connected because another connector does a similar job (see Tool identity in `CLAUDE.md`).
 
 ## 4. Finish
 
 1. Set `setup`:
    - `complete`: every tool in the team's stack is connected.
    - `degraded`: at least one step of the loop works but a tool is missing or replaced by CSV. This is a finished setup, not a pending one; do not re-run setup on the next session start.
-   - `incomplete`: only while setup is still in progress (for example waiting on a restart). If the user wants to start working before finishing, set `degraded` and list what's missing, so the next session doesn't force setup. Never leave `target` or `copy_language` as `pending` outside `incomplete`: settle them first (`derive from CRM` and English if the team gave nothing).
+   - `incomplete`: only while setup is still in progress (for example waiting on a restart). If the user wants to start working before finishing, set `degraded` and list what's missing, so the next session doesn't force setup. Say in the same message which loop steps stop until each missing tool is connected (for example, with Lemlist pending: no campaign is created anywhere; copy and `out/outreach-import.csv` only if they ask for the CSV route). Never leave `target` or `copy_language` as `pending` outside `incomplete`: settle them first (`derive from CRM` and English if the team gave nothing).
 2. Show a status table: tool, status, account, and which loop steps run as normal, by CSV, or not at all.
 3. List any manual to-dos left, then point to `SKILLS.md` and suggest the first prompt for their use case and stack. If the team's HubSpot portal is new and empty, one of the suggestions is `hubspot-onboarding` ("onboard me to HubSpot").
