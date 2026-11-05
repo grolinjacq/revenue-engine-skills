@@ -69,7 +69,7 @@ Offline rehearsal: the same steps without calling HubSpot, Clay or lemlist and w
 - **Can it run automatically?** Yes for the list-and-draft part, and it never sends or writes to the CRM on its own. Outbound: revenue-engine's agent mode (Bonus). Research: the why-now agent recipe. Inbound: the triage loop recipe. New market: no agent recipe; rerun the steps by hand. A trigger that fires the second a form is submitted is a HubSpot workflow. Sub-path: show the recipe for this use case.
 - **How do I switch to our real data?** Archive the [DEMO] records, then run the real-run steps for this use case: same steps and checkpoints, on your ICP and your CRM. Real runs ignore out/workshop/ and [DEMO] contacts. Sub-path: list the demo records now.
 - **What about GDPR and opt-outs?** Not legal advice: check with your own counsel. Built in: any opt-out, unsubscribe or bounce goes to out/suppress.csv at once and is dropped before any campaign; lemlist adds an unsubscribe link; nothing is sent without your go; the workshop uses fictional addresses, plus one test address of your own in the inbound form. B2B cold email rules differ by country (for example Spain's LSSI on commercial email), so decide your legal basis before a real send. Sub-path: show out/suppress.csv and where it is applied.
-- **Can it do WhatsApp?** Not in this skills pack. lemlist has a WhatsApp add-on: ask the lemlist team in the room.
+- **Can it do WhatsApp?** Not in this skills pack. lemlist has a WhatsApp add-on: ask Conor or Ivan from lemlist in the room.
 - **Where does our data go?** Claude reads your tools through the connectors you signed in to, writes files in out/ on your laptop, and never reads .env. Every CRM write and every send waits for your go.
 - **Can I bring a list from Apollo, Sales Navigator or a spreadsheet?** Yes: drop the CSV in the folder and say "here's my CSV". revenue-engine maps the columns, drops rows with no email and no LinkedIn, and lists what it dropped.
 - **Which skill did that?** Name the skill and point to SKILLS.md. To force a skill, start a message with its name, for example /clay-build-list.
@@ -102,6 +102,6 @@ HubSpot follow-up variant: a pipeline review of deals with no activity in 21 day
 
 ## 5. Not covered here, and who helps
 
-- WhatsApp outreach: not in this pack. lemlist has a WhatsApp add-on; ask the lemlist team.
-- A trigger that fires the second a form is submitted: a HubSpot workflow. Ask the HubSpot expert.
+- WhatsApp outreach: not in this pack. lemlist has a WhatsApp add-on; ask Conor or Ivan from lemlist in the room.
+- A trigger that fires the second a form is submitted: a HubSpot workflow. Ask François from HubSpot in the room.
 - Market-entry strategy beyond the list (team, entity, pricing): Claude helps in conversation; no skill.
