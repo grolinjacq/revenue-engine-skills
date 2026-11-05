@@ -38,7 +38,7 @@ No HubSpot, Clay or lemlist calls and no credits (web search is allowed); files 
 
 - By lunch: out/market-map.md and a segment you chose; About 30 people, or a Maps table, in out/leads.csv.
 - By the demo: out/entry-plan.md with a week-1 test and a stop rule; A first email in the market's language; A paused campaign, if you got that far.
-- Stuck? Ask in the room. For the Google Maps source or local job titles in Clay, ask Geoffrey. For sending to several countries from lemlist, ask Ivan or Conor from the lemlist team.
+- Stuck? Ask someone in the room. Geoffrey (Clay) helps with finding companies on Google Maps and local job titles; Conor or Ivan (lemlist) help with sending in several countries.
 
 ## Ready answers for this use case
 

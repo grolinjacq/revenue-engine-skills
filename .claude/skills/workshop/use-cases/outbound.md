@@ -45,11 +45,11 @@ No HubSpot, Clay or lemlist calls and no credits (web search is allowed); files 
 
 - By lunch: out/icp.md you agree with; out/leads.csv: about 20 people, scored; out/leads-new.csv: deduped against your CRM; Angles and a 3-step sequence in your prospects' language.
 - By the demo: A paused lemlist campaign with rendered emails; One seed reply synced back to the CRM; out/run-log.md as your demo script.
-- Stuck? Ask in the room. For building the list in Clay, ask Geoffrey. For the email sequence or the sending settings in lemlist, ask Ivan or Conor from the lemlist team.
+- Stuck? Ask someone in the room. Geoffrey (Clay) helps with building the list; Conor or Ivan (lemlist) help with the sequence and sending settings.
 
 ## Ready answers for this use case
 
-- **How many emails a day is safe?** Start low on a warmed-up mailbox and let lemlist's sending settings cap the daily volume; Ivan or Conor from the lemlist team can check your settings in the room.
+- **How many emails a day is safe?** Start low on a warmed-up mailbox and let lemlist's sending settings cap the daily volume; Conor or Ivan from lemlist can check your settings in the room.
 - **What reply rate should we expect?** outbound-campaign-architect uses lemlist's benchmark data to set targets for your sequence. Sub-path: run it on this sequence.
 - **Can we A/B test?** Yes: keep two or three angles and say "A/B test the subject lines"; lemlist-campaign builds the variants.
 - **Why is the campaign paused?** Every campaign is created paused. Starting needs a typed go that names the lead count, and a connected sending mailbox.

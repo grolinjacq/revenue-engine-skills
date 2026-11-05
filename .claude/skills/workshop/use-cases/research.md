@@ -39,7 +39,7 @@ No HubSpot, Clay or lemlist calls and no credits (web search is allowed); files 
 
 - By lunch: out/why-now.md on 10 accounts, every signal sourced; A why-now line in each lead's personalization column.
 - By the demo: One headless agent run on 20 more accounts; out/agent-report.md listing what it would have asked you; The why-now lines feeding the outbound sequence.
-- Stuck? Ask Geoffrey in the room about running the agent in Claude, finding buying signals, or saving a scoring function in Clay.
+- Stuck? Ask someone in the room. Geoffrey (Claude and Clay) helps with running the agent, finding buying signals and scoring accounts in Clay.
 
 ## Ready answers for this use case
 

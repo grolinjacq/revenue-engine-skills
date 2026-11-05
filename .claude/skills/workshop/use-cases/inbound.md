@@ -46,14 +46,14 @@ No HubSpot, Clay or lemlist calls and no credits (web search is allowed); files 
 
 - By lunch: A HubSpot form live and submitted once; Test leads triaged in HubSpot: owner, stage, call task; "Triage leads from the last hour" runs in under a minute.
 - By the demo: out/routing-rules.md and out/triage-<date>.md; The inbound triage agent on a loop; Stretch: a HubSpot workflow for a real-time trigger.
-- Stuck? Ask Geoffrey in the room about building the form or a workflow in HubSpot (he will find you the right person), or about enriching and tiering leads in Clay.
+- Stuck? Ask someone in the room. François (HubSpot) helps with the form and the workflow; Geoffrey (Clay) helps with enrichment and tiering.
 
 ## Ready answers for this use case
 
-- **Can it fire the second a form is submitted?** That needs a HubSpot workflow (ask Geoffrey in the room and he will find you the right person). The pack triages on demand in under a minute, or every hour with /loop.
+- **Can it fire the second a form is submitted?** That needs a HubSpot workflow (ask François from HubSpot in the room). The pack triages on demand in under a minute, or every hour with /loop.
 - **How do we make tiers permanent in HubSpot?** create-icp-tiers or build-lead-scoring write a property on every record. They need a HubSpot service key and run in your own terminal, on your own portal only.
 - **How do we route by country or round robin?** Give hubspot-lead-triage the owner rule in one sentence, for example "Spain to Ana, UK to Tom, the rest round robin".
-- **What about attribution?** close-the-loop writes lemlist replies and engagement back as notes and lifecycle changes; full attribution reporting is a HubSpot setup question: ask Geoffrey in the room and he will find you the right person.
+- **What about attribution?** close-the-loop writes lemlist replies and engagement back as notes and lifecycle changes; full attribution reporting is a HubSpot setup question: ask François from HubSpot in the room.
 - **Can inbound leads be matched to accounts we're already working?** Yes: the dedupe matches on email, then company domain, so a new lead at a known company comes back known_company with its owner.
 
 Plus the common answers in `SKILL.md`.
