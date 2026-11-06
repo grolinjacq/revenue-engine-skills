@@ -6,7 +6,7 @@ You don't need to name a skill: say what you want and Claude picks one. To force
 | Skill | What it does |
 |---|---|
 | `hackathon-setup` | Reads your website and proposes your target and outreach for you to confirm or change, then your stack, the installs, the sign-ins, checking every connection. Runs on first launch. |
-| `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in CSVs from other tools. |
+| `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in the CRM or outreach tool you named at setup, or a CSV from any tool. |
 | `event.md` | Not a skill: the organisers' facts (demo portal, client ID, codes) that setup reads. |
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |
 | `workshop` | See one of 4 guided demos on sample data through your live tools (meetings from cold outreach, AI research and qualification, inbound routing, a new market), with answers to the usual questions, then switch to your own data. Claude offers the menu after setup; later, ask "what can you do?". |

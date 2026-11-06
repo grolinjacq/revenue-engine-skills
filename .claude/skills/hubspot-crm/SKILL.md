@@ -63,7 +63,7 @@ notes: <one or two lines on anything surprising>
 ## Job C: write back (used by `close-the-loop`)
 
 - Create a contact only if no contact with that email exists. Associate it to the company by domain; create the company only if none matches.
-- Log engagement as a note on the contact, not by overwriting properties. Start the note with `[lemlist]`.
+- Log engagement as a note on the contact, not by overwriting properties. Start the note with `[<team>][<tool>]`, for example `[acme][lemlist]`.
 - Set lifecycle stage forward only (subscriber to lead to MQL to SQL), never backwards.
 - Create a deal only when the user says so, or when a reply is tagged interested and the user approved deal creation for this run.
 - Before any write, read `crm_mode` in `team-profile.md`: if `read-only`, write nothing and offer a CSV of the planned changes instead.

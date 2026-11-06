@@ -66,6 +66,9 @@ The judges give a bonus for an agent. Two easy routes:
 | HubSpot connector missing after setup | Logged in with an API key? Run `/login` with your Claude account, or ask the organisers for the HubSpot client ID (path B) |
 | Clay plugin won't install (network) | Add the Clay connector at claude.ai/settings/connectors instead, then restart |
 | Your leads come from Apollo or another tool | "Here's my CSV": Claude maps the columns and lists the rows it dropped |
+| You named HeyReach, Instantly or another outreach tool at setup | Claude writes the sequence and `out/outreach-import.csv`; you import it and click launch in your tool. Lemlist is the only tool where Claude builds the campaign itself |
+| You named Pipedrive, Salesforce, Odoo or another CRM at setup | Claude reads it (read-only, or from its CSV export) and writes CRM updates to `out/crm-import.csv` for you to import |
+| Claude used, or offered to use, a tool you never named | Stop it and say so: it should only use the tools in `team-profile.md`. Re-run `set me up` to check the stack |
 | Lemlist channel not allowed | Ask the Lemlist team for the one-week multi-channel code |
 | Clay's `campaigns` skill answered instead of Lemlist | Clay also has email campaigns. Say "in lemlist", or start with `/lemlist-campaign` |
 | Claude picked the wrong skill | Start your message with the skill name, for example `/hubspot-crm` |

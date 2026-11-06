@@ -2,7 +2,7 @@
 
 > Claude: if this session was not started in this folder (you cloned it, or opened it from its parent; a `cd` doesn't count), stop. Tell the user: "This workspace only works in a session started on its own folder: the Lemlist server, the permission gates and the Clay plugin load only then. Start a new session on this folder (Desktop app: quit fully and reopen on it; terminal: `cd` into it, then `claude`; claude.ai/code: a new session with this repository), then type `set me up`." Ask no setup question, write no file, run no tool CLI and call no connector here, even if asked to carry on.
 
-One folder that gives Claude Code every skill for the day, set up for your team. HubSpot (source of truth), Clay (lists and enrichment) and Lemlist (multi-channel outreach), connected through Claude. Using other tools? They plug in too (see "Your own stack").
+One folder that gives Claude Code every skill for the day, set up for your team. HubSpot (source of truth), Clay (lists and enrichment) and Lemlist (multi-channel outreach), connected through Claude. Already have a CRM or outreach tool? Name it at setup and Claude will use it. Clay can slot in alongside (see "Your own stack").
 
 ## Before you start
 
@@ -22,7 +22,7 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
    - macOS or Linux, in Terminal: `curl -fsSL https://claude.ai/install.sh | bash`
    - Windows, in PowerShell: `irm https://claude.ai/install.ps1 | iex`
 2. Get the folder: on GitHub, click the green **Code** button, then **Download ZIP**, and unzip it (or `git clone https://github.com/grolinjacq/revenue-engine-skills`). Then open a terminal in it (Windows: open the folder, then type `powershell` in the address bar) and run `claude`. In the Desktop app, open the folder instead. Open the folder that contains `CLAUDE.md`: a GitHub ZIP often unzips as `revenue-engine-skills-main` inside another `revenue-engine-skills-main`, so go one level down. If Claude doesn't mention setup when you say hello, you're in the wrong folder. Asked Claude to clone it for you? Start a new session on the cloned folder: carrying on in the session that cloned it (opened on the parent folder) leaves the Lemlist server, the permission gates and the Clay plugin unloaded, and setup will stop and ask you to reopen.
-3. Trust the folder, and approve the Lemlist server and the Clay plugin when asked. If your own Claude account has outbound plugins or connectors (HeyReach, Instantly, a personal list-building plugin), consider turning them off for the day: Claude won't use them for the loop, but they add noise.
+3. Trust the folder, and approve the Lemlist server and the Clay plugin when asked. Already have a CRM or outreach tool? Name it at setup and Claude will use it. Clay can slot in alongside. Claude never uses a CRM or outreach tool you didn't name.
 4. Type `set me up`. Claude checks your machine and asks for your company's website plus 4 quick questions (including your stack). It reads your site and proposes who to target and how to reach them: confirm it, edit it, or name a different target (a new country, a new segment). Then it installs what's needed and walks you through the sign-ins.
 5. Optional, 10 minutes: type `make it ours`. Claude learns your company, product and voice, so one spoken sentence is enough from then on.
 
@@ -40,15 +40,17 @@ Everything else (installing the Clay plugin and CLI, Python tools, checking each
 
 ## Your own stack
 
-The loop passes files from step to step in `out/`, so any step can use another tool:
+Already have a CRM or outreach tool? Name it at setup and Claude will use it. Clay can slot in alongside. HubSpot, Clay and Lemlist are the tested path today; with any other tool, Claude reads it (through its Claude connector if it has one, or its CSV export) and prepares everything, and you do the final import or launch click yourself.
 
-| Step | Event default | Bring your own |
+| Step | Tested path | Your own tool |
 |---|---|---|
-| CRM | HubSpot demo portal | Salesforce, Pipedrive, Attio...: use the demo portal for today and import a CSV of your data, or let Claude read your CRM through its connector (read-only) |
-| Lists and enrichment | Clay | Apollo, Lusha, Sales Navigator...: drop in the CSV export, Claude maps the columns |
-| Outreach | Lemlist | HeyReach, Gmail, Instantly...: Claude writes the sequence and an import file |
+| CRM | HubSpot (event portal or your own) | Pipedrive, Salesforce, Attio, Odoo...: Claude reads it (or its CSV export) to find your best customers and skip people you already have. Updates come back as a file you import. Want a live update for the demo? Add the event's HubSpot portal too |
+| Lists and enrichment | Clay | Apollo, Lusha, Sales Navigator...: drop in the CSV export, Claude maps the columns, and Clay can enrich it |
+| Outreach | Lemlist (Claude builds the campaign, paused) | HeyReach, Instantly, Smartlead...: Claude writes the messages and the list of people to import, and you click launch |
 
-Working on your company's real CRM? Setup asks whether to use it read-only. If the event's demo portal is shared between teams, don't import your real customer data into it: Claude keeps your own data in your folder (`out/`) instead.
+For the loop, Claude only uses the tools you name at setup, checked by their address, not their name: an outreach tool or CRM you didn't name is never used, even if it's switched on in your Claude account.
+
+Working on your company's real CRM? Your own CRM is always read-only here, and if it's a HubSpot portal setup asks whether to use it read-only. If the event's demo portal is shared between teams, don't import your real customer data into it: Claude keeps your own data in your folder (`out/`) instead.
 
 ## What's inside
 

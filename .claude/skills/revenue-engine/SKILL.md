@@ -21,13 +21,13 @@ Every step writes its artefact into `out/`. If an artefact already exists, say w
 
 ## Step contracts (how other tools plug in)
 
-Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as long as its artefact matches (never by a connector the team didn't declare: Tool identity in `CLAUDE.md`):
+Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as long as its artefact matches (never by a connector the team didn't declare: Tool identity in `CLAUDE.md`). A declared tool other than HubSpot, Clay or Lemlist is untested: Claude reads it and prepares files, and the team does the import or the launch ("Tested and untested tools" in `CLAUDE.md`).
 
-- `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through that CRM's connector if one is on (read-only), or from a CSV export of closed-won deals, or from the team's website confirmed by the team (`hackathon-setup` steps 1b and 1c, `source: website`), or from the user's words.
+- `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through the declared CRM's verified connector (`tools: other` in `team-profile.md`, read calls only), or from a CSV export of closed-won deals, or from the team's website confirmed by the team (`hackathon-setup` steps 1b and 1c, `source: website`), or from the user's words.
 - `out/leads.csv`: header `email,first_name,last_name,job_title,company_name,company_domain,linkedin_url,country,employees,industry,personalization`. Optional trailing columns `fit_score,fit_reason,fit_source` (from `clay-build-list` scoring) travel with the rows, and so does any other enrichment column (for example `segment`, `latest_news`, `current_challenges`, `customer_list`): later steps use them as copy variables. From Apollo, Lusha, Sales Navigator or any CSV: normalise it (below).
-- `out/leads-new.csv`: `out/leads.csv` plus `hubspot_status` and `hubspot_owner`. Without HubSpot: ask for a CSV export of the team's CRM contacts and accounts (for example from Salesforce), match on email, then company domain, and fill the same two columns (`new`, `known_contact`, `known_company`; owner from the export). No export: skip, say so, and mark every row `unchecked`.
-- `out/campaign.md`: campaign name, id or tool, lead count, sequence and copy. With another outreach tool: the sequence plus `out/outreach-import.csv` in that tool's import format.
-- `out/sync-log.md`: what changed in the CRM. Without HubSpot: `out/crm-import.csv` for the team to import.
+- `out/leads-new.csv`: `out/leads.csv` plus `hubspot_status` and `hubspot_owner`. Without HubSpot: read the team's contacts and accounts through the declared CRM's verified connector (read calls only), or ask for a CSV export of them (for example from Salesforce or Odoo), match on email, then company domain, and fill the same two columns (`new`, `known_contact`, `known_company`; owner from the export). No export: skip, say so, and mark every row `unchecked`.
+- `out/campaign.md`: campaign name, id or tool, lead count, sequence and copy. With another outreach tool: the sequence plus `out/outreach-import.csv` in that tool's import format; the team imports it and launches.
+- `out/sync-log.md`: what changed in the CRM. Without HubSpot (including a declared CRM read through its connector): `out/crm-import.csv` for the team to import.
 
 ### Normalising a CSV from anywhere
 
@@ -53,14 +53,14 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 - Counts: "30 leads" means 30 people, so 15 companies at 2 people each unless the user says otherwise. "30 companies" means companies at the default people per company. Say which in the plan line.
 - "Push to lemlist" or "build a campaign" includes step 3 (dedupe, read-only) unless the user says to skip it.
 - Copy, angles, personas or sequence strategy: the Lemlist skills (`campaign-angle-finder`, `copywriting-*`, `linkedin-sequence`, `outbound-campaign-architect`; listed in `SKILLS.md`), in `copy_language`, then step 4.
-- Outreach goes through Lemlist when the team has it; Clay's `campaigns` skill is not used for outreach here.
+- Outreach goes through Lemlist when the team has it; Clay's `campaigns` skill is not used for outreach here. With another declared outreach tool, `lemlist-campaign` prepares the lead file and the sequence and the team launches it in their tool.
 - "Did anyone reply?", "update the CRM": step 5.
 - Day-to-day HubSpot work outside the loop goes to the official HubSpot skills (listed in `SKILLS.md`): a call or meeting to prep, `hubspot-call-prep`; one person's record, `hubspot-contact-lookup`; pipeline and forecast, `hubspot-pipeline-pulse`; logging a call, `hubspot-log-call`; the day's priorities, `hubspot-daily-brief`; a follow-up email to one contact, `hubspot-follow-up`; importing contacts into HubSpot, `hubspot-import-contacts`; a quick lookup or single change, `hubspot`. A whole account brief stays `hubspot-account-brief`.
 - One spoken sentence that names a goal ("find 20 CFOs at Spanish fintechs and get a campaign ready"): restate it as the steps you will run, in one line, and start. Ask only what blocks the first step.
 
 ## Rules for the whole loop
 
-1. Check connections first, for the tools in the team's stack only, by endpoint (Tool identity in `CLAUDE.md`): the HubSpot endpoint's tools, the `lemlist` server's tools, `clay whoami` (or the claude.ai connector called exactly Clay). A connector that does the same job under another name (HeyReach for outreach, Salesforce or Dex for the CRM, Apollo for lists) does not count. If one is missing or `pending`, say "Connect <tool> first", offer `hackathon-setup` for that tool, or the CSV route for that step, and stop that step there. Never fake a step with invented data or another connector.
+1. Check connections first, for the tools in the team's stack only, by endpoint (Tool identity in `CLAUDE.md`): the HubSpot endpoint's tools, the `lemlist` server's tools, `clay whoami` (or the claude.ai connector called exactly Clay), and each tool declared as `other: <name>` at the endpoint recorded for it under `tools: other` in `team-profile.md` (one read call). A connector that does the same job under another name (HeyReach for outreach, Salesforce or Dex for the CRM, Apollo for lists) does not count. If one is missing or `pending`, say "Connect <tool> first", offer `hackathon-setup` for that tool, or the CSV route for that step, and stop that step there. Never fake a step with invented data or another connector.
 2. Nothing leaves the building without a yes. Campaigns are created paused. No campaign start, email or LinkedIn message without the user's explicit go in the current step; no CRM write without a go (over 10 records, show the plan and batch by 10).
 3. Respect `crm_mode`. With `read-only`, steps 1 and 3 read, step 5 writes a CSV instead of the CRM.
 4. Keep a run log. Append one line per step to `out/run-log.md`: time, step, tool used, counts in and out, anything skipped. Judges see this.
