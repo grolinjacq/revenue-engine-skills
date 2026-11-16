@@ -16,7 +16,7 @@ default_lists: clay
 default_outreach: lemlist
 
 # Accounts and credits. Hosts give no tool credits at this workshop.
-clay_signup_url: <Clay promo sign-up link for this workshop (the promo code is in the link)>
+clay_signup_url: <Clay promo sign-up link: the host gives it in the room or on the slides; it holds a promo code, so it is kept out of this public repo>
 clay_credits: 2,000 promo credits for new sign-ups through clay_signup_url
 clay_credits_form: none
 lemlist_trial: 14-day free trial (Multichannel Expert), no card. Sign up ON THE DAY with a work email (personal emails get no starter credits). After 14 days the account drops to Freemium and can't send.
