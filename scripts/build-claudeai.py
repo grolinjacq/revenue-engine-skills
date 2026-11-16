@@ -40,7 +40,8 @@ HEADER = (
 )
 
 # Anything that looks like a promo code or a promo sign-up link must never ship.
-LEAK = re.compile(r"promoCode=|[?&]source=clay|utm_content=|coupon[:=]\s*[A-Z0-9]{6,}", re.I)
+LEAK = re.compile(r"promoCode=|[?&]source=clay|utm_content=|coupon[:=]\s*[A-Z0-9]{6,}|get\.lemlist\.com/\w"
+                  r"|\b[A-Z]{4,}LEMLIST\b|\bLEMLIST[A-Z0-9]{4,}\b")
 
 
 def main() -> int:
