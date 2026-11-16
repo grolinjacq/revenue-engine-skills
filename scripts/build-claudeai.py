@@ -15,6 +15,7 @@ dist/ is not committed: hand the ZIP to attendees from the workshop's access car
 """
 import re
 import shutil
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -40,8 +41,8 @@ HEADER = (
 )
 
 # Anything that looks like a promo code or a promo sign-up link must never ship.
-LEAK = re.compile(r"promoCode=|[?&]source=clay|utm_content=|coupon[:=]\s*[A-Z0-9]{6,}|get\.lemlist\.com/\w"
-                  r"|\b[A-Z]{4,}LEMLIST\b|\bLEMLIST[A-Z0-9]{4,}\b")
+LEAK = re.compile(r"(?i:promoCode=|[?&]source=clay|utm_content=|coupon[:=]\s*[A-Z0-9]{6,}|get\.lemlist\.com/\w"
+                  r"|lemlist\.com/\S*[?&](via|ref|code|coupon)=)|\b[A-Z0-9]{3,}LEMLIST[A-Z0-9]*\b|\bLEMLIST[A-Z0-9]{4,}\b")
 
 
 def main() -> int:
@@ -60,6 +61,12 @@ def main() -> int:
 
     leaks = [str(p.relative_to(stage)) for p in stage.rglob("*") if p.is_file()
              and LEAK.search(p.read_text(encoding="utf-8", errors="ignore"))]
+    try:  # tracked files too: this repo is public
+        tracked = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split()
+    except (OSError, subprocess.CalledProcessError):
+        tracked = []
+    leaks += [t for t in tracked if (ROOT / t).is_file() and t != "scripts/build-claudeai.py"
+              and LEAK.search((ROOT / t).read_text(encoding="utf-8", errors="ignore"))]
     if leaks:
         print("Refusing to build: promo code or promo link found in " + ", ".join(leaks), file=sys.stderr)
         return 1

@@ -12,7 +12,7 @@ Clean list→
 Email + LinkedIn sequence→
 lemlist, paused→
 Replies and CRM
-Safe-mode example. Karvon AI, a fictional Tashkent startup with AI route planning for freight fleets (40 customers in Uzbekistan), sells in its home market to freight and logistics companies in Uzbekistan. Sample leads: 20 fictional Uzbek logistics firms, with job titles in English and Russian. One lead asks to be removed, one has no email and no LinkedIn URL, and one has a note that tries to give the assistant orders. All three should get caught.
+Safe-mode example.  Karvon AI, a fictional Tashkent startup with AI route planning for freight fleets (40 customers in Uzbekistan), sells in its home market to freight and logistics companies in Uzbekistan. Sample leads: 20 fictional Uzbek logistics firms, with job titles in English and Russian. One lead asks to be removed, one has no email and no LinkedIn URL, and one has a note that tries to give the assistant orders. All three should get caught.
 
 Guardrails for this playbook (from test runs)
 
@@ -24,7 +24,7 @@ Guardrails for this playbook (from test runs)
 
 ### Start the session
 assistant only
-First paste the session rules, then the prompt below.
+First paste the session rules , then the prompt below.
 ```
 
 Own data: You're my GTM assistant for our first outbound campaign. The goal is booked calls. Our website: [URL]. Our home market: [COUNTRY]. Today is [DATE].
@@ -57,7 +57,7 @@ Prompt: Define our ideal customer profile for outbound. Use our website and our 
 Mark what you found versus what you inferred. End with a short ICP block I can reuse. Then stop and let me change it.
 ```
 
-You getan ICP block you approve. Save it in a file.
+You get an ICP block you approve. Save it in a file.
 
 Safe mode
 Target: freight and logistics companies in Uzbekistan with 20 to 500 trucks.
@@ -80,7 +80,7 @@ Prompt: For this ICP, define the buyer persona:
 End with a short persona block I can reuse. Then stop and let me change it.
 ```
 
-You geta persona block you approve. Save it next to the ICP block.
+You get a persona block you approve. Save it next to the ICP block.
 
 Skills that run this step
 persona-definer.
@@ -109,7 +109,7 @@ Use the companies in the sample file below as the Clay result (take the first 15
 
 Skills that run this step
 clay-build-list, or the Clay plugin skill searches in Claude Code.
-You get15 scored companies you approved.
+You get 15 scored companies you approved.
 
 4
 
@@ -135,7 +135,7 @@ Paste the sample leads (below) as the people Clay would have returned.
 
 Skills that run this step
 clay-build-list.
-You geta lead CSV with names, titles, work emails and LinkedIn URLs.
+You get a lead CSV with names, titles, work emails and LinkedIn URLs.
 
 5
 
@@ -152,7 +152,7 @@ Prompt: Clean this lead list before we write to anyone:
 Don't change anything in the CRM. Tell me how many rows you removed, for each reason, and how many are left per channel.
 ```
 
-You geta clean list (aim for 20+) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
+You get a clean list (aim for 20+) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
 
 Skills that run this step
 crm checks the list against your CRM (connector or CSV export).
@@ -177,7 +177,7 @@ Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the 
 3. Check the copy against a plain checklist (short, one ask, no hype) and fix what fails.
 ```
 
-You get3 angles, then 6 steps over 9 days: 3 emails with subject lines, a connection request and a LinkedIn message.
+You get 3 angles, then 6 steps over 9 days: 3 emails with subject lines, a connection request and a LinkedIn message.
 
 Skills that run this step
 campaign-angle-finder picks the angle. outbound-campaign-architect sets the steps and channels. One of copywriting-vp-sequence, copywriting-manager-sequence or copywriting-ic-sequence writes the emails, by seniority. linkedin-sequence writes the LinkedIn steps. copywriting-refiner checks the copy.
@@ -202,7 +202,7 @@ The assistant writes the import CSV and the campaign it would have created. Noth
 
 Skills that run this step
 lemlist-campaign.
-You geta paused email and LinkedIn campaign of 20+ leads. Open it in lemlist and check it says Paused. When you're ready, you press launch yourself.
+You get a paused email and LinkedIn campaign of 20+ leads. Open it in lemlist and check it says Paused. When you're ready, you press launch yourself.
 
 8
 
@@ -222,7 +222,7 @@ Later: the replies check (day 3, then weekly)
 Replies check: Replies check, day [N]. Today is [DATE]. Here are the replies from lemlist (email and LinkedIn): [PASTE]. Here is dnc.csv: [PASTE]. Sort each reply (interested, not now, wrong person, no, remove me). Add every no and remove me to dnc.csv, give me the updated file and the names to unsubscribe in lemlist. Draft an answer to each of the others, as drafts only; for "interested", give my booking link or my slots, never invented times. Give me a CRM import CSV for booked calls. If there are no replies, say "no replies" and stop.
 ```
 
-You geta CRM import file, a daily checklist and a reply plan aimed at booking calls.
+You get a CRM import file, a daily checklist and a reply plan aimed at booking calls.
 
 Skills that run this step
 close-the-loop writes the CRM import from campaign results, and you run it again after a week. reply-handler drafts answers to replies.
