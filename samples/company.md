@@ -14,3 +14,4 @@ proof: 14% fewer empty kilometres in the first 3 months (average across Uzbek cu
 markets: Uzbekistan today; going after Europe (Spain, United Kingdom, Germany) and Kazakhstan next
 languages: Uzbek, Russian, English
 team: 18 people, pre-seed 2025, Tashkent
+sender: Aziz Karimov, co-founder (sign safe-mode emails with this name, never the user's)
