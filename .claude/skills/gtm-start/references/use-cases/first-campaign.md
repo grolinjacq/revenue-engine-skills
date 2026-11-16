@@ -12,7 +12,7 @@ Clean list→
 Email + LinkedIn sequence→
 lemlist, paused→
 Replies and CRM
-Safe-mode example.  Karvon AI, a fictional Tashkent startup with AI route planning for freight fleets (40 customers in Uzbekistan), sells in its home market to freight and logistics companies in Uzbekistan. Sample leads: 20 fictional Uzbek logistics firms, with job titles in English and Russian. One lead asks to be removed, one has no email and no LinkedIn URL, and one has a note that tries to give the assistant orders. All three should get caught.
+Safe-mode example. Karvon AI, a fictional Tashkent startup with AI route planning for freight fleets (40 customers in Uzbekistan), sells in its home market to freight and logistics companies in Uzbekistan. Sample leads: 20 fictional Uzbek logistics firms, with job titles in English and Russian. One lead asks to be removed, one has no email and no LinkedIn URL, and one has a note that tries to give the assistant orders. Two get removed and one gets flagged.
 
 Guardrails for this playbook (from test runs)
 
@@ -24,12 +24,14 @@ Guardrails for this playbook (from test runs)
 
 ### Start the session
 assistant only
-First paste the session rules , then the prompt below.
+First paste the session rules, then the prompt below.
 ```
 
 Own data: You're my GTM assistant for our first outbound campaign. The goal is booked calls. Our website: [URL]. Our home market: [COUNTRY]. Today is [DATE].
 1. Read the site and tell me in 5 lines what we sell, to whom, and our strongest proof point (a number if there is one).
 2. Tell me which of these you can reach in this chat: Clay, lemlist, my CRM ([NAME]). For each one you can't reach, say so. We'll pass files for that step.
+3. Ask me my lemlist plan (free period, Email or Multichannel) and whether my LinkedIn is connected through the lemlist Chrome extension. If I don't confirm both, plan email steps only.
+No web browsing? I'll paste my homepage and about text instead.
 Stop and wait for "next".
 ```
 
@@ -41,7 +43,7 @@ Company: Karvon AI, Tashkent. AI route and load planning for freight fleets of 2
 Stop after each step and wait for "next".
 ```
 
-Safe mode uses the sample file at the bottom of this playbook. Copy it with its Copy button and paste it into the chat. It is the only data used.
+Safe mode order: paste the session rules, then the safe mode rules under them, then this prompt, then the sample file at the bottom of this playbook. The sample is the only data used.
 
 1
 
@@ -94,7 +96,7 @@ Companies first, people second. You check the company list before spending credi
 
 Prompt: Using Clay, find 15 companies that match this ICP: [PASTE ICP BLOCK].
 Before spending any credits, tell me how many you'll use and wait for my "go".
-Before searching, drop my current customers and any company on my do-not-contact list. If my Clay credits look too low for 15 companies and 30 people, propose a smaller plan first.
+Before searching, drop my current customers, any company on my do-not-contact list, my removed-companies list and companies from my earlier campaigns: [PASTE, or: none yet]. If fewer than 15 new companies fit, tell me the number and offer to widen one filter; never pad. If my Clay credits look too low for 15 companies and 30 people, propose a smaller plan first.
 Score each company from 1 to 5 for fit, with one reason and its source link. Show me a table (company, domain, country, employees, industry, score, reason), and how many leads to expect. Then stop and let me remove any company before we look for people. Keep a list of removed companies and never bring them back. If I removed some, offer replacements with a new credit estimate and wait for "go".
 ```
 
@@ -105,7 +107,7 @@ Clay not connected? Do it in the Clay app
 - Paste it into the chat: "Here are the companies from Clay. Score each 1 to 5 against the ICP."
 
 Safe mode
-Use the companies in the sample file below as the Clay result (take the first 15). Ask the assistant to score them. The sample has one person per company.
+Use all 20 companies in the sample file below as the Clay result. Score them and approve all 20. The sample has one person per company.
 
 Skills that run this step
 clay-build-list, or the Clay plugin skill searches in Claude Code.
@@ -125,13 +127,14 @@ Give me a CSV with these columns: email, first_name, last_name, job_title, compa
 
 Clay not connected? Do it in the Clay app
 
+- First delete from your Clay table every company you removed, every customer and every company in dnc.csv (or select only the approved rows). Run the next steps only on those rows.
 - In your company table: add Find People at this company, with the persona titles (English and local).
 - Enrich: Work Email, then LinkedIn profile.
 - Export the CSV and paste it into the chat: "Here's my Clay export. Put it in the column format from step 4."
 Check your Clay credits first. A found email costs credits.
 
 Safe mode
-Paste the sample leads (below) as the people Clay would have returned.
+Paste the sample leads (below) as the people Clay returned for the 20 approved companies, one per company.
 
 Skills that run this step
 clay-build-list.
@@ -164,9 +167,9 @@ assistant
 One angle, two channels, one goal: a 20-minute call. Email and LinkedIn take turns over 9 days.
 ```
 
-Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the pain, and why it fits now. I'll pick one.
-2. Then write a multichannel sequence in [LANGUAGE] for booking a 20-minute call. If the list mixes seniority levels, write for the biggest group and tell me which:
-- Day 0: LinkedIn profile visit
+Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the pain, and why it fits now. Then stop and wait for my choice.
+2. After I choose, write a multichannel sequence in [LANGUAGE] for booking a 20-minute call. If the list mixes seniority levels, write for the biggest group and tell me which:
+- Day 0: LinkedIn profile visit (write the LinkedIn steps only if I confirmed LinkedIn in step 0)
 - Day 1: LinkedIn connection request (no note, or a note under 200 characters with no pitch)
 - Day 1: email 1, under 90 words, one question, no links
 - Day 4: email 2, a new angle or proof point, with my booking link [LINK] or two slots I give you [SLOTS]; if I have neither, end with "Reply with a day this week or next that suits you"
@@ -177,7 +180,7 @@ Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the 
 3. Check the copy against a plain checklist (short, one ask, no hype) and fix what fails.
 ```
 
-You get 3 angles, then 6 steps over 9 days: 3 emails with subject lines, a connection request and a LinkedIn message.
+You get 3 angles, then 6 steps over 9 days: a profile visit, a connection request, 3 emails with subject lines and a LinkedIn message. If you have email only, the emails must not mention LinkedIn.
 
 Skills that run this step
 campaign-angle-finder picks the angle. outbound-campaign-architect sets the steps and channels. One of copywriting-vp-sequence, copywriting-manager-sequence or copywriting-ic-sequence writes the emails, by seniority. linkedin-sequence writes the LinkedIn steps. copywriting-refiner checks the copy.
@@ -188,7 +191,7 @@ campaign-angle-finder picks the angle. outbound-campaign-architect sets the step
 lemlist
 ```
 
-Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL] and LinkedIn steps from my connected LinkedIn account. Make the Day 6 LinkedIn message run only if the invite was accepted. Before creating it, show me the campaign name, the number of leads, the sending days and all 6 steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Don't start it. After creating it, read back its status and the lead count per channel.
+Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Make the Day 6 LinkedIn message run only if the invite was accepted. Before creating it, show me the campaign name, the number of leads, the sending days and all 6 steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
 ```
 
 lemlist not connected? Do it in the lemlist app
@@ -202,7 +205,7 @@ The assistant writes the import CSV and the campaign it would have created. Noth
 
 Skills that run this step
 lemlist-campaign.
-You get a paused email and LinkedIn campaign of 20+ leads. Open it in lemlist and check it says Paused. When you're ready, you press launch yourself.
+You get a paused email and LinkedIn campaign of 20+ leads. Open it in lemlist and check it says Paused. When you're ready, connect your mailbox and press launch yourself, before your free lemlist period ends.
 
 8
 
@@ -211,15 +214,15 @@ your CRM, import file
 This closes the loop. Your CRM stays the place where you see every lead and every booked call.
 ```
 
-Prompt: 1. Make a CSV I can import into [CRM] with the leads that are in the campaign and their companies, tagged "[CAMPAIGN NAME]", lifecycle stage Lead. Leave out everyone in dnc.csv and the linkedin-only rows held back.
-2. Write a one-page watch list for the first 2 weeks: what to check every day in lemlist (replies, LinkedIn accepts, bounces, unsubscribes), the numbers that mean it works and the numbers that mean I should change the copy or the list.
+Prompt: 1. Make a CSV I can import into [CRM] with the leads that are in the campaign and their companies, tagged "[CAMPAIGN NAME]", stage Lead (or your CRM's equivalent; with no CRM, a leads-tracker CSV). Leave out everyone in dnc.csv and the linkedin-only rows held back.
+2. Write a one-page watch list for the first 2 weeks: what to check every day in lemlist (replies, LinkedIn accepts, bounces, unsubscribes), the numbers that mean it works and the numbers that mean I should change the copy or the list (label them "rule of thumb, not a measured benchmark").
 3. Show me how you will sort replies (interested, not now, wrong person, no, remove me) and what you will draft for each. For "interested", the draft gives my booking link or the slots I gave you, never invented times. Replies stay drafts: I send them. Anyone who says no or remove me goes on the do-not-contact list.
 ```
 
 Later: the replies check (day 3, then weekly)
 ```
 
-Replies check: Replies check, day [N]. Today is [DATE]. Here are the replies from lemlist (email and LinkedIn): [PASTE]. Here is dnc.csv: [PASTE]. Sort each reply (interested, not now, wrong person, no, remove me). Add every no and remove me to dnc.csv, give me the updated file and the names to unsubscribe in lemlist. Draft an answer to each of the others, as drafts only; for "interested", give my booking link or my slots, never invented times. Give me a CRM import CSV for booked calls. If there are no replies, say "no replies" and stop.
+Replies check: Replies check, day [N]. Today is [DATE]. Here are the replies from lemlist (email and LinkedIn): [PASTE]. Replies I already handled: [PASTE, or: none]. Here is dnc.csv: [PASTE]. Only sort new replies; if none are new, say "no new replies" and stop. Out-of-office replies get no draft (note the return date). A footer "unsubscribe" link is not an opt-out. If unsure between no and not now, treat it as no and show me the original text with a translation. Draft each answer in the sender's language with an English line under it. If someone points to a colleague, clean that person like step 5 and put them in a new paused campaign only. If a prospect proposes a time, draft "Let me confirm and come back to you". Sort each reply (interested, not now, wrong person, no, remove me). Add every no and remove me to dnc.csv, give me the updated file and the names to unsubscribe in lemlist. Draft an answer to each of the others, as drafts only; for "interested", give my booking link or my slots, never invented times. A call is booked when the lead named a time I accepted or used my booking link. For "not now", draft a short reply that asks when to come back and note the date. Give me a CRM import CSV (UTF-8) only for new calls I confirm as booked, and the updated handled-replies list to save. If there are no replies, say "no replies" and stop.
 ```
 
 You get a CRM import file, a daily checklist and a reply plan aimed at booking calls.
