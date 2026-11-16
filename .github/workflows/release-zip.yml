@@ -1,0 +1,35 @@
+# Publishes the claude.ai skill ZIP (gtm-start.zip) as a GitHub Release asset.
+# Run it from the Actions tab ("Release claude.ai ZIP" > Run workflow) with a tag such as tashkent-2026-11.
+# The build refuses to package any promo code or promo link (scripts/build-claudeai.py).
+# Stable download URL: https://github.com/<owner>/<repo>/releases/download/<tag>/gtm-start.zip
+name: Release claude.ai ZIP
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag, one per workshop fork (for example tashkent-2026-11)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the ZIP (fails on any promo code or link)
+        run: python3 scripts/build-claudeai.py
+      - name: Check the Codex copy is in sync
+        run: python3 scripts/build-codex.py --check
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          case "$TAG" in *[!a-z0-9.-]*|"") echo "Tag must be lowercase letters, digits, dots and dashes"; exit 1;; esac
+          gh release create "$TAG" dist/gtm-start.zip \
+            --target "$GITHUB_SHA" \
+            --title "gtm-start skill for claude.ai ($TAG)" \
+            --notes "Upload gtm-start.zip in claude.ai: Settings > Capabilities > turn on Create and edit files, then Customize > Skills > + > Create skill > Upload a skill. New chat, type: start here. Works on every Claude plan. No promo codes inside: those are on your workshop's access card."

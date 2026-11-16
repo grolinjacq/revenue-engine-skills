@@ -24,3 +24,7 @@ The pack has two layers:
 | `language` | the language the assistant talks to attendees in |
 
 Decks, briefs and use-case pages are tailored per workshop and live outside this repo.
+
+## Publish the claude.ai ZIP
+
+After `event.md` is set for the fork and merged to main: Actions > "Release claude.ai ZIP" > Run workflow, tag `<fork>` (for example `tashkent-2026-11`). The attendee link is `https://github.com/<owner>/<repo>/releases/download/<fork>/gtm-start.zip`. Promo codes stay on the access card: the build refuses to package one.

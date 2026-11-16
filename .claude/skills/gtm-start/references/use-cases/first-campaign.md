@@ -46,7 +46,7 @@ Mark what you found versus what you inferred. End with a short target block I ca
 
 You geta target block (companies and one person) that you approve.
  Skills that run this step
-`icp-definer` for the companies, `persona-definer` for the person. Add `hubspot-crm` if your CRM is HubSpot and you want the ideal customer read from closed deals.
+`icp-definer` for the companies, `persona-definer` for the person. Add `crm` if you want the ideal customer read from your closed deals (any CRM, or its export).
 
  2
 ### Build the list in Clay
@@ -85,7 +85,7 @@ Don't change anything in the CRM. Tell me how many rows you removed, for each re
 
 You geta clean list (aim for 20+) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
  Skills that run this step
-`hubspot-crm` for a HubSpot check. With another CRM, export contacts and companies to CSV and paste it in.
+`crm` checks the list against your CRM (connector or CSV export).
 
  4
 ### Find the angle and write the 3 emails

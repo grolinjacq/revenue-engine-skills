@@ -73,7 +73,7 @@ On the free plan, check your credits first. Company search costs far less than f
  Safe mode
 Paste the sample accounts (below). Ask: "Here are the accounts Clay would have returned. Show them as a table and flag any row that needs cleaning."
  Skills that run this step
-`hubspot-crm` to check the list against HubSpot. `clay-build-list` and the Clay plugin skill `searches` for a company search.
+`crm` to check the list against your CRM. `clay-build-list` and the Clay plugin skill `searches` for a company search.
 
 You geta list of 10 to 20 accounts, clean of customers and opt-outs. In safe mode, the removal row and the order-giving row are caught here.
 
@@ -122,7 +122,7 @@ PromptCopyScore each account from 1 to 5 using the approved rubric. For each one
 Tiers: A is 4 or 5 with a real signal. B is any score of 3 to 5 that is not tier A. C is below 3, or a no-go. An account with no signal can be tier B at best.
 Then, for the top 3 accounts, write a one-page brief: what they do, who we know there, the signal, the pain, and the next step. Don't change anything in my CRM.
  Skills that run this step
-`hubspot-account-brief` writes the one-page brief for the top accounts from HubSpot data. With another CRM, or in safe mode, ask the assistant to write the brief from the table and your files only.
+`crm-account-brief` writes the one-page brief for the top accounts from your CRM data. In safe mode, ask the assistant to write the brief from the table and your files only.
 
 You geta score, a reason and a tier for every account, plus briefs for the top three.
 
