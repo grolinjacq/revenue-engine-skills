@@ -24,6 +24,8 @@ lemlist_trial_code: none
 hubspot_demo_portal: none
 hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (admin skills stay read-only); this workshop provides no portal, so yes is the safe value
 hubspot_mcp_client_id: none
-claude_access: bring your own (Claude Pro or higher, or ChatGPT with Codex)
+claude_access: any Claude plan, Free included (upload the gtm-start skill ZIP in claude.ai), or Claude Code (paid plan) or Codex (included in ChatGPT plans) on this repo
+list_size: about 30 companies x up to 2 people; if the clean list ends under 20 leads, add 10 more companies
+in_session_never: connect a mailbox (homework), start or launch a campaign, send anything, buy domains, mailboxes or credits
 help: Geoffrey (mentor) and Sardorbek Axmedov (Plug and Play program manager)
 pack_version: 2026-11-16

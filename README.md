@@ -4,6 +4,16 @@
 
 One folder that turns Claude Code or Codex into an outbound GTM engine: find the right people in Clay, write the sequence, push it to lemlist (paused, nothing sent without your go), and log the results back to your CRM, whatever CRM you use, or none. Built for hands-on workshops; this workshop's settings are in `event.md`.
 
+## Start here: one drop, then type `start`
+
+| Your assistant | What you do | Plan needed |
+|---|---|---|
+| claude.ai (web or desktop chat) | Settings > Capabilities: turn on "Create and edit files". Then Customize > Skills > + > Create skill > Upload a skill, and upload `gtm-start.zip` (from your workshop's access card, or built with `python3 scripts/build-claudeai.py`). New chat, type `start here` (or `use gtm-start`). | Any, Free included |
+| Claude Code (desktop, terminal or claude.ai/code) | Open a session on this folder (claude.ai/code: pick this repository), type `start` | Paid Claude plan or Console |
+| Codex (app or CLI) | Unzip, open the folder, trust it, type `start` | Any ChatGPT plan with Codex |
+
+`start` runs the `gtm-start` flow: a 5-minute demo on made-up data, then questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist and your CRM, picking 1 to 3 use cases, and running them to a paused lemlist campaign. Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
+
 ## Try it first in safe mode (no accounts, 5 minutes)
 
 Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs the whole loop on a made-up company and 31 made-up leads (`samples/`): it qualifies the list, dedupes it against a sample CRM, writes the sequence, builds the lemlist import file for 20 leads, and handles 7 sample replies. Nothing touches a real tool, no credits are spent and nothing is sent; everything lands in `out/safe/`. When you're ready, say `switch to live` and connect your own tools.
@@ -22,7 +32,7 @@ Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use
 
 ## Before you start
 
-- **A paid Claude account**: Pro, Max, Team or Enterprise, or an Anthropic Console (API) account. The free Claude plan can't run Claude Code; pair up with a teammate who has one, or ask the organisers.
+- **For this folder (Claude Code)**: a paid Claude account (Pro, Max, Team or Enterprise) or an Anthropic Console (API) account. On the free Claude plan, use the `gtm-start.zip` skill in claude.ai instead (Start here, above).
 - **Only have the event's API credits?** Claim them into a Console account at platform.claude.com, then in Claude Code run `/login` and choose the Anthropic Console option. Every Claude reply then spends those credits, and HubSpot uses setup's path B (setup handles it).
 - **Log in with your Claude account, not an API key**, if you can. With an API key, the HubSpot and Clay connectors from your Claude settings don't load (setup will tell you what to do instead).
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.

@@ -21,3 +21,5 @@ clay_credits_form: <on that workshop's access card>   # workspace ID = the numbe
 help: <who to ask in the room>
 claude_access: <how participants without a paid Claude plan get access, or "bring your own">
 zip_version: 2026-11-03
+list_size: 25 companies x 2 people
+in_session_never: start or launch a campaign, send anything, buy domains or mailboxes

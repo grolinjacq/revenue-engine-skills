@@ -8,3 +8,4 @@ team-context.md
 __pycache__/
 *.pyc
 !.env.example
+dist/
