@@ -1,0 +1,21 @@
+# Codex project config for this workspace (loaded only when the folder is a trusted project).
+# Same server as .mcp.json for Claude Code, named `lm` because lemlist refuses OAuth sign-ins from a client whose
+# name contains "lemlist" (developer.lemlist.com/mcp/setup). Sign in with: codex mcp login lm
+# Do not add other servers here: the workspace rules (AGENTS.md, "Installing tools") forbid it.
+
+[mcp_servers.lm]
+url = "https://app.lemlist.com/mcp"
+# Every lemlist call asks first; nothing is sent without the user's go (AGENTS.md).
+default_tools_approval_mode = "prompt"
+# Tools that reach outside outreach, or buy things, are off in this workspace.
+disabled_tools = [
+  "create_in_crm",
+  "crm_search_and_connect",
+  "import_crm_leads_to_campaign",
+  "create_webhook",
+  "delete_webhook",
+  "call_api",
+  "purchase_domain",
+  "provision_mailboxes",
+  "configure_domain_dns",
+]

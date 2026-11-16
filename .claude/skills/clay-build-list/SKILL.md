@@ -16,6 +16,8 @@ Clay's plugin brings its own skills. This skill chains them for the loop and fix
 - `signals`: trigger-based filters (Advanced).
 - `clay`: Clay's own table of contents, if a team wants to go further.
 
+Safe mode (`mode: safe` in `team-profile.md`, or the request says so): don't call Clay and spend nothing. Follow `revenue-engine`, "Safe mode", step 2: `samples/leads.csv` stands in for Clay's results, and steps 6 to 8 below run on it into `out/safe/leads.csv`.
+
 ## Our defaults (edit these)
 
 Teams tune this block once, by hand or with `make-it-ours`; the steps below read it. A number the user says in the request ("thirty companies", "three people each") wins over the block for that run.

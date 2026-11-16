@@ -1,13 +1,14 @@
 # Every skill in this workspace
 
-You don't need to name a skill: say what you want and Claude picks one. To force one, start your message with its name, for example `/hubspot-account-brief`.
+Claude Code has every skill below. Codex has the engine skills (`.agents/skills/`: setup, the loop, Clay, lemlist, close-the-loop, the copy and strategy skills, `hubspot-crm`, `crm-duplicate-detector`). You don't need to name a skill: say what you want and Claude picks one. To force one, start your message with its name, for example `/hubspot-account-brief`.
 
 ## Start here
 | Skill | What it does |
 |---|---|
 | `hackathon-setup` | Reads your website and proposes your target and outreach for you to confirm or change, then your stack, the installs, the sign-ins, checking every connection. Runs on first launch. |
 | `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in the CRM or outreach tool you named at setup, or a CSV from any tool. |
-| `event.md` | Not a skill: the organisers' facts (demo portal, client ID, codes) that setup reads. |
+| `event.md` | Not a skill: this workshop's settings (default stack, links, trials, codes) that setup reads. Other workshops: `forks/`. |
+| Safe mode | Not a skill: say `safe mode` and `revenue-engine` runs the whole loop on `samples/`, no tools, nothing sent. |
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |
 | `workshop` | See one of 4 guided demos on sample data through your live tools (meetings from cold outreach, AI research and qualification, inbound routing, a new market), with answers to the usual questions, then switch to your own data. Claude offers the menu after setup; later, ask "what can you do?". |
 

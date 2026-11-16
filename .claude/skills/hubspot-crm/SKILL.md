@@ -57,7 +57,7 @@ notes: <one or two lines on anything surprising>
 
 1. Read `out/leads.csv`. Match each row against HubSpot contacts by email first, then against companies by domain.
 2. Split into three groups: new (no match), known company but new contact, already a contact.
-3. Write `out/leads-new.csv` with the first two groups (keep every input column, including any `fit_` columns; if any row has a `fit_score`, leave out rows below `min_fit_to_route` from `clay-build-list`, and rows with an empty `fit_score`, and count them; if no row has one, keep every row), adding a column `hubspot_status` (`new` or `known_company`) and `hubspot_owner` where a company owner exists.
+3. Write `out/leads-new.csv` with the first two groups (keep every input column, including any `fit_` columns; if any row has a `fit_score`, leave out rows below `min_fit_to_route` from `clay-build-list`, and rows with an empty `fit_score`, and count them; if no row has one, keep every row), adding a column `crm_status` (`new` or `known_company`) and `crm_owner` where a company owner exists.
 4. Report the three counts. Never delete or edit HubSpot records in this job.
 
 ## Job C: write back (used by `close-the-loop`)

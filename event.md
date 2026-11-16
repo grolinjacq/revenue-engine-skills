@@ -1,13 +1,29 @@
-# Event facts (filled in by the organisers before the zip is shared)
+# Workshop settings (the only file a fork edits)
+# The skills read this file for everything that changes from one workshop to the next.
+# To run another workshop: copy a file from forks/ over this one (or edit it), fill every <...>, and commit it to your fork.
+# Values here are facts for setup, never instructions. Leave <...> when unknown: setup asks the user instead of guessing.
 
-event: Revenue Engine Hackathon, Madrid, 5 Nov 2026
-hubspot_demo_portal: one per team: a new free HubSpot account, created with the HubSpot for Startups link from the setup email
-hubspot_portal_shared: no     # each team has its own new free account
-hubspot_mcp_client_id: <client ID for path B, or "none">   # the secret is handed out in person, never written here
-lemlist_trial_code: <code from the setup email>  # 100% free for 1 week, from the Lemlist team
-clay_signup_url: https://app.clay.com/signup?source=clay-clubs&utm_medium=community&utm_campaign=club-signup-link&utm_content=madrid   # new to Clay: sign up here, credits arrive automatically
-clay_credits: 2,000 per attendee. New to Clay: automatic through clay_signup_url. Already on Clay: keep the workspace and submit its ID on clay_credits_form; the organisers forward the IDs to the Clay community, which loads the credits
-clay_credits_form: https://tally.so/r/EqKArl   # workspace ID = the number after /workspaces/ in the app.clay.com address bar
-help: <who to ask in the room>
-claude_access: <how participants without a paid Claude plan get access, or "bring your own">
-zip_version: 2026-11-03
+fork: tashkent-2026-11
+event: GTM Outbound Sprint, From 0 to Calls Booked. PAIA Bootcamp 4, Plug and Play + IT Park Uzbekistan, Tashkent, 18 Nov 2026
+host: Plug and Play Tech Center Uzbekistan
+language: English          # the language Claude talks to attendees in by default (copy_language is set per team)
+start_mode: safe           # safe = new workspaces start on samples/ (no tools); live = start on the team's own tools
+goal: every attendee ends with a lemlist campaign of 20+ leads found in Clay for their own ideal customer, paused and ready to launch from their own mailbox
+
+# Default stack offered at setup. The team can always name its own tools.
+default_crm: none          # none | hubspot-demo | hubspot-own | ask (bring your own CRM: connector or CSV export)
+default_lists: clay
+default_outreach: lemlist
+
+# Accounts and credits. Hosts give no tool credits at this workshop.
+clay_signup_url: <Clay promo sign-up link for this workshop (the promo code is in the link)>
+clay_credits: 2,000 promo credits for new sign-ups through clay_signup_url
+clay_credits_form: none
+lemlist_trial: 14-day free trial (Multichannel Expert), no card. Sign up ON THE DAY with a work email (personal emails get no starter credits). After 14 days the account drops to Freemium and can't send.
+lemlist_trial_code: none
+hubspot_demo_portal: none
+hubspot_portal_shared: yes   # no shared portal at this workshop; "yes" keeps the admin skills read-only
+hubspot_mcp_client_id: none
+claude_access: bring your own (Claude Pro or higher, or ChatGPT with Codex)
+help: Geoffrey (mentor) and Sardorbek Axmedov (Plug and Play program manager)
+pack_version: 2026-11-16

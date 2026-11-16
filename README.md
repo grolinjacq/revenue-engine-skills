@@ -1,8 +1,24 @@
-# Revenue Engine Hackathon: Claude Code workspace
+# Revenue engine skills: Claude Code and Codex workspace
 
 > Claude: if this session was not started in this folder (you cloned it, or opened it from its parent; a `cd` doesn't count), stop. Tell the user: "This workspace only works in a session started on its own folder: the Lemlist server, the permission gates and the Clay plugin load only then. Start a new session on this folder (Desktop app: quit fully and reopen on it; terminal: `cd` into it, then `claude`; claude.ai/code: a new session with this repository), then type `set me up`." Ask no setup question, write no file, run no tool CLI and call no connector here, even if asked to carry on.
 
-One folder that gives Claude Code every skill for the day, set up for your team. HubSpot (source of truth), Clay (lists and enrichment) and Lemlist (multi-channel outreach), connected through Claude. Already have a CRM or outreach tool? Name it at setup and Claude will use it. Clay can slot in alongside (see "Your own stack").
+One folder that turns Claude Code or Codex into an outbound GTM engine: find the right people in Clay, write the sequence, push it to lemlist (paused, nothing sent without your go), and log the results back to your CRM, whatever CRM you use, or none. Built for hands-on workshops; this workshop's settings are in `event.md`.
+
+## Try it first in safe mode (no accounts, 5 minutes)
+
+Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs the whole loop on a made-up company and 31 made-up leads (`samples/`): it qualifies the list, dedupes it against a sample CRM, writes the sequence, builds the lemlist import file for 20 leads, and handles 7 sample replies. Nothing touches a real tool, no credits are spent and nothing is sent; everything lands in `out/safe/`. When you're ready, say `switch to live` and connect your own tools.
+
+## Claude Code or Codex
+
+| | Claude Code | Codex (included with ChatGPT plans) |
+|---|---|---|
+| Rules | `CLAUDE.md` (loads `RULES.md`) | `AGENTS.md` (same rules) |
+| Skills | `.claude/skills/` (all 44) | `.agents/skills/` (the 24 engine skills; HubSpot-only skills stay in Claude) |
+| lemlist | `.mcp.json`, sign in with `/mcp` | `.codex/config.toml`, sign in with `codex mcp login lm` (trust the folder first) |
+| Clay | Clay plugin or Clay connector | `clay` CLI |
+| Safe mode | yes | yes |
+
+Plain ChatGPT chat (without Codex) can't open this folder: use Codex, or ask the host for the copy-paste version of the use cases.
 
 ## Before you start
 
@@ -12,9 +28,9 @@ One folder that gives Claude Code every skill for the day, set up for your team.
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.
 - **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup. On Windows, unzip it to a plain folder such as `C:\revenue-engine`, not Desktop or Documents (often synced to OneDrive), and open a new PowerShell window after installing Claude Code.
 
-## Do this before the event
+## Do this before the workshop
 
-Run the steps below at home or the office before 5 Nov: installs and sign-ins are much faster on your own wifi than with 30 people on the venue's. On the day, `set me up` only re-checks your connections.
+Installs are much faster on your own wifi than with 30 people on the venue's. Follow `event.md` for when to start trials (a lemlist trial is often best started on the day).
 
 ## Start (about 5 minutes)
 
@@ -56,7 +72,9 @@ Working on your company's real CRM? Your own CRM is always read-only here, and i
 
 - `SKILLS.md`: every skill you can use, grouped by tool.
 - `USAGE.md`: when to call which skill, the flow for each sprint, and fixes when something breaks.
-- `CLAUDE.md`: rules Claude follows all day (nothing is sent without your go, everything is logged to `out/`).
+- `event.md`: this workshop's settings (links, trials, default stack). Past and other workshops are in `forks/`; `FORKING.md` explains how to make one.
+- `samples/`: the made-up data safe mode runs on, with the expected results in `samples/README.md`.
+- `RULES.md`, `CLAUDE.md`, `AGENTS.md`: rules the assistant follows all day (nothing is sent without your go, everything is logged to `out/`).
 - `team-profile.md` and `team-context.md`: your preferences and your company context, written by setup and `make it ours`.
 - `out/`: everything Claude produces. `out/run-log.md` is your demo script.
 
