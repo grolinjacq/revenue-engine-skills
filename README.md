@@ -18,7 +18,7 @@ Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs
 | Clay | Clay plugin or Clay connector | `clay` CLI |
 | Safe mode | yes | yes |
 
-Plain ChatGPT chat (without Codex) can't open this folder: use Codex, or ask the host for the copy-paste version of the use cases.
+Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use Codex on the unzipped folder.
 
 ## Before you start
 

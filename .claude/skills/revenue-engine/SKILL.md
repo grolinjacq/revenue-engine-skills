@@ -24,7 +24,7 @@ Every step writes its artefact into `out/`. If an artefact already exists, say w
 Safe mode runs the whole loop on the fictional data in `samples/` and touches no real tool. It is how a new team sees the engine work before connecting anything, and how the pack is tested in Claude and in Codex. It needs no account, no connector and no credits.
 
 When it is on:
-- `team-profile.md` says `mode: safe`, or there is no `team-profile.md` yet, or setup is still `incomplete`.
+- `team-profile.md` says `mode: safe`. With no `team-profile.md` yet, or setup still `incomplete`, setup runs first (`CLAUDE.md`), unless the request asks for safe mode (next line); no live step runs before setup.
 - The request says "safe mode", "on sample data", "test run" or "dry run": safe for that request only, whatever the profile says.
 - Live mode (`mode: live`) is set only when the user asks to switch ("switch to live", "use our real data"), after showing the change (Safety settings in `CLAUDE.md`). A live step whose tool isn't connected stops at "Connect <tool> first"; it never falls back to safe data silently.
 

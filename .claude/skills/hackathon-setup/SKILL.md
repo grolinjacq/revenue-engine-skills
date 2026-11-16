@@ -154,9 +154,10 @@ Only for tools in the team's stack. Verify each before moving on.
 
 **Lemlist** (already in `.mcp.json`).
 - User action: `/mcp`, choose `lm` (the lemlist server: lemlist's sign-in refuses a server name containing "lemlist"), Authenticate, approve in the browser, pick the team.
-- Verify: call a tool from the `lm` server (`mcp__lm__*`, or the claude.ai connector called exactly Lemlist) that lists campaigns or the team, and check with `claude mcp list` that its URL is `https://app.lemlist.com/mcp` (or that it is the claude.ai connector called exactly Lemlist). Record the team name and the server: `connected (<team>, server lemlist)`. A connected outreach connector with another name (HeyReach, Instantly, Smartlead...) is not Lemlist: never verify with it or mark Lemlist connected from it.
+- Verify: call a tool from the `lm` server (`mcp__lm__*`, or the claude.ai connector called exactly Lemlist) that lists campaigns or the team, and check with `claude mcp list` that its URL is `https://app.lemlist.com/mcp` (or that it is the claude.ai connector called exactly Lemlist). Record the team name and the server: `connected (<team>, server lm)`. A connected outreach connector with another name (HeyReach, Instantly, Smartlead...) is not Lemlist: never verify with it or mark Lemlist connected from it.
 - Server missing from the tool list: the session is on the wrong folder (step 0), the server was not approved (restart and approve it), or it waits for Authenticate in `/mcp`. Keep `lemlist: pending` and say which.
 - No account yet: give the sign-up path from `event.md` (`lemlist_trial`, and `lemlist_trial_code` when it isn't `none`), or set `outreach: none` and carry on. On a trial, say once: sign up with a work email, connect your own mailbox to send, and the campaign stays paused until you launch it.
+- Already has an account: use it. If it was made with a personal email on a trial, say once that `event.md`'s trial perks may need a work-email sign-up, and let the user choose; don't decide for them.
 
 **HubSpot** (not in `.mcp.json`: HubSpot's server can't be added from its URL alone).
 - Path A, default, needs `login: claude.ai`: open https://claude.ai/settings/connectors, add HubSpot, sign in, pick the portal. Then restart Claude Code (connectors load at start; the user must be logged in with the same Claude account).
