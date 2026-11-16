@@ -99,7 +99,7 @@ You geta warm-path column and one forwardable blurb per introducer.
  Safe mode
 Use this fictional network: Zafar Umarov, a programme mentor, knows Elif Demirci (Bosphorus Capital) and has offered an intro. Mark Elif "Warm intro asked", write the blurb for Zafar, and write no cold note for her. Nobody else has a warm path.
  Skills that run this step
-`hubspot-crm` and `hubspot-account-brief`.
+`crm` and `crm-account-brief`.
 
  5
 ### Write the personal notes

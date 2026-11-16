@@ -88,7 +88,7 @@ Don't change anything in the CRM. Give me a CSV with the lead columns from the s
 
 You geta clean list (aim for 20+ across signal types) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
  Skills that run this step
-`persona-definer` picks the person per signal, `clay-build-list` enriches, and `hubspot-crm` checks the CRM export.
+`persona-definer` picks the person per signal, `clay-build-list` enriches, and `crm` checks the CRM export.
 
  4
 ### Write one short sequence per signal type
