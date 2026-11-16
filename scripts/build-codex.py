@@ -19,8 +19,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # The engine: the loop, its tool steps, setup, safe mode and the copy skills.
-# HubSpot-specific and HubSpot-admin skills stay Claude-only (they need HubSpot's
-# MCP server and, for the admin ones, Python scripts with a service key).
+# The crm-* skills work with any CRM. The HubSpot-only extras and the HubSpot admin
+# skills (Python scripts with a service key) stay in Claude Code.
 ENGINE_SKILLS = [
     "revenue-engine",
     "hackathon-setup",
@@ -29,7 +29,17 @@ ENGINE_SKILLS = [
     "clay-build-list",
     "lemlist-campaign",
     "close-the-loop",
+    "crm",
+    "crm-account-brief",
+    "crm-contact-lookup",
+    "crm-call-prep",
+    "crm-log-call",
+    "crm-lead-triage",
+    "crm-pipeline-pulse",
+    "crm-audit",
+    "crm-scoring-design",
     "hubspot-crm",
+    "hubspot-account-brief",
     "icp-definer",
     "persona-definer",
     "pain-identifier",

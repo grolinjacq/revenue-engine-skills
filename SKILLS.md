@@ -1,6 +1,6 @@
 # Every skill in this workspace
 
-Claude Code has every skill below. Codex has the engine skills (`.agents/skills/`: setup, the loop, Clay, lemlist, close-the-loop, the copy and strategy skills, `hubspot-crm`, `crm-duplicate-detector`). You don't need to name a skill: say what you want and Claude picks one. To force one, start your message with its name, for example `/hubspot-account-brief`.
+Claude Code has every skill below. Codex has the engine skills (`.agents/skills/`: setup, the loop, Clay, lemlist, close-the-loop, the copy and strategy skills, the `crm` and `crm-*` skills for any CRM). You don't need to name a skill: say what you want and Claude picks one. To force one, start your message with its name, for example `/hubspot-account-brief`.
 
 ## Start here
 | Skill | What it does |
@@ -12,7 +12,23 @@ Claude Code has every skill below. Codex has the engine skills (`.agents/skills/
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |
 | `workshop` | See one of 4 guided demos on sample data through your live tools (meetings from cold outreach, AI research and qualification, inbound routing, a new market), with answers to the usual questions, then switch to your own data. Claude offers the menu after setup; later, ask "what can you do?". |
 
-## HubSpot (source of truth)
+## Any CRM (HubSpot, Pipedrive, Salesforce, Attio, Odoo, a spreadsheet, or none)
+| Skill | What it does |
+|---|---|
+| `crm` | The hub: which CRM and how it is reached (HubSpot live, another CRM's connector read-only, a CSV export, or safe mode), ICP from won deals, dedupe a lead list, write-back rules |
+| `crm-account-brief` | One-page brief on a whole company, saved to `out/` |
+| `crm-contact-lookup` | One person's record: stage, deals, last touch |
+| `crm-call-prep` | Brief before a call or meeting: history, news, talking points |
+| `crm-log-call` | Log a call: note, next step, stage, task |
+| `crm-lead-triage` | Score new leads against the ICP, decide, assign, task |
+| `crm-pipeline-pulse` | Pipeline snapshot, stalled deals, forecast |
+| `crm-audit` | Data-quality audit with a graded fix plan |
+| `crm-scoring-design` | Lead scoring, ICP tiers and segment lists, designed for your CRM |
+| `crm-duplicate-detector` | Find duplicate contacts and companies |
+
+With HubSpot, changes are written live after your go. With any other CRM, Claude reads it (connector or export) and writes changes to `out/crm-import.csv` for you to import. Each `crm-*` skill hands off to the matching HubSpot skill below when your CRM is HubSpot.
+
+## HubSpot (adapter and extras)
 | Skill | What it does | Source |
 |---|---|---|
 | `hubspot-crm` | The hub: ICP from closed-won deals, dedupe a lead list, the write rules | this pack |

@@ -1,6 +1,7 @@
 ---
 name: hubspot-pipeline-pulse
 description: >
+  HubSpot only: when the team's CRM isn't HubSpot, use crm-pipeline-pulse.
   Pipeline snapshot of the user's open deals — by stage, activity age, next
   step and closing date — with stalled deals flagged, a forecast, suggested
   follow-up tasks and out/pipeline-<date>.md. Use on "how's my pipeline",

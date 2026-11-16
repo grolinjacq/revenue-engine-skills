@@ -11,11 +11,11 @@ The hackathon's winning criterion is that data flows across the whole stack. Thi
 
 | Step | Default skill | Reads | Writes | Hand-off artefact |
 |---|---|---|---|---|
-| 1. Learn the ICP | `hubspot-crm` Job A | Closed-won deals, their companies and contacts | Nothing | `out/icp.md` |
+| 1. Learn the ICP | `crm` Job A (or the website, at setup) | Closed-won deals from any CRM | Nothing | `out/icp.md` |
 | 2. Build the list | `clay-build-list` | `out/icp.md` | Clay table | `out/leads.csv` |
-| 3. Dedupe against CRM | `hubspot-crm` Job B | `out/leads.csv` | Nothing | `out/leads-new.csv` |
+| 3. Dedupe against CRM | `crm` Job B | `out/leads.csv` | Nothing | `out/leads-new.csv` |
 | 4. Launch outreach | `lemlist-campaign` | `out/leads-new.csv` | Lemlist campaign (paused) | `out/campaign.md` |
-| 5. Close the loop | `close-the-loop` | Lemlist activity | HubSpot contacts, notes, deals | `out/sync-log.md` |
+| 5. Close the loop | `close-the-loop` | Lemlist activity | The CRM (HubSpot live, any other CRM by import file) | `out/sync-log.md` |
 
 Every step writes its artefact into `out/`. If an artefact already exists, say where it came from (its `source` line or file date) and ask whether to reuse it. This lets a team pick the loop up at any step, and gives the demo a visible trail.
 
@@ -47,7 +47,7 @@ End of a safe run: compare the counts with the answer key in `samples/README.md`
 
 Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as long as its artefact matches (never by a connector the team didn't declare: Tool identity in `CLAUDE.md`). A declared tool other than HubSpot, Clay or Lemlist is untested: Claude reads it and prepares files, and the team does the import or the launch ("Tested and untested tools" in `CLAUDE.md`).
 
-- `out/icp.md`: the format in `hubspot-crm` Job A. From another CRM: read it through the declared CRM's verified connector (`tools: other` in `team-profile.md`, read calls only), or from a CSV export of closed-won deals, or from the team's website confirmed by the team (`hackathon-setup` steps 1b and 1c, `source: website`), or from the user's words.
+- `out/icp.md`: the format in `crm` Job A. From another CRM: read it through the declared CRM's verified connector (`tools: other` in `team-profile.md`, read calls only), or from a CSV export of closed-won deals, or from the team's website confirmed by the team (`hackathon-setup` steps 1b and 1c, `source: website`), or from the user's words.
 - `out/leads.csv`: header `email,first_name,last_name,job_title,company_name,company_domain,linkedin_url,country,employees,industry,personalization`. Optional trailing columns `fit_score,fit_reason,fit_source` (from `clay-build-list` scoring) travel with the rows, and so does any other enrichment column (for example `segment`, `latest_news`, `current_challenges`, `customer_list`): later steps use them as copy variables. From Apollo, Lusha, Sales Navigator or any CSV: normalise it (below).
 - `out/leads-new.csv`: `out/leads.csv` plus `crm_status` and `crm_owner` (files from before this change call them `hubspot_status` and `hubspot_owner`: read either). Without HubSpot: read the team's contacts and accounts through the declared CRM's verified connector (read calls only), or ask for a CSV export of them (for example from Salesforce or Odoo), match on email, then company domain, and fill the same two columns (`new`, `known_contact`, `known_company`; owner from the export). No export: skip, say so, and mark every row `unchecked`.
 - `out/campaign.md`: campaign name, id or tool, lead count, sequence and copy. With another outreach tool: the sequence plus `out/outreach-import.csv` in that tool's import format; the team imports it and launches.
@@ -71,7 +71,7 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 - No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
 - "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.
 - The user brings their own ICP or target companies: write `out/icp.md`, then step 2.
-- "Read our website and propose our ICP", or a new target ("we want to go after Germany now", "try mid-market"): `hackathon-setup` steps 1b to 1d only (read the site, propose, confirm, write `out/icp.md` and `target` in `team-profile.md`), then step 2. A domain that isn't the team's own ("brief me on acme.com") is a prospect: `hubspot-account-brief`.
+- "Read our website and propose our ICP", or a new target ("we want to go after Germany now", "try mid-market"): `hackathon-setup` steps 1b to 1d only (read the site, propose, confirm, write `out/icp.md` and `target` in `team-profile.md`), then step 2. A domain that isn't the team's own ("brief me on acme.com") is a prospect: `crm-account-brief`.
 - The user brings a CSV of leads: normalise it, then step 3.
 - Copy or angles only ("write me a sequence", "find an angle"): write it to `out/sequence-<name>.md` or `out/angles.md`, don't create a campaign, and offer step 4.
 - Counts: "30 leads" means 30 people, so 15 companies at 2 people each unless the user says otherwise. "30 companies" means companies at the default people per company. Say which in the plan line.
@@ -79,7 +79,7 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 - Copy, angles, personas or sequence strategy: the Lemlist skills (`campaign-angle-finder`, `copywriting-*`, `linkedin-sequence`, `outbound-campaign-architect`; listed in `SKILLS.md`), in `copy_language`, then step 4.
 - Outreach goes through Lemlist when the team has it; Clay's `campaigns` skill is not used for outreach here. With another declared outreach tool, `lemlist-campaign` prepares the lead file and the sequence and the team launches it in their tool.
 - "Did anyone reply?", "update the CRM": step 5.
-- Day-to-day HubSpot work outside the loop goes to the official HubSpot skills (listed in `SKILLS.md`): a call or meeting to prep, `hubspot-call-prep`; one person's record, `hubspot-contact-lookup`; pipeline and forecast, `hubspot-pipeline-pulse`; logging a call, `hubspot-log-call`; the day's priorities, `hubspot-daily-brief`; a follow-up email to one contact, `hubspot-follow-up`; importing contacts into HubSpot, `hubspot-import-contacts`; a quick lookup or single change, `hubspot`. A whole account brief stays `hubspot-account-brief`.
+- Day-to-day CRM work outside the loop goes to the `crm-*` skills, which work with any CRM (`crm` lists them): a whole account, `crm-account-brief`; one person, `crm-contact-lookup`; a call or meeting to prep, `crm-call-prep`; logging a call, `crm-log-call`; new leads, `crm-lead-triage`; pipeline and forecast, `crm-pipeline-pulse`; data quality, `crm-audit`; scoring, tiers and lists, `crm-scoring-design`. With HubSpot they hand off to the matching `hubspot-*` skill. HubSpot-only extras (the day's priorities `hubspot-daily-brief`, a follow-up email opened in HubSpot `hubspot-follow-up`, importing contacts `hubspot-import-contacts`, a quick lookup or single change `hubspot`) run only when the team's CRM is HubSpot.
 - One spoken sentence that names a goal ("find 20 CFOs at Spanish fintechs and get a campaign ready"): restate it as the steps you will run, in one line, and start. Ask only what blocks the first step.
 
 ## Rules for the whole loop

@@ -1,7 +1,9 @@
 ---
 name: hubspot-lead-triage
-description: Triage new or unworked leads in HubSpot - score each against the ICP, set lifecycle stage, assign an owner, and create a follow-up task for the ones worth working. Use on "triage new leads", "who should we call first", "route these leads", "qualify the inbound", "work the leads that replied".
+description: HubSpot adapter of crm-lead-triage (use crm-lead-triage for any other CRM, or with no CRM). Triage new or unworked leads in HubSpot - score each against the ICP, set lifecycle stage, assign an owner, and create a follow-up task for the ones worth working. Use on "triage new leads", "who should we call first", "route these leads", "qualify the inbound", "work the leads that replied".
 ---
+
+> HubSpot only. `crm-lead-triage` is the version for every CRM and calls this skill when the team's CRM is HubSpot. Its rules (`crm`, section 3) apply here too.
 
 # HubSpot lead triage
 

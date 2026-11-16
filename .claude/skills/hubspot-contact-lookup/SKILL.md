@@ -1,6 +1,7 @@
 ---
 name: hubspot-contact-lookup
 description: >
+  HubSpot only: when the team's CRM isn't HubSpot, use crm-contact-lookup.
   Pulls a full view of one person from HubSpot — deal status, lifecycle stage,
   last interaction, notes, tasks, and associated company — as a summary in
   chat. Use on "pull up X", "show me X's record", "what's happening with X",

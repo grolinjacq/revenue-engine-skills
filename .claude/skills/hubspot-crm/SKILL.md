@@ -1,7 +1,9 @@
 ---
 name: hubspot-crm
-description: Derive the ICP from HubSpot closed-won deals, check a lead list against existing HubSpot contacts and companies before outreach, and hold the write rules every HubSpot skill follows. Use on "who are our best customers", "write our ICP from HubSpot", "dedupe these leads against HubSpot", "is this company already in HubSpot", or as steps 1 and 3 of revenue-engine. For a brief on one account use hubspot-account-brief; to log a call use hubspot-log-call; for a quick task, field or deal change use hubspot.
+description: HubSpot adapter of crm (use crm for any other CRM, or with no CRM). Derive the ICP from HubSpot closed-won deals, check a lead list against existing HubSpot contacts and companies before outreach, and hold the write rules every HubSpot skill follows. Use on "who are our best customers", "write our ICP from HubSpot", "dedupe these leads against HubSpot", "is this company already in HubSpot", or as steps 1 and 3 of revenue-engine. For a brief on one account use hubspot-account-brief; to log a call use hubspot-log-call; for a quick task, field or deal change use hubspot.
 ---
+
+> HubSpot only. `crm` is the version for every CRM and calls this skill when the team's CRM is HubSpot. Its rules (`crm`, section 3) apply here too.
 
 # HubSpot CRM
 
