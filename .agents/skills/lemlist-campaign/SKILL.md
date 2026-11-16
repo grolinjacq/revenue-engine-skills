@@ -5,7 +5,7 @@ description: Create a multi-channel Lemlist campaign (email plus LinkedIn), add 
 
 # Lemlist: launch the campaign
 
-Connection: the `lemlist` MCP server (`https://app.lemlist.com/mcp`, tools `mcp__lemlist__*`), or the claude.ai connector called exactly Lemlist. Run `/mcp`, pick lemlist, Authenticate, and choose the team. List its tools before the first call.
+Connection: the lemlist MCP server, named `lm` in this workspace (`https://app.lemlist.com/mcp`, tools `mcp__lm__*`; lemlist's OAuth refuses server names containing "lemlist"), or the claude.ai connector called exactly Lemlist. Run `/mcp`, pick lemlist, Authenticate, and choose the team. List its tools before the first call.
 
 Identity check, before step 4 (see Tool identity in `CLAUDE.md`): the campaign tools must come from the Lemlist endpoint (`claude mcp list` shows `https://app.lemlist.com/mcp`, or the claude.ai connector called exactly Lemlist). Call its team or campaign list and say "Building in Lemlist, team <team>" before creating anything. If no Lemlist server is in the tool list, or it waits for a sign-in, stop after step 3 and say "Connect Lemlist first" with the sign-in step from `hackathon-setup` step 3; offer the CSV route as the only alternative. Never create the campaign or add leads in another outreach connector (HeyReach, Instantly, Smartlead, Gmail, a LinkedIn messaging tool) because it is connected, even if its tools are named `create_campaign` or `add_leads_to_list`. Write `tool: lemlist` and the server name in `out/campaign.md`.
 
@@ -19,7 +19,7 @@ Other outreach tool (`outreach: other: <name>`): an untested tool (see "Tested a
 - Then hand over in one short block: the file to import, where to import it in their tool, the sequence to paste, and a launch checklist (sending account, schedule and time zone, daily limit, an unsubscribe or opt-out line where the channel allows). The team clicks launch.
 - Skip steps 4 to 7: never create, edit, start or resume a campaign, add or upload leads, or send a message in that tool, even if the user asks, `write_mode` is B or the tool's connector offers it. If asked, say: "<name> isn't tested in this workspace, so I prepare the file and you launch it in <name>. Lemlist is the tested path if you want me to build the campaign." Log the hand-off in `out/run-log.md`, and ask the team for the campaign's name in their tool once they've launched it; write it in `out/campaign.md` so `close-the-loop` can find its replies.
 
-Expired sign-in (a 401 or auth error): stop, tell the user to run `/mcp`, choose lemlist, Authenticate, then retry the same step. Save any leads given in chat to `out/` first so nothing is lost.
+Expired sign-in (a 401 or auth error): stop, tell the user to run `/mcp`, choose `lm`, Authenticate, then retry the same step. Save any leads given in chat to `out/` first so nothing is lost.
 
 Safe mode (`mode: safe` in `team-profile.md`, or the request says so): don't call lemlist. Follow `revenue-engine`, "Safe mode", step 4: same angles, sequence, variable checks and rendered emails, written to `out/safe/` with `out/safe/lemlist-import.csv`.
 
