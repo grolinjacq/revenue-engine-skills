@@ -15,7 +15,7 @@ default_crm: none          # none | hubspot-demo | hubspot-own | ask (bring your
 default_lists: clay
 default_outreach: lemlist
 
-# Accounts and credits. Hosts give no tool credits at this workshop.
+# Accounts and credits. Hosts buy no credits at this workshop.
 clay_signup_url: <on your workshop's access card (codes and promo links are shared only with the cohort, never in this public repo)>
 clay_credits: 2,000 promo credits for new sign-ups through clay_signup_url
 clay_credits_form: none
