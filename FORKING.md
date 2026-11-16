@@ -7,7 +7,7 @@ The pack has two layers:
 
 ## Make a fork
 
-1. Copy the closest file in `forks/` (`tashkent.md`, `madrid.md`) to `forks/<place>-<yyyy-mm>.md` and edit it. Leave a value as `<...>` when you don't know it yet: setup asks the attendee instead of guessing.
+1. Copy the closest file in `forks/` (`tashkent.md`, `madrid.md`) to `forks/<place>-<yyyy-mm>.md` and edit it. Leave a value as `<...>` when you don't know it yet: setup asks the attendee instead of guessing. Codes and promo links never go in this public repo: put them on the workshop's access card (shared only with the cohort) and point the field to it.
 2. Copy it over `event.md`.
 3. Run `python3 scripts/build-codex.py --check` (it should say up to date).
 4. Run safe mode once in Claude Code and once in Codex, and compare with `samples/README.md`.
