@@ -8,7 +8,7 @@ One folder that turns Claude Code or Codex into an outbound GTM engine: find the
 
 | Your assistant | What you do | Plan needed |
 |---|---|---|
-| claude.ai (web or desktop chat) | Settings > Capabilities: turn on "Create and edit files". Then Customize > Skills > + > Create skill > Upload a skill, and upload `gtm-start.zip` (from your workshop's access card, or built with `python3 scripts/build-claudeai.py`). New chat, type `start here` (or `use gtm-start`). | Any, Free included |
+| claude.ai (web or desktop chat) | Settings > Capabilities: turn on "Create and edit files". Then Customize > Skills > + > Create skill > Upload a skill, and upload `gtm-start.zip` (download it from this repo's Releases page, or your workshop's access card). New chat, type `start here` (or `use gtm-start`). | Any, Free included |
 | Claude Code (desktop, terminal or claude.ai/code) | Open a session on this folder (claude.ai/code: pick this repository), type `start` | Paid Claude plan or Console |
 | Codex (app or CLI) | Unzip, open the folder, trust it, type `start` | Any ChatGPT plan with Codex |
 
