@@ -18,4 +18,6 @@ disabled_tools = [
   "purchase_domain",
   "provision_mailboxes",
   "configure_domain_dns",
+  "send_message",
+  "send_task",
 ]

@@ -13,7 +13,7 @@ Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs
 | | Claude Code | Codex (included with ChatGPT plans) |
 |---|---|---|
 | Rules | `CLAUDE.md` (loads `RULES.md`) | `AGENTS.md` (same rules) |
-| Skills | `.claude/skills/` (all 44) | `.agents/skills/` (the 24 engine skills; HubSpot-only skills stay in Claude) |
+| Skills | `.claude/skills/` (all skills) | `.agents/skills/` (the engine skills listed in `scripts/build-codex.py`; the HubSpot admin skills and most `hubspot-*` skills stay in Claude) |
 | lemlist | `.mcp.json` (server `lm`), sign in with `/mcp` | `.codex/config.toml`, sign in with `codex mcp login lm` (trust the folder first) |
 | Clay | Clay plugin or Clay connector | `clay` CLI |
 | Safe mode | yes | yes |
@@ -47,8 +47,8 @@ Installs are much faster on your own wifi than with 30 people on the venue's. Fo
 | When | What you click |
 |---|---|
 | Lemlist sign-in | No account yet? Sign up the way `event.md` says (`lemlist_trial`; with a code, enter it under Settings, Billing, **Add coupon**). Then `/mcp`, choose `lm` (the lemlist server), Authenticate, approve in the browser. To send anything (even to teammates), connect a sending mailbox in lemlist's settings; a paused campaign is a fine finish without one |
-| HubSpot sign-in | No account yet? One teammate creates a free HubSpot account with the HubSpot for Startups link from the setup email (free, and 90% off a paid plan later) and invites the others. Then https://claude.ai/settings/connectors, add HubSpot, sign in to that account, then restart Claude Code |
-| Clay sign-in | New to Clay? Sign up with the event's Clay link (in `event.md`, setup gives it to you): the 2,000 credits arrive automatically. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
+| HubSpot sign-in | Only if HubSpot is your CRM. No account yet? Use the HubSpot link in `event.md` if your workshop gives one, or a free HubSpot account. Then https://claude.ai/settings/connectors, add HubSpot, sign in to that account, then restart Claude Code |
+| Clay sign-in | New to Clay? Sign up with your workshop's Clay link (`clay_signup_url` in `event.md`, or the access card when it shows a placeholder), so the workshop's credits (`clay_credits`) apply. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
 | After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |
 | Optional: HubSpot service key | Only for the HubSpot admin skills. Create one in HubSpot, paste it into `.env` yourself (never in the chat) |
 

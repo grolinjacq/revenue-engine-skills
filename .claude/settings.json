@@ -215,7 +215,13 @@
       "mcp__Gmail__create_draft",
       "mcp__Gmail__update_draft",
       "mcp__Unipile-message__execute-request",
-      "mcp__claude_ai_Unipile-message__execute-request"
+      "mcp__claude_ai_Unipile-message__execute-request",
+      "mcp__lemlist__send_message",
+      "mcp__lemlist__send_task",
+      "mcp__lm__send_message",
+      "mcp__lm__send_task",
+      "mcp__claude_ai_Lemlist__send_message",
+      "mcp__claude_ai_Lemlist__send_task"
     ]
   }
 }

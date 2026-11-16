@@ -1,6 +1,6 @@
 ---
 name: crm
-description: The CRM hub for any CRM (HubSpot, Pipedrive, Salesforce, Attio, Odoo, Zoho, a spreadsheet, or none) - derive the ICP from won deals, dedupe a lead list against the CRM before outreach, and write results back, through the CRM's connector or a CSV export and import file. Holds the CRM contract and write rules every crm-* skill follows. Use on "who are our best customers", "write our ICP from our CRM", "dedupe these leads against our CRM", "is this company already in our CRM", "update the CRM", or as steps 1 and 3 of revenue-engine.
+description: The CRM hub for any CRM (HubSpot, Pipedrive, Salesforce, Attio, Odoo, Zoho, a spreadsheet, or none) - derive the ICP from won deals, dedupe a lead list against the CRM before outreach, and write results back, through the CRM's connector or a CSV export and import file. Holds the CRM contract and write rules every crm-* skill follows. Use on "who are our best customers", "write our ICP from our CRM", "dedupe these leads against our CRM", "is this company already in our CRM", or as steps 1 and 3 of revenue-engine.
 ---
 
 # CRM hub (any CRM)
@@ -9,11 +9,11 @@ The loop needs only a few things from a CRM. This skill defines them once, for e
 
 ## 1. Which adapter
 
-Read `crm`, `crm_source`, `crm_mode` and `tools` in `team-profile.md`, and `mode`.
+Read `crm`, `crm_source`, `crm_mode` and `tools` in `team-profile.md`, and `mode`. Reads about the team's own customers and contacts (`won_deals`, `find_contact`, `find_company`, `opted_out`) use `crm_source` when it is set and differs from `crm` (for example the event's HubSpot portal as `crm` and the team's Pipedrive as `crm_source`); writes use `crm`. Name both in the one-line announcement. In Codex there is no HubSpot connector or `hubspot-*` skill beyond `hubspot-crm` and `hubspot-account-brief`: treat a HubSpot CRM there as the `csv` adapter (an export), and skip every "run `hubspot-...`" hand-off.
 
 | Adapter | When | Reads | Writes |
 |---|---|---|---|
-| `safe` | `mode: safe`, or the request says safe mode or test run | `samples/crm-contacts.csv`, `samples/crm-won-deals.csv` | `out/safe/crm-import.csv` only |
+| `safe` | `mode: safe`, or the request says safe mode or test run | `samples/crm-contacts.csv`, `samples/crm-won-deals.csv` (no open deals or activities: say "no sample data") | under `out/safe/` only |
 | `hubspot` | `crm: hubspot-own` or `hubspot-demo`, and the HubSpot endpoint passes its verify (`hackathon-setup` step 3) | HubSpot MCP tools | HubSpot, on a go, when `crm_mode: full` (tested) |
 | `connector` | `crm: other: <name>` with a connector recorded under `tools: other` that passes its verify | that connector's read calls only | `out/crm-import.csv` (untested CRM: never a live write) |
 | `csv` | `crm: other: <name>` with no verified connector, or any CRM the team exports by hand | the team's exports, copied into `out/crm-export-<object>.csv` | `out/crm-import.csv` |
@@ -39,7 +39,7 @@ A CSV export missing a column: work with what is there, say which operation runs
 
 ## 3. Write rules (every adapter, every crm-* skill)
 
-- `out/crm-import.csv` is the write for every adapter except `hubspot`: one row per change, columns `action,object,email,name,company,domain,field,value,note,reason`, using the CRM's own field and stage names where the export or connector shows them (say the mapping in one line). The team imports it themselves.
+- `out/crm-import.csv` is the write for every adapter except `hubspot`: one row per change, columns `action,object,email,name,company,domain,field,value,note,reason`, the same header for every skill that writes it (a lifecycle, tier or note goes in `field`/`value`/`note`); append to the file if it exists with that header, never overwrite it, using the CRM's own field and stage names where the export or connector shows them (say the mapping in one line). The team imports it themselves.
 - Live writes happen only with the `hubspot` adapter, `crm_mode: full`, and a go for that write in this step. Over 10 records: show the plan and write in batches of 10. Never change an owner or an opt-out field without a go naming it.
 - Create a contact only when no contact has that email. Never create a company from a free-mail domain (gmail.com, outlook.com, yahoo.com, hotmail.com, icloud.com).
 - Log engagement as a note, never by overwriting fields. Notes and tasks start with `[<team>]` (loop notes `[<team>][<tool>]`).

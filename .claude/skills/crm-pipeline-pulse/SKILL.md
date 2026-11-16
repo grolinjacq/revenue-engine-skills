@@ -5,7 +5,7 @@ description: Pipeline snapshot from any CRM - open deals by stage, age and last 
 
 # Pipeline pulse (any CRM)
 
-Adapter and contract: `crm`. Read-only. With the `hubspot` adapter, run `hubspot-pipeline-pulse`. Otherwise:
+Adapter and contract: `crm`. Read-only. With the `hubspot` adapter, run `hubspot-pipeline-pulse`. Safe mode: inputs from `samples/` only (the `safe` adapter in `crm`), outputs under `out/safe/`, opt-outs read from and written to `out/safe/suppress.csv`; never the live `out/` files. Where the samples hold no data for a field (open deals, activities, last activity), say "no sample data" for it, never invent it. Otherwise:
 
 1. `open_deals` for the user (or everyone, if asked), with stage, amount, close date, owner and last activity. The export misses last activity: say the stall check is by close date only.
 2. Flag: no activity in 21 days; close date passed; no next step or amount; stuck in one stage longer than the others' median.

@@ -22,7 +22,7 @@ clay_credits_form: none
 lemlist_trial: 14-day free trial (Multichannel Expert), no card. Sign up ON THE DAY with a work email (personal emails get no starter credits). After 14 days the account drops to Freemium and can't send.
 lemlist_trial_code: none
 hubspot_demo_portal: none
-hubspot_portal_shared: yes   # no shared portal at this workshop; "yes" keeps the admin skills read-only
+hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (admin skills stay read-only); this workshop provides no portal, so yes is the safe value
 hubspot_mcp_client_id: none
 claude_access: bring your own (Claude Pro or higher, or ChatGPT with Codex)
 help: Geoffrey (mentor) and Sardorbek Axmedov (Plug and Play program manager)

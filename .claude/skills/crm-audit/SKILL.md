@@ -5,7 +5,7 @@ description: Read-only data-quality audit of any CRM from its connector or expor
 
 # CRM audit (any CRM)
 
-Adapter and contract: `crm`. The audit reads only. With the `hubspot` adapter, `hubspot-audit` and `hubspot-sales-audit` give the deeper HubSpot version; this one works everywhere.
+Adapter and contract: `crm`. The audit reads only. Safe mode: inputs from `samples/` only (the `safe` adapter in `crm`), outputs under `out/safe/`, opt-outs read from and written to `out/safe/suppress.csv`; never the live `out/` files. Where the samples hold no data for a field (open deals, activities, last activity), say "no sample data" for it, never invent it. With the `hubspot` adapter, `hubspot-audit` and `hubspot-sales-audit` give the deeper HubSpot version; this one works everywhere.
 
 1. Get the data: contacts, companies and deals through the connector (read calls only, paged), or the team's exports in `out/crm-export-<object>.csv`. Say record counts and the date of each export.
 2. Check, with counts and 3 examples each:

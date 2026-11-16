@@ -9,5 +9,5 @@ Adapter, contract and write rules: `crm` (Job C). With the `hubspot` adapter, ru
 
 1. Parse what the user said: who, when, outcome, next step and date, deal changes (stage, amount, close date), objections, and any person named for a follow-up. Ask once only for what blocks the log (usually who).
 2. Find the person and company (`find_contact`, `find_company`) and any open deal (`open_deals`).
-3. Plan, one line per change: a note starting `[<team>]` with the summary (plain text, at most 500 characters); stage moves forward only; a task for the next step with its date; a deal change only if the user said so. A person who said no, stop or remove me goes to `out/suppress.csv` at once and gets no task.
+3. Plan, one line per change: a note starting `[<team>]` with the summary (plain text, at most 500 characters); stage moves forward only; a task for the next step with its date; a deal change only if the user said so. A person who said no, stop or remove me goes to `out/suppress.csv` (safe mode `out/safe/suppress.csv`) at once and gets no task; with `outreach: lemlist`, also offer to add them to Lemlist's unsubscribes (`RULES.md`, "Opt-outs").
 4. Show the plan. On a go, write the rows to `out/crm-import.csv` (safe mode `out/safe/crm-import.csv`) in the CRM's own field names, and tell the team where to import it. Append one line to `out/run-log.md`.

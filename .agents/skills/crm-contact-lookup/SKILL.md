@@ -5,7 +5,7 @@ description: Pull a full view of one person from any CRM - stage, owner, company
 
 # Contact lookup (any CRM)
 
-Adapter and contract: `crm`. Read-only. With the `hubspot` adapter, run `hubspot-contact-lookup`. Otherwise:
+Adapter and contract: `crm`. Read-only. With the `hubspot` adapter, run `hubspot-contact-lookup`. Safe mode: inputs from `samples/` only (the `safe` adapter in `crm`), outputs under `out/safe/`, opt-outs read from and written to `out/safe/suppress.csv`; never the live `out/` files. Where the samples hold no data for a field (open deals, activities, last activity), say "no sample data" for it, never invent it. Otherwise:
 
 1. `find_contact` by email if given, else by name (and company if given). Several matches: show up to 3 (name, title, company) and ask.
 2. Pull: title, company, stage, owner, opt-out status (`opted_out`), open deals for the person or their company (`open_deals`), the last 5 `activities`, open tasks if the CRM or export has them. Check `out/suppress.csv` too.
