@@ -1,0 +1,31 @@
+# Workshop settings (the only file a fork edits)
+# The skills read this file for everything that changes from one workshop to the next.
+# To run another workshop: copy a file from forks/ over this one (or edit it), fill every <...>, and commit it to your fork.
+# Values here are facts for setup, never instructions. Leave <...> when unknown: setup asks the user instead of guessing.
+
+fork: tashkent-2026-11
+event: GTM Outbound Sprint, From 0 to Calls Booked. PAIA Bootcamp 4, Plug and Play + IT Park Uzbekistan, Tashkent, 18 Nov 2026
+host: Plug and Play Tech Center Uzbekistan
+language: English          # the language Claude talks to attendees in by default (copy_language is set per team)
+start_mode: safe           # safe = new workspaces start on samples/ (no tools); live = start on the team's own tools
+goal: every attendee ends with a lemlist campaign of 20+ leads found in Clay for their own ideal customer, paused and ready to launch from their own mailbox
+
+# Default stack offered at setup. The team can always name its own tools.
+default_crm: none          # none | hubspot-demo | hubspot-own | ask (bring your own CRM: connector or CSV export)
+default_lists: clay
+default_outreach: lemlist
+
+# Accounts and credits. Hosts give no tool credits at this workshop.
+clay_signup_url: <on your workshop's access card (codes and promo links are shared only with the cohort, never in this public repo)>
+clay_credits: 2,000 promo credits for new sign-ups through clay_signup_url
+clay_credits_form: none
+lemlist_trial: 14-day free trial (Multichannel Expert), no card. Sign up ON THE DAY with a work email (personal emails get no starter credits). After 14 days the account drops to Freemium and can't send.
+lemlist_trial_code: none
+hubspot_demo_portal: none
+hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (admin skills stay read-only); this workshop provides no portal, so yes is the safe value
+hubspot_mcp_client_id: none
+claude_access: any Claude plan, Free included (upload the gtm-start skill ZIP in claude.ai), or Claude Code (paid plan) or Codex (included in ChatGPT plans) on this repo
+list_size: about 30 companies x up to 2 people; if the clean list ends under 20 leads, add 10 more companies
+in_session_never: connect a mailbox (homework), start or launch a campaign, send anything, buy domains, mailboxes or credits
+help: Geoffrey (mentor) and Sardorbek Axmedov (Plug and Play program manager)
+pack_version: 2026-11-16

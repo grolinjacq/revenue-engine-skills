@@ -1,7 +1,9 @@
 ---
 name: hubspot-account-brief
-description: One-page brief on a whole company (account) from HubSpot - firmographics, everyone we know there, open and past deals, last touches, gaps, and what to do next - saved to out/. Read-only. Use on "brief me on <company or domain>", "account summary", "who do we know at <company>", "what do we know about <company>". For one person or a meeting use hubspot-call-prep ("prep my call with Marta"); for a quick record on one person use hubspot-contact-lookup.
+description: HubSpot adapter of crm-account-brief (use crm-account-brief for any other CRM, or with no CRM). One-page brief on a whole company (account) from HubSpot - firmographics, everyone we know there, open and past deals, last touches, gaps, and what to do next - saved to out/. Read-only. Use on "brief me on <company or domain>", "account summary", "who do we know at <company>", "what do we know about <company>". For one person or a meeting use hubspot-call-prep ("prep my call with Marta"); for a quick record on one person use hubspot-contact-lookup.
 ---
+
+> HubSpot only. `crm-account-brief` is the version for every CRM and calls this skill when the team's CRM is HubSpot. Its rules (`crm`, section 3) apply here too.
 
 # HubSpot account brief
 

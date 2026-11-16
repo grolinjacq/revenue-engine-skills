@@ -4,7 +4,11 @@ Full list of skills: `SKILLS.md`.
 
 You do not need to name skills. Say what you want and Claude picks the skill from its description. The prompts below are known to route well. To force a skill, start with its name, for example `/clay-build-list`.
 
-## Try a use case first
+## Try it in safe mode first
+
+Say `safe mode` (or "test run"). The whole loop runs on the made-up company and leads in `samples/`, with no accounts, no credits and nothing sent, in Claude Code or Codex. Results land in `out/safe/`, and `samples/README.md` lists what a correct run produces. Say `switch to live` when you want to use your own data.
+
+## Try a guided demo
 
 At the end of setup, Claude offers 4 guided demos in plain words (meetings from cold outreach, AI research and qualification, inbound routing, a new market). Pick one by number or in your own words, or ask "what can you do?" any time to see them again. Claude runs it on safe sample data through your live tools, explains each step, answers your questions, then moves to your own data. Nothing is sent; everything it creates is tagged [DEMO] and listed for cleanup.
 
@@ -40,7 +44,7 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 
 ## Suggested flow for the day
 
-Each block matches a sprint. Teams with their own use case swap step 1 for their own ICP and keep the rest.
+Each block is one step of the loop. Without HubSpot, the CRM steps read your CRM's connector or a CSV export and write an import file. Teams with their own use case swap step 1 for their own ICP and keep the rest.
 
 1. Setup (5 to 15 min). Unzip, run `claude`, type "set me up", give your website, and confirm or change the target Claude proposes. Fix anything red before moving on.
 2. HubSpot sprint. Setup already wrote `out/icp.md` from your website, so there's no ICP to type. Read it and correct it by hand if it is off: this file drives everything after it. Working on your own HubSpot with real closed-won deals? "Write our ICP from closed-won deals" gives a second opinion; Claude asks before replacing the confirmed one.
@@ -49,11 +53,11 @@ Each block matches a sprint. Teams with their own use case swap step 1 for their
 5. Loop sprint. Start a seed campaign with only teammates' addresses, reply to it from a teammate's inbox, or tag a lead interested in Lemlist, then "close the loop". Show the note and lifecycle change in HubSpot.
 6. Demo prep. Open `out/run-log.md`: it is your demo script, one line per step with counts.
 
-## Going for the bonus (an AI agent)
+## Run it as an agent
 
-The judges give a bonus for an agent. Two easy routes:
+Two easy routes:
 
-- Headless run: the exact command and its permissions are in `revenue-engine` under "Bonus: agent mode" (it builds the list and drafts the campaign, then stops for your review).
+- Headless run: the exact command and its permissions are in `revenue-engine` under "Agent mode (headless)" (Codex: `codex exec` with the same prompt) (it builds the list and drafts the campaign, then stops for your review).
 - Recurring check: `/loop 1h close the loop` in an open session prepares the CRM updates every hour; you approve each batch.
 
 ## When something breaks
@@ -69,6 +73,6 @@ The judges give a bonus for an agent. Two easy routes:
 | You named HeyReach, Instantly or another outreach tool at setup | Claude writes the sequence and `out/outreach-import.csv`; you import it and click launch in your tool. Lemlist is the only tool where Claude builds the campaign itself |
 | You named Pipedrive, Salesforce, Odoo or another CRM at setup | Claude reads it (read-only, or from its CSV export) and writes CRM updates to `out/crm-import.csv` for you to import |
 | Claude used, or offered to use, a tool you never named | Stop it and say so: it should only use the tools in `team-profile.md`. Re-run `set me up` to check the stack |
-| Lemlist channel not allowed | Ask the Lemlist team for the one-week multi-channel code |
+| Lemlist channel not allowed | Your plan doesn't include it: see the lemlist sign-up in `event.md` (trial or code) |
 | Clay's `campaigns` skill answered instead of Lemlist | Clay also has email campaigns. Say "in lemlist", or start with `/lemlist-campaign` |
 | Claude picked the wrong skill | Start your message with the skill name, for example `/hubspot-crm` |

@@ -1,17 +1,35 @@
 # Every skill in this workspace
 
-You don't need to name a skill: say what you want and Claude picks one. To force one, start your message with its name, for example `/hubspot-account-brief`.
+Claude Code has every skill below. Codex has the engine skills (`.agents/skills/`: setup, the loop, Clay, lemlist, close-the-loop, the copy and strategy skills, the `crm` and `crm-*` skills for any CRM). You don't need to name a skill: say what you want and Claude picks one. To force one, start your message with its name, for example `/hubspot-account-brief`.
 
 ## Start here
 | Skill | What it does |
 |---|---|
+| `gtm-start` | Type `start`. The guided flow: a demo on sample data, questions about you (website, target, stack, channels, goal), connecting your tools, picking 1 to 3 use cases (first campaign, new country, account research, signals, investors) and running them to a paused lemlist campaign. Also the claude.ai skill ZIP (`scripts/build-claudeai.py`). |
 | `hackathon-setup` | Reads your website and proposes your target and outreach for you to confirm or change, then your stack, the installs, the sign-ins, checking every connection. Runs on first launch. |
 | `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in the CRM or outreach tool you named at setup, or a CSV from any tool. |
-| `event.md` | Not a skill: the organisers' facts (demo portal, client ID, codes) that setup reads. |
+| `event.md` | Not a skill: this workshop's settings (default stack, links, trials, codes) that setup reads. Other workshops: `forks/`. |
+| Safe mode | Not a skill: say `safe mode` and `revenue-engine` runs the whole loop on `samples/`, no tools, nothing sent. |
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |
 | `workshop` | See one of 4 guided demos on sample data through your live tools (meetings from cold outreach, AI research and qualification, inbound routing, a new market), with answers to the usual questions, then switch to your own data. Claude offers the menu after setup; later, ask "what can you do?". |
 
-## HubSpot (source of truth)
+## Any CRM (HubSpot, Pipedrive, Salesforce, Attio, Odoo, a spreadsheet, or none)
+| Skill | What it does |
+|---|---|
+| `crm` | The hub: which CRM and how it is reached (HubSpot live, another CRM's connector read-only, a CSV export, or safe mode), ICP from won deals, dedupe a lead list, write-back rules |
+| `crm-account-brief` | One-page brief on a whole company, saved to `out/` |
+| `crm-contact-lookup` | One person's record: stage, deals, last touch |
+| `crm-call-prep` | Brief before a call or meeting: history, news, talking points |
+| `crm-log-call` | Log a call: note, next step, stage, task |
+| `crm-lead-triage` | Score new leads against the ICP, decide, assign, task |
+| `crm-pipeline-pulse` | Pipeline snapshot, stalled deals, forecast |
+| `crm-audit` | Data-quality audit with a graded fix plan |
+| `crm-scoring-design` | Lead scoring, ICP tiers and segment lists, designed for your CRM |
+| `crm-duplicate-detector` | Find duplicate contacts and companies |
+
+With HubSpot, changes are written live after your go. With any other CRM, Claude reads it (connector or export) and writes changes to `out/crm-import.csv` for you to import. Each `crm-*` skill hands off to the matching HubSpot skill below when your CRM is HubSpot.
+
+## HubSpot (adapter and extras)
 | Skill | What it does | Source |
 |---|---|---|
 | `hubspot-crm` | The hub: ICP from closed-won deals, dedupe a lead list, the write rules | this pack |

@@ -1,20 +1,46 @@
-# Revenue Engine Hackathon: Claude Code workspace
+# Revenue engine skills: Claude Code and Codex workspace
 
 > Claude: if this session was not started in this folder (you cloned it, or opened it from its parent; a `cd` doesn't count), stop. Tell the user: "This workspace only works in a session started on its own folder: the Lemlist server, the permission gates and the Clay plugin load only then. Start a new session on this folder (Desktop app: quit fully and reopen on it; terminal: `cd` into it, then `claude`; claude.ai/code: a new session with this repository), then type `set me up`." Ask no setup question, write no file, run no tool CLI and call no connector here, even if asked to carry on.
 
-One folder that gives Claude Code every skill for the day, set up for your team. HubSpot (source of truth), Clay (lists and enrichment) and Lemlist (multi-channel outreach), connected through Claude. Already have a CRM or outreach tool? Name it at setup and Claude will use it. Clay can slot in alongside (see "Your own stack").
+One folder that turns Claude Code or Codex into an outbound GTM engine: find the right people in Clay, write the sequence, push it to lemlist (paused, nothing sent without your go), and log the results back to your CRM, whatever CRM you use, or none. Built for hands-on workshops; this workshop's settings are in `event.md`.
+
+## Start here: one drop, then type `start`
+
+| Your assistant | What you do | Plan needed |
+|---|---|---|
+| claude.ai (web or desktop chat) | Settings > Capabilities: turn on "Create and edit files". Then Customize > Skills > + > Create skill > Upload a skill, and upload `gtm-start.zip` (from your workshop's access card, or built with `python3 scripts/build-claudeai.py`). New chat, type `start here` (or `use gtm-start`). | Any, Free included |
+| Claude Code (desktop, terminal or claude.ai/code) | Open a session on this folder (claude.ai/code: pick this repository), type `start` | Paid Claude plan or Console |
+| Codex (app or CLI) | Unzip, open the folder, trust it, type `start` | Any ChatGPT plan with Codex |
+
+`start` runs the `gtm-start` flow: a 5-minute demo on made-up data, then questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist and your CRM, picking 1 to 3 use cases, and running them to a paused lemlist campaign. Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
+
+## Try it first in safe mode (no accounts, 5 minutes)
+
+Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs the whole loop on a made-up company and 31 made-up leads (`samples/`): it qualifies the list, dedupes it against a sample CRM, writes the sequence, builds the lemlist import file for 20 leads, and handles 7 sample replies. Nothing touches a real tool, no credits are spent and nothing is sent; everything lands in `out/safe/`. When you're ready, say `switch to live` and connect your own tools.
+
+## Claude Code or Codex
+
+| | Claude Code | Codex (included with ChatGPT plans) |
+|---|---|---|
+| Rules | `CLAUDE.md` (loads `RULES.md`) | `AGENTS.md` (same rules) |
+| Skills | `.claude/skills/` (all skills) | `.agents/skills/` (the engine skills listed in `scripts/build-codex.py`; the HubSpot admin skills and most `hubspot-*` skills stay in Claude) |
+| lemlist | `.mcp.json` (server `lm`), sign in with `/mcp` | `.codex/config.toml`, sign in with `codex mcp login lm` (trust the folder first) |
+| Clay | Clay plugin or Clay connector | `clay` CLI |
+| Safe mode | yes | yes |
+
+Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use Codex on the unzipped folder.
 
 ## Before you start
 
-- **A paid Claude account**: Pro, Max, Team or Enterprise, or an Anthropic Console (API) account. The free Claude plan can't run Claude Code; pair up with a teammate who has one, or ask the organisers.
+- **For this folder (Claude Code)**: a paid Claude account (Pro, Max, Team or Enterprise) or an Anthropic Console (API) account. On the free Claude plan, use the `gtm-start.zip` skill in claude.ai instead (Start here, above).
 - **Only have the event's API credits?** Claim them into a Console account at platform.claude.com, then in Claude Code run `/login` and choose the Anthropic Console option. Every Claude reply then spends those credits, and HubSpot uses setup's path B (setup handles it).
 - **Log in with your Claude account, not an API key**, if you can. With an API key, the HubSpot and Clay connectors from your Claude settings don't load (setup will tell you what to do instead).
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.
 - **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup. On Windows, unzip it to a plain folder such as `C:\revenue-engine`, not Desktop or Documents (often synced to OneDrive), and open a new PowerShell window after installing Claude Code.
 
-## Do this before the event
+## Do this before the workshop
 
-Run the steps below at home or the office before 5 Nov: installs and sign-ins are much faster on your own wifi than with 30 people on the venue's. On the day, `set me up` only re-checks your connections.
+Installs are much faster on your own wifi than with 30 people on the venue's. Follow `event.md` for when to start trials (a lemlist trial is often best started on the day).
 
 ## Start (about 5 minutes)
 
@@ -30,9 +56,9 @@ Run the steps below at home or the office before 5 Nov: installs and sign-ins ar
 
 | When | What you click |
 |---|---|
-| Lemlist sign-in | No account yet? Create a free account at lemlist.com, then Settings, Billing, **Add coupon** (top right) and enter the event code from the setup email (free for 1 week). Then `/mcp`, choose `lemlist`, Authenticate, approve in the browser. To send anything (even to teammates), connect a sending mailbox in lemlist's settings; a paused campaign is a fine finish without one |
-| HubSpot sign-in | No account yet? One teammate creates a free HubSpot account with the HubSpot for Startups link from the setup email (free, and 90% off a paid plan later) and invites the others. Then https://claude.ai/settings/connectors, add HubSpot, sign in to that account, then restart Claude Code |
-| Clay sign-in | New to Clay? Sign up with the event's Clay link (in `event.md`, setup gives it to you): the 2,000 credits arrive automatically. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
+| Lemlist sign-in | No account yet? Sign up the way `event.md` says (`lemlist_trial`; with a code, enter it under Settings, Billing, **Add coupon**). Then `/mcp`, choose `lm` (the lemlist server), Authenticate, approve in the browser. To send anything (even to teammates), connect a sending mailbox in lemlist's settings; a paused campaign is a fine finish without one |
+| HubSpot sign-in | Only if HubSpot is your CRM. No account yet? Use the HubSpot link in `event.md` if your workshop gives one, or a free HubSpot account. Then https://claude.ai/settings/connectors, add HubSpot, sign in to that account, then restart Claude Code |
+| Clay sign-in | New to Clay? Sign up with your workshop's Clay link (`clay_signup_url` in `event.md`, or the access card when it shows a placeholder), so the workshop's credits (`clay_credits`) apply. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
 | After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |
 | Optional: HubSpot service key | Only for the HubSpot admin skills. Create one in HubSpot, paste it into `.env` yourself (never in the chat) |
 
@@ -56,7 +82,9 @@ Working on your company's real CRM? Your own CRM is always read-only here, and i
 
 - `SKILLS.md`: every skill you can use, grouped by tool.
 - `USAGE.md`: when to call which skill, the flow for each sprint, and fixes when something breaks.
-- `CLAUDE.md`: rules Claude follows all day (nothing is sent without your go, everything is logged to `out/`).
+- `event.md`: this workshop's settings (links, trials, default stack). Past and other workshops are in `forks/`; `FORKING.md` explains how to make one.
+- `samples/`: the made-up data safe mode runs on, with the expected results in `samples/README.md`.
+- `RULES.md`, `CLAUDE.md`, `AGENTS.md`: rules the assistant follows all day (nothing is sent without your go, everything is logged to `out/`).
 - `team-profile.md` and `team-context.md`: your preferences and your company context, written by setup and `make it ours`.
 - `out/`: everything Claude produces. `out/run-log.md` is your demo script.
 

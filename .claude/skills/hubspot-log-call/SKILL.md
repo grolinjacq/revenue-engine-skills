@@ -1,6 +1,7 @@
 ---
 name: hubspot-log-call
 description: >
+  HubSpot only: when the team's CRM isn't HubSpot, use crm-log-call.
   Logs a call, meeting, or conversation against a HubSpot contact. Writes a
   note, updates deal stage, next step, close date, and priority, updates
   contact lead status and lifecycle stage, and creates a follow-up task.

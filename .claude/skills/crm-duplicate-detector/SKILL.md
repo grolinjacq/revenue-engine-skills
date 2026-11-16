@@ -72,7 +72,7 @@ limit: up to 1000 (paginate if needed)
 ```
 
 ### Source C — the team's own CRM (Salesforce shown below)
-*(workspace)* Only when `crm` or `crm_source` in `team-profile.md` names that CRM as `other: <name>`, its connector is recorded under `tools: other` and passes its verify, and the user asks for it: read calls only. Its merges and fixes go to `out/dup-report.md` and `out/crm-import.csv` for the team, never back into that CRM ("Tested and untested tools" in `CLAUDE.md`). Never use another CRM connector because it happens to be connected (Tool identity in `CLAUDE.md`).
+*(workspace)* Only when `crm` or `crm_source` in `team-profile.md` names that CRM as `other: <name>`, its connector is recorded under `tools: other` and passes its verify, and the user asks for it: read calls only. Its merges and fixes go to `out/dup-report.md` and `out/crm-import.csv` for the team, never back into that CRM ("Tested and untested tools" in `RULES.md`). Never use another CRM connector because it happens to be connected (Tool identity in `RULES.md`).
 
 Query contacts:
 ```sql

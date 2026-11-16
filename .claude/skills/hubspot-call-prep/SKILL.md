@@ -1,6 +1,7 @@
 ---
 name: hubspot-call-prep
 description: >
+  HubSpot only: when the team's CRM isn't HubSpot, use crm-call-prep.
   Prepares a focused brief before a sales call or meeting with one person:
   CRM history, open deals, recent notes, email threads, calendar and company
   news, with talking points. Use on "prep me for my call with X", "I have a
