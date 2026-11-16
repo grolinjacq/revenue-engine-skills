@@ -168,7 +168,7 @@ Only for tools in the team's stack. Verify each before moving on.
 - Optional service key for the admin skills: the user creates one in HubSpot (Settings, Integrations, Service keys) and pastes it into `.env` themselves (copy `.env.example`). If they paste a key into the chat instead, do not repeat it or store it, and tell them to rotate it in HubSpot and put the new one in `.env`.
 
 **Clay**.
-- No Clay account yet: send the user to `clay_signup_url` from `event.md` (if it still shows `<...>`, ask the host for the link before they sign up) (the event's sign-up link, never a plain clay.com sign-up: the credits arrive automatically there). Then continue below.
+- No Clay account yet: send the user to `clay_signup_url` from `event.md` (if it shows `<...>`, ask the user for the link on their workshop's access card before they sign up) (the event's sign-up link, never a plain clay.com sign-up: the credits arrive automatically there). Then continue below.
 - Already on Clay: keep that workspace; no new one is needed. Send the user to `clay_credits_form` from `event.md` to submit the workspace ID (the number after `/workspaces/` in the app.clay.com address bar); the organisers forward it to the Clay community, which loads the credits. Then continue below.
 - Plugin path: run Clay's `setup` skill, which installs the `clay` CLI and runs `clay login` (browser; print the URL if it can't open). Verify with `clay whoami`.
 - Connector path (plugin failed, or Windows/WSL CLI trouble): the user adds the Clay connector at https://claude.ai/settings/connectors and restarts. Verify by listing Clay's tools. Needs `login: claude.ai`.
