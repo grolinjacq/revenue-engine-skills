@@ -113,6 +113,7 @@ tools:
   clay: <pending | connected (<workspace>, plugin|connector) | not available (<reason>)>
   other:   # one line per tool declared as `other: <name>`; omit the block when there is none
     <name> (<crm | outreach | outreach_linkedin | lists>): <pending | connected (<account>, server <server name>, <URL or command>) | csv (<reason, e.g. no connector>)>
+links:   # tool links the tools returned (Clay table or search, lemlist campaign); never a promo link
 updated: <date time>
 ```
 
