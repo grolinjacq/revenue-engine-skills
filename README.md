@@ -24,7 +24,9 @@ While it runs, three things are worth remembering (`help` shows them, plus the c
 | `where am I` | The step you're on and the files so far. |
 | `stop` | Stops and gives you every file so far. Nothing is launched. |
 
-Everything else, say in your own words and your own language ("email only", "change the persona", "demo" for a 5-minute practice on made-up data, "resume" after uploading your files in a new chat). The one exact phrase is the one that creates the campaign: `go, create paused, 24 leads`, with the number it shows you. `next`, `yes` or `ok` never approve a credit spend or a campaign; a bare `go` approves only the one spend just shown with its cost, and at the create step it just shows the preview again. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
+Everything else, say in your own words and your own language ("email only", "change the persona", "demo" for a 5-minute practice on made-up data, "resume" after uploading your files in a new chat). Two exact phrases change lemlist: `go, create paused, 24 leads` creates the campaign, paused, and `go, add 6 leads` adds missing leads to your paused campaign, each with the number it shows you. `next`, `yes` or `ok` never approve a credit spend or a campaign; a bare `go` approves only the one spend just shown with its cost, and at the create step it just shows the preview again.
+
+In the workshop room the goal is your paused campaign, through all six campaign steps; whatever doesn't fit, you finish at home. Typing `start` again asks whether to restart (your old files kept as `-v1`) or continue. Each playbook names its files with its own prefix (`expansion-leads.csv`), so switching never overwrites another playbook's work, and a switch waits until a campaign the assistant created reads paused or draft.
 
 ## Try it first in safe mode (no accounts, 5 minutes)
 
@@ -78,7 +80,7 @@ Everything else (installing the Clay plugin and CLI, Python tools, checking each
 
 ## Optional: block launching from your assistant
 
-By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. `gtm-start` offers this block when lemlist connects, and reminds you at the end. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
+By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. `gtm-start` offers this block when lemlist connects, whatever your plan, and reminds you at the end. One-to-one sends (`send_message`, `send_task`) are already blocked in this workspace's settings. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
 
 - **Claude Code:** add these to the `permissions.deny` list of `.claude/settings.local.json` in this folder (create the file if it is missing; it stays on your machine). A new file looks like:
   ```json
