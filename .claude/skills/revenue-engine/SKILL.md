@@ -23,6 +23,8 @@ Every step writes its artefact into `out/`. If an artefact already exists, say w
 
 Safe mode runs the whole loop on the fictional data in `samples/` and touches no real tool. It is how a new team sees the engine work before connecting anything, and how the pack is tested in Claude and in Codex. It needs no account, no connector and no credits.
 
+How to present it: a test run for hosts, never offered to attendees. Open on the example itself, never with what safe mode switches off; the sample-data fact is one positive line.
+
 When it is on:
 - `team-profile.md` says `mode: safe`. With no `team-profile.md` yet, or setup still `incomplete`, setup runs first (`CLAUDE.md`), unless the request asks for safe mode (next line); no live step runs before setup.
 - The request says "safe mode", "on sample data", "test run" or "dry run": safe for that request only, whatever the profile says.
@@ -41,7 +43,7 @@ The steps in safe mode:
 4. Campaign (`lemlist-campaign`): write the angles and the sequence as usual with the copy skills, in `copy_language` (default English), one sequence per `segment`. Drop `out/safe/suppress.csv`. Write `out/safe/campaign.md` (`tool: lemlist (safe mode, not created)`), `out/safe/lemlist-import.csv` (lemlist's CSV import: `email,firstName,lastName,companyName,linkedinUrl,jobTitle,companyDomain` then the camelCase variables), and two rendered first emails. The campaign is the same one a live run would create, paused.
 5. Close the loop (`close-the-loop`): read `samples/replies.csv` in place of the outreach tool. Classify, draft replies to `out/safe/reply-drafts.md`, add opt-outs to `out/safe/suppress.csv`, and write the CRM changes to `out/safe/crm-import.csv` and `out/safe/sync-log.md` (`not written: safe mode`).
 
-End of a safe run: compare the counts with the answer key in `samples/README.md` and say any difference in one line. Then offer the live run: "Switch to live: connect Clay and lemlist (setup step 3) and run the same steps on your own target."
+End of a safe run: compare the counts with the answer key in `samples/README.md` and say any difference in one line. Then offer the live run as A: "Now let's do it for your company: we connect Clay and lemlist and run the same steps on your own target."
 
 ## Step contracts (how other tools plug in)
 
@@ -66,7 +68,7 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 ## Routing
 
 - "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. Leave out the `out/safe/` folder. No new actions.
-- "Start", "what can you do?" or "where do I start?" when no task is in progress: the `gtm-start` flow. A demo or a request to try something on sample data: safe mode (below), or `gtm-start`'s `demo`.
+- "Start", "what can you do?" or "where do I start?" when no task is in progress: the `gtm-start` flow. A request to try something on sample data: safe mode (below), for hosts only; to an attendee who asks for a demo, say the host shows it live.
 - `out/icp.md` exists with `source: website` or `source: team description` (from setup): step 1 is done, go to step 2.
 - No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
 - "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.

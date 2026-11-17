@@ -20,7 +20,7 @@ The pack has two layers:
 | `start_mode` | `safe` for beginners (no accounts on arrival), `live` when attendees set up tools beforehand |
 | `default_crm` | `none` (bring your own), `hubspot-demo` when a partner gives portals |
 | `clay_signup_url`, `clay_credits` | the partner's promo link |
-| `date`, `session_start`, `session_end` | the workshop day and hours, local time (on that day the skill skips the demo and hands over files before the end) |
+| `date`, `session_start`, `session_end` | the workshop day and hours, local time (on that day the skill reads the time to hand over files before the end; the demo runs only when asked) |
 | `lemlist_trial`, `lemlist_trial_code` | trial rules or a partner code |
 | `language` | the language the assistant talks to attendees in |
 

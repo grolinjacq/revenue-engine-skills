@@ -5,7 +5,7 @@ description: Set up this workshop workspace for a team - check the environment, 
 
 # Workspace setup
 
-Goal: the team goes from unzipped folder to a working stack in about 5 minutes, doing only what Claude cannot do for them (browser sign-ins, clicks in a tool's UI). Do everything else yourself. One action at a time in each message.
+Goal: the team goes from unzipped folder to a working stack in about 5 minutes, doing only what Claude cannot do for them (browser sign-ins, clicks in a tool's UI). Do everything else yourself. One action at a time in each message. Every question follows `gtm-start`, "How you talk": one question per message, as A, B or C with A your recommended answer already filled in from what you can see, free text always welcome, and no expert settings.
 
 Read `event.md` first: it holds this workshop's settings (default stack, start mode, sign-up links, trials and codes, demo portal, client ID for path B, who to ask). Other workshops keep theirs in `forks/`; never read those for this team. If a value still shows `<...>`, it wasn't filled in: ask the user or the organisers instead of guessing.
 
@@ -18,33 +18,25 @@ Re-entry for a new target: when `setup` is already `complete` or `degraded` and 
 Check these yourself and note the results; only mention a problem.
 
 0. Folder. Run the folder check from `CLAUDE.md`: the folder the session started in must hold `CLAUDE.md` and `.mcp.json`; a `cd` doesn't count. If it doesn't (for example, Claude cloned the repo into a subfolder of the current session), stop here, before any question: give the folder check message from `CLAUDE.md` and ask the user to start a new session on the workspace folder and type `set me up` there. Don't ask the setup questions or write `team-profile.md` from the wrong folder.
-1. Claude login. Ask the user to run `/status` (or run `claude auth status` yourself) to see how Claude Code is signed in. If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B. With an API key or Console login, path B works only when `event.md` gives a real `hubspot_mcp_client_id`; with `none` or a placeholder, path B is unavailable: they switch to their Claude account for path A, or use the CRM's CSV export.
+1. Claude login. Run `claude auth status` yourself to see how Claude Code is signed in (ask the user to run `/status` only if that command fails). If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B. With an API key or Console login, path B works only when `event.md` gives a real `hubspot_mcp_client_id`; with `none` or a placeholder, path B is unavailable: they switch to their Claude account for path A, or use the CRM's CSV export.
 2. OS and shell. Note Windows native (PowerShell), WSL, macOS or Linux. On Windows use `python` and PowerShell syntax; in WSL or headless Linux, browsers may not open, so print every sign-in URL for the user to open.
 3. Network. If GitHub is unreachable (`claude plugin marketplace add` fails), Clay goes through the connector path in step 3, not the plugin: skip the plugin commands in step 2.
 4. Surface. In the Desktop app, slash commands like `/mcp` and `/plugin` may live in the app's settings instead; if one does nothing, say where to find it in the app.
 
-## 1. Preferences and stack (website first, two short messages)
+## 1. Preferences and stack (website first, one question at a time)
 
 The team should not have to type its ICP. Claude reads their website, proposes the business, the target and the outreach, and the team confirms or changes the target. Only what a website can't tell is asked as a question.
 
-### 1a. First message: the website, plus what a website can't tell (5 questions)
+### 1a. The website, then the stack (one question per message)
 
-Ask all at once, each with a default so the team can answer "defaults" after giving the site:
+Safety settings are never asked: write `write_mode: B` and `clay_credit_cap: 200` (lowered to the Clay balance at the Clay sign-in if that is less). B still waits for a go before every Clay spend in the workshop (`gtm-start`, Workshop overrides), before every CRM write and before anything is sent. Say it once, in the welcome. A user who asks for stricter (A) or another budget gets it (RULES, "Safety settings").
 
-1. Your company's website? (for example `acme.com`) I'll read it and propose your target and your outreach, so you don't have to type them. Agency or consultant working for a client: the client's site. No site yet: describe what you sell and to whom in two lines.
-2. Team name? (default: the company name from the website, or the user's first name)
-3. Your stack, one per line, or "defaults" (the defaults come from `default_crm`, `default_lists` and `default_outreach` in `event.md`; mark the default option with "(default)"):
-   - CRM: none yet (a CSV export works too) | your own CRM, name it (HubSpot, Pipedrive, Salesforce, Attio, Odoo...) | the HubSpot event demo portal (only when `event.md` has a `hubspot_demo_portal`)
-   - Lists and enrichment: Clay | other tool (name it, we'll use its CSV export; Clay can slot in alongside) | none
-   - Outreach: Lemlist | your own tool, name it (HeyReach, Instantly...) | none. A LinkedIn-only tool (HeyReach): for LinkedIn only, with Lemlist for email, or for everything?
+1. Website (in the welcome message). A: the domain you inferred (from `team-profile.md`, the company domain of `git config user.email`, the folder name, or this conversation and Claude's memory), with where it came from and, while `mode: safe`, "works on your real accounts, not the samples"; B: another site (type it); C: no website yet, I'll describe what we sell and to whom in two lines. Nothing inferred: A is "type your website (for example `acme.com`)", B "no website yet: describe what you sell and to whom in two lines". Agency or consultant working for a client: the client's site. Picking A or B is the ask to work live: write `mode: live`.
+2. After the website check (1b and 1c): the stack. A: the default stack from `default_crm`, `default_lists` and `default_outreach` in `event.md` (say it in words: "Clay finds the companies and people, lemlist runs email + LinkedIn, no CRM today"), or the same with a CRM you can see the team uses; B: the defaults plus my own CRM (name it: HubSpot, Pipedrive, Salesforce, Attio, Odoo... or a CSV export); C: I use other tools (name them: Apollo, HeyReach, Instantly...). The HubSpot event demo portal is an option only when `event.md` has a `hubspot_demo_portal`. A LinkedIn-only tool (HeyReach): ask in the next message whether it is for LinkedIn only, with Lemlist for email (A), or for everything (B). With another tool, say in one line that HubSpot, Clay and Lemlist are the tested path today; with another tool you read it and prepare everything, and they do the final import or launch click in their tool.
 
-   Already have a CRM or outreach tool? Name it and I'll use it. Clay can slot in alongside. HubSpot, Clay and Lemlist are the tested path today; with another tool I read it and prepare everything, and you do the final import or launch click in your tool.
-4. How careful should I be? A: ask before every write and every credit spend. B: ask before CRM writes, credit spend over the cap, and anything sent to people. (default: B) A free answer such as "no need to be careful" is B: say so in one line, and that B never changes which tools are used, the go before anything is sent, or the go before CRM writes.
-5. Credit cap for Clay today? (default: 200 credits)
+Team name is the company name from the website (or the user's first name), shown in the recap line, never asked.
 
-Open the message with one line: "Want to see it work first? Say `safe mode` and I'll run the whole loop on made-up sample data in about 5 minutes, with no accounts and nothing sent." A team that says so: set `mode: safe`, run `revenue-engine` in safe mode, then come back here.
-
-Create `out/` if it is missing. Write `team-profile.md` at once (below), with `target: pending` and `copy_language: pending`, the domain in `website` and, if the team gave a description instead (or as well), its words verbatim in `about`, so a restart never asks these again.
+Create `out/` if it is missing. Write `team-profile.md` right after the first answer (below), with `target: pending` and `copy_language: pending`, the domain in `website` and, if the team gave a description instead (or as well), its words verbatim in `about`, so a restart never asks these again.
 
 ### 1b. Read the website (Claude, about a minute)
 
@@ -62,9 +54,9 @@ Create `out/` if it is missing. Write `team-profile.md` at once (below), with `t
    - Buyer words: how the site names the problem.
 6. From these, draft the proposal: target industries, employee band, countries and buyer titles; the copy language (the language of the target market, which may differ from the site's); channels (email and LinkedIn by default); one outreach angle (the main pain plus the strongest proof point); use case (the default loop: CRM ICP, build a list, multi-channel campaign, back to the CRM). Mark every field the site doesn't state directly as `[inferred]`, buyer titles included. If the site serves many segments ("for every industry"), propose the one with the most evidence (named customers, case studies) as today's target and name two others as alternatives in the 1c block.
 
-### 1c. Second message: confirm, edit, or retarget
+### 1c. Confirm, edit, or retarget (one question)
 
-Show one short block and one question:
+Show one short block and one question with three answers:
 
 ```
 From acme.com, here's what I understood. Correct anything that's off.
@@ -74,13 +66,15 @@ From acme.com, here's what I understood. Correct anything that's off.
 - Outreach: <language> copy, email + LinkedIn, angle "<one line>"
 - Use case: the default loop (CRM ICP, build a list, campaign, back to the CRM)
 
-Go after this target today, or a different one? For example a new country
-(international expansion), a new industry or segment, bigger or smaller
-companies, or a different buyer. Reply "yes", edit any line, or say the
-new target in one sentence.
+Go after this target today?
+A: yes, go with it
+B: same business, different target today (a new country, segment,
+   company size or buyer): type it
+C: let me correct a line
+Or type your own answer, or ask me anything.
 ```
 
-- "Yes": keep the proposal as it is.
+- "A" or "yes": keep the proposal as it is.
 - An edit: apply it and don't ask again.
 - A new target (international expansion, new segment...): keep what the site says about the product and the proof, replace the target fields, and propose the copy language for the new market (Spanish company going to Germany: German or English? ask in the same line). Say in one line which proof points still travel and which won't (home-market logos may mean little in the new market).
 - Their own use case instead of the loop: one line, recorded in `use_case`.
@@ -162,7 +156,7 @@ Only for tools in the team's stack. Verify each before moving on.
 - Verify: call the HubSpot user-details tool (`get_user_details`, or the closest tool that returns the portal) and report the portal and which objects are writable.
 - After the verify, with `out/icp.md` on file and a portal that holds the team's own customers (`crm: hubspot-own`): add the domains of customer companies and open deals to `exclude_domains` (a read, no write to HubSpot). Skip this for a new event portal: it has none.
 - No HubSpot account yet: give the sign-up link from `event.md` (`hubspot_demo_portal`); one teammate creates the free account and invites the others. A new account has no deals; the ICP already comes from the website (`out/icp.md`), so don't ask for it again.
-- Production check: compare the portal with `hubspot_demo_portal` in `event.md`. If it says each team uses its own new free account, ask whether this portal is the one created for the event (then `crm_mode: full`) or the company's real CRM (then B or C below). If it doesn't match (or `event.md` isn't filled in and the portal name doesn't say demo, test or sandbox), ask: A) switch to the demo portal (recommended), B) use this portal read-only, C) use it fully, I own it. Record the answer as `crm_mode` (C is `full`, B is `read-only`). Every HubSpot write skill reads `crm_mode` first.
+- Production check: compare the portal with `hubspot_demo_portal` in `event.md`. If it says each team uses its own new free account, ask whether this portal is the one created for the event (then `crm_mode: full`) or the company's real CRM (then B or C below). If it doesn't match (or `event.md` isn't filled in and the portal name doesn't say demo, test or sandbox), ask with letters. With a `hubspot_demo_portal` in `event.md`: A: switch to the demo portal (recommended); B: use this portal read-only; C: use it fully, I own it. With none (`none` or a placeholder): A: use this portal read-only (recommended: I only read it, and CRM changes go to an import file); B: use it fully, I own it. Record the answer as `crm_mode` (fully is `full`, read-only is `read-only`). Every HubSpot write skill reads `crm_mode` first.
 - If the user pastes any key or token into the chat, do not repeat it or store it, and tell them to rotate it in that tool.
 
 **Clay**.
@@ -186,7 +180,7 @@ If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on.
    - `complete`: every tool in the team's stack is connected (a declared tool recorded as `csv (no connector)` counts: its CSV route is the plan).
    - `degraded`: at least one step of the loop works but a tool is missing or replaced by CSV. This is a finished setup, not a pending one; do not re-run setup on the next session start.
    - `incomplete`: only while setup is still in progress (for example waiting on a restart). If the user wants to start working before finishing, set `degraded` and list what's missing, so the next session doesn't force setup. Say in the same message which loop steps stop until each missing tool is connected (for example, with Lemlist pending: no campaign is created anywhere; copy and `out/outreach-import.csv` only if they ask for the CSV route). Never leave `target` or `copy_language` as `pending` outside `incomplete`: settle them first (`derive from CRM` and English if the team gave nothing).
-   - `mode`: if it is still `safe` and at least one stack tool is now connected, say in one line that the workspace is on sample data, show the change `mode: safe -> live`, and ask "Switch to live now, or stay on samples?". Write it on a yes; on a no, say they can type `switch to live` any time.
+   - `mode`: if it is still `safe` and at least one stack tool is now connected, say in one positive line that they can now run it on their real accounts by typing `switch to live` (never list what safe mode switches off). Never ask it here: the switch is offered only inside the website question (step 1a).
 2. Show a status table: tool, status, account, and which loop steps run as normal, read-only with an import file (untested tools), by CSV, or not at all.
-3. List any manual to-dos left, then point to `SKILLS.md` and suggest the first prompt for their use case and stack. If the team's HubSpot portal is new and empty, one of the suggestions is `hubspot-onboarding` ("onboard me to HubSpot").
-4. Then hand back to the `gtm-start` flow (its first campaign) when it is running, unless setup waits on a restart (carry on after it) or the user's first message was a real request: then do that request instead (CLAUDE.md). A demo on sample data runs only on request (`gtm-start`'s `demo`, or `revenue-engine` safe mode).
+3. List any manual to-dos left. Inside the `gtm-start` flow, skip the prompt suggestions and go to 4. Otherwise point to `SKILLS.md` and suggest the first prompt for their use case and stack. If the team's HubSpot portal is new and empty, one of the suggestions is `hubspot-onboarding` ("onboard me to HubSpot").
+4. Then hand back to the `gtm-start` flow (its next step in "The order", with one line on what it is for and 'Answer "next" to move to the next step: Campaign step 1 of 6: your ideal customer') when it is running, unless setup waits on a restart (carry on after it) or the user's first message was a real request: then do that request instead (CLAUDE.md). There is no attendee demo (the host shows it live); safe mode is a host test, run only when typed.
