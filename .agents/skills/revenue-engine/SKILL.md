@@ -68,7 +68,7 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 ## Routing
 
 - "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. Leave out the `out/safe/` folder. No new actions.
-- "Start", "what can you do?" or "where do I start?" when no task is in progress: the `gtm-start` flow. A demo or a request to try something on sample data: safe mode (below), or `gtm-start`'s `demo`.
+- "Start", "what can you do?" or "where do I start?" when no task is in progress: the `gtm-start` flow. A request to try something on sample data: safe mode (below), for hosts only; to an attendee who asks for a demo, say the host shows it live.
 - `out/icp.md` exists with `source: website` or `source: team description` (from setup): step 1 is done, go to step 2.
 - No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
 - "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.

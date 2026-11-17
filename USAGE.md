@@ -10,7 +10,7 @@ Attendees skip this: the host shows the demo live. To test, say `safe mode` (or 
 
 ## Start the guided flow
 
-Type `start`. The `gtm-start` flow asks about you, connects your tools, then goes straight into your first campaign on your own data, then more use cases (`use cases` switches between them). Want to see it on made-up data first? Say `demo`: nothing is called and nothing is sent.
+Type `start`. The `gtm-start` flow asks about you, connects your tools, then goes straight into your first campaign on your own data, then more use cases (`use cases` switches between them).
 
 ## Just say it
 

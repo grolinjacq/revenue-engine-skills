@@ -5,7 +5,7 @@ Claude Code has every skill below. Codex has the engine skills (`.agents/skills/
 ## Start here
 | Skill | What it does |
 |---|---|
-| `gtm-start` | Type `start`. The guided flow: questions about you (website, target, stack, channels, goal), connecting your tools (lemlist with LinkedIn), then straight into the first campaign to a paused email + LinkedIn lemlist sequence, then more use cases (new country, account research, signals, investors). Say `demo` for a 5-minute run on made-up data, only if you want one. Also the claude.ai skill ZIP (`scripts/build-claudeai.py`). |
+| `gtm-start` | Type `start`. The guided flow: questions about you (website, target, stack, channels, goal), connecting your tools (lemlist with LinkedIn), then straight into the first campaign to a paused email + LinkedIn lemlist sequence, then more use cases (new country, account research, signals, investors). Also the claude.ai skill ZIP (`scripts/build-claudeai.py`). |
 | `hackathon-setup` | Reads your website and proposes your target and outreach for you to confirm or change, then your stack, the installs, the sign-ins, checking every connection. Runs on first launch. |
 | `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in the CRM or outreach tool you named at setup, or a CSV from any tool. |
 | `event.md` | Not a skill: this workshop's settings (default stack, links, trials, codes) that setup reads. Other workshops: `forks/`. |
