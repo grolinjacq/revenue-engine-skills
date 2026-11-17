@@ -30,7 +30,7 @@ First paste the session rules, then the prompt below.
 Own data: You're my GTM assistant for our first outbound campaign. The goal is booked calls. Our website: [URL]. Our home market: [COUNTRY]. Today is [DATE].
 1. Read the site and tell me in 5 lines what we sell, to whom, and our strongest proof point (a number if there is one).
 2. Tell me which of these you can reach in this chat: Clay, lemlist, my CRM ([NAME]). For each one you can't reach, say so. We'll pass files for that step.
-3. Ask me my lemlist plan (free period, Email or Multichannel) and whether my LinkedIn is connected through the lemlist Chrome extension. If I don't confirm both, plan email steps only.
+3. Read my lemlist plan from lemlist (don't ask me) and check whether my LinkedIn is connected through the lemlist Chrome extension. If LinkedIn isn't connected, plan email steps only.
 No web browsing? I'll paste my homepage and about text instead.
 Stop and wait for my answer; when I confirm, go straight into the next step.
 ```
