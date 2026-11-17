@@ -46,7 +46,7 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 
 `start` walks you through these in order; each block is one step of the loop. Without HubSpot, the CRM steps read your CRM's connector or a CSV export and write an import file. Teams with their own use case swap step 2 for their own ICP and keep the rest.
 
-1. Setup (5 to 15 min). Type `start` (or "set me up"), give your website, and confirm or change the target Claude proposes. Fix anything red before moving on.
+1. Setup (5 to 15 min). Type `start` (or "set me up"), give your website, and confirm what Claude read on it point by point (five A/B/C questions), changing any point you like. Fix anything red before moving on.
 2. ICP. Setup already wrote `out/icp.md` from your website, so there's no ICP to type. Read it and correct it by hand if it is off: this file drives everything after it. Working on your own CRM with real closed-won deals? "Write our ICP from closed-won deals" gives a second opinion; Claude asks before replacing the confirmed one.
 3. List. "Build the list from the ICP, 20 companies, 2 people each." Look at the first 10 companies when Claude shows them; say no early if they are wrong. Then "dedupe against our CRM".
 4. Campaign. "Find angles", pick one, "write the P-L-V-A sequence" (an opener, a proof, a 15-minute ask and a breakup, across email and LinkedIn), then "create the campaign, paused". Check the two rendered sample emails and the sending settings Claude lists. You launch it yourself, later.
