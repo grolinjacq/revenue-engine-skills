@@ -25,7 +25,7 @@ clay_credits_form: none
 lemlist_trial: workshop offer, 1 month free on any lemlist Multichannel plan for new teams, through the lemlist startup-team sign-up link and code on your workshop's access card (codes and promo links are shown to attendees on the access card in the room, never in this public repo; ask the user for them). Sign up with a work email: the link starts the free trial with no card; the code then goes in under Settings > Billing & Users > Subscription > Manage (coupon button, Multichannel Monthly), which asks for a payment card. Offer for new lemlist teams only. Fallback if the offer doesn't apply: lemlist's 14-day free trial (Multichannel Expert), no card, best started on the day. When the free period ends the account drops to Freemium and can't send.
 lemlist_trial_code: <on your workshop's access card, with the sign-up link; never write it in a file>
 hubspot_demo_portal: none
-hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (admin skills stay read-only); this workshop provides no portal, so yes is the safe value
+hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (CRM writes touch only this team's own records); this workshop provides no portal, so yes is the safe value
 hubspot_mcp_client_id: none
 claude_access: any Claude plan, Free included (upload the gtm-start skill ZIP in claude.ai), or Claude Code (paid plan) or Codex (included in ChatGPT plans) on this repo
 list_size: about 30 companies x up to 2 people; if the clean list ends under 20 leads, add 10 more companies

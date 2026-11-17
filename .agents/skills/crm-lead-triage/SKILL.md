@@ -7,7 +7,7 @@ description: Triage new or unworked leads from any CRM or a list - score each ag
 
 Adapter, contract and write rules: `crm` (Job C). With the `hubspot` adapter, run `hubspot-lead-triage`. Otherwise:
 
-1. The set: contacts created in the last 14 days with no owner, from the connector or the export; or a list or CSV the user names (normalise it with `revenue-engine`). Safe mode: `samples/inbound.csv`. Skip names starting `[DEMO]` outside a workshop.
+1. The set: contacts created in the last 14 days with no owner, from the connector or the export; or a list or CSV the user names (normalise it with `revenue-engine`). Safe mode: `samples/inbound.csv`.
 2. The ICP: `out/icp.md` (safe mode `samples/icp.md`). Missing: `crm` Job A, or ask.
 3. Fit, 0 to 3, one point each: industry in the ICP, size in the band, title matches. Intent flag: replied, booked, filled a form, asked for pricing or a call.
 4. Decide: fit 3, or fit 2 with intent, work now (stage forward to MQL, or SQL after a positive reply; task "Call <name>" next business day); fit 2 without intent, nurture (no task); fit 0 or 1, park (no change). Students, competitors and free-mail with no company: park, and say why.

@@ -5,13 +5,12 @@ Claude Code has every skill below. Codex has the engine skills (`.agents/skills/
 ## Start here
 | Skill | What it does |
 |---|---|
-| `gtm-start` | Type `start`. The guided flow: a demo on sample data, questions about you (website, target, stack, channels, goal), connecting your tools (lemlist with LinkedIn), then straight into the first campaign to a paused email + LinkedIn lemlist sequence, then more use cases (new country, account research, signals, investors). Also the claude.ai skill ZIP (`scripts/build-claudeai.py`). |
+| `gtm-start` | Type `start`. The guided flow: questions about you (website, target, stack, channels, goal), connecting your tools (lemlist with LinkedIn), then straight into the first campaign to a paused email + LinkedIn lemlist sequence, then more use cases (new country, account research, signals, investors). Say `demo` for a 5-minute run on made-up data, only if you want one. Also the claude.ai skill ZIP (`scripts/build-claudeai.py`). |
 | `hackathon-setup` | Reads your website and proposes your target and outreach for you to confirm or change, then your stack, the installs, the sign-ins, checking every connection. Runs on first launch. |
 | `revenue-engine` | Runs the whole loop, routes one-sentence requests, and plugs in the CRM or outreach tool you named at setup, or a CSV from any tool. |
 | `event.md` | Not a skill: this workshop's settings (default stack, links, trials, codes) that setup reads. Other workshops: `forks/`. |
 | Safe mode | Not a skill: say `safe mode` and `revenue-engine` runs the whole loop on `samples/`, no tools, nothing sent. |
 | `make-it-ours` | Teaches Claude your company, product and voice, and your own trigger phrases. |
-| `workshop` | See one of 4 guided demos on sample data through your live tools (meetings from cold outreach, AI research and qualification, inbound routing, a new market), with answers to the usual questions, then switch to your own data. Claude offers the menu after setup; later, ask "what can you do?". |
 
 ## Any CRM (HubSpot, Pipedrive, Salesforce, Attio, Odoo, a spreadsheet, or none)
 | Skill | What it does |
@@ -44,16 +43,8 @@ With HubSpot, changes are written live after your go. With any other CRM, Claude
 | `hubspot-follow-up` | Draft a follow-up email and open it in HubSpot to send | HubSpot official (adapted) |
 | `hubspot-import-contacts` | Import contacts from a CSV or a pasted list | HubSpot official (adapted) |
 | `hubspot-onboarding` | Getting started in a new or empty portal | HubSpot official (adapted) |
-| `connect-hubspot-mcp` | Detailed HubSpot connection guide | hubspot-admin-skills |
-| `hubspot-audit`, `hubspot-sales-audit` | Read-only portal audit with prioritised fixes | hubspot-admin-skills |
-| `create-icp-tiers` | ICP tier property on every company | hubspot-admin-skills |
-| `build-lead-scoring` | Fit and engagement lead score | hubspot-admin-skills |
-| `build-smart-lists` | Standard segment lists | hubspot-admin-skills |
-| `merge-duplicate-companies` | Find duplicate companies by domain and name | hubspot-admin-skills |
-| `fix-lifecycle-stages` | Backfill and fix lifecycle stages | hubspot-admin-skills |
-| `cleanup-deals` | Flag stale deals and send each owner a review task | hubspot-admin-skills |
 
-The HubSpot official skills come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), bundled here with this workspace's safety rules added: every write is shown first and waits for your go. The hubspot-admin-skills ones need a HubSpot service key in `.env` (see `.env.example`).
+The HubSpot official skills come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), bundled here with this workspace's safety rules added: every write is shown first and waits for your go. For a HubSpot audit, scoring or duplicates, use `crm-audit`, `crm-scoring-design` and `crm-duplicate-detector` above: they read HubSpot and write a report or an import file.
 
 ## Clay (lists and enrichment)
 | Skill | What it does | Source |

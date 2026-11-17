@@ -37,7 +37,7 @@ Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs
 | | Claude Code | Codex (included with ChatGPT plans) |
 |---|---|---|
 | Rules | `CLAUDE.md` (loads `RULES.md`) | `AGENTS.md` (same rules) |
-| Skills | `.claude/skills/` (all skills) | `.agents/skills/` (the engine skills listed in `scripts/build-codex.py`; the HubSpot admin skills and most `hubspot-*` skills stay in Claude) |
+| Skills | `.claude/skills/` (all skills) | `.agents/skills/` (the engine skills listed in `scripts/build-codex.py`; most `hubspot-*` skills stay in Claude) |
 | lemlist | `.mcp.json` (server `lm`), sign in with `/mcp` | `.codex/config.toml`, sign in with `codex mcp login lm` (trust the folder first) |
 | Clay | Clay plugin or Clay connector | `clay` CLI |
 | Safe mode | yes | yes |
@@ -52,9 +52,9 @@ Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.
 - **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup. On Windows, unzip it to a plain folder such as `C:\revenue-engine`, not Desktop or Documents (often synced to OneDrive), and open a new PowerShell window after installing Claude Code.
 
-## Do this before the workshop
+## In the workshop room
 
-In the workshop, use the claude.ai route on the access card: it needs no install, and installs on shared venue wifi are slow. Follow `event.md` for lemlist: sign up through the workshop's link (on your access card) to start the 14-day trial; the code for the free month is added later, when you are ready to launch.
+Nothing is needed before the session: everything is handed out in the room. In the workshop, use the claude.ai route on the access card: it needs no install, and installs on shared venue wifi are slow. Follow `event.md` for lemlist: sign up through the workshop's link (on your access card) to start the 14-day trial; the code for the free month is added later, when you are ready to launch.
 
 ## Start (about 5 minutes)
 
@@ -74,9 +74,8 @@ In the workshop, use the claude.ai route on the access card: it needs no install
 | HubSpot sign-in | Only if HubSpot is your CRM. No account yet? Use the HubSpot link in `event.md` if your workshop gives one, or a free HubSpot account. Then https://claude.ai/settings/connectors, add HubSpot, sign in to that account, then restart Claude Code |
 | Clay sign-in | New to Clay? Sign up with your workshop's Clay link (`clay_signup_url` in `event.md`, or the access card when it shows a placeholder), so the workshop's credits (`clay_credits`) apply. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
 | After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |
-| Optional: HubSpot service key | Only for the HubSpot admin skills. Create one in HubSpot, paste it into `.env` yourself (never in the chat) |
 
-Everything else (installing the Clay plugin and CLI, Python tools, checking each connection, saving your preferences) Claude does itself.
+Everything else (installing the Clay plugin and CLI, checking each connection, saving your preferences) Claude does itself.
 
 ## Optional: block launching from your assistant
 
@@ -98,7 +97,7 @@ Already have a CRM or outreach tool? Name it at setup and Claude will use it. Cl
 
 | Step | Tested path | Your own tool |
 |---|---|---|
-| CRM | HubSpot (event portal or your own) | Pipedrive, Salesforce, Attio, Odoo...: Claude reads it (or its CSV export) to find your best customers and skip people you already have. Updates come back as a file you import. Want a live update for the demo? Add the event's HubSpot portal too |
+| CRM | HubSpot (event portal or your own) | Pipedrive, Salesforce, Attio, Odoo...: Claude reads it (or its CSV export) to find your best customers and skip people you already have. Updates come back as a file you import. Want to see a live update? Add the event's HubSpot portal too, when your workshop gives one |
 | Lists and enrichment | Clay | Apollo, Lusha, Sales Navigator...: drop in the CSV export, Claude maps the columns, and Clay can enrich it |
 | Outreach | Lemlist (Claude builds the campaign, paused) | HeyReach, Instantly, Smartlead...: Claude writes the messages and the list of people to import, and you click launch |
 
@@ -106,21 +105,34 @@ For the loop, Claude only uses the tools you name at setup, checked by their add
 
 Working on your company's real CRM? Your own CRM is always read-only here, and if it's a HubSpot portal setup asks whether to use it read-only. If the event's demo portal is shared between teams, don't import your real customer data into it: Claude keeps your own data in your folder (`out/`) instead.
 
+## Skills at a glance
+
+44 skills in `.claude/skills/` (Claude Code); the 34 engine skills are mirrored to `.agents/skills/` for Codex. The full list, with what each does, is in `SKILLS.md`.
+
+| Group | Skills |
+|---|---|
+| Start and setup | `gtm-start` (type `start`; also the claude.ai ZIP), `hackathon-setup` (the setup and sign-in steps `gtm-start` runs), `revenue-engine` (the loop, routing, safe mode, CSV import), `make-it-ours` |
+| Any CRM | `crm`, `crm-account-brief`, `crm-contact-lookup`, `crm-call-prep`, `crm-log-call`, `crm-lead-triage`, `crm-pipeline-pulse`, `crm-audit`, `crm-scoring-design`, `crm-duplicate-detector` |
+| HubSpot | `hubspot-crm`, `hubspot-account-brief`, `hubspot-lead-triage`, and HubSpot's official sales skills: `hubspot`, `hubspot-contact-lookup`, `hubspot-call-prep`, `hubspot-pipeline-pulse`, `hubspot-log-call`, `hubspot-daily-brief`, `hubspot-follow-up`, `hubspot-import-contacts`, `hubspot-onboarding` |
+| Clay | `clay-build-list`, plus the Clay plugin's own skills |
+| Lemlist and copy | `lemlist-campaign`, `icp-definer`, `persona-definer`, `pain-identifier`, `trigger-finder`, `campaign-angle-finder`, `outbound-campaign-architect`, `copywriting-first-touch`, `copywriting-follow-up`, `copywriting-vp-sequence`, `copywriting-manager-sequence`, `copywriting-ic-sequence`, `linkedin-sequence`, `copywriting-analyzer`, `copywriting-refiner`, `reply-handler` |
+| Close the loop | `close-the-loop` |
+
 ## What's inside
 
 - `SKILLS.md`: every skill you can use, grouped by tool.
-- `USAGE.md`: when to call which skill, the flow for each sprint, and fixes when something breaks.
-- `event.md`: this workshop's settings (links, trials, default stack). Past and other workshops are in `forks/`; `FORKING.md` explains how to make one.
+- `USAGE.md`: when to call which skill, the flow for the session, and fixes when something breaks.
+- `event.md`: this workshop's settings (links, trials, default stack). Each workshop's settings file is kept in `forks/`; `FORKING.md` explains how to make one.
 - `samples/`: the made-up data safe mode runs on, with the expected results in `samples/README.md`.
+- `scripts/build-claudeai.py` builds the claude.ai ZIP (`dist/gtm-start.zip`); `scripts/build-codex.py` rebuilds the Codex copy (`AGENTS.md`, `.agents/skills/`). `.github/workflows/` checks the Codex copy on every push and publishes the ZIP as a release.
 - `RULES.md`, `CLAUDE.md`, `AGENTS.md`: rules the assistant follows all day (nothing is sent without your go, everything is logged to `out/`).
 - `team-profile.md` and `team-context.md`: your preferences and your company context, written by setup and `make it ours`.
-- `out/`: everything Claude produces. `out/run-log.md` is your demo script.
+- `out/`: everything Claude produces. `out/run-log.md` is your record of the run, one line per step.
 
 ## Credits
 
 - Lemlist skills: https://github.com/l3mpire/claude-skills (MIT), already bundled here; the same set is at lemlist.com/claude-skills
 - HubSpot official skills (`hubspot`, `hubspot-call-prep`, `hubspot-pipeline-pulse` and the others marked official in `SKILLS.md`): HubSpot's `hubspot-sales` plugin, https://github.com/HubSpot/hubspot-mcp-plugins (Apache-2.0, HubSpot), bundled with this workspace's safety rules added at the top of each
-- HubSpot admin skills: https://github.com/tomgranot/hubspot-admin-skills (MIT, Tom Granot)
 - Clay plugin: https://github.com/clay-run/agent-plugins (installed from Clay, not bundled)
 
 Licences in `licenses/`.

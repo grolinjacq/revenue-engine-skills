@@ -18,10 +18,6 @@
       "Bash(claude plugin install clay@clay-plugins)",
       "Read(./out/**)",
       "Edit(./out/**)",
-      "Bash(python3 -m pip install uv)",
-      "Bash(python3 -m pip install -r requirements.txt)",
-      "Bash(python -m pip install uv)",
-      "Bash(python -m pip install -r requirements.txt)",
       "Bash(mkdir out)",
       "Bash(claude auth status)",
       "Read(./event.md)"

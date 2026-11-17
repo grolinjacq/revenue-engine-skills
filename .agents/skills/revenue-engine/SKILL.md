@@ -5,7 +5,7 @@ description: Run the full CRM to list to outreach to CRM loop (HubSpot, Clay, Le
 
 # Revenue engine (orchestrator)
 
-The hackathon's winning criterion is that data flows across the whole stack. This skill is the spine: it decides which step to run and passes the output of one step into the next. Each step has its own skill; call it, do not re-implement it here. Read `team-profile.md` first: its stack decides which tool fills each step.
+The point of the loop is that data flows across the whole stack. This skill is the spine: it decides which step to run and passes the output of one step into the next. Each step has its own skill; call it, do not re-implement it here. Read `team-profile.md` first: its stack decides which tool fills each step.
 
 ## The loop
 
@@ -65,8 +65,8 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 
 ## Routing
 
-- "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. Leave out lines starting `workshop |` and the `out/workshop/` and `out/rehearsal/` folders. No new actions.
-- A workshop, a demo, a rehearsal, a request to try something on sample data, "what can you do?" or "where do I start?" when no task is in progress: `workshop` (it shows its menu).
+- "What have we built?", "demo summary": read `out/run-log.md` and list `out/`, one line per step with counts, flag stale files, and name the next step. Leave out the `out/safe/` folder. No new actions.
+- "Start", "what can you do?" or "where do I start?" when no task is in progress: the `gtm-start` flow. A demo or a request to try something on sample data: safe mode (below), or `gtm-start`'s `demo`.
 - `out/icp.md` exists with `source: website` or `source: team description` (from setup): step 1 is done, go to step 2.
 - No ICP yet and `team-profile.md` has a `website` or `about`: `hackathon-setup` steps 1b to 1d (propose from the site, confirm). No ICP, no site and no description, or "start from the CRM": step 1.
 - "Who should we target?", "define our ICP" with `out/icp.md` on file: show it and offer a retarget (`hackathon-setup` steps 1b to 1d). Use `icp-definer` only to sharpen it, and write its result back to `out/icp.md` after the team confirms.
@@ -80,14 +80,14 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 - Outreach goes through Lemlist when the team has it; Clay's `campaigns` skill is not used for outreach here. With another declared outreach tool, `lemlist-campaign` prepares the lead file and the sequence and the team launches it in their tool.
 - "Did anyone reply?", "update the CRM": step 5.
 - Day-to-day CRM work outside the loop goes to the `crm-*` skills, which work with any CRM (`crm` lists them): a whole account, `crm-account-brief`; one person, `crm-contact-lookup`; a call or meeting to prep, `crm-call-prep`; logging a call, `crm-log-call`; new leads, `crm-lead-triage`; pipeline and forecast, `crm-pipeline-pulse`; data quality, `crm-audit`; scoring, tiers and lists, `crm-scoring-design`. With HubSpot they hand off to the matching `hubspot-*` skill. HubSpot-only extras (the day's priorities `hubspot-daily-brief`, a follow-up email opened in HubSpot `hubspot-follow-up`, importing contacts `hubspot-import-contacts`, a quick lookup or single change `hubspot`) run only when the team's CRM is HubSpot.
-- One spoken sentence that names a goal ("find 20 CFOs at Spanish fintechs and get a campaign ready"): restate it as the steps you will run, in one line, and start. Ask only what blocks the first step.
+- One spoken sentence that names a goal ("find 20 CFOs at German fintechs and get a campaign ready"): restate it as the steps you will run, in one line, and start. Ask only what blocks the first step.
 
 ## Rules for the whole loop
 
 1. Check connections first, for the tools in the team's stack only, by endpoint (Tool identity in `RULES.md`): the HubSpot endpoint's tools, the lemlist server's tools (`lm`), `clay whoami` (or the claude.ai connector called exactly Clay), and each tool declared as `other: <name>` at the endpoint recorded for it under `tools: other` in `team-profile.md` (one read call). A connector that does the same job under another name (HeyReach for outreach, Salesforce or Dex for the CRM, Apollo for lists) does not count. If one is missing or `pending`, say "Connect <tool> first", offer `hackathon-setup` for that tool, or the CSV route for that step, and stop that step there. Never fake a step with invented data or another connector.
 2. Nothing leaves the building without a yes. Campaigns are created paused. No campaign start, email or LinkedIn message without the user's explicit go in the current step; no CRM write without a go (over 10 records, show the plan and batch by 10).
 3. Respect `crm_mode`. With `read-only`, steps 1 and 3 read, step 5 writes a CSV instead of the CRM.
-4. Keep a run log. Append one line per step to `out/run-log.md`: time, step, tool used, counts in and out, anything skipped. Judges see this.
+4. Keep a run log. Append one line per step to `out/run-log.md`: time, step, tool used, counts in and out, anything skipped. It is the team's record of the run.
 5. Stop at a step boundary if a count looks wrong (for example 0 leads, or more than 500), and show the user before continuing.
 
 ## Agent mode (headless)

@@ -9,7 +9,7 @@ description: >
   "show me my day". Offered, not run, at session start.
 ---
 
-> **In this workspace.** Vendored from HubSpot's official `hubspot-sales` plugin (github.com/HubSpot/hubspot-mcp-plugins, `HubSpot-Sales/skills/daily-brief`, Apache-2.0, commit 032d294) and adapted for the hackathon: renamed, plus the safety notes in this box and the edits marked *(workspace)*:
+> **In this workspace.** Vendored from HubSpot's official `hubspot-sales` plugin (github.com/HubSpot/hubspot-mcp-plugins, `HubSpot-Sales/skills/daily-brief`, Apache-2.0, commit 032d294) and adapted for this workspace: renamed, plus the safety notes in this box and the edits marked *(workspace)*:
 > - `CLAUDE.md` and the *(workspace)* edits win over the original text below. On a first message of a session, `CLAUDE.md`'s greeting comes first. If `team-profile.md` is missing or says `setup: incomplete`, run `hackathon-setup` first. If its `crm` isn't HubSpot, don't call HubSpot: say so and offer the CSV route in `revenue-engine`.
 > - Read `team-profile.md` first. With `crm_mode: read-only`, or a CRM that isn't HubSpot (`crm: other: <name>` or `none`), show what you would write and stop.
 > - Every HubSpot write (create, update, associate, note, task, stage) is shown first as a plan and runs only after the user's go for that write, in this step. Over 10 records: show the plan, then write in batches of 10. Never change an existing record's owner or its email opt-out fields.
@@ -166,7 +166,7 @@ Link each contact and deal name to their HubSpot record: `[Name](https://[uiDoma
 
 ## Phase 6 — Offer to schedule the brief
 
-*(workspace)* Skip this phase on hackathon day; mention once that the Claude app can schedule it later.
+*(workspace)* Skip this phase during a workshop session; mention once that the Claude app can schedule it later.
 
 ---
 

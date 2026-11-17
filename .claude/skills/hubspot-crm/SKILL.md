@@ -9,7 +9,7 @@ description: HubSpot adapter of crm (use crm for any other CRM, or with no CRM).
 
 HubSpot is the source of truth in this stack. Clay and Lemlist feed it; nothing should overwrite it blindly.
 
-Connection: HubSpot's remote MCP server, through the HubSpot connector in the Claude app or a registered MCP connector (see `hackathon-setup`, and `connect-hubspot-mcp` for the details). Call `get_user_details` first to confirm the portal and what is writable. List the tools before the first call; pick by what they do, among the tools of the HubSpot endpoint only (`mcp.hubspot.com`, or the claude.ai connector called exactly HubSpot). Another CRM connected in the user's Claude account (Salesforce, Attio, Pipedrive, Dex, Airtable, Notion...) is never used for a HubSpot step or a CRM write; if no HubSpot server is connected, stop at "Connect HubSpot first" (`hackathon-setup` step 3) or take the CSV route.
+Connection: HubSpot's remote MCP server, through the HubSpot connector in the Claude app or a registered MCP connector (see `hackathon-setup` step 3). Call `get_user_details` first to confirm the portal and what is writable. List the tools before the first call; pick by what they do, among the tools of the HubSpot endpoint only (`mcp.hubspot.com`, or the claude.ai connector called exactly HubSpot). Another CRM connected in the user's Claude account (Salesforce, Attio, Pipedrive, Dex, Airtable, Notion...) is never used for a HubSpot step or a CRM write; if no HubSpot server is connected, stop at "Connect HubSpot first" (`hackathon-setup` step 3) or take the CSV route.
 
 ## The HubSpot skill set
 
@@ -28,12 +28,11 @@ This skill is the hub: ICP, dedupe, and the write rules every other HubSpot skil
 | Import contacts from a CSV or a pasted list | `hubspot-import-contacts` (official) |
 | Getting started in an empty portal | `hubspot-onboarding` (official) |
 | Score, route and assign new leads | `hubspot-lead-triage` |
-| Full portal audit (read-only) | `hubspot-audit`, `hubspot-sales-audit` |
-| Persistent ICP tiers and lead scoring in HubSpot | `create-icp-tiers`, `build-lead-scoring` |
-| Segment lists | `build-smart-lists` |
-| Data quality | `merge-duplicate-companies`, `fix-lifecycle-stages`, `cleanup-deals` |
+| Data-quality audit (read-only) | `crm-audit` |
+| ICP tiers, lead scoring and segment lists (a spec and an import file) | `crm-scoring-design` |
+| Duplicate contacts and companies (report only) | `crm-duplicate-detector` |
 
-Rows marked official come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), vendored and adapted: each has a box at the top with this workspace's rules, and the rules below apply to them too. The last four rows come from hubspot-admin-skills (MIT, Tom Granot) and run Python scripts with a service key in `.env` (`HUBSPOT_ACCESS_TOKEN`). They are built for scale: always run their dry run or "before" stage first on hackathon day.
+Rows marked official come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), vendored and adapted: each has a box at the top with this workspace's rules, and the rules below apply to them too. The last three rows are this workspace's CRM-agnostic skills: they read HubSpot and write a report or an import file, never a bulk change.
 
 ## Job A: derive the ICP (step 1 of `revenue-engine`)
 
@@ -71,7 +70,7 @@ notes: <one or two lines on anything surprising>
 - Before any write, read `crm_mode` in `team-profile.md`: if `read-only`, write nothing and offer a CSV of the planned changes instead.
 - Every write needs a go. Over 10 records: show the plan first and write in batches of 10 (the HubSpot connector's limit).
 - Never create a company from a free-mail domain (gmail.com, outlook.com, yahoo.com, hotmail.com, icloud.com).
-- The "forward only" lifecycle rule is for the loop's write-backs. `fix-lifecycle-stages` deliberately corrects stages and may move one back; run it only on an explicit request, after its before stage, and never with `crm_mode: read-only`.
+- Lifecycle stages only move forward in the loop's write-backs. A stage that needs moving back is a manual fix the team makes in HubSpot.
 
 ## Failure modes
 
