@@ -109,7 +109,7 @@ Working on your company's real CRM? Your own CRM is always read-only here, and i
 
 - `SKILLS.md`: every skill you can use, grouped by tool.
 - `USAGE.md`: when to call which skill, the flow for each sprint, and fixes when something breaks.
-- `event.md`: this workshop's settings (links, trials, default stack). Past and other workshops are in `forks/`; `FORKING.md` explains how to make one.
+- `event.md`: this workshop's settings (links, trials, default stack). Each workshop's settings file is kept in `forks/`; `FORKING.md` explains how to make one.
 - `samples/`: the made-up data safe mode runs on, with the expected results in `samples/README.md`.
 - `RULES.md`, `CLAUDE.md`, `AGENTS.md`: rules the assistant follows all day (nothing is sent without your go, everything is logged to `out/`).
 - `team-profile.md` and `team-context.md`: your preferences and your company context, written by setup and `make it ours`.
