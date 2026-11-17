@@ -48,7 +48,7 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 
 1. Setup (5 to 15 min). Type `start` (or "set me up"), give your website, and confirm what Claude read on it point by point (five A/B/C questions), changing any point you like. Fix anything red before moving on.
 2. ICP. Setup already wrote `out/icp.md` from your website, so there's no ICP to type. Read it and correct it by hand if it is off: this file drives everything after it. Working on your own CRM with real closed-won deals? "Write our ICP from closed-won deals" gives a second opinion; Claude asks before replacing the confirmed one.
-3. List. "Build the list from the ICP, 20 companies, 2 people each." Look at the first 10 companies when Claude shows them; say no early if they are wrong. Then "dedupe against our CRM".
+3. List. "Build the list from the ICP, 20 companies, 2 people each." Look at the first companies when Claude shows them; say no early if they are wrong. Then Claude enriches and scores them: it reads each company's site to answer your ICP's fit checks (Clay research for the sites it can't read) and scores 1 to 5 with a source per answer. Then "dedupe against our CRM".
 4. Campaign. "Find angles", pick one, "write the P-L-V-A sequence" (an opener, a proof, a 15-minute ask and a breakup, across email and LinkedIn), then "create the campaign, paused". Check the two rendered sample emails and the sending settings Claude lists. You launch it yourself, later.
 5. Close the loop. Once real replies come in, "close the loop" updates your CRM (or `out/crm-import.csv`). To see it work today, run it in safe mode.
 6. Recap. Open `out/run-log.md`: one line per step with counts, your record of the run.
