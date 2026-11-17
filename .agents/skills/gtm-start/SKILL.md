@@ -66,7 +66,7 @@ Answer `help` in the user's language with three lines only, then ask the open qu
 | International expansion | A new country or language | 60 to 90 min | `references/use-cases/expansion.md` |
 | Research and qualify accounts | They have a list and need to know who first | 45 to 60 min | `references/use-cases/research.md` |
 | Signal-based outreach | Reach companies at the right moment (hiring, funding, launch) | 60 min + weekly | `references/use-cases/signals.md` |
-| Investors and partners | Fundraising or partner programmes, not customers | 45 to 60 min | `references/use-cases/investors.md` |
+| Investors and partners | Fundraising or partner programmes, not customers | 60 to 90 min | `references/use-cases/investors.md` |
 
 ## Workshop overrides (chat and workspace, during a workshop session)
 
