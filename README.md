@@ -12,7 +12,7 @@ One folder that turns Claude Code or Codex into an outbound GTM engine: find the
 | Claude Code (desktop, terminal or claude.ai/code) | Open a session on this folder (claude.ai/code: pick this repository), type `start` | Paid Claude plan or Console |
 | Codex (app or CLI) | Unzip, open the folder, trust it, type `start` | Any ChatGPT plan with Codex |
 
-`start` runs the `gtm-start` flow: a 5-minute demo on made-up data, then questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist and your CRM, picking 1 to 3 use cases, and running them to a paused lemlist campaign. Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
+`start` runs the `gtm-start` flow: a 5-minute demo on made-up data, then questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist (with LinkedIn) and your CRM, then straight into your first campaign (ideal customer, buyer persona, companies and people from Clay, an email + LinkedIn sequence to book calls, a paused lemlist campaign), then more use cases. Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
 
 ## Try it first in safe mode (no accounts, 5 minutes)
 
@@ -40,7 +40,7 @@ Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use
 
 ## Do this before the workshop
 
-Installs are much faster on your own wifi than with 30 people on the venue's. Follow `event.md` for when to start trials (a lemlist trial is often best started on the day).
+Installs are much faster on your own wifi than with 30 people on the venue's. Follow `event.md` for lemlist: the workshop's offer (link and code on your access card), else a 14-day trial, best started on the day.
 
 ## Start (about 5 minutes)
 
@@ -56,7 +56,7 @@ Installs are much faster on your own wifi than with 30 people on the venue's. Fo
 
 | When | What you click |
 |---|---|
-| Lemlist sign-in | No account yet? Sign up the way `event.md` says (`lemlist_trial`; with a code, enter it under Settings, Billing, **Add coupon**). Then `/mcp`, choose `lm` (the lemlist server), Authenticate, approve in the browser. To send anything (even to teammates), connect a sending mailbox in lemlist's settings; a paused campaign is a fine finish without one |
+| Lemlist sign-in | No account yet? Sign up the way `event.md` says (`lemlist_trial`: the sign-up link and code on your access card; then enter the code in lemlist under Settings > Billing & Users > Subscription > Manage, with the coupon button, on Multichannel Monthly; that step asks for a payment card). Then `/mcp`, choose `lm` (the lemlist server), Authenticate, approve in the browser. To send anything (even to teammates), connect a sending mailbox in lemlist's settings; a paused campaign is a fine finish without one |
 | HubSpot sign-in | Only if HubSpot is your CRM. No account yet? Use the HubSpot link in `event.md` if your workshop gives one, or a free HubSpot account. Then https://claude.ai/settings/connectors, add HubSpot, sign in to that account, then restart Claude Code |
 | Clay sign-in | New to Clay? Sign up with your workshop's Clay link (`clay_signup_url` in `event.md`, or the access card when it shows a placeholder), so the workshop's credits (`clay_credits`) apply. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
 | After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |

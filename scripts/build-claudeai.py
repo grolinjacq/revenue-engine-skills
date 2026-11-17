@@ -15,6 +15,7 @@ dist/ is not committed: hand the ZIP to attendees from the workshop's access car
 """
 import re
 import shutil
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -40,7 +41,9 @@ HEADER = (
 )
 
 # Anything that looks like a promo code or a promo sign-up link must never ship.
-LEAK = re.compile(r"promoCode=|[?&]source=clay|utm_content=|coupon[:=]\s*[A-Z0-9]{6,}", re.I)
+LEAK = re.compile(r"(?i:promoCode=|[?&]source=clay|utm_content=|coupon[:=]\s*[A-Z0-9]{6,}|get\.lemlist\.com/\w"
+                  r"|lemlist\.com/\S*[?&](via|ref|fp_ref|fpr|promo|code|coupon)=)"
+                  r"|(?<![A-Za-z0-9])[A-Z0-9][A-Z0-9_-]*[_-]?LEMLIST(?![a-z])|(?<![A-Za-z0-9_-])LEMLIST[_-]?[A-Z0-9][A-Z0-9_-]{2,}")
 
 
 def main() -> int:
@@ -59,6 +62,16 @@ def main() -> int:
 
     leaks = [str(p.relative_to(stage)) for p in stage.rglob("*") if p.is_file()
              and LEAK.search(p.read_text(encoding="utf-8", errors="ignore"))]
+    try:  # tracked files too: this repo is public
+        tracked = [t for t in subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True,
+                                              check=True).stdout.split("\0") if t]
+    except (OSError, subprocess.CalledProcessError):
+        if (ROOT / ".git").exists():
+            print("Refusing to build: could not list tracked files for the leak check", file=sys.stderr)
+            return 1
+        tracked = []
+    leaks += [t for t in tracked if (ROOT / t).is_file() and t != "scripts/build-claudeai.py"
+              and LEAK.search((ROOT / t).read_text(encoding="utf-8", errors="ignore"))]
     if leaks:
         print("Refusing to build: promo code or promo link found in " + ", ".join(leaks), file=sys.stderr)
         return 1
