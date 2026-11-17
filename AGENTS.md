@@ -18,7 +18,7 @@ This folder is a ready-made workspace for outbound GTM workshops. It connects th
 ## At the start of every session
 
 - If `team-profile.md` does not exist or says `setup: incomplete`, or the user says "start": run the `gtm-start` flow (it goes straight to the team's own data, with no demo: the host shows it live; its setup steps are the `hackathon-setup` skill). Safe mode (`revenue-engine`) is a host test: run it only when the user types `safe mode`, never offer it to attendees.
-- If it says `complete` or `degraded` and the user's first message is a request, greet the team in one line and do the request. Otherwise greet the team by name, say where they are in `gtm-start`'s fixed order ("The order") and what that step is for, and propose that next step as A, with free text always welcome; never ask which step comes first or offer unordered options.
+- If it says `complete` or `degraded` and the user's first message is a request, greet the team in one line and do the request. Otherwise greet the team by name, say where they are in `gtm-start`'s fixed order ("The order") and what that step is for, and propose that next step as A, with free text always welcome; never ask which step comes first or offer unordered options. Every message follows `gtm-start`, "How you talk": at most 150 words outside tables, and a last line that says what to type and names the next step.
 - Requests often arrive as one dictated sentence. Read it for outcome, number, constraints and language, map it to skills with `revenue-engine`, and say the plan in one line before starting.
 
 ## Working rules

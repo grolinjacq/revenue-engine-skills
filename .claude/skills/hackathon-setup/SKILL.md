@@ -5,7 +5,7 @@ description: Set up this workshop workspace for a team - check the environment, 
 
 # Workspace setup
 
-Goal: the team goes from unzipped folder to a working stack in about 5 minutes, doing only what Claude cannot do for them (browser sign-ins, clicks in a tool's UI). Do everything else yourself. One action at a time in each message. Every question follows `gtm-start`, "How you talk": one question per message, as A, B or C with A your recommended answer already filled in from what you can see, free text always welcome, and no expert settings.
+Goal: the team goes from unzipped folder to a working stack in about 5 minutes, doing only what Claude cannot do for them (browser sign-ins, clicks in a tool's UI). Do everything else yourself. One action at a time in each message. Every question follows `gtm-start`, "How you talk": one question per message, as A, B or C with A your recommended answer already filled in from what you can see, free text always welcome, no expert settings, at most 150 words, and every message ends with its closing line naming what to type and the next step.
 
 Read `event.md` first: it holds this workshop's settings (default stack, start mode, sign-up links, trials and codes, demo portal, client ID for path B, who to ask). Other workshops keep theirs in `forks/`; never read those for this team. If a value still shows `<...>`, it wasn't filled in: ask the user or the organisers instead of guessing.
 
@@ -71,7 +71,7 @@ A: yes, go with it
 B: same business, different target today (a new country, segment,
    company size or buyer): type it
 C: let me correct a line
-Or type your own answer, or ask me anything.
+Answer A to go with this target. Or type your own answer, or ask me anything.
 ```
 
 - "A" or "yes": keep the proposal as it is.
