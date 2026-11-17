@@ -44,7 +44,6 @@
       "mcp__lm__get_contact_lists",
       "mcp__lm__get_domain_dns",
       "mcp__lm__get_dynamic_sender_exclusions",
-      "mcp__lm__get_inbox_conversation",
       "mcp__lm__get_inbox_conversations",
       "mcp__lm__get_inbox_placement_result",
       "mcp__lm__get_lemleads_filters",
@@ -118,7 +117,6 @@
       "mcp__lemlist__get_contact_lists",
       "mcp__lemlist__get_domain_dns",
       "mcp__lemlist__get_dynamic_sender_exclusions",
-      "mcp__lemlist__get_inbox_conversation",
       "mcp__lemlist__get_inbox_conversations",
       "mcp__lemlist__get_inbox_placement_result",
       "mcp__lemlist__get_lemleads_filters",
@@ -171,6 +169,8 @@
       "mcp__lemlist__validate_campaign_readiness"
     ],
     "ask": [
+      "mcp__lm__get_inbox_conversation",
+      "mcp__lemlist__get_inbox_conversation",
       "mcp__lm__get_crm_import_filters",
       "mcp__lm__propose_sequence",
       "mcp__lemlist__get_crm_import_filters",
