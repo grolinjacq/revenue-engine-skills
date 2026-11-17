@@ -54,7 +54,7 @@ Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use
 
 ## Do this before the workshop
 
-Installs are much faster on your own wifi than with 30 people on the venue's. Follow `event.md` for lemlist: the workshop's offer (link and code on your access card), else a 14-day trial, best started on the day.
+In the workshop, use the claude.ai route on the access card: it needs no install, and installs on shared venue wifi are slow. Follow `event.md` for lemlist: sign up through the workshop's link (on your access card) to start the 14-day trial; the code for the free month is added later, when you are ready to launch.
 
 ## Start (about 5 minutes)
 
