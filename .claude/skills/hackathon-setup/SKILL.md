@@ -67,7 +67,7 @@ Never show the whole proposal as one block. Confirm it point by point, one quest
 After point 5, go on to the stack question (1a, 2) and, inside `gtm-start`, its goal question; then one recap line, last ("Got it: <team>, <target>, <titles>, <angle>, <language> copy, email + LinkedIn, <goal>"), the same as `gtm-start` About you. An answer that changes a point applies to that point only; never ask the same point again. Point 1's closing line adds "or type `all good` to accept all five": then show the five as a short list with "A: go on; B: change a point (type its number)".
 
 - Their own use case instead of the loop: one line, recorded in `use_case`.
-- Ask at most one follow-up. If something is still open, use what they said and mark the gap `[assumption]`.
+- Ask at most one follow-up. If something is still open, use what they said and note the gap in `notes` in `out/icp.md` (never as a tag in a message).
 
 No website and no description ("don't know", "defaults" without a site): set `target: derive from CRM`, `copy_language: English`, and carry on; the ICP comes from HubSpot (step 1 of the loop) or from the user later.
 
