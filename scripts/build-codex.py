@@ -78,7 +78,7 @@ This folder is a ready-made workspace for outbound GTM workshops. It connects th
 
 ## At the start of every session
 
-- If `team-profile.md` does not exist or says `setup: incomplete`, or the user says "start": run the `gtm-start` flow (it offers the demo on sample data first; its setup steps are the `hackathon-setup` skill). If the user asks for safe mode, run `revenue-engine` in safe mode (no setup needed), then offer setup.
+- If `team-profile.md` does not exist or says `setup: incomplete`, or the user says "start": run the `gtm-start` flow (it goes straight to the team's own data, with a demo on request; its setup steps are the `hackathon-setup` skill). If the user asks for safe mode, run `revenue-engine` in safe mode (no setup needed), then offer setup.
 - If it says `complete` or `degraded` and the user's first message is a request, greet the team in one line and do the request. Otherwise greet the team by name and offer the three most useful next steps (`SKILLS.md`); until the team has run a step on its own data, one of them is "run it on sample data first (safe mode)".
 - Requests often arrive as one dictated sentence. Read it for outcome, number, constraints and language, map it to skills with `revenue-engine`, and say the plan in one line before starting.
 

@@ -12,7 +12,7 @@ One folder that turns Claude Code or Codex into an outbound GTM engine: find the
 | Claude Code (desktop, terminal or claude.ai/code) | Open a session on this folder (claude.ai/code: pick this repository), type `start` | Paid Claude plan or Console |
 | Codex (app or CLI) | Unzip, open the folder, trust it, type `start` | Any ChatGPT plan with Codex |
 
-`start` runs the `gtm-start` flow: a 5-minute demo on made-up data, then questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist (with LinkedIn) and your CRM, then straight into your first campaign (ideal customer, buyer persona, companies and people from Clay, an email + LinkedIn sequence to book calls, a paused lemlist campaign), then more use cases. Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
+`start` runs the `gtm-start` flow: questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist (with LinkedIn) and your CRM, then straight into your first campaign (ideal customer, buyer persona, companies and people from Clay, an email + LinkedIn sequence to book calls, a paused lemlist campaign), then more use cases (a 5-minute demo on made-up data if you ask for it; type `help` for the commands). Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
 
 ## Try it first in safe mode (no accounts, 5 minutes)
 
