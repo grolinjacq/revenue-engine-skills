@@ -182,7 +182,7 @@ Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the 
 You get 3 angles, then the 5 steps: a connection note (usually blank), M1 opener, M2 proof, M3 ask and M4 breakup, in a branching email + LinkedIn sequence. If you have email only, the emails must not mention LinkedIn.
 
 Skills that run this step
-campaign-angle-finder picks the angle. outbound-campaign-architect sets the steps and channels. One of copywriting-vp-sequence, copywriting-manager-sequence or copywriting-ic-sequence writes the emails, by seniority. linkedin-sequence writes the LinkedIn steps. copywriting-refiner checks the copy.
+campaign-angle-finder picks the angle. The P-L-V-A tree in lemlist-campaign step 3 sets the steps and channels. One of copywriting-vp-sequence, copywriting-manager-sequence or copywriting-ic-sequence writes the emails, by seniority. linkedin-sequence writes the LinkedIn steps. copywriting-refiner checks the copy.
 
 7
 
@@ -190,13 +190,13 @@ campaign-angle-finder picks the angle. outbound-campaign-architect sets the step
 lemlist
 ```
 
-Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with a LinkedIn URL but no usable email join the LinkedIn steps only, with the email column empty (count them separately in the preview), when LinkedIn is connected; otherwise give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
+Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
 ```
 
 lemlist not connected? Do it in the lemlist app
 
 - Ask the assistant: "Give me the clean leads as a lemlist import CSV, with firstName, lastName, email, companyName, linkedinUrl, personalization."
-- In lemlist: Campaigns, New campaign, import the CSV, then add a condition "has LinkedIn URL": yes, LinkedIn visit and invite, then a condition "invite accepted" (5 days): accepted, M1 LinkedIn message, M2 email +3, M3 LinkedIn message +3, M4 email +4; not accepted and no LinkedIn URL, M1 to M4 by email (+3, +3, +4).
+- In lemlist: Campaigns, New campaign, import the CSV, then add a condition "has LinkedIn URL": yes, LinkedIn visit and invite, then a condition "invite accepted" (5 days): accepted, M1 LinkedIn message, M2 email +3, M3 LinkedIn message +3, M4 email +4; not accepted and no LinkedIn URL, M1 to M4 by email (+3, +3, +4). On the 14-day trial: M1 email to everyone plus visit and invite on Day 0, "invite accepted" within 2 days, then M2 on Day 2, M3 on Day 4, M4 on Day 5.
 - Connect your LinkedIn with the lemlist Chrome extension. Check the sending settings (your mailbox, your time zone, weekdays only), and leave it paused.
 
 Safe mode
@@ -213,7 +213,7 @@ your CRM, import file
 This closes the loop. Your CRM stays the place where you see every lead and every booked call.
 ```
 
-Prompt: 1. Make a CSV I can import into [CRM] with the leads that are in the campaign and their companies, tagged "[CAMPAIGN NAME]", stage Lead (or your CRM's equivalent; with no CRM, a leads-tracker CSV). Leave out everyone in dnc.csv and any rows that did not go into the campaign (LinkedIn-only leads that did join are included).
+Prompt: 1. Make a CSV I can import into [CRM] with the leads that are in the campaign and their companies, tagged "[CAMPAIGN NAME]", stage Lead (or your CRM's equivalent; with no CRM, a leads-tracker CSV). Leave out everyone in dnc.csv and the linkedin-only rows held back.
 2. Write a one-page watch list for the first 2 weeks: what to check every day in lemlist (replies, LinkedIn accepts, bounces, unsubscribes), the numbers that mean it works and the numbers that mean I should change the copy or the list (label them "rule of thumb, not a measured benchmark").
 3. Show me how you will sort replies (interested, not now, wrong person, no, remove me) and what you will draft for each. For "interested", the draft gives my booking link or the slots I gave you, never invented times. Replies stay drafts: I send them. Anyone who says no or remove me goes on the do-not-contact list.
 ```

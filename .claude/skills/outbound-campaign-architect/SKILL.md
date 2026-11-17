@@ -67,7 +67,7 @@ justifies the manual effort. Position calls as high-intent follow-ups, not opene
 
 ### Rule 3 — Fewer steps beats more steps (especially email-only)
 
-In this workspace the first campaign uses the five-step P-L-V-A sequence in `lemlist-campaign` step 3 (M2 to M4 only go out with no reply); this rule applies to other sequences.
+In this workspace the first campaign, and any sequence whose playbook doesn't set its own, uses the five-step P-L-V-A sequence in `lemlist-campaign` step 3 (M2 to M4 only go out with no reply); this rule applies to the rest.
 
 | Steps | Email only | LinkedIn + Email |
 |---|---|---|
