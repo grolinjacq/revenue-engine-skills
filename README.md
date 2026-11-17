@@ -64,6 +64,20 @@ Installs are much faster on your own wifi than with 30 people on the venue's. Fo
 
 Everything else (installing the Clay plugin and CLI, Python tools, checking each connection, saving your preferences) Claude does itself.
 
+## Optional: block launching from your assistant
+
+By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
+
+- **Claude Code:** create `.claude/settings.local.json` in this folder (it stays on your machine) with:
+  ```json
+  {"permissions": {"deny": ["mcp__lm__launch_campaign", "mcp__lm__set_campaign_state", "mcp__lm__connect_email_account",
+    "mcp__lemlist__launch_campaign", "mcp__lemlist__set_campaign_state", "mcp__lemlist__connect_email_account",
+    "mcp__claude_ai_Lemlist__launch_campaign", "mcp__claude_ai_Lemlist__set_campaign_state", "mcp__claude_ai_Lemlist__connect_email_account"]}}
+  ```
+  Then restart Claude Code; it tells you if the file is invalid.
+- **Codex:** in `.codex/config.toml`, add `"launch_campaign", "set_campaign_state", "connect_email_account"` to the `disabled_tools` list under `[mcp_servers.lm]`, then restart Codex. The file is part of the workspace, so keep your edit when you update it.
+- **claude.ai:** in Settings > Connectors, open `lm`. If it lets you turn off single tools, turn off `launch_campaign`, `set_campaign_state` and `connect_email_account`. If it doesn't, answer Deny or no whenever a launch, a mailbox connection or a state change is asked for.
+
 ## Your own stack
 
 Already have a CRM or outreach tool? Name it at setup and Claude will use it. Clay can slot in alongside. HubSpot, Clay and Lemlist are the tested path today; with any other tool, Claude reads it (through its Claude connector if it has one, or its CSV export) and prepares everything, and you do the final import or launch click yourself.
