@@ -28,7 +28,7 @@ hubspot_demo_portal: none
 hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (CRM writes touch only this team's own records); this workshop provides no portal, so yes is the safe value
 hubspot_mcp_client_id: none
 claude_access: any Claude plan, Free included (upload the gtm-start skill ZIP in claude.ai), or Claude Code (paid plan) or Codex (included in ChatGPT plans) on this repo
-list_size: search about 20 companies, enrich and score all of them, keep up to 10 that score 5 (then 4s if needed, never lower; fewer is fine) x 2 people (about 20 people); if under 15 leads have an email, add 5 more companies (at most twice)
+list_size: search about 20 companies, enrich and score all of them, keep up to 10 that score 5 (then 4s if needed, never lower; fewer is fine) x 2 people (about 20 people); if under 15 leads have an email, search and score 10 more companies, keeping at most 5 strong matches (at most twice)
 in_session_never: connect a mailbox (homework), start or launch a campaign, send anything, buy domains, mailboxes or credits
 help: Geoffrey (mentor) and Sardorbek Axmedov (Plug and Play program manager)
 pack_version: 2026-11-16
