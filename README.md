@@ -47,7 +47,6 @@ Plain ChatGPT chat (without Codex) can't open this folder or run the skills: use
 ## Before you start
 
 - **For this folder (Claude Code)**: a paid Claude account (Pro, Max, Team or Enterprise) or an Anthropic Console (API) account. On the free Claude plan, use the `gtm-start.zip` skill in claude.ai instead (Start here, above).
-- **Only have the event's API credits?** Claim them into a Console account at platform.claude.com, then in Claude Code run `/login` and choose the Anthropic Console option. Every Claude reply then spends those credits, and HubSpot uses setup's path B (setup handles it).
 - **Log in with your Claude account, not an API key**, if you can. With an API key, the HubSpot and Clay connectors from your Claude settings don't load (setup will tell you what to do instead).
 - **A laptop**: macOS 13+, Windows 10/11, or Linux. No admin rights needed.
 - **One copy of the folder per laptop.** Don't share it through Google Drive, Dropbox or OneDrive: two laptops writing the same files will overwrite each other's setup. On Windows, unzip it to a plain folder such as `C:\revenue-engine`, not Desktop or Documents (often synced to OneDrive), and open a new PowerShell window after installing Claude Code.
@@ -124,7 +123,7 @@ Working on your company's real CRM? Your own CRM is always read-only here, and i
 - `USAGE.md`: when to call which skill, the flow for the session, and fixes when something breaks.
 - `event.md`: this workshop's settings (links, trials, default stack). Each workshop's settings file is kept in `forks/`; `FORKING.md` explains how to make one.
 - `samples/`: the made-up data safe mode runs on, with the expected results in `samples/README.md`.
-- `scripts/build-claudeai.py` builds the claude.ai ZIP (`dist/gtm-start.zip`); `scripts/build-codex.py` rebuilds the Codex copy (`AGENTS.md`, `.agents/skills/`). `.github/workflows/` checks the Codex copy on every push and publishes the ZIP as a release.
+- `scripts/build-claudeai.py` builds the claude.ai ZIP (`dist/gtm-start.zip`); `scripts/build-codex.py` rebuilds the Codex copy (`AGENTS.md`, `.agents/skills/`). `.github/workflows/` checks the Codex copy on every push; the ZIP release workflow runs only when started by hand from the Actions tab, with a tag.
 - `RULES.md`, `CLAUDE.md`, `AGENTS.md`: rules the assistant follows all day (nothing is sent without your go, everything is logged to `out/`).
 - `team-profile.md` and `team-context.md`: your preferences and your company context, written by setup and `make it ours`.
 - `out/`: everything Claude produces. `out/run-log.md` is your record of the run, one line per step.

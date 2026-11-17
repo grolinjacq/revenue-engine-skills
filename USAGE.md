@@ -67,7 +67,7 @@ Two easy routes:
 | "tool not found" or a server is missing | `/mcp`, check the server is connected, re-authenticate |
 | HubSpot returns nothing for deals | Your demo portal may have no closed-won deals. Give your ICP in words instead. |
 | Clay out of credits | Claude stops and offers a cheaper plan (email only, fewer companies); pick one |
-| HubSpot connector missing after setup | Logged in with an API key? Run `/login` with your Claude account, or ask the organisers for the HubSpot client ID (path B) |
+| HubSpot connector missing after setup | Logged in with an API key? Run `/login` with your Claude account, or use your CRM's CSV export (path B needs a client ID in `event.md`, and this workshop has none) |
 | Clay plugin won't install (network) | Add the Clay connector at claude.ai/settings/connectors instead, then restart |
 | Your leads come from Apollo or another tool | "Here's my CSV": Claude maps the columns and lists the rows it dropped |
 | You named HeyReach, Instantly or another outreach tool at setup | Claude writes the sequence and `out/outreach-import.csv`; you import it and click launch in your tool. Lemlist is the only tool where Claude builds the campaign itself |
