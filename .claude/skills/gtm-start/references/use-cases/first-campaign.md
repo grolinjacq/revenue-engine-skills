@@ -18,7 +18,7 @@ Guardrails for this playbook (from test runs)
 
 - No customers yet, or a thin website? The assistant gives 2 target ideas marked "inferred" and asks you up to 3 questions. With no proof point, the messages use none: never a made-up number.
 - If the clean list has fewer than 20 leads, the assistant says the exact number. Run step 3 again for more companies, or build the campaign with what you have.
-- LinkedIn steps need your LinkedIn account connected in lemlist (Chrome extension). If it isn't, the campaign runs the email steps only and the assistant tells you.
+- LinkedIn steps need your LinkedIn account connected in lemlist (Chrome extension) before launch. The campaign is built with them either way, paused; if LinkedIn isn't connected yet, connecting it is homework.
 
 0
 
@@ -30,7 +30,7 @@ First paste the session rules, then the prompt below.
 Own data: You're my GTM assistant for our first outbound campaign. The goal is booked calls. Our website: [URL]. Our home market: [COUNTRY]. Today is [DATE].
 1. Read the site and tell me in 5 lines what we sell, to whom, and our strongest proof point (a number if there is one).
 2. Tell me which of these you can reach in this chat: Clay, lemlist, my CRM ([NAME]). For each one you can't reach, say so. We'll pass files for that step.
-3. Read my lemlist plan from lemlist (don't ask me) and check whether my LinkedIn is connected through the lemlist Chrome extension. If LinkedIn isn't connected, plan email steps only.
+3. Read my lemlist plan from lemlist (don't ask me) and check whether my LinkedIn is connected through the lemlist Chrome extension. Plan the LinkedIn steps anyway (email steps only on lemlist's Email plan); if LinkedIn isn't connected, add connecting it to my homework.
 No web browsing? I'll paste my homepage and about text instead.
 Stop and wait for my answer; when I confirm, go straight into the next step.
 ```
@@ -174,7 +174,7 @@ Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the 
 - Step 3, M2 proof (+3 days): V, the strongest quantified result and a one-line case study: [PROOF POINT, or: none yet, never invent one]
 - Step 4, M3 ask (+3 days, a LinkedIn message on the accepted path): A, a clear ask for a 15-minute call with my booking link [LINK] or two slots I give you [SLOTS]; if I have neither, end with "Reply with a day this week or next that suits you"
 - Step 5, M4 breakup (+4 days): no pitch, a polite final nudge, the door stays open
-- build it as a branching multichannel sequence in lemlist where my plan and LinkedIn allow: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. Without LinkedIn, email only
+- build it as a branching multichannel sequence in lemlist where my plan and LinkedIn allow: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. On lemlist's Email plan, email only
 - use {{firstName}}, {{companyName}} and {{personalization}}, and a version of M1 for rows where personalization is blank
 3. Check the copy against a plain checklist (short, one ask, no hype, each message stands alone) and fix what fails.
 ```
@@ -190,7 +190,7 @@ campaign-angle-finder picks the angle. The P-L-V-A tree in lemlist-campaign step
 lemlist
 ```
 
-Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
+Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If the extension or the LinkedIn login is missing, keep the LinkedIn steps and tell me to connect LinkedIn before launch; on the Email plan, keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
 ```
 
 lemlist not connected? Do it in the lemlist app
