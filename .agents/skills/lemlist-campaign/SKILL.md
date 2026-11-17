@@ -39,7 +39,7 @@ Safe mode (`mode: safe` in `team-profile.md`, or the request says so): don't cal
        - Accepted (the warm path): M1 opener as a LinkedIn message (under 300 characters); +3 days M2 proof by email (the lead's first email: its own subject line and an opening that stands alone, no ask); +3 M3 ask as a LinkedIn message (15-minute call, booking link); +4 M4 breakup by email.
        - Not accepted: the email path below.
      - No: the email path: M1 opener (with a subject line), +3 days M2 proof, +3 M3 ask, +4 M4 breakup, as replies in the same thread.
-   - Every lead in the campaign has an email; leads without one stay out (`pending.csv`).
+   - Every lead in the campaign has an email that Clay (or the list source) doesn't mark invalid or undeliverable; leads without one stay out (`pending.csv`).
    - LinkedIn first, if the user asks: the same tree, with M1 to M4 all as LinkedIn messages on the accepted path.
    - Where conditions aren't possible (Email plan, LinkedIn not connected, or lemlist refuses the tree): a linear email sequence, M1 to M4 on Days 1, 4, 7 and 11; say why in one line. Never place a LinkedIn message outside the accepted branch.
    - On lemlist's 14-day trial, a shorter tree so every branch ends by the last allowed send date, with the emails spaced: Day 0, M1 opener by email to everyone, plus the profile visit and the invite for leads with a LinkedIn URL; then "invite accepted" within 2 days: accepted, M2 proof as a LinkedIn message (Day 2), M3 ask by email (Day 4), M4 breakup as a LinkedIn message (Day 5); not accepted, and leads with no LinkedIn URL, M2 by email on Day 2, M3 on Day 4, M4 on Day 5. That is 6 sending days (for an 18 Nov sign-up launching on the weekend: Mon 23 to Mon 30 Nov). Name that last send date.
