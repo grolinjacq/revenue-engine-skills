@@ -23,7 +23,7 @@ Safe mode (`mode: safe` in `team-profile.md`, or the request says so): don't cal
 Teams tune this block once, by hand or with `make-it-ours`; the steps below read it. A number the user says in the request ("thirty companies", "three people each") wins over the block for that run.
 
 ```
-companies: 25            # in the workshop, gtm-start sizes it: about 20 searched, all scored, top 10 kept
+companies: 25            # in the workshop, gtm-start sizes it: about 20 searched, all scored, up to 10 strong matches kept
 people_per_company: 2    # most senior ICP title first
 titles_local: true       # add the market's-language titles (for a Spanish-speaking market: "Director Comercial", "Director Financiero")
 data_points: work_email, linkedin_url   # add more only if a later step uses them
