@@ -85,6 +85,7 @@ use_case: <default loop | one line>
 target: <one line, or "derive from CRM">
 target_source: <website | website, edited | retarget: <what changed> | user | crm>
 copy_language: <language>
+chat_language: <the language the user writes in; the workshop talks to them in it>
 mode: <safe | live>   # safe = samples/ only, no tool calls (revenue-engine, "Safe mode"); start with start_mode from event.md; live only when the user asks
 write_mode: <A | B>
 clay_credit_cap: <number>
