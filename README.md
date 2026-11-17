@@ -74,7 +74,7 @@ Nothing is needed before the session: everything is handed out in the room. In t
 | Clay sign-in | New to Clay? Sign up with your workshop's Clay link (`clay_signup_url` in `event.md`, or the access card when it shows a placeholder), so the workshop's credits (`clay_credits`) apply. Already on Clay? Keep your workspace and submit its workspace ID on the credits form (`clay_credits_form` in `event.md`); the organisers send it to the Clay community, which loads the credits. Then approve the browser login that Clay's setup opens (or add the Clay connector at the same settings page) |
 | After a restart | Terminal: type `/exit`, then `claude` again. Desktop app: quit it fully and reopen it on the same folder. Then type `set me up`: Claude picks up where it stopped |
 
-Everything else (installing the Clay plugin and CLI, checking each connection, saving your preferences) Claude does itself. In Claude Code, lemlist reads (team, campaigns, leads, status) run without a prompt, and every lemlist action that creates, changes or sends asks you to approve it first (`.claude/settings.json`).
+Everything else (installing the Clay plugin and CLI, checking each connection, saving your preferences) Claude does itself. In Claude Code, lemlist reads (team, campaigns, leads, status) run without a prompt, every lemlist action that creates or changes something asks you to approve it first, and sends are blocked (`.claude/settings.json`).
 
 ## Optional: block launching from your assistant
 
