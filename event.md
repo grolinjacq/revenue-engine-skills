@@ -10,7 +10,7 @@ session_end: 11:15   # hands-on ends 11:05; the skill hands over files at the ne
 event: GTM Outbound Sprint, From 0 to Calls Booked. PAIA Bootcamp 4, Plug and Play + IT Park Uzbekistan, Tashkent, 18 Nov 2026
 host: Plug and Play Tech Center Uzbekistan
 language: English          # the language Claude talks to attendees in by default (copy_language is set per team)
-start_mode: safe           # safe = new workspaces start on samples/ (no tools); live = start on the team's own tools
+start_mode: live           # safe = new workspaces start on samples/ (no tools); live = start on the team's own tools
 goal: every attendee ends with a lemlist campaign of 20+ leads found in Clay for their own ideal customer, paused and ready to launch from their own mailbox
 
 # Default stack offered at setup. The team can always name its own tools.

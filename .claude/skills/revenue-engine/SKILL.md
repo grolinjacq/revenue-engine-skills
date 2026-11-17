@@ -23,7 +23,7 @@ Every step writes its artefact into `out/`. If an artefact already exists, say w
 
 Safe mode runs the whole loop on the fictional data in `samples/` and touches no real tool. It is how a new team sees the engine work before connecting anything, and how the pack is tested in Claude and in Codex. It needs no account, no connector and no credits.
 
-How to present it: as the guided demo in `gtm-start` step 2 (a coach walking through the example campaign one step at a time, what and why, one reflection question A/B/C per step, ending with "now let's do it for your company"). Open on the example itself, never with what safe mode switches off; the sample-data fact is one positive line.
+How to present it: a test run for hosts, never offered to attendees. Open on the example itself, never with what safe mode switches off; the sample-data fact is one positive line.
 
 When it is on:
 - `team-profile.md` says `mode: safe`. With no `team-profile.md` yet, or setup still `incomplete`, setup runs first (`CLAUDE.md`), unless the request asks for safe mode (next line); no live step runs before setup.

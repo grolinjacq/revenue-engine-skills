@@ -4,9 +4,9 @@ Full list of skills: `SKILLS.md`.
 
 You do not need to name skills. Say what you want and Claude picks the skill from its description. The prompts below are known to route well. To force a skill, start with its name, for example `/clay-build-list`.
 
-## Try it in safe mode first
+## For hosts: test it in safe mode
 
-Say `safe mode` (or "test run"). The whole loop runs on the made-up company and leads in `samples/`, with no accounts, no credits and nothing sent, in Claude Code or Codex. Results land in `out/safe/`, and `samples/README.md` lists what a correct run produces. Say `switch to live` when you want to use your own data.
+Attendees skip this: the host shows the demo live. To test, say `safe mode` (or "test run"). The whole loop runs on the made-up company and leads in `samples/`, with no accounts, no credits and nothing sent, in Claude Code or Codex. Results land in `out/safe/`, and `samples/README.md` lists what a correct run produces. Say `switch to live` when you want to use your own data.
 
 ## Start the guided flow
 
