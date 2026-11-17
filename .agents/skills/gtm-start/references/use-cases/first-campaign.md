@@ -155,7 +155,7 @@ Prompt: Clean this lead list before we write to anyone:
 Don't change anything in the CRM. Tell me how many rows you removed, for each reason, and how many are left per channel.
 ```
 
-You get a clean list (aim for 20+) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
+You get a clean list (aim for about 20) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
 
 Skills that run this step
 crm checks the list against your CRM (connector or CSV export).
@@ -204,7 +204,7 @@ The assistant writes the import CSV and the campaign it would have created. Noth
 
 Skills that run this step
 lemlist-campaign.
-You get a paused email and LinkedIn campaign of 20+ leads. Open it in lemlist and check it says Paused. When you're ready, connect your mailbox and press launch yourself, before your free lemlist period ends.
+You get a paused email and LinkedIn campaign of about 20 leads. Open it in lemlist and check it says Paused. When you're ready, connect your mailbox and press launch yourself, before your free lemlist period ends.
 
 8
 
@@ -232,7 +232,7 @@ close-the-loop writes the CRM import from campaign results, and you run it again
 ### Done when you have
 
 An ICP block and a buyer persona block you approved
-A clean list of 20+ people from Clay and a do-not-contact list (in safe mode the sample gives 18: that is the expected result)
+A clean list of about 20 people from Clay and a do-not-contact list (in safe mode the sample gives 18: that is the expected result)
 An email and LinkedIn sequence in a paused lemlist campaign
 A CRM import file and a reply plan for booking calls
 

@@ -35,7 +35,7 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 | Know who to target | `hubspot-crm` | "look at our closed-won deals in HubSpot and write our ICP" |
 | Propose our ICP from our website, or change target | `hackathon-setup` (steps 1b-1d) | "read our website and propose our ICP", "we want to target Germany now, redo the ICP" |
 | Use your own ICP instead | `revenue-engine` | "our ICP is German SaaS, 50-500 people, Heads of Sales. Save it and build the list" |
-| Find companies and people | `clay-build-list` | "build a list of 30 companies from the ICP and find 2 sales leaders at each" |
+| Find companies and people | `clay-build-list` | "build a list of 10 companies from the ICP and find 2 sales leaders at each" |
 | Make sure you're not prospecting customers | `hubspot-crm` | "dedupe out/leads.csv against HubSpot" |
 | Find an angle or write copy | Lemlist skills (`campaign-angle-finder`, `copywriting-first-touch`...) | "find 3 campaign angles for this ICP", "write the first-touch email" |
 | Put it in Lemlist | `lemlist-campaign` | "create a lemlist campaign with email and LinkedIn for these leads, keep it paused" |

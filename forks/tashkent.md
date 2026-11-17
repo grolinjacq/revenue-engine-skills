@@ -11,7 +11,7 @@ event: GTM Outbound Sprint, From 0 to Calls Booked. PAIA Bootcamp 4, Plug and Pl
 host: Plug and Play Tech Center Uzbekistan
 language: English          # the language Claude talks to attendees in by default (copy_language is set per team)
 start_mode: live           # safe = new workspaces start on samples/ (no tools); live = start on the team's own tools
-goal: every attendee ends with a lemlist campaign of 20+ leads found in Clay for their own ideal customer, paused and ready to launch from their own mailbox
+goal: every attendee ends with a lemlist campaign of about 20 leads (10 scored companies x 2 people) found in Clay for their own ideal customer, paused and ready to launch from their own mailbox
 
 # Default stack offered at setup. The team can always name its own tools.
 default_crm: none          # none | hubspot-demo | hubspot-own | ask (bring your own CRM: connector or CSV export)
@@ -28,7 +28,7 @@ hubspot_demo_portal: none
 hubspot_portal_shared: yes   # yes = treat any HubSpot portal as shared (CRM writes touch only this team's own records); this workshop provides no portal, so yes is the safe value
 hubspot_mcp_client_id: none
 claude_access: any Claude plan, Free included (upload the gtm-start skill ZIP in claude.ai), or Claude Code (paid plan) or Codex (included in ChatGPT plans) on this repo
-list_size: about 30 companies x up to 2 people; if the clean list ends under 20 leads, add 10 more companies
+list_size: search about 20 companies, enrich and score the best 15, keep the best 10 x 2 people (20 people); if the clean list ends under 15 leads, add 5 more companies
 in_session_never: connect a mailbox (homework), start or launch a campaign, send anything, buy domains, mailboxes or credits
 help: Geoffrey (mentor) and Sardorbek Axmedov (Plug and Play program manager)
 pack_version: 2026-11-16
