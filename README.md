@@ -78,7 +78,7 @@ Everything else (installing the Clay plugin and CLI, checking each connection, s
 
 ## Optional: block launching from your assistant
 
-By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. `gtm-start` offers this block at the end of the session, whatever your plan. One-to-one sends (`send_message`, `send_task`) are already blocked in this workspace's settings. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
+By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. `gtm-start` offers this block just before it creates the campaign, whatever your plan, and reminds you at the end. One-to-one sends (`send_message`, `send_task`) are already blocked in this workspace's settings. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
 
 - **Claude Code:** add these to the `permissions.deny` list of `.claude/settings.local.json` in this folder (create the file if it is missing; it stays on your machine). A new file looks like:
   ```json
