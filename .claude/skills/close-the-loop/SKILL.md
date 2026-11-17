@@ -25,6 +25,6 @@ Safe mode (`mode: safe` in `team-profile.md`, or the request says so): no tool c
 4. Show the plan with counts. Apply it on a go, in batches of 10, reporting after each. If `crm_mode: read-only` or the team's CRM is not HubSpot, append the plan to `out/crm-import.csv` (the header in `crm`, "Write rules": one row per change, lifecycle and note as `field`/`value`/`note`) for the team to import, and change nothing. With `crm: other: <name>`, name the columns the way that CRM's import expects (for example person, organisation, note) and use its own stage names in place of HubSpot lifecycle stages, from what its connector read or its export shows; say in one line which column maps to which field.
 5. Write `out/sync-log.md`: per lead, the HubSpot record id and what changed (with the CSV route: the row in `out/crm-import.csv` and "not written: CSV route").
 
-## On hackathon day
+## In a workshop session
 
-Real replies are unlikely within the day. To demo the loop, ask the user to reply to one sequence email from a teammate's inbox, or tag one lead interested in Lemlist by hand, then run this skill.
+Real replies are unlikely within the session, and the workshop's campaign stays paused. To see the loop work, run this skill in safe mode (`samples/replies.csv`), or tag one lead interested in Lemlist by hand, then run it.

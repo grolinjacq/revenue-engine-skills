@@ -97,7 +97,7 @@ Already have a CRM or outreach tool? Name it at setup and Claude will use it. Cl
 
 | Step | Tested path | Your own tool |
 |---|---|---|
-| CRM | HubSpot (event portal or your own) | Pipedrive, Salesforce, Attio, Odoo...: Claude reads it (or its CSV export) to find your best customers and skip people you already have. Updates come back as a file you import. Want a live update for the demo? Add the event's HubSpot portal too |
+| CRM | HubSpot (event portal or your own) | Pipedrive, Salesforce, Attio, Odoo...: Claude reads it (or its CSV export) to find your best customers and skip people you already have. Updates come back as a file you import. Want to see a live update? Add the event's HubSpot portal too, when your workshop gives one |
 | Lists and enrichment | Clay | Apollo, Lusha, Sales Navigator...: drop in the CSV export, Claude maps the columns, and Clay can enrich it |
 | Outreach | Lemlist (Claude builds the campaign, paused) | HeyReach, Instantly, Smartlead...: Claude writes the messages and the list of people to import, and you click launch |
 
@@ -108,12 +108,12 @@ Working on your company's real CRM? Your own CRM is always read-only here, and i
 ## What's inside
 
 - `SKILLS.md`: every skill you can use, grouped by tool.
-- `USAGE.md`: when to call which skill, the flow for each sprint, and fixes when something breaks.
+- `USAGE.md`: when to call which skill, the flow for the session, and fixes when something breaks.
 - `event.md`: this workshop's settings (links, trials, default stack). Each workshop's settings file is kept in `forks/`; `FORKING.md` explains how to make one.
 - `samples/`: the made-up data safe mode runs on, with the expected results in `samples/README.md`.
 - `RULES.md`, `CLAUDE.md`, `AGENTS.md`: rules the assistant follows all day (nothing is sent without your go, everything is logged to `out/`).
 - `team-profile.md` and `team-context.md`: your preferences and your company context, written by setup and `make it ours`.
-- `out/`: everything Claude produces. `out/run-log.md` is your demo script.
+- `out/`: everything Claude produces. `out/run-log.md` is your record of the run, one line per step.
 
 ## Credits
 

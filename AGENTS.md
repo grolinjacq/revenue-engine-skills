@@ -57,6 +57,6 @@ This folder is a ready-made workspace for outbound GTM workshops. It connects th
 - Deleting or undoing (campaigns, contacts, notes): list exactly what would go (ids, counts), only this team's own records, and wait for an explicit go. Prefer archive or pause over delete. A rollback may reset a lifecycle stage this team set. Keep `out/run-log.md`; log the undo.
 - Partial results: if a tool fails mid-step (credits run out, 401), keep what finished in `out/` with the remaining rows marked `unchecked` or `not_enriched`, say the counts, and resume from the first unfinished row, never from the start.
 - Talk to the user in the language they write in; `copy_language` is only for prospect-facing text.
-- Write every artefact to `out/` and append one line per step to `out/run-log.md`. That log is the team's demo script.
+- Write every artefact to `out/` and append one line per step to `out/run-log.md`. That log is the team's record of the run.
 - When a step needs the user's hands (a browser sign-in, a click in a tool's UI), say exactly what to click and where, open the URL if you can (print it if you can't), then check it worked yourself.
 - If a tool stops answering (expired sign-in, 401), say which one, give its re-auth step from `hackathon-setup` step 3, and resume once it's back. If it is not in the team's stack, offer the CSV route. Never invent data, or another connector, to fill the gap.

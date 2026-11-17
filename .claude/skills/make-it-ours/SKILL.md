@@ -5,7 +5,7 @@ description: Tune this workspace's skills to the team's own company, product, cu
 
 # Make it ours
 
-Goal: after 5 to 10 minutes, the team can say one sentence out loud ("find twenty CFOs at Spanish fintechs who just raised and get a campaign ready in Spanish") and Claude runs the right chain with their context, no skill names needed.
+Goal: after 5 to 10 minutes, the team can say one sentence out loud ("find twenty CFOs at German fintechs who just raised and get a campaign ready in German") and Claude runs the right chain with their context, no skill names needed.
 
 ## 1. Interview (one message, answer by voice or text)
 
@@ -44,6 +44,6 @@ Ask the team for three real requests, spoken as they would say them. For each, s
 
 ## Voice tips to share
 
-- Say the outcome, the number and the constraint in one breath: "twenty, Madrid, Heads of Sales, Spanish copy, don't send".
+- Say the outcome, the number and the constraint in one breath: "twenty, Berlin, Heads of Sales, German copy, don't send".
 - "Don't send" and "just draft" are always safe words: nothing goes out without an explicit go anyway.
 - Wispr Flow or any dictation works: Claude reads the text, not the audio.

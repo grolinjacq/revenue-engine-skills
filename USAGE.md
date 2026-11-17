@@ -14,7 +14,7 @@ Type `start`. The `gtm-start` flow asks about you, connects your tools, then goe
 
 ## Just say it
 
-After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow works well): "find twenty CFOs at Spanish fintechs that raised this year, draft a Spanish campaign, don't launch". Claude says the plan in one line, then runs it.
+After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow works well): "find twenty CFOs at German fintechs that raised this year, draft a German campaign, don't launch". Claude says the plan in one line, then runs it.
 
 ## The one-glance table
 
@@ -34,7 +34,7 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 | Work the new leads | `hubspot-lead-triage` | "triage leads from the last 2 weeks" |
 | Know who to target | `hubspot-crm` | "look at our closed-won deals in HubSpot and write our ICP" |
 | Propose our ICP from our website, or change target | `hackathon-setup` (steps 1b-1d) | "read our website and propose our ICP", "we want to target Germany now, redo the ICP" |
-| Use your own ICP instead | `revenue-engine` | "our ICP is Spanish SaaS, 50-500 people, Heads of Sales. Save it and build the list" |
+| Use your own ICP instead | `revenue-engine` | "our ICP is German SaaS, 50-500 people, Heads of Sales. Save it and build the list" |
 | Find companies and people | `clay-build-list` | "build a list of 30 companies from the ICP and find 2 sales leaders at each" |
 | Make sure you're not prospecting customers | `hubspot-crm` | "dedupe out/leads.csv against HubSpot" |
 | Find an angle or write copy | Lemlist skills (`campaign-angle-finder`, `copywriting-first-touch`...) | "find 3 campaign angles for this ICP", "write the first-touch email" |
@@ -42,16 +42,16 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 | Show the data coming back | `close-the-loop` | "sync replies from the campaign back to HubSpot" |
 | Do it all | `revenue-engine` | "run the engine end to end, stop before launch" |
 
-## Suggested flow for the day
+## Suggested flow for the session
 
-Each block is one step of the loop. Without HubSpot, the CRM steps read your CRM's connector or a CSV export and write an import file. Teams with their own use case swap step 1 for their own ICP and keep the rest.
+`start` walks you through these in order; each block is one step of the loop. Without HubSpot, the CRM steps read your CRM's connector or a CSV export and write an import file. Teams with their own use case swap step 2 for their own ICP and keep the rest.
 
-1. Setup (5 to 15 min). Unzip, run `claude`, type "set me up", give your website, and confirm or change the target Claude proposes. Fix anything red before moving on.
-2. HubSpot sprint. Setup already wrote `out/icp.md` from your website, so there's no ICP to type. Read it and correct it by hand if it is off: this file drives everything after it. Working on your own HubSpot with real closed-won deals? "Write our ICP from closed-won deals" gives a second opinion; Claude asks before replacing the confirmed one.
-3. Clay sprint. "Build the list from the ICP, 20 companies, 2 people each." Look at the first 10 companies when Claude shows them; say no early if they are wrong. Then "dedupe against HubSpot".
-4. Lemlist sprint. "Find angles", pick one (or keep all three and say "A/B test the subject lines"), say "one sequence per segment" if your list has segments, "write a 2-email plus LinkedIn sequence", then "create the campaign, paused". Check the two rendered sample emails and the sending settings Claude lists.
-5. Loop sprint. Start a seed campaign with only teammates' addresses, reply to it from a teammate's inbox, or tag a lead interested in Lemlist, then "close the loop". Show the note and lifecycle change in HubSpot.
-6. Demo prep. Open `out/run-log.md`: it is your demo script, one line per step with counts.
+1. Setup (5 to 15 min). Type `start` (or "set me up"), give your website, and confirm or change the target Claude proposes. Fix anything red before moving on.
+2. ICP. Setup already wrote `out/icp.md` from your website, so there's no ICP to type. Read it and correct it by hand if it is off: this file drives everything after it. Working on your own CRM with real closed-won deals? "Write our ICP from closed-won deals" gives a second opinion; Claude asks before replacing the confirmed one.
+3. List. "Build the list from the ICP, 20 companies, 2 people each." Look at the first 10 companies when Claude shows them; say no early if they are wrong. Then "dedupe against our CRM".
+4. Campaign. "Find angles", pick one, "write a 2-email plus LinkedIn sequence", then "create the campaign, paused". Check the two rendered sample emails and the sending settings Claude lists. You launch it yourself, later.
+5. Close the loop. Once real replies come in, "close the loop" updates your CRM (or `out/crm-import.csv`). To see it work today, run it in safe mode.
+6. Recap. Open `out/run-log.md`: one line per step with counts, your record of the run.
 
 ## Run it as an agent
 

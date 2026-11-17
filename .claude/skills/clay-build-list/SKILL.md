@@ -23,9 +23,9 @@ Safe mode (`mode: safe` in `team-profile.md`, or the request says so): don't cal
 Teams tune this block once, by hand or with `make-it-ours`; the steps below read it. A number the user says in the request ("thirty companies", "three people each") wins over the block for that run.
 
 ```
-companies: 25            # 20 to 50 on hackathon day; credits are limited
+companies: 25            # 20 to 50 in a workshop session; credits are limited
 people_per_company: 2    # most senior ICP title first
-titles_local: true       # add the market's-language titles (for Spain: "Director Comercial", "Director Financiero")
+titles_local: true       # add the market's-language titles (for a Spanish-speaking market: "Director Comercial", "Director Financiero")
 data_points: work_email, linkedin_url   # add more only if a later step uses them
 score: true              # step 5; false skips scoring
 min_fit_to_route: 4      # rows below this stay in out/leads.csv but are flagged, not routed
