@@ -12,7 +12,17 @@ One folder that turns Claude Code or Codex into an outbound GTM engine: find the
 | Claude Code (desktop, terminal or claude.ai/code) | Open a session on this folder (claude.ai/code: pick this repository), type `start` | Paid Claude plan or Console |
 | Codex (app or CLI) | Unzip, open the folder, trust it, type `start` | Any ChatGPT plan with Codex |
 
-`start` runs the `gtm-start` flow: questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist (with LinkedIn) and your CRM, then straight into your first campaign (ideal customer, buyer persona, companies and people from Clay, an email + LinkedIn sequence to book calls, a paused lemlist campaign), then more use cases (a 5-minute demo on made-up data if you ask for it; type `help` for the commands). Nothing is sent: you press Launch yourself, later. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
+`start` runs the `gtm-start` flow: questions about you (website to target, stack, channels, your goal right now), connecting Clay, lemlist (with LinkedIn) and your CRM, then straight into your first campaign (ideal customer, buyer persona, companies and people from Clay, an email + LinkedIn sequence to book calls, a paused lemlist campaign), then more use cases. On a new lemlist trial team it asks your sign-up and planned launch dates and keeps the sequence inside the trial (its length is at most sign-up + 14 days minus the launch date; otherwise it shortens it or points you to the workshop coupon). Nothing is sent: you press Launch yourself, later.
+
+While it runs, three things are worth remembering (`help` shows them, plus the create phrase below):
+
+| Type | What it does |
+|---|---|
+| `use cases` | Switch to another playbook at any time (first campaign, international expansion, account research, signal-based outreach, investors and partners). It gives you your files first, cancels anything waiting for your go, and asks before reusing your ICP and persona. While a playbook is in progress the menu starts with "0. Resume": pick it to go back to your step, with the same campaign (never a second one). |
+| `where am I` | The step you're on and the files so far. |
+| `stop` | Stops and gives you every file so far. Nothing is launched. |
+
+Everything else, say in your own words and your own language ("email only", "change the persona", "demo" for a 5-minute practice on made-up data, "resume" after uploading your files in a new chat). The one exact phrase is the one that creates the campaign: `go, create paused, 24 leads`, with the number it shows you. `next`, `yes` or `ok` never approve a credit spend or a campaign; a bare `go` approves only the one spend just shown with its cost, and at the create step it just shows the preview again. In claude.ai chat files don't persist between chats: keep the files it gives you at each step.
 
 ## Try it first in safe mode (no accounts, 5 minutes)
 
@@ -66,7 +76,7 @@ Everything else (installing the Clay plugin and CLI, Python tools, checking each
 
 ## Optional: block launching from your assistant
 
-By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
+By default the skills never launch, send or connect a mailbox, because their rules say so and Claude reads back that each campaign is paused. `gtm-start` mentions this block when lemlist connects and offers it once your campaign is created. If you want a hard block on top, so your assistant can't do these even by mistake, switch it on yourself (you edit the file; the assistant won't). After that, you launch, connect a mailbox and change a campaign's state only in lemlist itself, pausing included: if a campaign is ever running by mistake, pause it in lemlist yourself.
 
 - **Claude Code:** create `.claude/settings.local.json` in this folder (it stays on your machine) with:
   ```json
@@ -76,7 +86,7 @@ By default the skills never launch, send or connect a mailbox, because their rul
   ```
   Then restart Claude Code; it tells you if the file is invalid.
 - **Codex:** in `.codex/config.toml`, add `"launch_campaign", "set_campaign_state", "connect_email_account"` to the `disabled_tools` list under `[mcp_servers.lm]`, then restart Codex. The file is part of the workspace, so keep your edit when you update it.
-- **claude.ai:** in Settings > Connectors, open `lm`. If it lets you turn off single tools, turn off `launch_campaign`, `set_campaign_state` and `connect_email_account`. If it doesn't, answer Deny or no whenever a launch, a mailbox connection or a state change is asked for.
+- **claude.ai:** in Settings > Connectors, open `lm`. If it lets you turn off single tools, turn off `launch_campaign`, `set_campaign_state` and `connect_email_account`. If it doesn't, answer Deny or no whenever a launch, start, resume or mailbox connection is asked for (approving a pause is fine; with these tools turned off, pause in lemlist yourself).
 
 ## Your own stack
 
