@@ -24,13 +24,13 @@ While it runs, three things are worth remembering (`help` shows them, plus the c
 | `where am I` | The step you're on and the files so far. |
 | `stop` | Stops and gives you every file so far. Nothing is launched. |
 
-Everything else, say in your own words and your own language ("email only", "change the persona", "demo" for a 5-minute practice on made-up data, "resume" after uploading your files in a new chat). Two exact phrases change lemlist: `go, create paused, 24 leads` creates the campaign, paused, and `go, add 6 leads` adds missing leads to your paused campaign, each with the number it shows you. `next`, `yes` or `ok` never approve a credit spend or a campaign; a bare `go` approves only the one spend just shown with its cost, and at the create step it just shows the preview again.
+Everything else, say in your own words and your own language ("email only", "change the persona", "demo" for a guided walk-through of a full campaign for a sample company, about 10 minutes, "resume" after uploading your files in a new chat). Two exact phrases change lemlist: `go, create paused, 24 leads` creates the campaign, paused, and `go, add 6 leads` adds missing leads to your paused campaign, each with the number it shows you. `next`, `yes` or `ok` never approve a credit spend or a campaign; a bare `go` approves only the one spend just shown with its cost, and at the create step it just shows the preview again.
 
 In the workshop room the goal is your paused campaign, through all six campaign steps; whatever doesn't fit, you finish at home. Typing `start` again asks whether to restart (your old files kept as `-v1`) or continue. Each playbook names its files with its own prefix (`expansion-leads.csv`), so switching never overwrites another playbook's work, and a switch waits until a campaign the assistant created reads paused or draft.
 
-## Try it first in safe mode (no accounts, 5 minutes)
+## Try it first: a guided demo (no accounts, about 10 minutes)
 
-Open the folder in Claude Code or Codex and type `safe mode`. The assistant runs the whole loop on a made-up company and 31 made-up leads (`samples/`): it qualifies the list, dedupes it against a sample CRM, writes the sequence, builds the lemlist import file for 20 leads, and handles 7 sample replies. Nothing touches a real tool, no credits are spent and nothing is sent; everything lands in `out/safe/`. When you're ready, say `switch to live` and connect your own tools.
+Open the folder in Claude Code or Codex and type `safe mode`. Like a coach, the assistant walks you through the whole loop for a sample startup, Karvon AI, one step at a time: what it does, why it matters and one question to think about, so you can do the same for your company. It works on 31 sample leads (`samples/`): it qualifies the list, dedupes it against a sample CRM, writes the sequence, builds the lemlist import file for 20 leads, and handles 7 sample replies. Nothing touches a real tool, no credits are spent and nothing is sent; everything lands in `out/safe/`. When you're ready, say `switch to live` and connect your own tools.
 
 ## Claude Code or Codex
 
