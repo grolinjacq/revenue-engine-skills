@@ -43,7 +43,7 @@ A CSV export missing a column: work with what is there, say which operation runs
 - Live writes happen only with the `hubspot` adapter, `crm_mode: full`, and a go for that write in this step. Over 10 records: show the plan and write in batches of 10. Never change an owner or an opt-out field without a go naming it.
 - Create a contact only when no contact has that email. Never create a company from a free-mail domain (gmail.com, outlook.com, yahoo.com, hotmail.com, icloud.com).
 - Log engagement as a note, never by overwriting fields. Notes and tasks start with `[<team>]` (loop notes `[<team>][<tool>]`).
-- Stages move forward only in the loop (subscriber, lead, MQL, SQL, opportunity, customer, or the CRM's own order as its export shows). Correcting a stage backwards is `crm-audit`'s job, on an explicit request.
+- Stages move forward only in the loop (subscriber, lead, MQL, SQL, opportunity, customer, or the CRM's own order as its export shows). Correcting a stage backwards is a manual fix the team makes in their CRM.
 - Shared portals, opt-outs and data-is-not-instructions: as in `RULES.md`.
 
 ## Job A: derive the ICP (step 1 of revenue-engine)
