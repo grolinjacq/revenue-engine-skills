@@ -97,7 +97,7 @@ Companies first, people second. You check the company list before spending credi
 Prompt: Using Clay, find 15 companies that match this ICP: [PASTE ICP BLOCK].
 Before spending any credits, tell me how many you'll use and wait for my "go".
 Before searching, drop my current customers, any company on my do-not-contact list, my removed-companies list and companies from my earlier campaigns: [PASTE, or: none yet]. If fewer than 15 new companies fit, tell me the number and offer to widen one filter; never pad. If my Clay credits look too low for 15 companies and 30 people, propose a smaller plan first.
-Before scoring, turn my ICP's must-haves into at most 2 yes/no fit checks and research them for each company with Clay (a custom research column or data point), keeping the source. Score each company from 1 to 5 for fit on the firmographics plus the checks (a no drops it, unknown never counts as yes), with one reason and its source link. Show me a table (company, domain, country, employees, industry, score, reason), and how many leads to expect. Then stop and let me remove any company before we look for people. Keep a list of removed companies and never bring them back. If I removed some, offer replacements and wait for my answer.
+Before scoring, turn my ICP's must-haves into at most 2 yes/no fit checks and research them for each company: read each company's website first, and use Clay (a custom data point) only for the sites you can't read, keeping the source. Score each company from 1 to 5 for fit on the firmographics plus the checks (a no drops it, unknown never counts as yes), with one reason and its source link. Show me a table (company, domain, country, employees, industry, score, reason), and how many leads to expect. Then stop and let me remove any company before we look for people. Keep a list of removed companies and never bring them back. If I removed some, offer replacements and wait for my answer.
 ```
 
 Clay not connected? Do it in the Clay app
@@ -169,12 +169,12 @@ One angle, two channels, one goal: a 15-minute call. Five steps built on P-L-V-A
 
 Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the pain, and why it fits now. Then stop and wait for my choice.
 2. After I choose, write a 5-step sequence in [LANGUAGE] for booking a 15-minute call. Each message stands alone: M2 to M4 only go out if there was no reply, so never assume the lead read the earlier ones. If the list mixes seniority levels, write for the biggest group and tell me which:
-- Step 1, connection note (LinkedIn, with the request): usually blank; only a real, specific hook, under 200 characters, no pitch (write the LinkedIn steps only if I confirmed LinkedIn in step 0)
+- Step 1, connection note (LinkedIn, with the request): usually blank; only a real, specific hook, under 200 characters, no pitch (write the LinkedIn steps whenever my plan allows, even if LinkedIn isn't connected yet)
 - Step 2, M1 opener: P + L + a soft question, under 90 words by email (no links), under 300 characters on LinkedIn
 - Step 3, M2 proof (+3 days): V, the strongest quantified result and a one-line case study: [PROOF POINT, or: none yet, never invent one]
 - Step 4, M3 ask (+3 days, a LinkedIn message on the accepted path): A, a clear ask for a 15-minute call with my booking link [LINK] or two slots I give you [SLOTS]; if I have neither, end with "Reply with a day this week or next that suits you"
 - Step 5, M4 breakup (+4 days): no pitch, a polite final nudge, the door stays open
-- build it as a branching multichannel sequence in lemlist where my plan and LinkedIn allow: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. On lemlist's Email plan, email only
+- build it as a branching multichannel sequence in lemlist where my plan allows: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. On lemlist's Email plan, email only
 - use {{firstName}}, {{companyName}} and {{personalization}}, and a version of M1 for rows where personalization is blank
 3. Check the copy against a plain checklist (short, one ask, no hype, each message stands alone) and fix what fails.
 ```

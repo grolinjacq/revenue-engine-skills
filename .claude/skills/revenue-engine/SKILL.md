@@ -62,7 +62,7 @@ Any step can be filled by a CSV or by a tool declared in `team-profile.md`, as l
 3. Derive `company_domain` from the email domain when missing, except free-mail domains.
 4. Rows with no email and no LinkedIn: keep them out, count them, and write them to `out/leads-dropped.csv` with the reason.
 5. Write `out/leads.csv` in the contract format, and report rows in, rows out, rows dropped. Leave columns with no source empty; offer Clay enrichment for them if `lists: clay`.
-   Rows with LinkedIn but no email: keep them; the campaign uses LinkedIn steps only for them, and offer an email finder (Clay if `lists: clay`) before building.
+   Rows with LinkedIn but no email: they stay out of the Lemlist campaign (`pending.csv`, as `lemlist-campaign` says); offer an email finder (Clay if `lists: clay`) before building.
 6. If `out/icp.md` doesn't exist, write a short one from the CSV (top industries, sizes, titles, countries) and the user's words, marked `source: csv`, before any copy step.
 
 ## Routing
