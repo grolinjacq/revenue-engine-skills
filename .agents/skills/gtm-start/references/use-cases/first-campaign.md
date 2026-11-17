@@ -170,16 +170,16 @@ One angle, two channels, one goal: a 15-minute call. Five steps built on P-L-V-A
 Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the pain, and why it fits now. Then stop and wait for my choice.
 2. After I choose, write a 5-step sequence in [LANGUAGE] for booking a 15-minute call. Each message stands alone: M2 to M4 only go out if there was no reply, so never assume the lead read the earlier ones. If the list mixes seniority levels, write for the biggest group and tell me which:
 - Step 1, connection note (LinkedIn, with the request): usually blank; only a real, specific hook, under 200 characters, no pitch (write the LinkedIn steps only if I confirmed LinkedIn in step 0)
-- Step 2, M1 opener (email, Day 1): P + L + a soft question, under 90 words, no links; plus a LinkedIn M1 under 300 characters for leads who accept the invite (Day 3)
-- Step 3, M2 proof (email, Day 4): V, the strongest quantified result and a one-line case study: [PROOF POINT, or: none yet, never invent one]
-- Step 4, M3 ask (email, Day 7): A, a clear ask for a 15-minute call with my booking link [LINK] or two slots I give you [SLOTS]; if I have neither, end with "Reply with a day this week or next that suits you"
-- Step 5, M4 breakup (email, Day 10): no pitch, a polite final nudge, the door stays open
-- email is the primary channel and LinkedIn the backup (profile visit and request on Day 0); if I say LinkedIn first, swap them
+- Step 2, M1 opener: P + L + a soft question, under 90 words by email (no links), under 300 characters on LinkedIn
+- Step 3, M2 proof (+3 days): V, the strongest quantified result and a one-line case study: [PROOF POINT, or: none yet, never invent one]
+- Step 4, M3 ask (+3 days, a LinkedIn message on the accepted path): A, a clear ask for a 15-minute call with my booking link [LINK] or two slots I give you [SLOTS]; if I have neither, end with "Reply with a day this week or next that suits you"
+- Step 5, M4 breakup (+4 days): no pitch, a polite final nudge, the door stays open
+- build it as a branching multichannel sequence in lemlist where my plan and LinkedIn allow: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. Without LinkedIn, email only
 - use {{firstName}}, {{companyName}} and {{personalization}}, and a version of M1 for rows where personalization is blank
 3. Check the copy against a plain checklist (short, one ask, no hype, each message stands alone) and fix what fails.
 ```
 
-You get 3 angles, then the 5 steps: a connection note (usually blank), M1 opener, M2 proof, M3 ask and M4 breakup, by email with LinkedIn as backup. If you have email only, the emails must not mention LinkedIn.
+You get 3 angles, then the 5 steps: a connection note (usually blank), M1 opener, M2 proof, M3 ask and M4 breakup, in a branching email + LinkedIn sequence. If you have email only, the emails must not mention LinkedIn.
 
 Skills that run this step
 campaign-angle-finder picks the angle. outbound-campaign-architect sets the steps and channels. One of copywriting-vp-sequence, copywriting-manager-sequence or copywriting-ic-sequence writes the emails, by seniority. linkedin-sequence writes the LinkedIn steps. copywriting-refiner checks the copy.
@@ -190,13 +190,13 @@ campaign-angle-finder picks the angle. outbound-campaign-architect sets the step
 lemlist
 ```
 
-Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Make the LinkedIn M1 message run only if the invite was accepted. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
+Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
 ```
 
 lemlist not connected? Do it in the lemlist app
 
 - Ask the assistant: "Give me the clean leads as a lemlist import CSV, with firstName, lastName, email, companyName, linkedinUrl, personalization."
-- In lemlist: Campaigns, New campaign, import the CSV, then add the steps with their delays: LinkedIn visit and invite (Day 0), M1 email (Day 1), LinkedIn M1 message (Day 3, condition "invite accepted"), M2 email (Day 4), M3 email (Day 7), M4 email (Day 10).
+- In lemlist: Campaigns, New campaign, import the CSV, then add a condition "has LinkedIn URL": yes, LinkedIn visit and invite, then a condition "invite accepted" (5 days): accepted, M1 LinkedIn message, M2 email +3, M3 LinkedIn message +3, M4 email +4; not accepted and no LinkedIn URL, M1 to M4 by email (+3, +3, +4).
 - Connect your LinkedIn with the lemlist Chrome extension. Check the sending settings (your mailbox, your time zone, weekdays only), and leave it paused.
 
 Safe mode
