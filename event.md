@@ -6,7 +6,7 @@
 fork: tashkent-2026-11
 date: 2026-11-18
 session_start: 10:00
-session_end: 11:15   # hands-on ends 11:05; the skill hands over files at a step boundary about 10 minutes before
+session_end: 11:15   # hands-on ends 11:05; the skill hands over files at the next step boundary after 11:05
 event: GTM Outbound Sprint, From 0 to Calls Booked. PAIA Bootcamp 4, Plug and Play + IT Park Uzbekistan, Tashkent, 18 Nov 2026
 host: Plug and Play Tech Center Uzbekistan
 language: English          # the language Claude talks to attendees in by default (copy_language is set per team)
