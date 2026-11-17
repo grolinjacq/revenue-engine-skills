@@ -66,7 +66,7 @@ Two easy routes:
 |---|---|
 | "tool not found" or a server is missing | `/mcp`, check the server is connected, re-authenticate |
 | HubSpot returns nothing for deals | Your demo portal may have no closed-won deals. Give your ICP in words instead. |
-| Clay out of credits | Claude stops and offers a cheaper plan (email only, fewer companies); pick one |
+| Clay out of credits | In the workshop the run is sized to fit your credits; if Clay still refuses, Claude says so in one line and offers the CSV route or the host |
 | HubSpot connector missing after setup | Logged in with an API key? Run `/login` with your Claude account, or use your CRM's CSV export (path B needs a client ID in `event.md`, and this workshop has none) |
 | Clay plugin won't install (network) | Add the Clay connector at claude.ai/settings/connectors instead, then restart |
 | Your leads come from Apollo or another tool | "Here's my CSV": Claude maps the columns and lists the rows it dropped |
