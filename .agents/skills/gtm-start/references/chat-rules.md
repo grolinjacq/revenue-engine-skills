@@ -22,7 +22,7 @@ TRUTH: never invent companies, people, emails, customers, numbers or proof point
 LINKEDIN: LinkedIn steps only when the lemlist Chrome extension is installed, my personal LinkedIn is logged in in the same Chrome profile, and my lemlist plan is the free period or Multichannel. Otherwise email steps only, and LinkedIn-only leads are held in a file for later.
 LEMLIST: before creating a campaign, check whether one with the same name exists. If it does and it is our own paused campaign, show its status and lead count and offer to reuse it; otherwise offer a new name with today's date. Never add leads to a campaign that is running. The free period (a trial, or a promo from your workshop) ends after a set time, and then campaigns cannot launch. Launch well before it ends. If it has ended or lemlist is not connected, give me the lemlist import CSV and the emails as text instead.
 SAVE POINTS: at the end of each step, give me its result as a block I can copy into a file (ICP, persona, approved companies, removed companies, clean leads CSV, sequence, campaign name, handled replies, dnc.csv). I paste these back if I start a new chat.
-STOP after each step and wait for "next".
+STOP after each step and wait for my answer. When I confirm, go straight into the next step in the same reply, with one line on what you saved at the top.
 ```
 
 ```

@@ -32,7 +32,7 @@ Own data: You're my GTM assistant for our first outbound campaign. The goal is b
 2. Tell me which of these you can reach in this chat: Clay, lemlist, my CRM ([NAME]). For each one you can't reach, say so. We'll pass files for that step.
 3. Ask me my lemlist plan (free period, Email or Multichannel) and whether my LinkedIn is connected through the lemlist Chrome extension. If I don't confirm both, plan email steps only.
 No web browsing? I'll paste my homepage and about text instead.
-Stop and wait for "next".
+Stop and wait for my answer; when I confirm, go straight into the next step.
 ```
 
 Safe mode version
@@ -40,7 +40,7 @@ Safe mode version
 
 Safe mode: SAFE MODE. Use only the fictional company and sample files I give you. Don't call Clay, lemlist or any CRM, don't look up real people, and spend no credits. For each tool step, write the file the tool would receive and the call you would have made.
 Company: Karvon AI, Tashkent. AI route and load planning for freight fleets of 20 to 500 trucks. 40 customers in Uzbekistan. Proof point: average 14% fewer empty kilometres in the first 3 months. Home market Uzbekistan. Best customers: don't ask me; use the 40 customers described, marked inferred.
-Stop after each step and wait for "next".
+Stop after each step and wait for my answer; when I confirm, go straight into the next step.
 ```
 
 Safe mode order: paste the session rules, then the safe mode rules under them, then this prompt, then the sample file at the bottom of this playbook. The sample is the only data used.
