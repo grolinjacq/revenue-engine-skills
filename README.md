@@ -30,7 +30,7 @@ In the workshop room the goal is your paused campaign, through all six campaign 
 
 ## Try it first: a guided demo (no accounts, about 10 minutes)
 
-Open the folder in Claude Code or Codex and type `safe mode`. Like a coach, the assistant walks you through the whole loop for a sample startup, Karvon AI, one step at a time: what it does, why it matters and one question to think about, so you can do the same for your company. It works on 31 sample leads (`samples/`): it qualifies the list, dedupes it against a sample CRM, writes the sequence, builds the lemlist import file for 20 leads, and handles 7 sample replies. Nothing touches a real tool, no credits are spent and nothing is sent; everything lands in `out/safe/`. When you're ready, say `switch to live` and connect your own tools.
+Open the folder in Claude Code or Codex and type `safe mode`. Like a coach, the assistant walks you through the whole loop for a sample startup, Karvon AI, one step at a time: what it does, why it matters and one question to think about, so you can do the same for your company. Five steps: the ideal customer and buyer persona, the companies and people Clay would find, the clean-up (opt-outs, rows with no contact, a note that tries to give orders), the email + LinkedIn sequence with two rendered emails, and the paused campaign. It uses the sample files in `samples/`; no credits are spent and nothing is sent, and its files land in `out/safe/`. It ends with "now let's do it for your company" and goes straight on to your own website.
 
 ## Claude Code or Codex
 
