@@ -21,8 +21,7 @@ Check these yourself and note the results; only mention a problem.
 1. Claude login. Ask the user to run `/status` (or run `claude auth status` yourself) to see how Claude Code is signed in. If it is an API key or a Console account (or `ANTHROPIC_API_KEY` is set), claude.ai connectors (HubSpot path A, the Clay connector) are disabled. Tell the user, and offer: switch to their Claude account (macOS/Linux: `unset ANTHROPIC_API_KEY`; PowerShell: `Remove-Item Env:ANTHROPIC_API_KEY`; also remove it from their shell profile; then restart and run `/login`), or keep the key and use HubSpot path B. Users with only the event's API credits: they claim them into a Console account at platform.claude.com, run `/login` and choose the Anthropic Console option; tell them every Claude reply spends those credits, set `login: api-key`, and use HubSpot path B (or CSV if `hubspot_mcp_client_id` is still a placeholder: ask the organisers in the room).
 2. OS and shell. Note Windows native (PowerShell), WSL, macOS or Linux. On Windows use `python` and PowerShell syntax; in WSL or headless Linux, browsers may not open, so print every sign-in URL for the user to open.
 3. Network. If GitHub is unreachable (`claude plugin marketplace add` fails), Clay goes through the connector path in step 3, not the plugin: skip the plugin commands in step 2.
-4. Python, only if the team wants the HubSpot admin skills: run `python --version` (Windows: `py --version`; the Microsoft Store stub doesn't count) and `python -m uv --version`. Use `python -m uv run ...` on Windows. If either fails, mark the admin skills unavailable and carry on.
-5. Surface. In the Desktop app, slash commands like `/mcp` and `/plugin` may live in the app's settings instead; if one does nothing, say where to find it in the app.
+4. Surface. In the Desktop app, slash commands like `/mcp` and `/plugin` may live in the app's settings instead; if one does nothing, say where to find it in the app.
 
 ## 1. Preferences and stack (website first, two short messages)
 
@@ -118,7 +117,6 @@ tools:
   hubspot: <pending | connected (<portal>, path A or B) | not available (<reason>)>
   lemlist: <pending | connected (<team>, server <name>) | not available (<reason>)>
   clay: <pending | connected (<workspace>, plugin|connector) | not available (<reason>)>
-  hubspot_service_key: <not set | set>
   other:   # one line per tool declared as `other: <name>`; omit the block when there is none
     <name> (<crm | outreach | outreach_linkedin | lists>): <pending | connected (<account>, server <server name>, <URL or command>) | csv (<reason, e.g. no connector>)>
 updated: <date time>
@@ -145,7 +143,6 @@ The loop runs on files in `out/` (see `revenue-engine`, "Step contracts"), so an
 ## 2. Installs (do these yourself)
 
 - Clay plugin, only if `lists: clay`. Check whether Clay's skills (`clay`, `searches`, `setup`) are available. If not, run `claude plugin marketplace add clay-run/agent-plugins` then `claude plugin install clay@clay-plugins`. If a command is refused or errors, try once with the user typing `/plugin marketplace add clay-run/agent-plugins` and `/plugin install clay@clay-plugins`; if that fails too (often GitHub blocked), switch Clay to the connector path in step 3. The plugin needs a restart to appear.
-- HubSpot admin skills, only if the team wants audits, ICP tiers, lists or lifecycle fixes: their scripts run with `uv`. Install it (`python -m pip install uv` on Windows, `python3 -m pip install uv` elsewhere) and `requirements.txt` the same way. Skip this otherwise.
 - Create `out/run-log.md` if missing (`out/` exists from step 1a).
 
 ## 3. Sign-ins (the user's hands, one at a time)
@@ -161,12 +158,12 @@ Only for tools in the team's stack. Verify each before moving on.
 
 **HubSpot** (not in `.mcp.json`: HubSpot's server can't be added from its URL alone).
 - Path A, default, needs `login: claude.ai`: open https://claude.ai/settings/connectors, add HubSpot, sign in, pick the portal. Then restart Claude Code (connectors load at start; the user must be logged in with the same Claude account).
-- Path B, for API-key logins, or when `event.md` has a `hubspot_mcp_client_id`: run `claude mcp add --transport http --client-id <ID from event.md> --client-secret --callback-port 8765 hubspot https://mcp.hubspot.com` (the user types the secret at the prompt; never in a file or the chat), then `/mcp`, choose `hubspot`, authenticate. Details in `connect-hubspot-mcp`.
+- Path B, for API-key logins, or when `event.md` has a `hubspot_mcp_client_id`: run `claude mcp add --transport http --client-id <ID from event.md> --client-secret --callback-port 8765 hubspot https://mcp.hubspot.com` (the user types the secret at the prompt; never in a file or the chat), then `/mcp`, choose `hubspot`, authenticate. The connector registered for that client ID must list the redirect URL `http://localhost:8765/callback` exactly; on a redirect mismatch, or with no client ID, ask the organisers.
 - Verify: call the HubSpot user-details tool (`get_user_details`, or the closest tool that returns the portal) and report the portal and which objects are writable.
 - After the verify, with `out/icp.md` on file and a portal that holds the team's own customers (`crm: hubspot-own`): add the domains of customer companies and open deals to `exclude_domains` (a read, no write to HubSpot). Skip this for a new event portal: it has none.
 - No HubSpot account yet: give the sign-up link from `event.md` (`hubspot_demo_portal`); one teammate creates the free account and invites the others. A new account has no deals; the ICP already comes from the website (`out/icp.md`), so don't ask for it again.
 - Production check: compare the portal with `hubspot_demo_portal` in `event.md`. If it says each team uses its own new free account, ask whether this portal is the one created for the event (then `crm_mode: full`) or the company's real CRM (then B or C below). If it doesn't match (or `event.md` isn't filled in and the portal name doesn't say demo, test or sandbox), ask: A) switch to the demo portal (recommended), B) use this portal read-only, C) use it fully, I own it. Record the answer as `crm_mode` (C is `full`, B is `read-only`). Every HubSpot write skill reads `crm_mode` first.
-- Optional service key for the admin skills: the user creates one in HubSpot (Settings, Integrations, Service keys) and pastes it into `.env` themselves (copy `.env.example`). If they paste a key into the chat instead, do not repeat it or store it, and tell them to rotate it in HubSpot and put the new one in `.env`.
+- If the user pastes any key or token into the chat, do not repeat it or store it, and tell them to rotate it in that tool.
 
 **Clay**.
 - No Clay account yet: send the user to `clay_signup_url` from `event.md` (if it shows `<...>`, ask the user for the link on their workshop's access card before they sign up) (the event's sign-up link, never a plain clay.com sign-up: the credits arrive automatically there). Then continue below.

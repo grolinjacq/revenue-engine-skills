@@ -116,14 +116,14 @@ Give a direct opinionated answer, then offer to act. Keep answers to 2–4 sente
 | *(workspace)* ICP from closed-won, dedupe a lead list | `hubspot-crm` |
 | *(workspace)* score or route new leads | `hubspot-lead-triage` |
 | *(workspace)* sync campaign replies back to HubSpot | `close-the-loop` |
-| *(workspace)* audits, ICP tiers, lead scoring, lists, data clean-up | the hubspot-admin skills listed in `SKILLS.md` |
+| *(workspace)* audits, ICP tiers, lead scoring, lists, data clean-up | `crm-audit`, `crm-scoring-design`, `crm-duplicate-detector` (read-only, with an import file) |
 | "import contacts", "upload a CSV", "bring in my spreadsheet" | `hubspot-import-contacts` |
 | "prep for my call with [name]", "I have a meeting with [company]" | `hubspot-call-prep` |
 | "daily brief", "what's on my plate", "morning brief" | `hubspot-daily-brief` |
 | "follow up with [name]", "draft an email to [contact]" | `hubspot-follow-up` |
 | "log a call with [name]", "I just spoke to [name]" | `hubspot-log-call` |
 | "what do I know about [name]", "look up [name]" | `hubspot-contact-lookup` |
-| "how's my pipeline", "pipeline status", "show me my deals", "pipeline review", "weekly pipeline", "pipeline health", "forecast" | `hubspot-pipeline-pulse` (*workspace:* "clean up my pipeline" at scale is `cleanup-deals`) |
+| "how's my pipeline", "pipeline status", "show me my deals", "pipeline review", "weekly pipeline", "pipeline health", "forecast" | `hubspot-pipeline-pulse` (*workspace:* "clean up my pipeline" at scale is `crm-audit`) |
 
 Extract every entity the user mentioned (name, company, deal, timeframe) and pass it into the skill.
 

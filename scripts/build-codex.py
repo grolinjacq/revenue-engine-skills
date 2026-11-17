@@ -19,8 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # The engine: the loop, its tool steps, setup, safe mode and the copy skills.
-# The crm-* skills work with any CRM. The HubSpot-only extras and the HubSpot admin
-# skills (Python scripts with a service key) stay in Claude Code.
+# The crm-* skills work with any CRM. The HubSpot-only extras stay in Claude Code.
 ENGINE_SKILLS = [
     "gtm-start",
     "revenue-engine",

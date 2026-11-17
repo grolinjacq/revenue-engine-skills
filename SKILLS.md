@@ -43,16 +43,8 @@ With HubSpot, changes are written live after your go. With any other CRM, Claude
 | `hubspot-follow-up` | Draft a follow-up email and open it in HubSpot to send | HubSpot official (adapted) |
 | `hubspot-import-contacts` | Import contacts from a CSV or a pasted list | HubSpot official (adapted) |
 | `hubspot-onboarding` | Getting started in a new or empty portal | HubSpot official (adapted) |
-| `connect-hubspot-mcp` | Detailed HubSpot connection guide | hubspot-admin-skills |
-| `hubspot-audit`, `hubspot-sales-audit` | Read-only portal audit with prioritised fixes | hubspot-admin-skills |
-| `create-icp-tiers` | ICP tier property on every company | hubspot-admin-skills |
-| `build-lead-scoring` | Fit and engagement lead score | hubspot-admin-skills |
-| `build-smart-lists` | Standard segment lists | hubspot-admin-skills |
-| `merge-duplicate-companies` | Find duplicate companies by domain and name | hubspot-admin-skills |
-| `fix-lifecycle-stages` | Backfill and fix lifecycle stages | hubspot-admin-skills |
-| `cleanup-deals` | Flag stale deals and send each owner a review task | hubspot-admin-skills |
 
-The HubSpot official skills come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), bundled here with this workspace's safety rules added: every write is shown first and waits for your go. The hubspot-admin-skills ones need a HubSpot service key in `.env` (see `.env.example`).
+The HubSpot official skills come from HubSpot's own `hubspot-sales` plugin (Apache-2.0), bundled here with this workspace's safety rules added: every write is shown first and waits for your go. For a HubSpot audit, scoring or duplicates, use `crm-audit`, `crm-scoring-design` and `crm-duplicate-detector` above: they read HubSpot and write a report or an import file.
 
 ## Clay (lists and enrichment)
 | Skill | What it does | Source |

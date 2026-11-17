@@ -22,4 +22,4 @@ Connection and write rules: see `hubspot-crm` (Job C).
 6. Show the table: lead, company, fit, intent, decision, owner. Apply on a go, in batches of 10. With `crm_mode: read-only`, stop at the table and write it to `out/triage-<date>.md` only.
 7. Write `out/triage-<date>.md` with the table and the counts per decision.
 
-For a portal-wide, persistent version of this (a Fit and Engagement score that HubSpot keeps updated), point the user to `build-lead-scoring` and `create-icp-tiers`.
+For a portal-wide, persistent version of this (a Fit and Engagement score that HubSpot keeps updated), point the user to `crm-scoring-design`: it writes the spec and an import file, and the team builds the score in HubSpot.

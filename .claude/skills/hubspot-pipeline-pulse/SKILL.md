@@ -7,8 +7,8 @@ description: >
   follow-up tasks and out/pipeline-<date>.md. Use on "how's my pipeline",
   "show me my deals", "pipeline overview", "pipeline status", "which deals
   are stalling", "pipeline review", "weekly pipeline", "pipeline health",
-  "forecast this quarter". Not for cleaning up deals at scale (cleanup-deals)
-  or a portal audit (hubspot-sales-audit).
+  "forecast this quarter". Not for a data-quality audit of the CRM
+  (crm-audit).
 ---
 
 > **In this workspace.** Vendored from HubSpot's official `hubspot-sales` plugin (github.com/HubSpot/hubspot-mcp-plugins, `HubSpot-Sales/skills/pipeline-pulse`, Apache-2.0, commit 032d294) and adapted for the hackathon: renamed, plus the safety notes in this box and the edits marked *(workspace)*:
@@ -145,7 +145,7 @@ When the user replies "add all" or names specific tasks, for each selected task 
 1. Totals by stage: deal count and amount per stage, with the same owner or team filter as Phase 1A. Prefer an aggregate query (`query_crm_data` or similar) over paging, so portals with more than 50 open deals are covered; if you only have the first 50, say "based on the first 50 deals".
 2. Forecast: sum open amount weighted by each stage's probability (`get_properties` on `dealstage` gives it), for the current quarter unless the user named a period. If the pipeline has no probabilities, give unweighted totals for the late stages and say so.
 3. Write `out/pipeline-<date>.md`: the totals table, the needs-attention list (deal, owner, amount, stage, flag), the forecast line, the suggested tasks and the 3 actions that would move the most money.
-4. Hand-offs: to route many flagged deals to their owners at once, `cleanup-deals` (its rules in `CLAUDE.md`); to act on one deal, `hubspot-log-call` or `hubspot`.
+4. Hand-offs: for stale or incomplete deals across the portal, `crm-audit` (read-only, with an import file of fixes); to act on one deal, `hubspot-log-call` or `hubspot`.
 5. On a new or demo portal with very few deals, say so and keep the pulse to what is there.
 
 ---
