@@ -35,7 +35,7 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 | Know who to target | `hubspot-crm` | "look at our closed-won deals in HubSpot and write our ICP" |
 | Propose our ICP from our website, or change target | `hackathon-setup` (steps 1b-1d) | "read our website and propose our ICP", "we want to target Germany now, redo the ICP" |
 | Use your own ICP instead | `revenue-engine` | "our ICP is German SaaS, 50-500 people, Heads of Sales. Save it and build the list" |
-| Find companies and people | `clay-build-list` | "build a list of 30 companies from the ICP and find 2 sales leaders at each" |
+| Find companies and people | `clay-build-list` | "build a list of 10 companies from the ICP and find 2 sales leaders at each" |
 | Make sure you're not prospecting customers | `hubspot-crm` | "dedupe out/leads.csv against HubSpot" |
 | Find an angle or write copy | Lemlist skills (`campaign-angle-finder`, `copywriting-first-touch`...) | "find 3 campaign angles for this ICP", "write the first-touch email" |
 | Put it in Lemlist | `lemlist-campaign` | "create a lemlist campaign with email and LinkedIn for these leads, keep it paused" |
@@ -46,9 +46,9 @@ After `make it ours`, one sentence is enough, typed or dictated (Wispr Flow work
 
 `start` walks you through these in order; each block is one step of the loop. Without HubSpot, the CRM steps read your CRM's connector or a CSV export and write an import file. Teams with their own use case swap step 2 for their own ICP and keep the rest.
 
-1. Setup (5 to 15 min). Type `start` (or "set me up"), give your website, and confirm or change the target Claude proposes. Fix anything red before moving on.
+1. Setup (5 to 15 min). Type `start` (or "set me up"), give your website, and confirm what Claude read on it point by point (five A/B/C questions), changing any point you like. Fix anything red before moving on.
 2. ICP. Setup already wrote `out/icp.md` from your website, so there's no ICP to type. Read it and correct it by hand if it is off: this file drives everything after it. Working on your own CRM with real closed-won deals? "Write our ICP from closed-won deals" gives a second opinion; Claude asks before replacing the confirmed one.
-3. List. "Build the list from the ICP, 20 companies, 2 people each." Look at the first 10 companies when Claude shows them; say no early if they are wrong. Then "dedupe against our CRM".
+3. List. "Build the list from the ICP, 20 companies, 2 people each." Look at the first companies when Claude shows them; say no early if they are wrong. Then Claude enriches and scores them: it reads each company's site to answer your ICP's fit checks (Clay research for the sites it can't read) and scores 1 to 5 with a source per answer. Then "dedupe against our CRM".
 4. Campaign. "Find angles", pick one, "write the P-L-V-A sequence" (an opener, a proof, a 15-minute ask and a breakup, across email and LinkedIn), then "create the campaign, paused". Check the two rendered sample emails and the sending settings Claude lists. You launch it yourself, later.
 5. Close the loop. Once real replies come in, "close the loop" updates your CRM (or `out/crm-import.csv`). To see it work today, run it in safe mode.
 6. Recap. Open `out/run-log.md`: one line per step with counts, your record of the run.
@@ -66,7 +66,7 @@ Two easy routes:
 |---|---|
 | "tool not found" or a server is missing | `/mcp`, check the server is connected, re-authenticate |
 | HubSpot returns nothing for deals | Your demo portal may have no closed-won deals. Give your ICP in words instead. |
-| Clay out of credits | Claude stops and offers a cheaper plan (email only, fewer companies); pick one |
+| Clay out of credits | In the workshop the run is sized to fit your credits; if Clay still refuses, Claude says so in one line and offers the CSV route or the host |
 | HubSpot connector missing after setup | Logged in with an API key? Run `/login` with your Claude account, or use your CRM's CSV export (path B needs a client ID in `event.md`, and this workshop has none) |
 | Clay plugin won't install (network) | Add the Clay connector at claude.ai/settings/connectors instead, then restart |
 | Your leads come from Apollo or another tool | "Here's my CSV": Claude maps the columns and lists the rows it dropped |

@@ -29,10 +29,10 @@ The team should not have to type its ICP. Claude reads their website, proposes t
 
 ### 1a. The website, then the stack (one question per message)
 
-Safety settings are never asked: write `write_mode: B` and `clay_credit_cap: 200` (lowered to the Clay balance at the Clay sign-in if that is less). B still waits for a go before every Clay spend in the workshop (`gtm-start`, Workshop overrides), before every CRM write and before anything is sent. Say it once, in the welcome. A user who asks for stricter (A) or another budget gets it (RULES, "Safety settings").
+Safety settings are never asked: write `write_mode: B` and `clay_credit_cap: 200` (lowered to the Clay balance at the Clay sign-in if that is less). B waits for a go before every Clay spend outside the first campaign's sized steps (`gtm-start`, "Clay budget by design"), before every CRM write and before anything is sent. Say it once, in the welcome. A user who asks for stricter (A) or a smaller budget gets it (RULES, "Safety settings").
 
 1. Website (in the welcome message). A: the domain you inferred (from `team-profile.md`, the company domain of `git config user.email`, the folder name, or this conversation and Claude's memory), with where it came from and, while `mode: safe`, "works on your real accounts, not the samples"; B: another site (type it); C: no website yet, I'll describe what we sell and to whom in two lines. Nothing inferred: A is "type your website (for example `acme.com`)", B "no website yet: describe what you sell and to whom in two lines". Agency or consultant working for a client: the client's site. Picking A or B is the ask to work live: write `mode: live`.
-2. After the website check (1b and 1c): the stack. A: the default stack from `default_crm`, `default_lists` and `default_outreach` in `event.md` (say it in words: "Clay finds the companies and people, lemlist runs email + LinkedIn, no CRM today"), or the same with a CRM you can see the team uses; B: the defaults plus my own CRM (name it: HubSpot, Pipedrive, Salesforce, Attio, Odoo... or a CSV export); C: I use other tools (name them: Apollo, HeyReach, Instantly...). The HubSpot event demo portal is an option only when `event.md` has a `hubspot_demo_portal`. A LinkedIn-only tool (HeyReach): ask in the next message whether it is for LinkedIn only, with Lemlist for email (A), or for everything (B). With another tool, say in one line that HubSpot, Clay and Lemlist are the tested path today; with another tool you read it and prepare everything, and they do the final import or launch click in their tool.
+2. After the five points (1b and 1c): the stack. A: the default stack from `default_crm`, `default_lists` and `default_outreach` in `event.md` (say it in words: "Clay finds the companies and people, lemlist runs email + LinkedIn, no CRM today"), or the same with a CRM you can see the team uses; B: the defaults plus my own CRM (name it: HubSpot, Pipedrive, Salesforce, Attio, Odoo... or a CSV export); C: I use other tools (name them: Apollo, HeyReach, Instantly...). The HubSpot event demo portal is an option only when `event.md` has a `hubspot_demo_portal`. A LinkedIn-only tool (HeyReach): ask in the next message whether it is for LinkedIn only, with Lemlist for email (A), or for everything (B). With another tool, say in one line that HubSpot, Clay and Lemlist are the tested path today; with another tool you read it and prepare everything, and they do the final import or launch click in their tool.
 
 Team name is the company name from the website (or the user's first name), shown in the recap line, never asked.
 
@@ -52,33 +52,22 @@ Create `out/` if it is missing. Write `team-profile.md` right after the first an
    - Geography: site languages, offices, currency, customer countries.
    - Proof points: numbers, logos, quotes.
    - Buyer words: how the site names the problem.
-6. From these, draft the proposal: target industries, employee band, countries and buyer titles; the copy language (the language of the target market, which may differ from the site's); channels (email and LinkedIn by default); one outreach angle (the main pain plus the strongest proof point); use case (the default loop: CRM ICP, build a list, multi-channel campaign, back to the CRM). Mark every field the site doesn't state directly as `[inferred]`, buyer titles included. If the site serves many segments ("for every industry"), propose the one with the most evidence (named customers, case studies) as today's target and name two others as alternatives in the 1c block.
+6. From these, draft the proposal: target industries, employee band, countries and buyer titles; the copy language (the language of the target market, which may differ from the site's); channels (email and LinkedIn by default); one outreach angle (the main pain plus the strongest proof point); use case (the default loop: CRM ICP, build a list, multi-channel campaign, back to the CRM). Keep track of which fields the site doesn't state directly (for `notes` in `out/icp.md`). If the site serves many segments ("for every industry"), propose the one with the most evidence (named customers, case studies) as today's target and name two others as alternatives in the 1c block.
 
-### 1c. Confirm, edit, or retarget (one question)
+### 1c. Confirm what you read, one point at a time
 
-Show one short block and one question with three answers:
+Never show the whole proposal as one block. Confirm it point by point, one question per message, each with A/B/C (`gtm-start`, "How you talk"), in this order. Open the first one with one line: "Here's what I read on <domain> (<pages>). Let's check it point by point: 5 quick questions." Each message: "Point <n> of 5: <name>", the point in one or two lines with its evidence in a few words, the question, then the closing line.
 
-```
-From acme.com, here's what I understood. Correct anything that's off.
-- You sell: <one line>
-- You sell to today: <industries, size, countries> (evidence: <for example 4 case studies, all Spanish retailers; plans from 49 EUR a month>)
-- Proposed target for today: <industries>, <employees>, <countries>, <titles [inferred]>
-- Outreach: <language> copy, email + LinkedIn, angle "<one line>"
-- Use case: the default loop (CRM ICP, build a list, campaign, back to the CRM)
+1. **What you sell.** A: "<one line>" (from <page>); B: <the next most likely reading, for example the product line or delivery model the site pushes second>; C: let me correct it.
+2. **Who buys it today, and your proof.** The industries, size and countries the site shows, and its strongest proof point (a number, a named customer). A: right; B: right, and I'll name 3 to 5 best customers; C: let me correct it. When the site names no customer, A is "I'll name 3 to 5 best customers" and B is "skip, use the site's evidence".
+3. **Target for today.** Industries, employee band and countries. A: <the segment with the most evidence>; B: <the next best segment, or the same segment in a new market>; C: a different target (type it). A new target: keep what the site says about the product and proof, and say in one line which proof travels to the new market.
+4. **Who to contact.** Buyer titles. A: <2 to 3 titles>; B: <a more senior or more hands-on set>; C: other titles (type them).
+5. **Your outreach angle.** The main pain plus one proof point, in one line. A: "<angle>"; B: "<a second angle on another pain>"; C: let me write mine. Copy language (the target market's) and channels (email + LinkedIn) are not questions: show them in the recap line.
 
-Go after this target today?
-A: yes, go with it
-B: same business, different target today (a new country, segment,
-   company size or buyer): type it
-C: let me correct a line
-Answer A to go with this target. Or type your own answer, or ask me anything.
-```
+After point 5, go on to the stack question (1a, 2) and, inside `gtm-start`, its goal question; then one recap line, last ("Got it: <team>, <target>, <titles>, <angle>, <language> copy, email + LinkedIn, <goal>"), the same as `gtm-start` About you. An answer that changes a point applies to that point only; never ask the same point again. Point 1's closing line adds "or type `all good` to accept all five": then show the five as a short list with "A: go on; B: change a point (type its number)".
 
-- "A" or "yes": keep the proposal as it is.
-- An edit: apply it and don't ask again.
-- A new target (international expansion, new segment...): keep what the site says about the product and the proof, replace the target fields, and propose the copy language for the new market (Spanish company going to Germany: German or English? ask in the same line). Say in one line which proof points still travel and which won't (home-market logos may mean little in the new market).
 - Their own use case instead of the loop: one line, recorded in `use_case`.
-- Ask at most one follow-up. If something is still open, use what they said and mark the gap `[assumption]`.
+- Ask at most one follow-up. If something is still open, use what they said and note the gap in `notes` in `out/icp.md` (never as a tag in a message).
 
 No website and no description ("don't know", "defaults" without a site): set `target: derive from CRM`, `copy_language: English`, and carry on; the ICP comes from HubSpot (step 1 of the loop) or from the user later.
 
@@ -113,6 +102,7 @@ tools:
   clay: <pending | connected (<workspace>, plugin|connector) | not available (<reason>)>
   other:   # one line per tool declared as `other: <name>`; omit the block when there is none
     <name> (<crm | outreach | outreach_linkedin | lists>): <pending | connected (<account>, server <server name>, <URL or command>) | csv (<reason, e.g. no connector>)>
+booking_link:   # the team's own calendar link, from the site or pasted at campaign step 6 (M3)
 links:   # tool links the tools returned (Clay table or search, lemlist campaign); never a promo link
 updated: <date time>
 ```
@@ -162,7 +152,7 @@ Only for tools in the team's stack. Verify each before moving on.
 
 **Clay**.
 - No Clay account yet: send the user to `clay_signup_url` from `event.md` (if it shows `<...>`, ask the user for the link on their workshop's access card before they sign up) (the event's sign-up link, never a plain clay.com sign-up: the credits arrive automatically there). Then continue below.
-- Already on Clay: keep that workspace; no new one is needed. Send the user to `clay_credits_form` from `event.md` to submit the workspace ID (the number after `/workspaces/` in the app.clay.com address bar); the organisers forward it to the Clay community, which loads the credits. Then continue below.
+- Already on Clay: keep that workspace; no new one is needed. When `clay_credits_form` in `event.md` isn't `none`, send the user to it to submit the workspace ID (the number after `/workspaces/` in the app.clay.com address bar); the organisers forward it to the Clay community, which loads the credits. When it is `none`, the workshop credits come through the Clay link on the access card instead. Then continue below.
 - Plugin path: run Clay's `setup` skill, which installs the `clay` CLI and runs `clay login` (browser; print the URL if it can't open). Verify with `clay whoami`.
 - Connector path (plugin failed, or Windows/WSL CLI trouble): the user adds the Clay connector at https://claude.ai/settings/connectors and restarts. Verify by listing Clay's tools. Needs `login: claude.ai`.
 - Check the credit balance (Clay's `credits-quotas-plans` skill or the workspace tool) and note it against `clay_credit_cap`. Event credits (`clay_credits` in `event.md`) may still be on their way for an existing workspace whose ID was just submitted; until then, work within the balance shown. If they're missing for a workspace created through the link, or long after the form, tell the user to flag it to the organisers (`help` in `event.md`), with their workspace name, and carry on.
@@ -184,4 +174,4 @@ If a sign-in fails twice, mark the tool `not available (<reason>)` and carry on.
    - `mode`: if it is still `safe` and at least one stack tool is now connected, say in one positive line that they can now run it on their real accounts by typing `switch to live` (never list what safe mode switches off). Never ask it here: the switch is offered only inside the website question (step 1a).
 2. Show a status table: tool, status, account, and which loop steps run as normal, read-only with an import file (untested tools), by CSV, or not at all.
 3. List any manual to-dos left. Inside the `gtm-start` flow, skip the prompt suggestions and go to 4. Otherwise point to `SKILLS.md` and suggest the first prompt for their use case and stack. If the team's HubSpot portal is new and empty, one of the suggestions is `hubspot-onboarding` ("onboard me to HubSpot").
-4. Then hand back to the `gtm-start` flow (its next step in "The order", with one line on what it is for and 'Answer "next" to move to the next step: Campaign step 1 of 6: your ideal customer') when it is running, unless setup waits on a restart (carry on after it) or the user's first message was a real request: then do that request instead (CLAUDE.md). There is no attendee demo (the host shows it live); safe mode is a host test, run only when typed.
+4. Then hand back to the `gtm-start` flow (its next step in "The order", starting it in the same reply: one line on what it is for, then campaign step 1's proposal and question) when it is running, unless setup waits on a restart (carry on after it) or the user's first message was a real request: then do that request instead (CLAUDE.md). There is no attendee demo (the host shows it live); safe mode is a host test, run only when typed.

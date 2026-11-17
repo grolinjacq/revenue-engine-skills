@@ -18,7 +18,7 @@ Guardrails for this playbook (from test runs)
 
 - No customers yet, or a thin website? The assistant gives 2 target ideas marked "inferred" and asks you up to 3 questions. With no proof point, the messages use none: never a made-up number.
 - If the clean list has fewer than 20 leads, the assistant says the exact number. Run step 3 again for more companies, or build the campaign with what you have.
-- LinkedIn steps need your LinkedIn account connected in lemlist (Chrome extension). If it isn't, the campaign runs the email steps only and the assistant tells you.
+- LinkedIn steps need your LinkedIn account connected in lemlist (Chrome extension) before launch. The campaign is built with them either way, paused; if LinkedIn isn't connected yet, connecting it is homework.
 
 0
 
@@ -30,9 +30,9 @@ First paste the session rules, then the prompt below.
 Own data: You're my GTM assistant for our first outbound campaign. The goal is booked calls. Our website: [URL]. Our home market: [COUNTRY]. Today is [DATE].
 1. Read the site and tell me in 5 lines what we sell, to whom, and our strongest proof point (a number if there is one).
 2. Tell me which of these you can reach in this chat: Clay, lemlist, my CRM ([NAME]). For each one you can't reach, say so. We'll pass files for that step.
-3. Ask me my lemlist plan (free period, Email or Multichannel) and whether my LinkedIn is connected through the lemlist Chrome extension. If I don't confirm both, plan email steps only.
+3. Read my lemlist plan from lemlist (don't ask me) and check whether my LinkedIn is connected through the lemlist Chrome extension. Plan the LinkedIn steps anyway (email steps only on lemlist's Email plan); if LinkedIn isn't connected, add connecting it to my homework.
 No web browsing? I'll paste my homepage and about text instead.
-Stop and wait for "next".
+Stop and wait for my answer; when I confirm, go straight into the next step.
 ```
 
 Safe mode version
@@ -40,7 +40,7 @@ Safe mode version
 
 Safe mode: SAFE MODE. Use only the fictional company and sample files I give you. Don't call Clay, lemlist or any CRM, don't look up real people, and spend no credits. For each tool step, write the file the tool would receive and the call you would have made.
 Company: Karvon AI, Tashkent. AI route and load planning for freight fleets of 20 to 500 trucks. 40 customers in Uzbekistan. Proof point: average 14% fewer empty kilometres in the first 3 months. Home market Uzbekistan. Best customers: don't ask me; use the 40 customers described, marked inferred.
-Stop after each step and wait for "next".
+Stop after each step and wait for my answer; when I confirm, go straight into the next step.
 ```
 
 Safe mode order: paste the session rules, then the safe mode rules under them, then this prompt, then the sample file at the bottom of this playbook. The sample is the only data used.
@@ -97,7 +97,7 @@ Companies first, people second. You check the company list before spending credi
 Prompt: Using Clay, find 15 companies that match this ICP: [PASTE ICP BLOCK].
 Before spending any credits, tell me how many you'll use and wait for my "go".
 Before searching, drop my current customers, any company on my do-not-contact list, my removed-companies list and companies from my earlier campaigns: [PASTE, or: none yet]. If fewer than 15 new companies fit, tell me the number and offer to widen one filter; never pad. If my Clay credits look too low for 15 companies and 30 people, propose a smaller plan first.
-Score each company from 1 to 5 for fit, with one reason and its source link. Show me a table (company, domain, country, employees, industry, score, reason), and how many leads to expect. Then stop and let me remove any company before we look for people. Keep a list of removed companies and never bring them back. If I removed some, offer replacements with a new credit estimate and wait for "go".
+Before scoring, turn my ICP's must-haves into at most 2 yes/no fit checks and research them for each company: read each company's website first, and use Clay (a custom data point) only for the sites you can't read, keeping the source. Score each company from 1 to 5 for fit on the firmographics plus the checks (a no drops it, unknown never counts as yes), with one reason and its source link. Show me a table (company, domain, country, employees, industry, score, reason), and how many leads to expect. Then stop and let me remove any company before we look for people. Keep a list of removed companies and never bring them back. If I removed some, offer replacements and wait for my answer.
 ```
 
 Clay not connected? Do it in the Clay app
@@ -155,7 +155,7 @@ Prompt: Clean this lead list before we write to anyone:
 Don't change anything in the CRM. Tell me how many rows you removed, for each reason, and how many are left per channel.
 ```
 
-You get a clean list (aim for 20+) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
+You get a clean list (aim for about 20) and a do-not-contact list. In safe mode, two sample rows are removed (the opt-out and the row with no contact) and one is flagged with its note blanked.
 
 Skills that run this step
 crm checks the list against your CRM (connector or CSV export).
@@ -169,12 +169,12 @@ One angle, two channels, one goal: a 15-minute call. Five steps built on P-L-V-A
 
 Prompt: 1. Give me 3 different angles for this persona. For each: the hook, the pain, and why it fits now. Then stop and wait for my choice.
 2. After I choose, write a 5-step sequence in [LANGUAGE] for booking a 15-minute call. Each message stands alone: M2 to M4 only go out if there was no reply, so never assume the lead read the earlier ones. If the list mixes seniority levels, write for the biggest group and tell me which:
-- Step 1, connection note (LinkedIn, with the request): usually blank; only a real, specific hook, under 200 characters, no pitch (write the LinkedIn steps only if I confirmed LinkedIn in step 0)
+- Step 1, connection note (LinkedIn, with the request): usually blank; only a real, specific hook, under 200 characters, no pitch (write the LinkedIn steps whenever my plan allows, even if LinkedIn isn't connected yet)
 - Step 2, M1 opener: P + L + a soft question, under 90 words by email (no links), under 300 characters on LinkedIn
 - Step 3, M2 proof (+3 days): V, the strongest quantified result and a one-line case study: [PROOF POINT, or: none yet, never invent one]
 - Step 4, M3 ask (+3 days, a LinkedIn message on the accepted path): A, a clear ask for a 15-minute call with my booking link [LINK] or two slots I give you [SLOTS]; if I have neither, end with "Reply with a day this week or next that suits you"
 - Step 5, M4 breakup (+4 days): no pitch, a polite final nudge, the door stays open
-- build it as a branching multichannel sequence in lemlist where my plan and LinkedIn allow: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. Without LinkedIn, email only
+- build it as a branching multichannel sequence in lemlist where my plan allows: if the lead has a LinkedIn URL, profile visit and invite first; if the invite is accepted, M1 and M3 go as LinkedIn messages and M2 and M4 by email; if it isn't accepted after 5 days, or there is no LinkedIn URL, M1 to M4 go by email. On lemlist's Email plan, email only
 - use {{firstName}}, {{companyName}} and {{personalization}}, and a version of M1 for rows where personalization is blank
 3. Check the copy against a plain checklist (short, one ask, no hype, each message stands alone) and fix what fails.
 ```
@@ -190,7 +190,7 @@ campaign-angle-finder picks the angle. The P-L-V-A tree in lemlist-campaign step
 lemlist
 ```
 
-Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If any is missing, tell me and keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
+Prompt: Create a lemlist campaign named "[CAMPAIGN NAME]" with this sequence and the clean leads, sending email from my mailbox [EMAIL, or: not connected yet, leave the sender empty] and LinkedIn steps from my connected LinkedIn account. Use lemlist's conditions: has LinkedIn URL, then invite accepted (within 5 days); LinkedIn messages only in the accepted branch; the email path for everyone else. Before creating it, show me the campaign name, the number of leads, the sending days and all the steps, and wait for my "go". LinkedIn steps need the lemlist Chrome extension, my personal LinkedIn logged in in the same Chrome profile, and the lemlist trial or Multichannel plan (not the Email plan). If the extension or the LinkedIn login is missing, keep the LinkedIn steps and tell me to connect LinkedIn before launch; on the Email plan, keep the email steps only. Leads with no LinkedIn URL get the email steps only. Leads with no email (linkedin-only) don't go in this campaign: give them back to me as a CSV. Keep at least one email step. If lemlist is not connected or the trial has ended, give me the import CSV and all steps as text instead. Leave it paused. Never start it: launching is your job. After creating it, read back its status and the lead count per channel. Give delays as days after the previous step.
 ```
 
 lemlist not connected? Do it in the lemlist app
@@ -204,7 +204,7 @@ The assistant writes the import CSV and the campaign it would have created. Noth
 
 Skills that run this step
 lemlist-campaign.
-You get a paused email and LinkedIn campaign of 20+ leads. Open it in lemlist and check it says Paused. When you're ready, connect your mailbox and press launch yourself, before your free lemlist period ends.
+You get a paused email and LinkedIn campaign of about 20 leads. Open it in lemlist and check it says Paused. When you're ready, connect your mailbox and press launch yourself, before your free lemlist period ends.
 
 8
 
@@ -232,7 +232,7 @@ close-the-loop writes the CRM import from campaign results, and you run it again
 ### Done when you have
 
 An ICP block and a buyer persona block you approved
-A clean list of 20+ people from Clay and a do-not-contact list (in safe mode the sample gives 18: that is the expected result)
+A clean list of about 20 people from Clay and a do-not-contact list (in safe mode the sample gives 18: that is the expected result)
 An email and LinkedIn sequence in a paused lemlist campaign
 A CRM import file and a reply plan for booking calls
 
