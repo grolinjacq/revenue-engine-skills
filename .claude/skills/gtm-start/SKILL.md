@@ -68,8 +68,6 @@ Answer `help` in the user's language with three lines only, then ask the open qu
 | Signal-based outreach | Reach companies at the right moment (hiring, funding, launch) | 60 min + weekly | `references/use-cases/signals.md` |
 | Investors and partners | Fundraising or partner programmes, not customers | 45 to 60 min | `references/use-cases/investors.md` |
 
-In a workspace, the guided demos of the `workshop` skill (inbound triage, new market, research) are also on the menu, on sample data.
-
 ## Workshop overrides (chat and workspace, during a workshop session)
 
 These replace what a playbook or step skill says, because every campaign in the session stays paused:

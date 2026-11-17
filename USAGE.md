@@ -8,9 +8,9 @@ You do not need to name skills. Say what you want and Claude picks the skill fro
 
 Say `safe mode` (or "test run"). The whole loop runs on the made-up company and leads in `samples/`, with no accounts, no credits and nothing sent, in Claude Code or Codex. Results land in `out/safe/`, and `samples/README.md` lists what a correct run produces. Say `switch to live` when you want to use your own data.
 
-## Try a guided demo
+## Start the guided flow
 
-At the end of setup, Claude offers 4 guided demos in plain words (meetings from cold outreach, AI research and qualification, inbound routing, a new market). Pick one by number or in your own words, or ask "what can you do?" any time to see them again. Claude runs it on safe sample data through your live tools, explains each step, answers your questions, then moves to your own data. Nothing is sent; everything it creates is tagged [DEMO] and listed for cleanup.
+Type `start`. The `gtm-start` flow asks about you, connects your tools, then goes straight into your first campaign on your own data, then more use cases (`use cases` switches between them). Want to see it on made-up data first? Say `demo`: nothing is called and nothing is sent.
 
 ## Just say it
 

@@ -26,7 +26,6 @@ ENGINE_SKILLS = [
     "revenue-engine",
     "hackathon-setup",
     "make-it-ours",
-    "workshop",
     "clay-build-list",
     "lemlist-campaign",
     "close-the-loop",
