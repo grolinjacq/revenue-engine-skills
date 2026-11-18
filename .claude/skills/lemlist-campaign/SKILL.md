@@ -53,4 +53,4 @@ Safe mode (`mode: safe` in `team-profile.md`, or the request says so): don't cal
 
 ## Discount code
 
-The sign-up path for this workshop is in `event.md` (`lemlist_trial`, plus `lemlist_trial_code` when it isn't `none`; a placeholder means ask the user for the access card, then the host). If a tool fails because a channel is not on the plan, say so and give that path.
+The sign-up path for this workshop is in `event.md` (`lemlist_trial`, plus `lemlist_trial_code` when it isn't `none`; a placeholder means point the user to the access card (the workshop guide page), then the host). If a tool fails because a channel is not on the plan, say so and give that path.
